@@ -1,6 +1,6 @@
 'use client';
 
-import { Phone, MessageSquare, Mail, MapPin, ShieldCheck, Clock, CreditCard } from 'lucide-react';
+import { Phone, MessageSquare, Mail, MapPin, ShieldCheck, Clock } from 'lucide-react';
 import { SITE_CONFIG, getBreadcrumbSchema } from '@/lib/seo/schema';
 
 export default function ContactPage() {
@@ -117,20 +117,6 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Official Payment & Banking Information */}
-              <div className="rounded-3xl bg-blue-950 p-6 text-white space-y-3 shadow-md border border-blue-900">
-                <div className="flex items-center gap-2 font-bold text-blue-200 text-sm">
-                  <CreditCard className="h-5 w-5 text-red-500" />
-                  <span>Official Payment & Banking Info</span>
-                </div>
-                <p className="text-xs text-blue-100 leading-relaxed">
-                  <strong>Payable To:</strong> Medwise Technical Consulting<br />
-                  <strong>Bank:</strong> KCB Bank, Branch: Mashariki<br />
-                  <strong>Account No:</strong> 1340632535<br />
-                  <strong>M-Pesa Paybill:</strong> 522533 | <strong>Account No:</strong> 7984407
-                </p>
               </div>
 
               {/* Emergency Support Card */}

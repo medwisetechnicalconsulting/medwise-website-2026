@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Phone, MessageSquare, Mail, MapPin, Heart, Activity, CreditCard } from 'lucide-react';
+import { Phone, MessageSquare, Mail, MapPin, Heart, Activity } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 
 export default function Footer() {
@@ -30,20 +30,8 @@ export default function Footer() {
               Proactive technical support, independent medical equipment advisory, sourcing, installation, training, calibration, and maintenance for healthcare facilities in Kenya.
             </p>
 
-            {/* Official Banking & Payment Information */}
-            <div className="rounded-xl border border-blue-900/60 bg-blue-950/40 p-3.5 text-xs text-slate-300 space-y-1.5">
-              <div className="flex items-center gap-2 font-bold text-blue-300">
-                <CreditCard className="h-4 w-4 text-red-400" />
-                <span>Banking & Paybill Details</span>
-              </div>
-              <p className="text-[11px] text-slate-400">
-                <strong className="text-white">Bank:</strong> KCB Mashariki Branch | <strong className="text-white">Acc No:</strong> 1340632535<br />
-                <strong className="text-white">M-Pesa Paybill:</strong> 522533 | <strong className="text-white">Account:</strong> 7984407
-              </p>
-            </div>
-
             {/* Mandatory Disclaimer Box */}
-            <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-3 text-xs text-slate-300">
+            <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-3.5 text-xs text-slate-300">
               <span className="font-semibold text-blue-400">Independent Standard Disclaimer:</span>
               <p className="text-[11px] text-slate-400 mt-1">
                 Medwise offers equipment supply but maintains independent consulting standards to ensure objective advice tailored to your budget and clinical needs.
