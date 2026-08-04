@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ShieldCheck, Award, Wrench, Users, HeartHandshake, CheckCircle2, ArrowRight } from 'lucide-react';
-import { getBreadcrumbSchema } from '@/lib/seo/schema';
+import { ShieldCheck, Award, Wrench, Users, HeartHandshake, CheckCircle2, Heart } from 'lucide-react';
+import { getBreadcrumbSchema, SITE_CONFIG } from '@/lib/seo/schema';
 import CtaBanner from '@/components/CtaBanner';
 
 export const metadata: Metadata = {
   title: 'About Us | Medwise Technical Consulting Kenya',
   description:
-    'Learn about Medwise Technical Consulting, our biomedical engineering team, and our mission to provide independent medical device advice and maintenance across Kenya.',
+    'Learn about Medwise Technical Consulting on Kisumu Kakamega Road, our biomedical engineering team, and our mission to provide independent medical device advice and maintenance across Kenya.',
   alternates: {
     canonical: '/about',
   },
@@ -27,12 +27,12 @@ export default function AboutPage() {
       />
 
       {/* About Hero Header */}
-      <section className="bg-slate-900 text-white py-16 lg:py-24 border-b border-slate-800">
+      <section className="bg-slate-950 text-white py-16 lg:py-24 border-b border-slate-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-400">
-              <ShieldCheck className="h-4 w-4" />
-              <span>Biomedical Engineering Founded & Led</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
+              <ShieldCheck className="h-4 w-4 text-red-500" />
+              <span>Biomedical Engineering Founded & Led • Kisumu Kakamega Road</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
               Our Core Mission
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -64,17 +64,17 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="rounded-2xl bg-slate-50 p-8 border border-slate-200 space-y-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white font-bold text-lg shadow-md">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-700 text-white font-bold text-lg shadow-md">
                 01
               </div>
               <h3 className="text-lg font-bold text-slate-900">Expert Guidance</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Providing knowledge that enables healthcare facilities to acquire the right laboratory and diagnostic devices at competitive prices without brand bias.
+                Providing knowledge that enables healthcare facilities to acquire the right laboratory and diagnostic devices (such as Zybio hematology analyzers) at competitive prices without brand bias.
               </p>
             </div>
 
             <div className="rounded-2xl bg-slate-50 p-8 border border-slate-200 space-y-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white font-bold text-lg shadow-md">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-700 text-white font-bold text-lg shadow-md">
                 02
               </div>
               <h3 className="text-lg font-bold text-slate-900">Seamless Support</h3>
@@ -84,7 +84,7 @@ export default function AboutPage() {
             </div>
 
             <div className="rounded-2xl bg-slate-50 p-8 border border-slate-200 space-y-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white font-bold text-lg shadow-md">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-700 text-white font-bold text-lg shadow-md">
                 03
               </div>
               <h3 className="text-lg font-bold text-slate-900">Exceptional Service</h3>
@@ -112,7 +112,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="rounded-2xl bg-white p-8 border border-slate-200 shadow-sm flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-700 shrink-0">
                 <Award className="h-6 w-6" />
               </div>
               <div className="space-y-2">
@@ -124,8 +124,8 @@ export default function AboutPage() {
             </div>
 
             <div className="rounded-2xl bg-white p-8 border border-slate-200 shadow-sm flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
-                <HeartHandshake className="h-6 w-6" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-700 shrink-0">
+                <HeartHandshake className="h-6 w-6 text-red-500" />
               </div>
               <div className="space-y-2">
                 <h3 className="text-base font-bold text-slate-900">Customised Solutions</h3>
@@ -136,7 +136,7 @@ export default function AboutPage() {
             </div>
 
             <div className="rounded-2xl bg-white p-8 border border-slate-200 shadow-sm flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-700 shrink-0">
                 <Wrench className="h-6 w-6" />
               </div>
               <div className="space-y-2">
@@ -148,7 +148,7 @@ export default function AboutPage() {
             </div>
 
             <div className="rounded-2xl bg-white p-8 border border-slate-200 shadow-sm flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-700 shrink-0">
                 <Users className="h-6 w-6" />
               </div>
               <div className="space-y-2">
@@ -160,13 +160,13 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Real Photography Placeholder Box */}
-          <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-100/70 p-8 text-center space-y-2">
-            <span className="text-xs font-mono text-slate-500 uppercase tracking-widest block">
-              [REAL PHOTOGRAPHY PLACEHOLDER — Client Photo: Medwise Engineering Team & Facility Operations in Langata Rongai]
+          {/* Real Company Office Details */}
+          <div className="rounded-3xl border border-blue-200 bg-blue-50/60 p-8 text-center space-y-2">
+            <span className="text-xs font-mono text-blue-800 font-bold uppercase tracking-widest block">
+              Medwise Technical Consulting • Kisumu Office
             </span>
-            <p className="text-xs text-slate-600 max-w-xl mx-auto">
-              Our team operates directly from our technical base in Langata Rongai, Rift Valley Province, serving healthcare facilities across Nairobi, Kajiado, and throughout Kenya.
+            <p className="text-xs text-slate-700 max-w-xl mx-auto">
+              Our engineering team operates from <strong>Kisumu Kakamega Road, Kisumu, Kenya</strong>, serving healthcare facilities, county hospitals (like Thagana County Medical Center), and private laboratories nationwide.
             </p>
           </div>
 

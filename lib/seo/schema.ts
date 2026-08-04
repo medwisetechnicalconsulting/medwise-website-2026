@@ -3,20 +3,21 @@ export const SITE_CONFIG = {
   tagline: 'Independent Medical Equipment Consulting, Sourcing & Technical Support in Kenya',
   description:
     'Proactive technical support, independent medical equipment advisory, sourcing, installation, training, calibration, and maintenance for healthcare facilities in Kenya.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://medwise-technical-consulting.vercel.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://medwisetechnicalconsulting.co.ke',
   ogImage: '/images/medwise-og.jpg',
-  telephone: '+254700000000', // [PLACEHOLDER — confirm with client]
-  whatsappNumber: '254700000000', // [PLACEHOLDER — confirm with client]
-  email: 'info@medwisetech.co.ke', // [PLACEHOLDER — confirm with client]
+  telephone: '+254117233522',
+  altTelephone: '+254711233522',
+  whatsappNumber: '254117233522',
+  email: 'medwisetechnicalconsulting@gmail.com',
   address: {
-    streetAddress: 'Langata Rongai Road',
-    addressLocality: 'Rongai / Langata Region',
-    addressRegion: 'Rift Valley Province',
+    streetAddress: 'Kisumu Kakamega Road',
+    addressLocality: 'Kisumu',
+    addressRegion: 'Nyanza / Western Region',
     addressCountry: 'KE',
   },
   geo: {
-    latitude: -1.3963,
-    longitude: 36.7606,
+    latitude: -0.0917,
+    longitude: 34.7680,
   },
   openingHours: 'Mo-Fr 08:00-17:00, Sa 09:00-13:00',
   priceRange: '$$',
@@ -117,7 +118,7 @@ export function getMedicalBusinessSchema() {
       ],
     },
     sameAs: [
-      'https://www.google.com/maps?cid=medwise-technical-consulting', // [PLACEHOLDER — confirm with client]
+      'https://medwisetechnicalconsulting.co.ke',
     ],
   };
 }

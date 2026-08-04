@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Phone, MessageSquare, Menu, X, ShieldCheck, Activity } from 'lucide-react';
+import { Phone, MessageSquare, Menu, X, Heart, Activity } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 
 export default function Navbar() {
@@ -10,21 +10,21 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-sm transition-all">
-      {/* Top Banner Notice */}
-      <div className="bg-slate-900 px-4 py-1.5 text-xs font-medium text-slate-300 sm:px-6">
+      {/* Top Banner Notice - Medwise Royal Blue */}
+      <div className="bg-blue-950 px-4 py-1.5 text-xs font-medium text-blue-100 sm:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="text-slate-200 font-semibold">Independent Medical Engineering Advisory</span>
-            <span className="hidden md:inline text-slate-400">• Kenya & East Africa</span>
+            <span className="inline-block h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+            <span className="text-white font-semibold">Medwise Technical Consulting</span>
+            <span className="hidden md:inline text-blue-300">• Knowledge and Access for Healthcare Excellence</span>
           </div>
-          <div className="flex items-center gap-4 text-slate-300">
-            <span className="hidden sm:inline">Location: Langata Rongai, KE</span>
+          <div className="flex items-center gap-4 text-blue-200">
+            <span className="hidden sm:inline">Kisumu Kakamega Road, KE</span>
             <a
               href={`tel:${SITE_CONFIG.telephone}`}
-              className="hover:text-emerald-400 transition-colors flex items-center gap-1"
+              className="hover:text-red-400 transition-colors flex items-center gap-1 font-semibold"
             >
-              <Phone className="h-3 w-3 text-emerald-400" />
+              <Phone className="h-3 w-3 text-red-400" />
               <span>{SITE_CONFIG.telephone}</span>
             </a>
           </div>
@@ -33,36 +33,37 @@ export default function Navbar() {
 
       {/* Main Navigation Bar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-            <Activity className="h-6 w-6 stroke-[2.5]" />
+        {/* Brand Logo with Red Heart & Blue Typography */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform relative">
+            <Heart className="h-6 w-6 text-red-500 fill-red-500 stroke-white stroke-2" />
+            <Activity className="h-4 w-4 text-white absolute inset-0 m-auto stroke-[2.5]" />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tight text-slate-900 leading-tight">
-              Medwise<span className="text-emerald-600">.</span>
+            <span className="text-xl font-extrabold tracking-tight text-blue-900 leading-tight">
+              MEDWISE<span className="text-red-600">.</span>
             </span>
-            <span className="text-[10px] font-semibold tracking-wider text-slate-500 uppercase">
+            <span className="text-[10px] font-bold tracking-widest text-slate-500 uppercase">
               Technical Consulting
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
-          <Link href="/" className="hover:text-emerald-600 transition-colors">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
+          <Link href="/" className="hover:text-blue-700 transition-colors">
             Home
           </Link>
-          <Link href="/services" className="hover:text-emerald-600 transition-colors">
+          <Link href="/services" className="hover:text-blue-700 transition-colors">
             Services
           </Link>
-          <Link href="/about" className="hover:text-emerald-600 transition-colors">
+          <Link href="/about" className="hover:text-blue-700 transition-colors">
             About Us
           </Link>
-          <Link href="/blog" className="hover:text-emerald-600 transition-colors">
+          <Link href="/blog" className="hover:text-blue-700 transition-colors">
             Insights & Blog
           </Link>
-          <Link href="/contact" className="hover:text-emerald-600 transition-colors">
+          <Link href="/contact" className="hover:text-blue-700 transition-colors">
             Contact
           </Link>
         </nav>
@@ -73,7 +74,7 @@ export default function Navbar() {
             href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20inquire%20about%20your%20services.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-emerald-700 hover:shadow-emerald-600/20 transition-all"
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-800 hover:shadow-blue-700/20 transition-all"
           >
             <MessageSquare className="h-4 w-4" />
             <span>Chat on WhatsApp</span>
@@ -81,10 +82,10 @@ export default function Navbar() {
 
           <a
             href={`tel:${SITE_CONFIG.telephone}`}
-            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-400 transition-all"
+            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-xs font-bold text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-400 transition-all"
           >
-            <Phone className="h-4 w-4 text-emerald-600" />
-            <span>Call Us</span>
+            <Phone className="h-4 w-4 text-red-600" />
+            <span>Call {SITE_CONFIG.telephone}</span>
           </a>
         </div>
 
@@ -101,7 +102,7 @@ export default function Navbar() {
       {/* Mobile Dropdown Navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-200 bg-white px-4 py-4 shadow-lg animate-in slide-in-from-top-2 duration-200">
-          <div className="flex flex-col space-y-3 font-medium text-slate-800">
+          <div className="flex flex-col space-y-3 font-semibold text-slate-800">
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
@@ -144,17 +145,17 @@ export default function Navbar() {
               href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20inquire%20about%20your%20services.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 py-2.5 text-sm font-semibold text-white shadow-sm"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-700 py-2.5 text-sm font-bold text-white shadow-sm"
             >
               <MessageSquare className="h-4 w-4" />
               <span>Chat on WhatsApp</span>
             </a>
             <a
               href={`tel:${SITE_CONFIG.telephone}`}
-              className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white py-2.5 text-sm font-semibold text-slate-700 shadow-sm"
+              className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white py-2.5 text-sm font-bold text-slate-700 shadow-sm"
             >
-              <Phone className="h-4 w-4 text-emerald-600" />
-              <span>Call Us Direct</span>
+              <Phone className="h-4 w-4 text-red-600" />
+              <span>Call {SITE_CONFIG.telephone}</span>
             </a>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Phone, MessageSquare, Mail, MapPin, Activity, ShieldCheck, ExternalLink } from 'lucide-react';
+import { Phone, MessageSquare, Mail, MapPin, Heart, Activity, CreditCard } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 
 export default function Footer() {
@@ -11,16 +11,17 @@ export default function Footer() {
           
           {/* Brand & Description Column */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white shadow-md">
-                <Activity className="h-6 w-6 stroke-[2.5]" />
+            <Link href="/" className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 text-white shadow-md relative">
+                <Heart className="h-5 w-5 text-red-500 fill-red-500 stroke-white stroke-2" />
+                <Activity className="h-3.5 w-3.5 text-white absolute inset-0 m-auto stroke-[2.5]" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight text-white leading-tight">
-                  Medwise<span className="text-emerald-400">.</span>
+                <span className="text-xl font-extrabold tracking-tight text-white leading-tight">
+                  MEDWISE<span className="text-red-500">.</span>
                 </span>
-                <span className="text-[10px] font-semibold tracking-wider text-slate-400 uppercase">
-                  Technical Consulting
+                <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                  Knowledge and Access
                 </span>
               </div>
             </Link>
@@ -29,9 +30,21 @@ export default function Footer() {
               Proactive technical support, independent medical equipment advisory, sourcing, installation, training, calibration, and maintenance for healthcare facilities in Kenya.
             </p>
 
+            {/* Official Banking & Payment Information */}
+            <div className="rounded-xl border border-blue-900/60 bg-blue-950/40 p-3.5 text-xs text-slate-300 space-y-1.5">
+              <div className="flex items-center gap-2 font-bold text-blue-300">
+                <CreditCard className="h-4 w-4 text-red-400" />
+                <span>Banking & Paybill Details</span>
+              </div>
+              <p className="text-[11px] text-slate-400">
+                <strong className="text-white">Bank:</strong> KCB Mashariki Branch | <strong className="text-white">Acc No:</strong> 1340632535<br />
+                <strong className="text-white">M-Pesa Paybill:</strong> 522533 | <strong className="text-white">Account:</strong> 7984407
+              </p>
+            </div>
+
             {/* Mandatory Disclaimer Box */}
             <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-3 text-xs text-slate-300">
-              <span className="font-semibold text-emerald-400">Independent Standard Disclaimer:</span>
+              <span className="font-semibold text-blue-400">Independent Standard Disclaimer:</span>
               <p className="text-[11px] text-slate-400 mt-1">
                 Medwise offers equipment supply but maintains independent consulting standards to ensure objective advice tailored to your budget and clinical needs.
               </p>
@@ -43,27 +56,27 @@ export default function Footer() {
             <h3 className="text-xs font-bold text-white uppercase tracking-wider">Quick Links</h3>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/" className="hover:text-emerald-400 transition-colors">
+                <Link href="/" className="hover:text-blue-400 transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-emerald-400 transition-colors">
+                <Link href="/services" className="hover:text-blue-400 transition-colors">
                   Our Services
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-emerald-400 transition-colors">
+                <Link href="/about" className="hover:text-blue-400 transition-colors">
                   About Medwise
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-emerald-400 transition-colors">
+                <Link href="/blog" className="hover:text-blue-400 transition-colors">
                   Insights & Blog
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-emerald-400 transition-colors">
+                <Link href="/contact" className="hover:text-blue-400 transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -76,21 +89,23 @@ export default function Footer() {
             
             <div className="space-y-2.5 text-xs text-slate-300">
               <div className="flex items-start gap-2.5">
-                <MapPin className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
+                <MapPin className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-white">Office Location:</span>
+                  <span className="font-semibold text-white">Physical Address:</span>
                   <p className="text-slate-400">
-                    {SITE_CONFIG.address.streetAddress}, {SITE_CONFIG.address.addressLocality}, {SITE_CONFIG.address.addressRegion}, Kenya
+                    {SITE_CONFIG.address.streetAddress}, {SITE_CONFIG.address.addressLocality}, Kenya
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Phone className="h-4 w-4 text-emerald-400 shrink-0" />
+                <Phone className="h-4 w-4 text-blue-400 shrink-0" />
                 <div>
-                  <span className="font-semibold text-white">Phone: </span>
-                  <a href={`tel:${SITE_CONFIG.telephone}`} className="hover:text-emerald-400 transition-colors">
+                  <span className="font-semibold text-white">Phones: </span>
+                  <a href={`tel:${SITE_CONFIG.telephone}`} className="hover:text-blue-400 transition-colors font-mono">
                     {SITE_CONFIG.telephone}
+                  </a> / <a href={`tel:${SITE_CONFIG.altTelephone}`} className="hover:text-blue-400 transition-colors font-mono">
+                    {SITE_CONFIG.altTelephone}
                   </a>
                 </div>
               </div>
@@ -103,18 +118,18 @@ export default function Footer() {
                     href={`https://wa.me/${SITE_CONFIG.whatsappNumber}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-emerald-400 transition-colors"
+                    className="hover:text-emerald-400 transition-colors font-mono"
                   >
-                    +254 700 000 000
+                    +254 117 233 522
                   </a>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Mail className="h-4 w-4 text-emerald-400 shrink-0" />
+                <Mail className="h-4 w-4 text-blue-400 shrink-0" />
                 <div>
                   <span className="font-semibold text-white">Email: </span>
-                  <a href={`mailto:${SITE_CONFIG.email}`} className="hover:text-emerald-400 transition-colors">
+                  <a href={`mailto:${SITE_CONFIG.email}`} className="hover:text-blue-400 transition-colors">
                     {SITE_CONFIG.email}
                   </a>
                 </div>
@@ -124,12 +139,11 @@ export default function Footer() {
 
           {/* Google Maps Location Integration */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider">Google Maps Location</h3>
+            <h3 className="text-xs font-bold text-white uppercase tracking-wider">Kisumu Office Location</h3>
             <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-slate-800 bg-slate-900 flex items-center justify-center p-4 text-center">
-              {/* Google Map iframe integration placeholder */}
               <iframe
-                title="Medwise Technical Consulting Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127638.16335198083!2d36.7028148!3d-1.3963283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f0436d6541fcd%3A0x889dfefecdd82069!2sRongai%2C%20Kenya!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"
+                title="Medwise Technical Consulting Location Map - Kisumu Kakamega Road"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.817342!2d34.768!3d-0.0917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182aa4c575cf26d9%3A0xb35a0f624d77b587!2sKisumu%20Kakamega%20Rd%2C%20Kisumu!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -140,7 +154,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-[10px] text-slate-500 text-center">
-              Google Business Profile Location: Langata Rongai, Rift Valley Province, KE
+              Kisumu Kakamega Road, Kisumu, Kenya
             </p>
           </div>
 

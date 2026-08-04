@@ -1,6 +1,6 @@
 'use client';
 
-import { Phone, MessageSquare, Mail, MapPin, ShieldCheck, Clock } from 'lucide-react';
+import { Phone, MessageSquare, Mail, MapPin, ShieldCheck, Clock, CreditCard } from 'lucide-react';
 import { SITE_CONFIG, getBreadcrumbSchema } from '@/lib/seo/schema';
 
 export default function ContactPage() {
@@ -17,20 +17,20 @@ export default function ContactPage() {
       />
 
       {/* Header */}
-      <section className="bg-slate-900 text-white py-16 lg:py-20 border-b border-slate-800">
+      <section className="bg-slate-950 text-white py-16 lg:py-20 border-b border-slate-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-400">
-              <ShieldCheck className="h-4 w-4" />
-              <span>Direct Biomedical Helpline</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
+              <ShieldCheck className="h-4 w-4 text-red-500" />
+              <span>Direct Biomedical Helpline • Kisumu Kakamega Road</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
-              Get in Touch with Our Biomedical Engineers
+              Get in Touch with Medwise Technical Consulting
             </h1>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Have questions about medical device selection, calibration schedules, or facility setup? We are ready to assist you.
+              Have questions about medical device selection, routine repairs (like Zybio Z3 hematology analyzers), calibration schedules, or facility setup? We are ready to assist you.
             </p>
           </div>
         </div>
@@ -51,25 +51,27 @@ export default function ContactPage() {
 
                 <div className="space-y-5 text-xs sm:text-sm text-slate-700">
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-100 text-red-600 shrink-0">
                       <MapPin className="h-5 w-5" />
                     </div>
                     <div>
                       <span className="font-bold text-slate-900 block">Physical Address:</span>
                       <p className="text-slate-600">
-                        {SITE_CONFIG.address.streetAddress}, {SITE_CONFIG.address.addressLocality}, {SITE_CONFIG.address.addressRegion}, Kenya
+                        {SITE_CONFIG.address.streetAddress}, {SITE_CONFIG.address.addressLocality}, Kenya
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700 shrink-0">
                       <Phone className="h-5 w-5" />
                     </div>
                     <div>
-                      <span className="font-bold text-slate-900 block">Phone Helpline:</span>
-                      <a href={`tel:${SITE_CONFIG.telephone}`} className="text-emerald-700 font-semibold hover:underline">
+                      <span className="font-bold text-slate-900 block">Phone Helplines:</span>
+                      <a href={`tel:${SITE_CONFIG.telephone}`} className="text-blue-700 font-bold hover:underline font-mono">
                         {SITE_CONFIG.telephone}
+                      </a> / <a href={`tel:${SITE_CONFIG.altTelephone}`} className="text-blue-700 font-bold hover:underline font-mono">
+                        {SITE_CONFIG.altTelephone}
                       </a>
                     </div>
                   </div>
@@ -84,20 +86,20 @@ export default function ContactPage() {
                         href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20inquire%20about%20your%20services.`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-emerald-700 font-semibold hover:underline"
+                        className="text-emerald-700 font-bold hover:underline font-mono"
                       >
-                        +254 700 000 000 (Instant Chat)
+                        +254 117 233 522 (Instant Chat)
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700 shrink-0">
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
                       <span className="font-bold text-slate-900 block">Email Inquiries:</span>
-                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-emerald-700 font-semibold hover:underline">
+                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-blue-700 font-bold hover:underline">
                         {SITE_CONFIG.email}
                       </a>
                     </div>
@@ -117,28 +119,42 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Instant Action CTA Card */}
+              {/* Official Payment & Banking Information */}
+              <div className="rounded-3xl bg-blue-950 p-6 text-white space-y-3 shadow-md border border-blue-900">
+                <div className="flex items-center gap-2 font-bold text-blue-200 text-sm">
+                  <CreditCard className="h-5 w-5 text-red-500" />
+                  <span>Official Payment & Banking Info</span>
+                </div>
+                <p className="text-xs text-blue-100 leading-relaxed">
+                  <strong>Payable To:</strong> Medwise Technical Consulting<br />
+                  <strong>Bank:</strong> KCB Bank, Branch: Mashariki<br />
+                  <strong>Account No:</strong> 1340632535<br />
+                  <strong>M-Pesa Paybill:</strong> 522533 | <strong>Account No:</strong> 7984407
+                </p>
+              </div>
+
+              {/* Emergency Support Card */}
               <div className="rounded-3xl bg-slate-900 p-8 text-white space-y-4 shadow-lg">
-                <h3 className="text-lg font-bold text-white">Need Urgent Technical Support?</h3>
+                <h3 className="text-lg font-bold text-white">Need Urgent Field Technical Support?</h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Our emergency response team assists healthcare facilities in Nairobi and across Kenya with critical device downtime.
+                  Our qualified biomedical technicians dispatch rapidly across Kisumu, Sagana, Nairobi, and healthcare facilities nationwide.
                 </p>
                 <div className="flex flex-col gap-3 pt-2">
                   <a
                     href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=URGENT%3A%20Biomedical%20Technical%20Support%20Required`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-xl bg-emerald-500 py-3 text-xs font-bold text-slate-950 hover:bg-emerald-400 transition-colors"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 text-xs font-bold text-white hover:bg-blue-500 transition-colors"
                   >
-                    <MessageSquare className="h-4 w-4 fill-slate-950 stroke-none" />
-                    <span>WhatsApp Emergency Support</span>
+                    <MessageSquare className="h-4 w-4" />
+                    <span>WhatsApp Technical Support</span>
                   </a>
                   <a
                     href={`tel:${SITE_CONFIG.telephone}`}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800 py-3 text-xs font-semibold text-white hover:bg-slate-700 transition-colors"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800 py-3 text-xs font-bold text-white hover:bg-slate-700 transition-colors"
                   >
-                    <Phone className="h-4 w-4 text-emerald-400" />
-                    <span>Call Helpline Direct</span>
+                    <Phone className="h-4 w-4 text-red-500" />
+                    <span>Call {SITE_CONFIG.telephone}</span>
                   </a>
                 </div>
               </div>
@@ -151,9 +167,9 @@ export default function ContactPage() {
               {/* Interactive Consultation Form */}
               <div className="rounded-3xl bg-white p-8 sm:p-10 border border-slate-200 shadow-sm space-y-6">
                 <div>
-                  <h2 className="text-2xl font-extrabold text-slate-900">Request a Free 15-Minute Technical Consultation</h2>
+                  <h2 className="text-2xl font-extrabold text-slate-900">Request a Free Technical Consultation</h2>
                   <p className="text-xs text-slate-500 mt-1">
-                    Fill out the form below or chat on WhatsApp for an immediate response.
+                    Fill out the form below or chat on WhatsApp for an immediate response from our biomedical team.
                   </p>
                 </div>
 
@@ -164,18 +180,18 @@ export default function ContactPage() {
                       <input
                         type="text"
                         required
-                        placeholder="e.g. Dr. Jane Omondi"
-                        className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-emerald-600 focus:outline-none"
+                        placeholder="e.g. Dr. Brian Musango"
+                        className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-slate-700">Facility / Clinic Name *</label>
+                      <label className="text-xs font-bold text-slate-700">Facility / Hospital Name *</label>
                       <input
                         type="text"
                         required
-                        placeholder="e.g. St. Jude Healthcare Centre"
-                        className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-emerald-600 focus:outline-none"
+                        placeholder="e.g. Thagana County Medical Center"
+                        className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
                       />
                     </div>
                   </div>
@@ -187,7 +203,7 @@ export default function ContactPage() {
                         type="tel"
                         required
                         placeholder="+254 7XX XXX XXX"
-                        className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-emerald-600 focus:outline-none"
+                        className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
                       />
                     </div>
 
@@ -195,21 +211,21 @@ export default function ContactPage() {
                       <label className="text-xs font-bold text-slate-700">Email Address</label>
                       <input
                         type="email"
-                        placeholder="info@yourclinic.co.ke"
-                        className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-emerald-600 focus:outline-none"
+                        placeholder="medwisetechnicalconsulting@gmail.com"
+                        className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-700">Service Category Needed *</label>
-                    <select className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-emerald-600 focus:outline-none bg-white">
+                    <select className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none bg-white">
                       <option>Pre-Purchase Consulting & Equipment Selection</option>
                       <option>Medical Device Sourcing & Procurement</option>
                       <option>Device Installation & Room Setup</option>
-                      <option>Calibration & Quality Control Verification</option>
+                      <option>Calibration & Quality Control (QC) Verification</option>
+                      <option>Routine Maintenance & Motor Drive Board Repairs</option>
                       <option>Staff Training & Operational Support</option>
-                      <option>Preventive Maintenance & Repairs</option>
                     </select>
                   </div>
 
@@ -217,8 +233,8 @@ export default function ContactPage() {
                     <label className="text-xs font-bold text-slate-700">How can our engineers help your facility?</label>
                     <textarea
                       rows={4}
-                      placeholder="Describe your equipment requirements, timeline, or current challenges..."
-                      className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-emerald-600 focus:outline-none"
+                      placeholder="Describe your equipment requirements, machine model (e.g. Zybio Z3 hematology analyzer), timeline, or issue..."
+                      className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
                     ></textarea>
                   </div>
 
@@ -226,7 +242,7 @@ export default function ContactPage() {
                     href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20request%20a%20consultation.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3.5 text-xs font-bold text-white shadow-md hover:bg-emerald-700 transition-colors"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-700 py-3.5 text-xs font-bold text-white shadow-md hover:bg-blue-800 transition-colors"
                   >
                     <MessageSquare className="h-4 w-4" />
                     <span>Submit Consultation Request via WhatsApp</span>
@@ -236,11 +252,11 @@ export default function ContactPage() {
 
               {/* Google Map Location Frame */}
               <div className="rounded-3xl bg-white p-6 border border-slate-200 shadow-sm space-y-4">
-                <h3 className="text-base font-bold text-slate-900">Google Business Profile Location Map</h3>
+                <h3 className="text-base font-bold text-slate-900">Kisumu Office Location Map</h3>
                 <div className="aspect-video w-full rounded-2xl overflow-hidden border border-slate-200">
                   <iframe
                     title="Medwise Google Map Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127638.16335198083!2d36.7028148!3d-1.3963283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f0436d6541fcd%3A0x889dfefecdd82069!2sRongai%2C%20Kenya!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.817342!2d34.768!3d-0.0917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182aa4c575cf26d9%3A0xb35a0f624d77b587!2sKisumu%20Kakamega%20Rd%2C%20Kisumu!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -249,7 +265,7 @@ export default function ContactPage() {
                   />
                 </div>
                 <p className="text-xs text-slate-500">
-                  📍 Langata Rongai Road, Rift Valley Province, Kenya.
+                  📍 Kisumu Kakamega Road, Kisumu, Kenya.
                 </p>
               </div>
 
