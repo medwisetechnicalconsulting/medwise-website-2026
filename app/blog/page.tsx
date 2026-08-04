@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/mdx';
-import { Calendar, Clock, ArrowRight, BookOpen, ShieldCheck, Tag } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, BookOpen, Tag } from 'lucide-react';
 import { getBreadcrumbSchema } from '@/lib/seo/schema';
 import CtaBanner from '@/components/CtaBanner';
 
@@ -28,20 +28,20 @@ export default function BlogIndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      {/* Header */}
-      <section className="bg-slate-900 text-white py-16 lg:py-20 border-b border-slate-800">
+      {/* Header - Clean Light Design */}
+      <section className="bg-gradient-to-b from-blue-50/80 via-white to-slate-50 text-slate-900 py-16 lg:py-20 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-400">
-              <BookOpen className="h-4 w-4" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900 shadow-2xs">
+              <BookOpen className="h-4 w-4 text-red-600" />
               <span>Biomedical Knowledge & SEO Hub</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
               Medical Equipment Insights & Technical Guides
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
               Practical advice, technical equipment selection frameworks, and calibration guides written by qualified biomedical engineers for healthcare managers in Kenya.
             </p>
           </div>
@@ -56,11 +56,11 @@ export default function BlogIndexPage() {
             {posts.map((post) => (
               <article
                 key={post.slug}
-                className="flex flex-col justify-between rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all group"
+                className="flex flex-col justify-between rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm hover:shadow-md hover:border-blue-500/40 transition-all group"
               >
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between text-xs text-slate-500">
-                    <span className="font-bold text-emerald-700 bg-emerald-100/80 px-3 py-1 rounded-full">
+                  <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
+                    <span className="font-bold text-blue-800 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
                       {post.category}
                     </span>
                     <div className="flex items-center gap-1">
@@ -69,7 +69,7 @@ export default function BlogIndexPage() {
                     </div>
                   </div>
 
-                  <h2 className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug">
+                  <h2 className="text-xl font-extrabold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
                     <Link href={`/blog/${post.slug}`}>
                       {post.title}
                     </Link>
@@ -81,21 +81,21 @@ export default function BlogIndexPage() {
 
                   {/* Target SEO Keyword Badge */}
                   {post.targetKeyword && (
-                    <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
+                    <div className="inline-flex items-center gap-1.5 text-[11px] font-mono font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
                       <Tag className="h-3 w-3 text-slate-400" />
                       <span>Target Keyword: {post.targetKeyword}</span>
                     </div>
                   )}
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                <div className="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
                   <div className="flex items-center gap-1.5 text-slate-500">
                     <Calendar className="h-3.5 w-3.5 text-slate-400" />
                     <span>{post.date}</span>
                   </div>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="font-bold text-emerald-600 group-hover:translate-x-1 transition-transform flex items-center gap-1"
+                    className="font-bold text-blue-700 group-hover:translate-x-1 transition-transform flex items-center gap-1"
                   >
                     <span>Read Full Guide</span>
                     <ArrowRight className="h-3.5 w-3.5" />

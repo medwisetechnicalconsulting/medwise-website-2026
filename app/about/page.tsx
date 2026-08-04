@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ShieldCheck, Award, Wrench, Users, HeartHandshake, CheckCircle2, Heart } from 'lucide-react';
-import { getBreadcrumbSchema, SITE_CONFIG } from '@/lib/seo/schema';
+import { ShieldCheck, Award, Wrench, Users, HeartHandshake, Heart } from 'lucide-react';
+import { getBreadcrumbSchema } from '@/lib/seo/schema';
 import CtaBanner from '@/components/CtaBanner';
 
 export const metadata: Metadata = {
@@ -26,20 +26,20 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      {/* About Hero Header */}
-      <section className="bg-slate-950 text-white py-16 lg:py-24 border-b border-slate-800">
+      {/* About Hero Header - Clean Light Design */}
+      <section className="bg-gradient-to-b from-blue-50/80 via-white to-slate-50 text-slate-900 py-16 lg:py-24 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
-              <ShieldCheck className="h-4 w-4 text-red-500" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900 shadow-2xs">
+              <ShieldCheck className="h-4 w-4 text-red-600" />
               <span>Biomedical Engineering Founded & Led • Kisumu Kakamega Road</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
               Knowledge and Access for Healthcare Excellence
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
               At Medwise Technical Consulting, we are dedicated to providing proactive technical support that empowers healthcare facilities in Kenya to make informed decisions about high-value medical devices.
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-lg font-bold text-slate-900">Expert Guidance</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Providing knowledge that enables healthcare facilities to acquire the right laboratory and diagnostic devices (such as Zybio hematology analyzers) at competitive prices without brand bias.
+                Providing knowledge that enables healthcare facilities to acquire the right laboratory and diagnostic devices at competitive prices without brand bias.
               </p>
             </div>
 
@@ -125,7 +125,7 @@ export default function AboutPage() {
 
             <div className="rounded-2xl bg-white p-8 border border-slate-200 shadow-sm flex items-start gap-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-700 shrink-0">
-                <HeartHandshake className="h-6 w-6 text-red-500" />
+                <HeartHandshake className="h-6 w-6 text-red-600" />
               </div>
               <div className="space-y-2">
                 <h3 className="text-base font-bold text-slate-900">Customised Solutions</h3>
@@ -166,7 +166,7 @@ export default function AboutPage() {
               Medwise Technical Consulting • Kisumu Office
             </span>
             <p className="text-xs text-slate-700 max-w-xl mx-auto">
-              Our engineering team operates from <strong>Kisumu Kakamega Road, Kisumu, Kenya</strong>, serving healthcare facilities, county hospitals (like Thagana County Medical Center), and private laboratories nationwide.
+              Our engineering team operates from <strong>Kisumu Kakamega Road, Kisumu, Kenya</strong>, serving healthcare facilities, county hospitals, and private laboratories nationwide.
             </p>
           </div>
 

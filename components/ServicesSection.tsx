@@ -86,28 +86,28 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-16 sm:py-24 bg-slate-900 text-white">
+    <section id="services" className="py-16 sm:py-24 bg-slate-50 border-y border-slate-200 text-slate-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-400 border border-emerald-500/20">
-            <ShieldCheck className="h-4 w-4" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-3.5 py-1 text-xs font-bold text-blue-800 border border-blue-200">
+            <ShieldCheck className="h-4 w-4 text-red-600" />
             <span>Comprehensive Technical Services</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
             End-to-End Solutions for Medical Devices
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
+          <p className="text-sm sm:text-base text-slate-600">
             From pre-purchase technical evaluation to ongoing precision calibration, Medwise delivers biomedical engineering expertise at every touchpoint.
           </p>
         </div>
 
         {/* Category Tags Banner */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-semibold text-slate-300">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-semibold text-slate-700">
           <span className="text-slate-500">Equipment Categories Covered:</span>
           {['Imaging & Radiology', 'Laboratory & Diagnostics', 'ICU & Emergency', 'Surgical Theatre', 'Maternity & Neonatal'].map((cat, idx) => (
-            <span key={idx} className="rounded-lg bg-slate-800 border border-slate-700 px-3 py-1 text-emerald-300">
+            <span key={idx} className="rounded-lg bg-white border border-slate-200 px-3 py-1 text-blue-700 shadow-2xs font-bold">
               {cat}
             </span>
           ))}
@@ -120,54 +120,54 @@ export default function ServicesSection() {
             return (
               <div
                 key={service.id}
-                className="relative flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-800/40 p-6 sm:p-8 backdrop-blur-sm hover:border-emerald-500/50 hover:bg-slate-800/70 transition-all group"
+                className="relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm hover:shadow-md hover:border-blue-500/40 transition-all group"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 group-hover:scale-105 transition-transform">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-700 border border-blue-200 group-hover:scale-105 transition-transform">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className="text-xs font-mono text-slate-500">0{index + 1}</span>
+                    <span className="text-xs font-mono font-bold text-slate-400">0{index + 1}</span>
                   </div>
 
-                  <h3 className="mt-5 text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                  <h3 className="mt-5 text-xl font-extrabold text-slate-900 group-hover:text-blue-700 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-xs font-semibold text-emerald-400/90 mb-3">
+                  <p className="text-xs font-bold text-blue-700 mb-3">
                     {service.subtitle}
                   </p>
 
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="text-sm text-slate-600 leading-relaxed">
                     {service.description}
                   </p>
 
-                  {/* Optional Neutral Disclaimer Note on Sourcing */}
+                  {/* Neutral Disclaimer Note on Sourcing */}
                   {service.neutralNotice && (
-                    <div className="mt-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-xs font-medium text-emerald-300">
+                    <div className="mt-4 rounded-xl border border-blue-200 bg-blue-50/70 p-3 text-xs font-semibold text-blue-900">
                       💡 <strong>Note:</strong> {service.neutralNotice}
                     </div>
                   )}
 
                   {/* Features List */}
-                  <ul className="mt-5 space-y-2 pt-4 border-t border-slate-800">
+                  <ul className="mt-5 space-y-2 pt-4 border-t border-slate-100">
                     {service.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-300">
-                        <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-700">
+                        <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                   <Link
                     href={`/services#${service.id}`}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-blue-700 hover:text-blue-900 transition-colors"
                   >
                     <span>Learn More</span>
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
-                  <span className="text-[10px] font-mono text-slate-500 uppercase">Medwise Core</span>
+                  <span className="text-[10px] font-mono font-bold text-slate-400 uppercase">Medwise Core</span>
                 </div>
               </div>
             );

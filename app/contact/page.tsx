@@ -16,20 +16,20 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      {/* Header */}
-      <section className="bg-slate-950 text-white py-16 lg:py-20 border-b border-slate-800">
+      {/* Header - Clean Light Design */}
+      <section className="bg-gradient-to-b from-blue-50/80 via-white to-slate-50 text-slate-900 py-16 lg:py-20 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold text-blue-300">
-              <ShieldCheck className="h-4 w-4 text-red-500" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900 shadow-2xs">
+              <ShieldCheck className="h-4 w-4 text-red-600" />
               <span>Direct Biomedical Helpline • Kisumu Kakamega Road</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
               Get in Touch with Medwise Technical Consulting
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
               Have questions about medical device selection, routine repairs (like Zybio Z3 hematology analyzers), calibration schedules, or facility setup? We are ready to assist you.
             </p>
           </div>
@@ -119,10 +119,10 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Emergency Support Card */}
-              <div className="rounded-3xl bg-slate-900 p-8 text-white space-y-4 shadow-lg">
-                <h3 className="text-lg font-bold text-white">Need Urgent Field Technical Support?</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+              {/* Emergency Support Card - Clean Blue */}
+              <div className="rounded-3xl bg-blue-50 border border-blue-200 p-8 text-slate-900 space-y-4 shadow-sm">
+                <h3 className="text-lg font-extrabold text-blue-950">Need Urgent Field Technical Support?</h3>
+                <p className="text-xs text-slate-700 leading-relaxed">
                   Our qualified biomedical technicians dispatch rapidly across Kisumu, Sagana, Nairobi, and healthcare facilities nationwide.
                 </p>
                 <div className="flex flex-col gap-3 pt-2">
@@ -130,16 +130,16 @@ export default function ContactPage() {
                     href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=URGENT%3A%20Biomedical%20Technical%20Support%20Required`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 text-xs font-bold text-white hover:bg-blue-500 transition-colors"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-blue-700 py-3 text-xs font-bold text-white hover:bg-blue-800 transition-colors shadow-xs"
                   >
                     <MessageSquare className="h-4 w-4" />
                     <span>WhatsApp Technical Support</span>
                   </a>
                   <a
                     href={`tel:${SITE_CONFIG.telephone}`}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800 py-3 text-xs font-bold text-white hover:bg-slate-700 transition-colors"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white py-3 text-xs font-bold text-slate-900 hover:bg-slate-50 transition-colors shadow-2xs"
                   >
-                    <Phone className="h-4 w-4 text-red-500" />
+                    <Phone className="h-4 w-4 text-red-600" />
                     <span>Call {SITE_CONFIG.telephone}</span>
                   </a>
                 </div>
@@ -250,7 +250,7 @@ export default function ContactPage() {
                     loading="lazy"
                   />
                 </div>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-500 font-medium">
                   📍 Kisumu Kakamega Road, Kisumu, Kenya.
                 </p>
               </div>

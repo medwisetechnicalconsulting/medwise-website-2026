@@ -9,22 +9,21 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-sm transition-all">
-      {/* Top Banner Notice - Medwise Royal Blue */}
-      <div className="bg-blue-950 px-4 py-1.5 text-xs font-medium text-blue-100 sm:px-6">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-xs">
+      {/* Top Banner Notice - Clean Light Slate/Blue */}
+      <div className="bg-slate-100 border-b border-slate-200/80 px-4 py-1.5 text-xs font-semibold text-slate-700 sm:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
-            <span className="text-white font-semibold">Medwise Technical Consulting</span>
-            <span className="hidden md:inline text-blue-300">• Knowledge and Access for Healthcare Excellence</span>
+            <span className="inline-block h-2 w-2 rounded-full bg-red-600 animate-pulse"></span>
+            <span className="text-slate-900 font-bold">Medwise Technical Consulting</span>
+            <span className="hidden md:inline text-slate-500">• Kisumu Kakamega Road, Kisumu, Kenya</span>
           </div>
-          <div className="flex items-center gap-4 text-blue-200">
-            <span className="hidden sm:inline">Kisumu Kakamega Road, KE</span>
+          <div className="flex items-center gap-4 text-slate-600">
             <a
               href={`tel:${SITE_CONFIG.telephone}`}
-              className="hover:text-red-400 transition-colors flex items-center gap-1 font-semibold"
+              className="hover:text-blue-700 transition-colors flex items-center gap-1 font-bold text-slate-900"
             >
-              <Phone className="h-3 w-3 text-red-400" />
+              <Phone className="h-3 w-3 text-red-600" />
               <span>{SITE_CONFIG.telephone}</span>
             </a>
           </div>
@@ -32,15 +31,15 @@ export default function Navbar() {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6">
         {/* Brand Logo with Red Heart & Blue Typography */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform relative">
-            <Heart className="h-6 w-6 text-red-500 fill-red-500 stroke-white stroke-2" />
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 border border-blue-200 text-blue-700 shadow-xs group-hover:scale-105 transition-transform relative">
+            <Heart className="h-6 w-6 text-red-600 fill-red-600 stroke-white stroke-2" />
             <Activity className="h-4 w-4 text-white absolute inset-0 m-auto stroke-[2.5]" />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-extrabold tracking-tight text-blue-900 leading-tight">
+            <span className="text-xl font-extrabold tracking-tight text-slate-900 leading-tight">
               MEDWISE<span className="text-red-600">.</span>
             </span>
             <span className="text-[10px] font-bold tracking-widest text-slate-500 uppercase">
@@ -74,7 +73,7 @@ export default function Navbar() {
             href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20inquire%20about%20your%20services.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-800 hover:shadow-blue-700/20 transition-all"
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-blue-800 transition-all"
           >
             <MessageSquare className="h-4 w-4" />
             <span>Chat on WhatsApp</span>
@@ -82,7 +81,7 @@ export default function Navbar() {
 
           <a
             href={`tel:${SITE_CONFIG.telephone}`}
-            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-xs font-bold text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-400 transition-all"
+            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-xs font-bold text-slate-800 shadow-xs hover:bg-slate-50 transition-all"
           >
             <Phone className="h-4 w-4 text-red-600" />
             <span>Call {SITE_CONFIG.telephone}</span>
@@ -145,14 +144,14 @@ export default function Navbar() {
               href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20inquire%20about%20your%20services.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-700 py-2.5 text-sm font-bold text-white shadow-sm"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-700 py-2.5 text-sm font-bold text-white shadow-xs"
             >
               <MessageSquare className="h-4 w-4" />
               <span>Chat on WhatsApp</span>
             </a>
             <a
               href={`tel:${SITE_CONFIG.telephone}`}
-              className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white py-2.5 text-sm font-bold text-slate-700 shadow-sm"
+              className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white py-2.5 text-sm font-bold text-slate-800 shadow-xs"
             >
               <Phone className="h-4 w-4 text-red-600" />
               <span>Call {SITE_CONFIG.telephone}</span>
