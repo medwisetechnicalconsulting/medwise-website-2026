@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Phone, MessageSquare, Mail, MapPin, Heart, Activity } from 'lucide-react';
+import { Phone, MessageSquare, Mail, MapPin } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
+import MedwiseLogo from './MedwiseLogo';
 
 export default function Footer() {
   return (
@@ -11,19 +12,8 @@ export default function Footer() {
           
           {/* Brand & Description Column */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 border border-blue-200 text-blue-700 shadow-xs relative">
-                <Heart className="h-5 w-5 text-red-600 fill-red-600 stroke-white stroke-2" />
-                <Activity className="h-3.5 w-3.5 text-white absolute inset-0 m-auto stroke-[2.5]" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-extrabold tracking-tight text-slate-900 leading-tight">
-                  MEDWISE<span className="text-red-600">.</span>
-                </span>
-                <span className="text-[10px] font-bold tracking-widest text-slate-500 uppercase">
-                  Knowledge and Access
-                </span>
-              </div>
+            <Link href="/" className="flex items-center">
+              <MedwiseLogo variant="light" size="lg" />
             </Link>
 
             <p className="text-xs text-slate-600 leading-relaxed max-w-sm">
