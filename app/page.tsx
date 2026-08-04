@@ -3,6 +3,8 @@ import ProblemSection from '@/components/ProblemSection';
 import HowWeHelp from '@/components/HowWeHelp';
 import ServicesSection from '@/components/ServicesSection';
 import WhyNeutralMatters from '@/components/WhyNeutralMatters';
+import BrandsSection from '@/components/BrandsSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import CtaBanner from '@/components/CtaBanner';
 import BlogPreviewSection from '@/components/BlogPreviewSection';
 
@@ -14,6 +16,8 @@ export default function HomePage() {
       <HowWeHelp />
       <ServicesSection />
       <WhyNeutralMatters />
+      <BrandsSection />
+      <TestimonialsSection />
       <CtaBanner />
       <BlogPreviewSection />
     </>
