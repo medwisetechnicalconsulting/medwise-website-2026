@@ -1,0 +1,115 @@
+import type { Metadata, Viewport } from 'next';
+import { Inter, Outfit } from 'next/font/google';
+import './globals.css';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { SITE_CONFIG, getMedicalBusinessSchema } from '@/lib/seo/schema';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
+export const viewport: Viewport = {
+  themeColor: '#0f172a',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_CONFIG.url),
+  title: {
+    default: `${SITE_CONFIG.name} | Independent Medical Equipment Consulting Kenya`,
+    template: `%s | ${SITE_CONFIG.name}`,
+  },
+  description: SITE_CONFIG.description,
+  keywords: [
+    'medical equipment Kenya',
+    'hospital equipment consulting',
+    'clinic setup equipment list',
+    'biomedical maintenance Nairobi',
+    'medical equipment calibration',
+    'medical device sourcing Kenya',
+    'X-ray machine consulting Kenya',
+    'laboratory equipment calibration Nairobi',
+    'Medwise Technical Consulting',
+    'biomedical engineering Kenya',
+  ],
+  authors: [{ name: 'Medwise Technical Consulting Team' }],
+  creator: SITE_CONFIG.name,
+  publisher: SITE_CONFIG.name,
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
+  },
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_KE',
+    url: SITE_CONFIG.url,
+    title: `${SITE_CONFIG.name} | Independent Medical Equipment Consulting Kenya`,
+    description: SITE_CONFIG.description,
+    siteName: SITE_CONFIG.name,
+    images: [
+      {
+        url: SITE_CONFIG.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} — Medical Device Advisory & Sourcing Kenya`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_CONFIG.name,
+    description: SITE_CONFIG.description,
+    images: [SITE_CONFIG.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const jsonLd = getMedicalBusinessSchema();
+
+  return (
+    <html lang="en" className={`${inter.variable} ${outfit.variable} scroll-smooth`}>
+      <head>
+        {/* Structured Data (JSON-LD) for LocalBusiness / MedicalBusiness */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="min-h-screen bg-white font-sans text-slate-900 antialiased flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
+        <Navbar />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
