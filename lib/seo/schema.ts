@@ -21,6 +21,12 @@ export const SITE_CONFIG = {
   },
   openingHours: 'Mo-Fr 08:00-17:00, Sa 09:00-13:00',
   priceRange: '$$',
+  socialLinks: {
+    facebook: 'https://facebook.com/medwisetechnicalconsulting',
+    instagram: 'https://instagram.com/medwisetechnicalconsulting',
+    linkedin: 'https://linkedin.com/company/medwise-technical-consulting',
+    whatsapp: 'https://wa.me/254117233522',
+  },
 };
 
 export function getMedicalBusinessSchema() {
@@ -118,7 +124,11 @@ export function getMedicalBusinessSchema() {
       ],
     },
     sameAs: [
-      'https://medwisetechnicalconsulting.co.ke',
+      SITE_CONFIG.url,
+      SITE_CONFIG.socialLinks.whatsapp,
+      SITE_CONFIG.socialLinks.facebook,
+      SITE_CONFIG.socialLinks.instagram,
+      SITE_CONFIG.socialLinks.linkedin,
     ],
   };
 }

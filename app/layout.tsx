@@ -3,6 +3,7 @@ import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import { SITE_CONFIG, getMedicalBusinessSchema } from '@/lib/seo/schema';
 
 const inter = Inter({
@@ -18,7 +19,7 @@ const outfit = Outfit({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#0f172a',
+  themeColor: '#1d4ed8',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -105,10 +106,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-white font-sans text-slate-900 antialiased flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
+      <body className="min-h-screen bg-white font-sans text-slate-900 antialiased flex flex-col justify-between selection:bg-blue-600 selection:text-white relative">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

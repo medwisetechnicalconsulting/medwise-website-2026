@@ -1,10 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Star, CheckCircle2, Building2, Wrench, Quote, UserCheck } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Star, CheckCircle2, Building2, Wrench, Quote, UserCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 
 export default function TestimonialsSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
   const testimonials = [
     {
       facility: "Thagana County Medical Center",
@@ -40,6 +44,23 @@ export default function TestimonialsSection() {
       verifiedBadge: "Verified Maintenance Client",
     },
   ];
+
+  // Auto-slide effect every 6 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPaused, testimonials.length]);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+  };
 
   // Schema.org JSON-LD AggregateRating & Review
   const reviewSchema = {
@@ -99,67 +120,107 @@ export default function TestimonialsSection() {
           </p>
         </motion.div>
 
-        {/* 3 Testimonials Grid */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((item, index) => (
+        {/* Auto-Sliding Interactive Testimonial Carousel */}
+        <div
+          className="mt-12 max-w-4xl mx-auto relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <AnimatePresence mode="wait">
             <motion.div
-              key={item.facility}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              whileHover={{ y: -6 }}
-              className="relative flex flex-col justify-between rounded-3xl bg-white p-6 sm:p-8 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-blue-500/40 transition-all group"
+              key={currentIndex}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.4 }}
+              className="rounded-3xl bg-white p-8 sm:p-12 border border-slate-200 shadow-xl space-y-6 relative"
             >
-              <div className="space-y-4">
-                {/* Rating Stars & Verified Badge */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1">
-                    {[...Array(item.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-800 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
-                    <CheckCircle2 className="h-3 w-3 text-blue-700" />
-                    <span>{item.verifiedBadge}</span>
-                  </span>
+              {/* Rating Stars & Verified Badge */}
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
+                <div className="flex items-center gap-1">
+                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
+                  ))}
+                  <span className="text-xs font-bold text-slate-700 ml-2">5.0 / 5.0 Rating</span>
                 </div>
-
-                <Quote className="h-8 w-8 text-blue-200 fill-blue-50" />
-
-                <p className="text-sm text-slate-700 leading-relaxed font-medium italic">
-                  &ldquo;{item.quote}&rdquo;
-                </p>
-
-                {/* Service Details */}
-                <div className="rounded-2xl bg-slate-50 p-3 border border-slate-200/70 text-xs space-y-1">
-                  <div className="flex items-center gap-1.5 font-bold text-slate-900">
-                    <Wrench className="h-3.5 w-3.5 text-blue-700" />
-                    <span>{item.servicePerformed}</span>
-                  </div>
-                  <p className="text-[11px] text-slate-500 font-medium">
-                    Technician: {item.technician}
-                  </p>
-                </div>
+                <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-800 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-blue-700" />
+                  <span>{testimonials[currentIndex].verifiedBadge}</span>
+                </span>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-700 text-white font-bold text-xs shadow-xs">
-                    <Building2 className="h-4 w-4" />
+              <Quote className="h-10 w-10 text-blue-200 fill-blue-50" />
+
+              <p className="text-base sm:text-lg text-slate-800 leading-relaxed font-medium italic">
+                &ldquo;{testimonials[currentIndex].quote}&rdquo;
+              </p>
+
+              {/* Service Details */}
+              <div className="rounded-2xl bg-slate-50 p-4 border border-slate-200/80 text-xs sm:text-sm space-y-1.5">
+                <div className="flex items-center gap-2 font-bold text-slate-900">
+                  <Wrench className="h-4 w-4 text-blue-700 shrink-0" />
+                  <span>{testimonials[currentIndex].servicePerformed}</span>
+                </div>
+                <p className="text-xs text-slate-600 font-semibold">
+                  Lead Technician: {testimonials[currentIndex].technician}
+                </p>
+              </div>
+
+              <div className="pt-2 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-700 text-white font-bold shadow-xs">
+                    <Building2 className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-xs font-extrabold text-slate-900 leading-tight">
-                      {item.facility}
+                    <h3 className="text-sm sm:text-base font-extrabold text-slate-900">
+                      {testimonials[currentIndex].facility}
                     </h3>
-                    <p className="text-[11px] text-slate-500 font-medium">
-                      {item.location}
+                    <p className="text-xs text-slate-500 font-semibold">
+                      {testimonials[currentIndex].location}
                     </p>
                   </div>
                 </div>
+
+                {/* Dots Navigation */}
+                <div className="flex items-center gap-2">
+                  {testimonials.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentIndex(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                        currentIndex === idx ? 'w-8 bg-blue-700' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
             </motion.div>
-          ))}
+          </AnimatePresence>
+
+          {/* Previous / Next Controls */}
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <button
+              onClick={handlePrev}
+              aria-label="Previous Testimonial"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-300 text-slate-700 shadow-xs hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 transition-all cursor-pointer"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+
+            <span className="text-xs font-bold text-slate-500 font-mono">
+              0{currentIndex + 1} / 0{testimonials.length}
+            </span>
+
+            <button
+              onClick={handleNext}
+              aria-label="Next Testimonial"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-300 text-slate-700 shadow-xs hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 transition-all cursor-pointer"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+
         </div>
 
       </div>
