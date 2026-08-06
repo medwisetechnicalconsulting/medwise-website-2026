@@ -255,7 +255,7 @@ export default function GallerySection() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-3xl w-full rounded-3xl bg-white overflow-hidden shadow-2xl border border-slate-200 text-slate-900"
+              className="relative max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl border border-slate-200 text-slate-900"
             >
               <button
                 onClick={() => setSelectedImage(null)}

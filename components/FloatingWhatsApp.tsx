@@ -19,7 +19,7 @@ export default function FloatingWhatsApp() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="mb-3 w-80 rounded-3xl bg-white p-5 shadow-2xl border border-slate-200 text-slate-900 space-y-3"
+            className="mb-3 w-[calc(100vw-3rem)] sm:w-80 rounded-3xl bg-white p-5 shadow-2xl border border-slate-200 text-slate-900 space-y-3"
           >
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2.5">
