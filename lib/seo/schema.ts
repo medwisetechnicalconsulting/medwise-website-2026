@@ -124,7 +124,6 @@ export function getMedicalBusinessSchema() {
       ],
     },
     sameAs: [
-      SITE_CONFIG.url,
       SITE_CONFIG.socialLinks.whatsapp,
       SITE_CONFIG.socialLinks.facebook,
       SITE_CONFIG.socialLinks.instagram,
@@ -181,5 +180,20 @@ export function getArticleSchema(article: {
         ? article.image
         : `${SITE_CONFIG.url}${article.image}`
       : `${SITE_CONFIG.url}${SITE_CONFIG.ogImage}`,
+  };
+}
+
+export function getFaqSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
   };
 }

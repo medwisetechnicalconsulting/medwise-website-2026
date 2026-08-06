@@ -52,9 +52,6 @@ export const metadata: Metadata = {
     address: true,
     telephone: true,
   },
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     type: 'website',
     locale: 'en_KE',
