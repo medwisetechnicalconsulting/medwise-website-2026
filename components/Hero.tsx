@@ -39,7 +39,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-blue-400/40 bg-slate-950/85 px-4 py-2 text-xs sm:text-sm font-bold text-blue-200 shadow-xl backdrop-blur-md"
           >
             <ShieldCheck className="h-4 w-4 text-red-500 animate-pulse shrink-0" />
-            <span>Independent Medical Equipment Advisory • Kisumu Kakamega Road</span>
+            <span>Independent Medical Equipment Advisory • Kisumu & Nairobi, Kenya</span>
             <Sparkles className="h-3.5 w-3.5 text-blue-400 shrink-0" />
           </motion.div>
 

@@ -46,7 +46,7 @@ export default function ContactPage() {
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900 shadow-2xs">
               <ShieldCheck className="h-4 w-4 text-red-600" />
-              <span>Direct Biomedical Helpline • Kisumu Kakamega Road</span>
+              <span>Direct Biomedical Helpline • Kisumu (HQ) & Nairobi, Kenya</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
@@ -78,10 +78,13 @@ export default function ContactPage() {
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-100 text-red-600 shrink-0">
                       <MapPin className="h-5 w-5" />
                     </div>
-                    <div>
-                      <span className="font-bold text-slate-900 block">Physical Address:</span>
-                      <p className="text-slate-600">
-                        {SITE_CONFIG.address.streetAddress}, {SITE_CONFIG.address.addressLocality}, Kenya
+                    <div className="space-y-1">
+                      <span className="font-bold text-slate-900 block">Locations & Offices:</span>
+                      <p className="text-slate-700 font-semibold">
+                        📍 <strong>Kisumu Main HQ:</strong> Kisumu Kakamega Road, Kisumu, Kenya
+                      </p>
+                      <p className="text-slate-600 font-medium">
+                        📍 <strong>Nairobi Hub:</strong> Nairobi Region, Kenya (Consultation & Rapid Dispatch)
                       </p>
                     </div>
                   </div>

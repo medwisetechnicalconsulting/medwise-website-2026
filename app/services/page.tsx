@@ -16,9 +16,30 @@ import CtaBanner from '@/components/CtaBanner';
 export const metadata: Metadata = {
   title: 'Medical Equipment Consulting & Technical Services in Kenya',
   description:
-    'Independent pre-purchase advice, equipment sourcing, precision calibration, installation, staff training, and preventive biomedical maintenance across Kenya.',
+    'Independent pre-purchase advice, equipment sourcing, precision calibration, installation, staff training, and preventive biomedical maintenance across Kisumu, Nairobi, and Kenya.',
   alternates: {
     canonical: '/services',
+  },
+  openGraph: {
+    title: 'Medical Equipment Technical Services & Calibration Kenya | Medwise',
+    description:
+      'Pre-purchase medical device consulting, equipment sourcing, certified metrological calibration, and biomedical preventive maintenance.',
+    url: `${SITE_CONFIG.url}/services`,
+    siteName: SITE_CONFIG.name,
+    images: [
+      {
+        url: SITE_CONFIG.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} — Technical Services & Medical Calibration`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Medical Equipment Technical Services & Calibration Kenya | Medwise',
+    description:
+      'Pre-purchase medical device consulting, equipment sourcing, certified metrological calibration, and biomedical preventive maintenance.',
   },
 };
 

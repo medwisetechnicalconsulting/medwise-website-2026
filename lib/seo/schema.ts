@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   name: 'Medwise Technical Consulting',
   tagline: 'Independent Medical Equipment Consulting, Sourcing & Technical Support in Kenya',
   description:
-    'Proactive technical support, independent medical equipment advisory, sourcing, installation, training, calibration, and maintenance for healthcare facilities in Kenya.',
+    'Proactive technical support, independent medical equipment advisory, sourcing, installation, training, calibration, and maintenance for healthcare facilities across Kisumu, Nairobi, and Kenya.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://medwisetechnicalconsulting.co.ke',
   ogImage: '/images/medwise-og.jpg',
   telephone: '+254117233522',
@@ -10,9 +10,9 @@ export const SITE_CONFIG = {
   whatsappNumber: '254117233522',
   email: 'medwisetechnicalconsulting@gmail.com',
   address: {
-    streetAddress: 'Kisumu Kakamega Road',
-    addressLocality: 'Kisumu',
-    addressRegion: 'Nyanza / Western Region',
+    streetAddress: 'Kisumu Kakamega Road (HQ) | Nairobi Region Hub',
+    addressLocality: 'Kisumu & Nairobi',
+    addressRegion: 'Nyanza / Western & Nairobi Metropolitan',
     addressCountry: 'KE',
   },
   geo: {
@@ -68,10 +68,20 @@ export function getMedicalBusinessSchema() {
         closes: '13:00',
       },
     ],
-    areaServed: {
-      '@type': 'Country',
-      name: 'Kenya',
-    },
+    areaServed: [
+      {
+        '@type': 'City',
+        name: 'Kisumu',
+      },
+      {
+        '@type': 'City',
+        name: 'Nairobi',
+      },
+      {
+        '@type': 'Country',
+        name: 'Kenya',
+      },
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Medical Equipment Technical Services',

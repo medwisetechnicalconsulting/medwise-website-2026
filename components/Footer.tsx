@@ -126,10 +126,13 @@ export default function Footer() {
             <div className="space-y-2.5 text-xs text-slate-700">
               <div className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-red-600 shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-slate-900">Physical Address:</span>
+                <div className="space-y-1">
+                  <span className="font-bold text-slate-900 block">Locations & Offices:</span>
+                  <p className="text-slate-700 font-semibold">
+                    📍 <strong>Kisumu HQ:</strong> {SITE_CONFIG.address.streetAddress.split(' | ')[0]}, Kisumu, Kenya
+                  </p>
                   <p className="text-slate-600">
-                    {SITE_CONFIG.address.streetAddress}, {SITE_CONFIG.address.addressLocality}, Kenya
+                    📍 <strong>Nairobi Hub:</strong> Nairobi Region, Kenya
                   </p>
                 </div>
               </div>
@@ -175,7 +178,7 @@ export default function Footer() {
 
           {/* Google Maps Location Integration */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Kisumu Office Location</h3>
+            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Kisumu HQ & Nairobi Field Coverage</h3>
             <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-slate-200 bg-white flex items-center justify-center p-4 text-center">
               <iframe
                 title="Medwise Technical Consulting Location Map - Kisumu Kakamega Road"
@@ -190,7 +193,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-[10px] text-slate-500 text-center font-medium">
-              Kisumu Kakamega Road, Kisumu, Kenya
+              Kisumu Kakamega Road (HQ) & Nairobi Region, Kenya
             </p>
           </div>
 

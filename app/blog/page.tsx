@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/mdx';
 import { Calendar, Clock, ArrowRight, BookOpen, Tag } from 'lucide-react';
-import { getBreadcrumbSchema } from '@/lib/seo/schema';
+import { getBreadcrumbSchema, SITE_CONFIG } from '@/lib/seo/schema';
 import CtaBanner from '@/components/CtaBanner';
 
 export const metadata: Metadata = {
@@ -11,6 +11,27 @@ export const metadata: Metadata = {
     'Expert biomedical engineering articles on choosing X-ray machines, clinic setup checklists, laboratory equipment calibration, and maintenance standards in Kenya.',
   alternates: {
     canonical: '/blog',
+  },
+  openGraph: {
+    title: 'Medical Equipment Insights & Biomedical Guides Kenya | Medwise',
+    description:
+      'Technical guides on medical device procurement, X-ray selection, laboratory analyzer maintenance, and precision calibration in Kenya.',
+    url: `${SITE_CONFIG.url}/blog`,
+    siteName: SITE_CONFIG.name,
+    images: [
+      {
+        url: SITE_CONFIG.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} — Technical Knowledge & Guides`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Medical Equipment Insights & Biomedical Guides Kenya | Medwise',
+    description:
+      'Technical guides on medical device procurement, X-ray selection, laboratory analyzer maintenance, and precision calibration in Kenya.',
   },
 };
 

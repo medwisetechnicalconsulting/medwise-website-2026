@@ -17,7 +17,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <span className="inline-block h-2 w-2 rounded-full bg-red-600 animate-pulse"></span>
             <span className="text-slate-900 font-bold">Medwise Technical Consulting</span>
-            <span className="hidden md:inline text-slate-500">• Kisumu Kakamega Road, Kisumu, Kenya</span>
+            <span className="hidden md:inline text-slate-500">• Kisumu (Kisumu Kakamega Rd) & Nairobi, Kenya</span>
           </div>
           <div className="flex items-center gap-4 text-slate-600">
             <a

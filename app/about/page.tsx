@@ -1,15 +1,36 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ShieldCheck, Award, Wrench, Users, HeartHandshake, Heart } from 'lucide-react';
-import { getBreadcrumbSchema } from '@/lib/seo/schema';
+import { getBreadcrumbSchema, SITE_CONFIG } from '@/lib/seo/schema';
 import CtaBanner from '@/components/CtaBanner';
 
 export const metadata: Metadata = {
   title: 'About Us | Medwise Technical Consulting Kenya',
   description:
-    'Learn about Medwise Technical Consulting on Kisumu Kakamega Road, our biomedical engineering team, and our mission to provide independent medical device advice and maintenance across Kenya.',
+    'Learn about Medwise Technical Consulting in Kisumu and Nairobi, our biomedical engineering team, and our mission to provide independent medical device advice and maintenance across Kenya.',
   alternates: {
     canonical: '/about',
+  },
+  openGraph: {
+    title: 'About Medwise Technical Consulting — Independent Biomedical Engineering Kenya',
+    description:
+      'Biomedical engineering firm dedicated to independent medical device advisory, calibration, and equipment maintenance in Kisumu and Nairobi.',
+    url: `${SITE_CONFIG.url}/about`,
+    siteName: SITE_CONFIG.name,
+    images: [
+      {
+        url: SITE_CONFIG.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} — Biomedical Engineering Team & Mission`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Medwise Technical Consulting — Independent Biomedical Engineering Kenya',
+    description:
+      'Biomedical engineering firm dedicated to independent medical device advisory, calibration, and equipment maintenance in Kisumu and Nairobi.',
   },
 };
 
@@ -32,7 +53,7 @@ export default function AboutPage() {
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900 shadow-2xs">
               <ShieldCheck className="h-4 w-4 text-red-600" />
-              <span>Biomedical Engineering Founded & Led • Kisumu Kakamega Road</span>
+              <span>Biomedical Engineering Founded & Led • Kisumu HQ & Nairobi</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
@@ -163,10 +184,10 @@ export default function AboutPage() {
           {/* Real Company Office Details */}
           <div className="rounded-3xl border border-blue-200 bg-blue-50/60 p-8 text-center space-y-2">
             <span className="text-xs font-mono text-blue-800 font-bold uppercase tracking-widest block">
-              Medwise Technical Consulting • Kisumu Office
+              Medwise Technical Consulting • Kisumu HQ & Nairobi Regional Hub
             </span>
             <p className="text-xs text-slate-700 max-w-xl mx-auto">
-              Our engineering team operates from <strong>Kisumu Kakamega Road, Kisumu, Kenya</strong>, serving healthcare facilities, county hospitals, and private laboratories nationwide.
+              Our engineering team operates from <strong>Kisumu Kakamega Road, Kisumu</strong> and <strong>Nairobi, Kenya</strong>, serving healthcare facilities, county hospitals, and private laboratories nationwide.
             </p>
           </div>
 
