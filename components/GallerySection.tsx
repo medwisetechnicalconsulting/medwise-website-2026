@@ -19,8 +19,8 @@ export default function GallerySection() {
       date: "2026-08-04",
       service: "PCB Board Diagnosis & Routine Maintenance",
       description: "Diagnosed motor drive board failure, replaced with original specs, performed routine maintenance and QC functionality check.",
-      image: "/images/blog/biomedical-calibration-guide.jpg",
-      alt: "Biomedical technician repairing Zybio Z3 hematology analyzer motor board at Thagana County Medical Center in Sagana, Kenya",
+      image: "/images/gallery/zybio-board-repair.png",
+      alt: "Biomedical technician repairing Zybio Z3 hematology analyzer electronic motor PCB board at Thagana County Medical Center in Sagana, Kenya",
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ export default function GallerySection() {
       date: "2026-07-28",
       service: "Pre-Purchase Site Advisory & Radiation Safety Setup",
       description: "Room layout optimization, lead shielding verification, and high-frequency generator alignment to KNRA safety standards.",
-      image: "/images/blog/xray-selection-guide.jpg",
+      image: "/images/gallery/dr-xray-room.png",
       alt: "Digital DR X-Ray machine installation and lead radiation shielding inspection in Kisumu, Kenya",
     },
     {
@@ -43,8 +43,8 @@ export default function GallerySection() {
       date: "2026-07-15",
       service: "Probe Integrity & Metrological Calibration",
       description: "Ultrasound beamformer calibration, transducer crystal verification, and image resolution optimization.",
-      image: "/images/blog/clinic-setup-checklist.jpg",
-      alt: "Biomedical engineer calibrating Color Doppler Ultrasound system and probe in Rift Valley Province, Kenya",
+      image: "/images/gallery/ultrasound-calibration.png",
+      alt: "Biomedical engineer calibrating Color Doppler Ultrasound system and transducer probe in Rift Valley Province, Kenya",
     },
     {
       id: 4,
@@ -55,8 +55,8 @@ export default function GallerySection() {
       date: "2026-06-20",
       service: "Surgical Theatre Equipment Sourcing & Installation",
       description: "Ceiling-mounted shadowless LED procedure light installation, heavy-duty suction pump wiring, and staff operational training.",
-      image: "/images/blog/biomedical-calibration-guide.jpg",
-      alt: "Surgical theatre procedure lights and suction units installed by Medwise biomedical engineers in Kisumu, Kenya",
+      image: "/images/gallery/operating-theatre-setup.png",
+      alt: "Surgical theatre ceiling LED procedure lights and suction units installed by Medwise biomedical engineers in Kisumu, Kenya",
     },
     {
       id: 5,
@@ -67,7 +67,7 @@ export default function GallerySection() {
       date: "2026-05-12",
       service: "Metrological Calibration & Emergency Readiness",
       description: "Biphasic AED simulator output testing, NIBP transducer verification, and SpO2 sensor recalibration.",
-      image: "/images/blog/clinic-setup-checklist.jpg",
+      image: "/images/gallery/icu-monitor-calibration.png",
       alt: "Patient vital signs monitor and biphasic defibrillator calibration by Medwise engineers in Kenya",
     },
     {
@@ -79,7 +79,7 @@ export default function GallerySection() {
       date: "2026-04-18",
       service: "Preventive Maintenance & Daily QC Protocol Setup",
       description: "Volumetric pipetting accuracy verification, centrifuge tachometer RPM calibration, and reagent blank setup.",
-      image: "/images/blog/xray-selection-guide.jpg",
+      image: "/images/gallery/lab-centrifuge-chemistry-qc.png",
       alt: "Biomedical engineer calibrating laboratory centrifuge and chemistry analyzer in Sagana, Kenya",
     },
   ];
