@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FileSearch, 
@@ -11,8 +12,7 @@ import {
   Activity, 
   CheckCircle2, 
   ArrowRight,
-  ShieldCheck,
-  Filter
+  ShieldCheck
 } from 'lucide-react';
 
 export default function ServicesSection() {
@@ -23,6 +23,8 @@ export default function ServicesSection() {
       id: 'consulting',
       category: 'consulting',
       icon: FileSearch,
+      image: '/images/services/pre-purchase-consulting.png',
+      alt: 'Biomedical engineer and healthcare administrator reviewing medical equipment blueprints and technical specifications',
       title: "Pre-Purchase Consulting",
       subtitle: "Making Informed Technical Decisions",
       description:
@@ -38,6 +40,8 @@ export default function ServicesSection() {
       id: 'sourcing',
       category: 'sourcing',
       icon: ShoppingCart,
+      image: '/images/services/equipment-sourcing.png',
+      alt: 'Modern medical equipment warehouse featuring Ultrasound, Patient Monitors, and Laboratory Analyzers ready for hospital procurement',
       title: "Equipment Sourcing & Supply",
       subtitle: "Multi-Category Device Procurement",
       description:
@@ -54,6 +58,8 @@ export default function ServicesSection() {
       id: 'installation',
       category: 'maintenance',
       icon: Settings,
+      image: '/images/services/installation-calibration.png',
+      alt: 'Certified biomedical engineer performing precision metrological calibration and electrical safety testing on hospital machinery',
       title: "Installation & Calibration",
       subtitle: "Precision Engineering Integration",
       description:
@@ -69,6 +75,8 @@ export default function ServicesSection() {
       id: 'training',
       category: 'training',
       icon: GraduationCap,
+      image: '/images/services/staff-training.png',
+      alt: 'Clinical specialist training African laboratory technologists and healthcare operators on medical device workflows',
       title: "Staff Operational Training",
       subtitle: "Empowering Your Clinical Team",
       description:
@@ -84,6 +92,8 @@ export default function ServicesSection() {
       id: 'maintenance',
       category: 'maintenance',
       icon: Activity,
+      image: '/images/services/maintenance-service-qc.png',
+      alt: 'Biomedical service engineer conducting preventive maintenance and Quality Control analysis on clinical analyzer',
       title: "Maintenance, Service & QC Analysis",
       subtitle: "Guaranteed Operational Uptime",
       description:
@@ -120,7 +130,7 @@ export default function ServicesSection() {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
             End-to-End Solutions for Medical Devices
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
+          <p className="text-sm sm:text-base text-slate-600 font-medium">
             From pre-purchase technical evaluation to ongoing precision calibration, Medwise delivers biomedical engineering expertise at every touchpoint.
           </p>
         </motion.div>
@@ -148,7 +158,7 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* Dynamic Services Cards Grid with Framer Motion Layout Animations */}
+        {/* Dynamic Services Cards Grid */}
         <motion.div layout className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
             {filteredServices.map((service, index) => {
@@ -162,46 +172,65 @@ export default function ServicesSection() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4, delay: index * 0.08 }}
                   whileHover={{ y: -6 }}
-                  className="relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-sm hover:shadow-xl hover:border-blue-500/40 transition-all group"
+                  className="relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-sm hover:shadow-xl hover:border-blue-500/40 transition-all group"
                 >
                   <div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-700 border border-blue-200 group-hover:scale-110 transition-transform">
-                        <Icon className="h-6 w-6" />
+                    {/* Service Banner Image */}
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                      <Image
+                        src={service.image}
+                        alt={service.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
+
+                      {/* Header overlay badge & index */}
+                      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 text-blue-700 shadow-md backdrop-blur-md border border-white/50 group-hover:scale-110 transition-transform">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <span className="text-xs font-mono font-bold text-white bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-lg border border-white/20 shadow-xs">
+                          0{index + 1}
+                        </span>
                       </div>
-                      <span className="text-xs font-mono font-bold text-slate-400">0{index + 1}</span>
                     </div>
 
-                    <h3 className="mt-5 text-xl font-extrabold text-slate-900 group-hover:text-blue-700 transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-xs font-bold text-blue-700 mb-3">
-                      {service.subtitle}
-                    </p>
+                    {/* Content Section */}
+                    <div className="p-6 sm:p-7 space-y-3">
+                      <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
+                        {service.title}
+                      </h3>
+                      <p className="text-xs font-bold text-blue-700">
+                        {service.subtitle}
+                      </p>
 
-                    <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                      {service.description}
-                    </p>
+                      <p className="text-sm text-slate-600 leading-relaxed font-medium">
+                        {service.description}
+                      </p>
 
-                    {/* Neutral Disclaimer Note on Sourcing */}
-                    {service.neutralNotice && (
-                      <div className="mt-4 rounded-2xl border border-blue-200 bg-blue-50/80 p-3 text-xs font-semibold text-blue-950">
-                        💡 <strong>Note:</strong> {service.neutralNotice}
-                      </div>
-                    )}
+                      {/* Neutral Disclaimer Note on Sourcing */}
+                      {service.neutralNotice && (
+                        <div className="mt-4 rounded-2xl border border-blue-200 bg-blue-50/90 p-3 text-xs font-semibold text-blue-950 shadow-2xs">
+                          💡 <strong>Note:</strong> {service.neutralNotice}
+                        </div>
+                      )}
 
-                    {/* Features List */}
-                    <ul className="mt-5 space-y-2 pt-4 border-t border-slate-100">
-                      {service.features.map((feat, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-700 font-medium">
-                          <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
+                      {/* Features List */}
+                      <ul className="mt-5 space-y-2 pt-4 border-t border-slate-100">
+                        {service.features.map((feat, fIdx) => (
+                          <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-700 font-medium">
+                            <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                  {/* Card Footer */}
+                  <div className="px-6 sm:px-7 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between mt-auto">
                     <Link
                       href={`/services#${service.id}`}
                       className="inline-flex items-center gap-1 text-xs font-bold text-blue-700 hover:text-blue-900 transition-colors"
@@ -221,3 +250,4 @@ export default function ServicesSection() {
     </section>
   );
 }
+
