@@ -14,9 +14,24 @@ export default function MedwiseLogo({ variant = 'light', size = 'md', showText =
   const [imageError, setImageError] = useState(false);
 
   const dimensionMap = {
-    sm: { height: 32, width: 140, iconSize: 'h-8 w-8' },
-    md: { height: 42, width: 180, iconSize: 'h-11 w-11' },
-    lg: { height: 56, width: 220, iconSize: 'h-14 w-14' },
+    sm: {
+      width: 140,
+      height: 40,
+      className: 'h-9 w-auto object-contain',
+      iconSize: 'h-8 w-8',
+    },
+    md: {
+      width: 260,
+      height: 75,
+      className: 'h-11 sm:h-12 md:h-16 lg:h-20 w-auto object-contain',
+      iconSize: 'h-12 w-12',
+    },
+    lg: {
+      width: 320,
+      height: 96,
+      className: 'h-14 sm:h-16 md:h-22 lg:h-26 w-auto object-contain',
+      iconSize: 'h-16 w-16',
+    },
   };
 
   const currentSize = dimensionMap[size];
@@ -32,22 +47,22 @@ export default function MedwiseLogo({ variant = 'light', size = 'md', showText =
             height={currentSize.height}
             priority
             onError={() => setImageError(true)}
-            className="object-contain h-auto w-auto max-h-12 group-hover:scale-105 transition-transform"
+            className={`${currentSize.className} group-hover:scale-105 transition-transform duration-200`}
           />
         </div>
       ) : (
         /* Fallback Medwise Official Heart & ECG Pulse Icon */
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 border border-blue-200 text-blue-700 shadow-xs group-hover:scale-105 transition-transform relative">
-            <Heart className="h-6 w-6 text-red-600 fill-red-600 stroke-white stroke-2" />
-            <Activity className="h-4 w-4 text-white absolute inset-0 m-auto stroke-[2.5]" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 border border-blue-200 text-blue-700 shadow-xs group-hover:scale-105 transition-transform relative">
+            <Heart className="h-7 w-7 text-red-600 fill-red-600 stroke-white stroke-2" />
+            <Activity className="h-4.5 w-4.5 text-white absolute inset-0 m-auto stroke-[2.5]" />
           </div>
           {showText && (
             <div className="flex flex-col">
-              <span className={`text-xl font-extrabold tracking-tight leading-tight ${variant === 'dark' ? 'text-white' : 'text-slate-900'}`}>
+              <span className={`text-xl md:text-2xl font-extrabold tracking-tight leading-tight ${variant === 'dark' ? 'text-white' : 'text-slate-900'}`}>
                 MEDWISE<span className="text-red-600">.</span>
               </span>
-              <span className={`text-[10px] font-bold tracking-widest uppercase ${variant === 'dark' ? 'text-blue-200' : 'text-slate-500'}`}>
+              <span className={`text-[10px] md:text-xs font-bold tracking-widest uppercase ${variant === 'dark' ? 'text-blue-200' : 'text-slate-500'}`}>
                 Technical Consulting
               </span>
             </div>
