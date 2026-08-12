@@ -18,6 +18,23 @@
   }
 }
 
+/* Custom Interactive Cursor Styling for Fine Pointer (Mouse) Devices */
+@media (pointer: fine) {
+  body,
+  a,
+  button,
+  [role="button"] {
+    cursor: none !important;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    cursor: text !important;
+  }
+}
+
 /* Mobile Responsive Table & Code Block Scroll Safety */
 .prose table {
   display: block;

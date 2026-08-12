@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import CustomCursor from '@/components/CustomCursor';
 import { SITE_CONFIG, getMedicalBusinessSchema } from '@/lib/seo/schema';
 
 const inter = Inter({
@@ -104,6 +105,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-white font-sans text-slate-900 antialiased flex flex-col justify-between selection:bg-blue-600 selection:text-white relative">
+        <CustomCursor />
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
