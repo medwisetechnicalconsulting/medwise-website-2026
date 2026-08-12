@@ -3,7 +3,7 @@ export const SITE_CONFIG = {
   tagline: 'Independent Medical Equipment Consulting, Sourcing & Technical Support in Kenya',
   description:
     'Proactive technical support, independent medical equipment advisory, sourcing, installation, training, calibration, and maintenance for healthcare facilities across Kisumu, Nairobi, and Kenya.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://medwisetechnicalconsulting.co.ke',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.medwisetechnicalconsulting.co.ke',
   ogImage: '/images/medwise-og.jpg',
   telephone: '+254117233522',
   altTelephone: '+254711233522',
