@@ -96,6 +96,9 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/site.webmanifest',
+  verification: {
+    google: 'XZS7nN8CIDsaRo6q_xxrC58EuWebIK3MCAkp8YZEnNs',
+  },
   robots: {
     index: true,
     follow: true,
@@ -119,6 +122,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable} scroll-smooth`}>
       <head>
+        <meta name="google-site-verification" content="XZS7nN8CIDsaRo6q_xxrC58EuWebIK3MCAkp8YZEnNs" />
         {/* Structured Data (JSON-LD) for LocalBusiness / MedicalBusiness */}
         <script
           type="application/ld+json"
