@@ -22,9 +22,10 @@ export const SITE_CONFIG = {
   openingHours: 'Mo-Fr 08:00-17:00, Sa 09:00-13:00',
   priceRange: '$$',
   socialLinks: {
-    facebook: 'https://facebook.com/medwisetechnicalconsulting',
+    tiktok: 'https://www.tiktok.com/@medwise.technical',
+    linkedin: 'https://www.linkedin.com/company/medwisetechnicalconsulting/',
+    facebook: 'https://www.facebook.com/share/1DcUPmPes2/',
     instagram: 'https://instagram.com/medwisetechnicalconsulting',
-    linkedin: 'https://linkedin.com/company/medwise-technical-consulting',
     whatsapp: 'https://wa.me/254117233522',
   },
 };
@@ -135,9 +136,10 @@ export function getMedicalBusinessSchema() {
     },
     sameAs: [
       SITE_CONFIG.socialLinks.whatsapp,
+      SITE_CONFIG.socialLinks.tiktok,
+      SITE_CONFIG.socialLinks.linkedin,
       SITE_CONFIG.socialLinks.facebook,
       SITE_CONFIG.socialLinks.instagram,
-      SITE_CONFIG.socialLinks.linkedin,
     ],
   };
 }
