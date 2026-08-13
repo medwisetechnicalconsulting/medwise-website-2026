@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" width="100%" height="100%">
+  <rect width="320" height="100" fill="transparent"/>
+  <g transform="translate(15, 20)">
+    <!-- Thermo Fisher Red Mark -->
+    <path d="M10 10 L40 10 L25 55 Z" fill="#E31837"/>
+    <text x="50" y="30" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="20" fill="#E31837">Thermo Fisher</text>
+    <text x="50" y="48" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="600" font-size="14" fill="#374151" letter-spacing="1">SCIENTIFIC</text>
+  </g>
+</svg>
