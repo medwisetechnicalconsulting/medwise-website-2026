@@ -22,7 +22,7 @@ export default function BrandsSection() {
     {
       name: 'Mindray',
       slug: 'mindray',
-      image: '/images/brands/mindray.webp',
+      image: '/images/brands/mindray.png',
       url: 'https://www.mindray.com',
       category: 'Patient Monitoring & Ultrasound',
       specialty: 'Patient Monitors, Ultrasound & Anesthesia',
@@ -76,7 +76,7 @@ export default function BrandsSection() {
     {
       name: 'Olympus',
       slug: 'olympus',
-      image: '/images/brands/olympus.webp',
+      image: '/images/brands/olympus.png',
       url: 'https://www.olympus-global.com',
       category: 'Endoscopy & Microscopy',
       specialty: 'Clinical Optics & Surgical Systems',
@@ -85,7 +85,7 @@ export default function BrandsSection() {
     {
       name: 'Sysmex',
       slug: 'sysmex',
-      image: '/images/brands/sysmex.webp',
+      image: '/images/brands/sysmex.svg',
       url: 'https://www.sysmex.com',
       category: 'Hematology & Flow Cytometry',
       specialty: 'Automated Hematology & Cell Counters',
@@ -94,7 +94,7 @@ export default function BrandsSection() {
     {
       name: 'Roche',
       slug: 'roche',
-      image: '/images/brands/roche.webp',
+      image: '/images/brands/roche.png',
       url: 'https://www.roche.com',
       category: 'Molecular Diagnostics & Chemistry',
       specialty: 'Cobas Systems & Molecular Testing',
