@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Outfit } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -132,6 +133,20 @@ export default function RootLayout({
         <link rel="icon" href="/favicon-48x48.png" sizes="48x48" type="image/png" />
         <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />
         <link rel="shortcut icon" href="/favicon.ico" />
+        {/* Google Analytics (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-0Y1TFWLNSE"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-0Y1TFWLNSE');
+          `}
+        </Script>
         {/* Structured Data (JSON-LD) for LocalBusiness / MedicalBusiness */}
         <script
           type="application/ld+json"
@@ -148,3 +163,4 @@ export default function RootLayout({
     </html>
   );
 }
+
