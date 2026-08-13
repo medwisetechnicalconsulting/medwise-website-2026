@@ -10,8 +10,6 @@ interface Brand {
   slug: string;
   image: string;
   url: string;
-  category: string;
-  specialty: string;
   logoScale?: string; // Optically balances visual weight across wide/tall logos
 }
 
@@ -24,8 +22,6 @@ export default function BrandsSection() {
       slug: 'mindray',
       image: '/images/brands/mindray.png',
       url: 'https://www.mindray.com',
-      category: 'Patient Monitoring & Ultrasound',
-      specialty: 'Patient Monitors, Ultrasound & Anesthesia',
       logoScale: 'scale-105',
     },
     {
@@ -33,8 +29,6 @@ export default function BrandsSection() {
       slug: 'dymind',
       image: '/images/brands/dymind.png',
       url: 'https://www.dymind.com',
-      category: 'Hematology & POCT',
-      specialty: 'Automated Hematology Analyzers',
       logoScale: 'scale-110',
     },
     {
@@ -42,8 +36,6 @@ export default function BrandsSection() {
       slug: 'zybio',
       image: '/images/brands/zybio.png',
       url: 'https://www.zybio.com',
-      category: 'In-Vitro Diagnostics',
-      specialty: 'Zybio Z3, Chemiluminescence & IVD',
       logoScale: 'scale-105',
     },
     {
@@ -51,8 +43,6 @@ export default function BrandsSection() {
       slug: 'urit',
       image: '/images/brands/urit.png',
       url: 'https://www.urit.com',
-      category: 'Urinalysis & Diagnostics',
-      specialty: 'Urinalysis & Clinical Electronics',
       logoScale: 'scale-105',
     },
     {
@@ -60,8 +50,6 @@ export default function BrandsSection() {
       slug: 'dirui',
       image: '/images/brands/dirui.png',
       url: 'https://www.dirui.com.cn',
-      category: 'Urinalysis & Chemistry',
-      specialty: 'Clinical Chemistry & Urinalysis Systems',
       logoScale: 'scale-110',
     },
     {
@@ -69,8 +57,6 @@ export default function BrandsSection() {
       slug: 'seamaty',
       image: '/images/brands/seamaty.png',
       url: 'https://www.seamaty.com',
-      category: 'POCT Biochemistry',
-      specialty: 'Point-of-Care Blood Analyzers',
       logoScale: 'scale-110',
     },
     {
@@ -78,8 +64,6 @@ export default function BrandsSection() {
       slug: 'olympus',
       image: '/images/brands/olympus.png',
       url: 'https://www.olympus-global.com',
-      category: 'Endoscopy & Microscopy',
-      specialty: 'Clinical Optics & Surgical Systems',
       logoScale: 'scale-100',
     },
     {
@@ -87,8 +71,6 @@ export default function BrandsSection() {
       slug: 'sysmex',
       image: '/images/brands/sysmex.svg',
       url: 'https://www.sysmex.com',
-      category: 'Hematology & Flow Cytometry',
-      specialty: 'Automated Hematology & Cell Counters',
       logoScale: 'scale-105',
     },
     {
@@ -96,8 +78,6 @@ export default function BrandsSection() {
       slug: 'roche',
       image: '/images/brands/roche.png',
       url: 'https://www.roche.com',
-      category: 'Molecular Diagnostics & Chemistry',
-      specialty: 'Cobas Systems & Molecular Testing',
       logoScale: 'scale-105',
     },
     {
@@ -105,8 +85,6 @@ export default function BrandsSection() {
       slug: 'beckman-coulter',
       image: '/images/brands/beckman-coulter.svg',
       url: 'https://www.beckmancoulter.com',
-      category: 'Clinical Diagnostics',
-      specialty: 'Centrifugation & Clinical Chemistry',
       logoScale: 'scale-100',
     },
     {
@@ -114,8 +92,6 @@ export default function BrandsSection() {
       slug: 'bd',
       image: '/images/brands/bd.svg',
       url: 'https://www.bd.com',
-      category: 'Specimen Management',
-      specialty: 'Flow Cytometry & Diagnostic Systems',
       logoScale: 'scale-110',
     },
     {
@@ -123,8 +99,6 @@ export default function BrandsSection() {
       slug: 'thermo-fisher',
       image: '/images/brands/thermo-fisher.svg',
       url: 'https://www.thermofisher.com',
-      category: 'Laboratory Analytics',
-      specialty: 'Precision Analytical & Lab Equipment',
       logoScale: 'scale-100',
     },
     {
@@ -132,8 +106,6 @@ export default function BrandsSection() {
       slug: 'biomerieux',
       image: '/images/brands/biomerieux.svg',
       url: 'https://www.biomerieux.com',
-      category: 'Microbiology & IVD',
-      specialty: 'Pathogen Detection & Microbiology',
       logoScale: 'scale-105',
     },
     {
@@ -141,8 +113,6 @@ export default function BrandsSection() {
       slug: 'abbott',
       image: '/images/brands/abbott.png',
       url: 'https://www.abbott.com',
-      category: 'Core Diagnostics',
-      specialty: 'Architect Systems & Point of Care',
       logoScale: 'scale-110',
     },
   ];
@@ -151,7 +121,7 @@ export default function BrandsSection() {
   const marqueeBrands = [...brands, ...brands];
 
   return (
-    <section className="py-16 sm:py-24 bg-slate-50/50 border-b border-slate-200 overflow-hidden">
+    <section className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -169,28 +139,28 @@ export default function BrandsSection() {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
             Equipment Brands & Platform Compatibility
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 font-medium">
+          <p className="text-xs sm:text-base text-slate-600 font-medium">
             Our biomedical engineers maintain technical repair, calibration, and sourcing expertise across leading global healthcare equipment manufacturers. Click any brand logo to visit their official site.
           </p>
         </motion.div>
 
-        {/* Self-Sliding Infinite Ticker Carousel with Hover Pause */}
+        {/* Self-Sliding Infinite Ticker Carousel with Mobile-Friendly Edge Masks & Hover Pause */}
         <div 
-          className="mt-12 relative overflow-hidden py-6"
+          className="mt-8 sm:mt-12 relative overflow-hidden py-4 sm:py-6"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Gradient Edge Masks for Smooth Fade */}
-          <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-slate-50/95 to-transparent z-10 pointer-events-none" />
-          <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-slate-50/95 to-transparent z-10 pointer-events-none" />
+          {/* Subtle Mobile & Desktop Fade Masks (No shadow overlay on mobile) */}
+          <div className="absolute top-0 bottom-0 left-0 w-6 sm:w-20 lg:w-28 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 right-0 w-6 sm:w-20 lg:w-28 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
           <motion.div
-            className="flex gap-6 w-max"
+            className="flex gap-4 sm:gap-6 w-max"
             animate={{ x: isPaused ? undefined : ['0%', '-50%'] }}
             transition={{
               repeat: Infinity,
               ease: 'linear',
-              duration: 35,
+              duration: 32,
             }}
           >
             {marqueeBrands.map((brand, index) => (
@@ -200,41 +170,33 @@ export default function BrandsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={`Visit official ${brand.name} website (${brand.url})`}
-                className="group relative w-72 shrink-0 rounded-2xl border border-slate-200/80 bg-white p-5 text-center shadow-2xs hover:border-blue-500/60 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+                className="group relative w-44 sm:w-56 shrink-0 rounded-2xl border border-slate-200/90 bg-white p-4 sm:p-5 text-center shadow-2xs hover:border-blue-500/60 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 overflow-hidden flex flex-col items-center justify-center h-28 sm:h-32"
               >
                 {/* Subtle Hover Gradient Glow */}
-                <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-blue-50/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                 {/* External Link Hover Icon */}
-                <div className="absolute top-3.5 right-3.5 text-slate-400 group-hover:text-blue-600 group-hover:scale-110 opacity-50 group-hover:opacity-100 transition-all z-10">
-                  <ExternalLink className="h-4 w-4" />
+                <div className="absolute top-2.5 right-2.5 text-slate-400 group-hover:text-blue-600 group-hover:scale-110 opacity-0 group-hover:opacity-100 transition-all z-10">
+                  <ExternalLink className="h-3.5 w-3.5" />
                 </div>
 
-                {/* Spacious, Clean Brand Logo Container */}
-                <div className="mx-auto flex h-20 w-full items-center justify-center rounded-xl bg-white p-3 mb-3 border border-slate-100 shadow-2xs group-hover:border-blue-200 group-hover:bg-blue-50/30 group-hover:scale-[1.02] transition-all duration-300">
-                  <div className={`relative h-14 w-52 flex items-center justify-center transition-transform duration-300 ${brand.logoScale || ''}`}>
+                {/* Streamlined, Prominent Brand Logo Container */}
+                <div className="relative h-14 sm:h-16 w-full flex items-center justify-center p-1">
+                  <div className={`relative h-12 sm:h-14 w-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105 ${brand.logoScale || ''}`}>
                     <Image
                       src={brand.image}
                       alt={`${brand.name} official logo`}
                       fill
-                      className="object-contain p-1 filter drop-shadow-2xs group-hover:brightness-105 transition-all"
+                      className="object-contain filter drop-shadow-2xs group-hover:brightness-105 transition-all"
                       unoptimized
                     />
                   </div>
                 </div>
 
-                {/* Brand Name */}
-                <h3 className="text-base font-extrabold text-slate-900 group-hover:text-blue-700 transition-colors flex items-center justify-center gap-1">
-                  <span>{brand.name}</span>
-                </h3>
-
-                {/* Category & Specialty */}
-                <p className="text-xs font-bold text-blue-800 mt-1">
-                  {brand.category}
-                </p>
-                <p className="text-[11px] text-slate-500 font-medium mt-1 line-clamp-1">
-                  {brand.specialty}
-                </p>
+                {/* Accessible Brand Name Subtitle */}
+                <span className="text-[11px] font-bold text-slate-500 group-hover:text-blue-700 transition-colors mt-1 truncate max-w-full">
+                  {brand.name}
+                </span>
               </a>
             ))}
           </motion.div>
@@ -267,5 +229,6 @@ export default function BrandsSection() {
     </section>
   );
 }
+
 
 
