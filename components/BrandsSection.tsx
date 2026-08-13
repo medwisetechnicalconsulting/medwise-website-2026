@@ -150,9 +150,9 @@ export default function BrandsSection() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Subtle Mobile & Desktop Fade Masks (No shadow overlay on mobile) */}
-          <div className="absolute top-0 bottom-0 left-0 w-6 sm:w-20 lg:w-28 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
-          <div className="absolute top-0 bottom-0 right-0 w-6 sm:w-20 lg:w-28 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
+          {/* Desktop Only Seamless Fade Masks (Completely removed on mobile to eliminate side shadows) */}
+          <div className="hidden md:block absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-slate-50 via-slate-50/70 to-transparent z-10 pointer-events-none" />
+          <div className="hidden md:block absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-slate-50 via-slate-50/70 to-transparent z-10 pointer-events-none" />
 
           <motion.div
             className="flex gap-4 sm:gap-6 w-max"
