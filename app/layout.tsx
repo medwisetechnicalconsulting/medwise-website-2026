@@ -129,24 +129,23 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable} scroll-smooth`}>
       <head>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y1TFWLNSE" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-0Y1TFWLNSE');
+            `,
+          }}
+        />
         <meta name="google-site-verification" content="XZS7nN8CIDsaRo6q_xxrC58EuWebIK3MCAkp8YZEnNs" />
         <link rel="icon" href="/favicon-48x48.png" sizes="48x48" type="image/png" />
         <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        {/* Google Analytics (gtag.js) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-0Y1TFWLNSE"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-0Y1TFWLNSE');
-          `}
-        </Script>
         {/* Structured Data (JSON-LD) for LocalBusiness / MedicalBusiness */}
         <script
           type="application/ld+json"
