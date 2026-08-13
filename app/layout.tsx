@@ -78,7 +78,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
     apple: [
@@ -86,12 +88,16 @@ export const metadata: Metadata = {
     ],
     other: [
       {
-        rel: 'android-chrome-192x192',
+        rel: 'icon',
         url: '/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
       },
       {
-        rel: 'android-chrome-512x512',
+        rel: 'icon',
         url: '/android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
       },
     ],
   },
@@ -123,6 +129,9 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${outfit.variable} scroll-smooth`}>
       <head>
         <meta name="google-site-verification" content="XZS7nN8CIDsaRo6q_xxrC58EuWebIK3MCAkp8YZEnNs" />
+        <link rel="icon" href="/favicon-48x48.png" sizes="48x48" type="image/png" />
+        <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         {/* Structured Data (JSON-LD) for LocalBusiness / MedicalBusiness */}
         <script
           type="application/ld+json"
