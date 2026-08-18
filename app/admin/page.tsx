@@ -1082,7 +1082,7 @@ export default function AdminDashboardPage() {
                     <div className="mt-2 flex flex-wrap items-center gap-2">
                       <span className="text-[10px] text-slate-500 font-bold uppercase">Quick Presets:</span>
                       {[
-                        { label: 'Hematology', path: '/images/blog/hematology-analyzer-guide.jpg' },
+                        { label: 'Hematology', path: '/images/blog/hematology-analyzer-guide.png' },
                         { label: 'Chemistry', path: '/images/blog/chemistry-analyzer-guide.jpg' },
                         { label: 'Calibration', path: '/images/blog/biomedical-calibration-guide.jpg' },
                         { label: 'Clinic Setup', path: '/images/blog/clinic-setup-checklist.jpg' },
