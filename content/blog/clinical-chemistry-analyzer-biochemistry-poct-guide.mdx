@@ -65,13 +65,45 @@ In addition to enzymatic chemistry, point-of-care testing increasingly demands h
 
 The choice between **Fluorescence Immunoassay (FIA)** and **Chemiluminescence Immunoassay (CLIA)** determines diagnostic precision:
 
-| Feature / Criterion | Fluorescence Immunoassay (FIA) | Chemiluminescence Immunoassay (CLIA) |
-| :--- | :--- | :--- |
-| **Excitation / Light Generation** | External light excitation (UV/LED) excites fluorophores | Chemical reaction generates photons in total darkness (No external light source required) |
-| **Signal-to-Noise Ratio** | Moderate (Subject to sample autofluorescence & background light scatter) | **Ultra-High** (Zero background light interference) |
-| **Analytical Sensitivity** | Nanogram (10⁻⁹ g) level | **Picogram (10⁻¹² g) level** (100x to 1000x higher sensitivity) |
-| **Dynamic Range** | 10² to 10³ linear range | **10⁵ to 10⁶ wide dynamic range** |
-| **Clinical Application** | General screening (CRP, SAA) | High-stakes critical markers (hs-cTnI, Sepsis PCT/IL-6, Thyroid, Fertility) |
+<div className="overflow-x-auto my-6">
+  <table className="min-w-full border border-slate-200 text-left text-xs text-slate-800 rounded-xl overflow-hidden">
+    <thead className="bg-slate-100 border-b border-slate-200 text-slate-900 font-bold uppercase tracking-wider">
+      <tr>
+        <th className="p-3 border-r border-slate-200">Feature / Criterion</th>
+        <th className="p-3 border-r border-slate-200">Fluorescence Immunoassay (FIA)</th>
+        <th className="p-3">Chemiluminescence Immunoassay (CLIA)</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-slate-200">
+      <tr className="bg-white hover:bg-slate-50">
+        <td className="p-3 font-bold border-r border-slate-200">Excitation / Light Generation</td>
+        <td className="p-3 border-r border-slate-200">External light excitation (UV/LED) excites fluorophores</td>
+        <td className="p-3">Chemical reaction generates photons in total darkness (No external light source required)</td>
+      </tr>
+      <tr className="bg-slate-50/50 hover:bg-slate-50">
+        <td className="p-3 font-bold border-r border-slate-200">Signal-to-Noise Ratio</td>
+        <td className="p-3 border-r border-slate-200">Moderate (Subject to sample autofluorescence & background light scatter)</td>
+        <td className="p-3 font-bold text-blue-700">Ultra-High (Zero background light interference)</td>
+      </tr>
+      <tr className="bg-white hover:bg-slate-50">
+        <td className="p-3 font-bold border-r border-slate-200">Analytical Sensitivity</td>
+        <td className="p-3 border-r border-slate-200">Nanogram (10⁻⁹ g) level</td>
+        <td className="p-3 font-bold text-blue-700">Picogram (10⁻¹² g) level (100x to 1000x higher sensitivity)</td>
+      </tr>
+      <tr className="bg-slate-50/50 hover:bg-slate-50">
+        <td className="p-3 font-bold border-r border-slate-200">Dynamic Range</td>
+        <td className="p-3 border-r border-slate-200">10² to 10³ linear range</td>
+        <td className="p-3 font-bold text-blue-700">10⁵ to 10⁶ wide dynamic range</td>
+      </tr>
+      <tr className="bg-white hover:bg-slate-50">
+        <td className="p-3 font-bold border-r border-slate-200">Clinical Application</td>
+        <td className="p-3 border-r border-slate-200">General screening (CRP, SAA)</td>
+        <td className="p-3">High-stakes critical markers (hs-cTnI, Sepsis PCT/IL-6, Thyroid, Fertility)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 *Comparative technical data cited from [Seamaty Immunoassay & Diagnostic Technical Papers](https://en.seamaty.com/index.php?s=/sys/list/21.html).*
 
