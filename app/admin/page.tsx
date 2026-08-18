@@ -674,14 +674,32 @@ export default function AdminDashboardPage() {
                 {filteredPosts.map((post) => (
                   <div
                     key={post.slug}
-                    className="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-700 transition-all space-y-4 group"
+                    className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-slate-700 transition-all space-y-4 group p-5"
                   >
                     <div className="space-y-3">
+                      {/* Image Thumbnail */}
+                      <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-slate-950 border border-slate-800/80">
+                        {post.image ? (
+                          <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-xs text-slate-600 font-mono">
+                            No Image Set
+                          </div>
+                        )}
+                        <div className="absolute top-2 left-2">
+                          <span className="bg-slate-950/80 backdrop-blur-md text-blue-400 text-[10px] px-2.5 py-0.5 rounded-md border border-slate-700 font-bold">
+                            {post.category || 'General'}
+                          </span>
+                        </div>
+                      </div>
+
                       <div className="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                        <span className="bg-blue-500/10 text-blue-400 px-2.5 py-0.5 rounded-md border border-blue-500/20 font-bold">
-                          {post.category || 'General'}
-                        </span>
-                        <span>{post.date}</span>
+                        <span>Date: {post.date}</span>
+                        <span>{post.readTimeMinutes} min read</span>
                       </div>
 
                       <h3 className="text-base font-extrabold text-white group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
@@ -698,6 +716,7 @@ export default function AdminDashboardPage() {
                         </div>
                       )}
                     </div>
+
 
                     <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
                       <Link
@@ -1050,6 +1069,39 @@ export default function AdminDashboardPage() {
 
                   <div>
                     <label className="block font-bold text-slate-400 uppercase tracking-wider mb-1">
+                      Featured Cover Image URL *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={blogFormData.image}
+                      onChange={(e) => setBlogFormData({ ...blogFormData, image: e.target.value })}
+                      placeholder="/images/blog/hematology-analyzer-guide.jpg"
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white font-mono focus:outline-none focus:border-blue-500"
+                    />
+                    <div className="mt-2 flex flex-wrap items-center gap-2">
+                      <span className="text-[10px] text-slate-500 font-bold uppercase">Quick Presets:</span>
+                      {[
+                        { label: 'Hematology', path: '/images/blog/hematology-analyzer-guide.jpg' },
+                        { label: 'Chemistry', path: '/images/blog/chemistry-analyzer-guide.jpg' },
+                        { label: 'Calibration', path: '/images/blog/biomedical-calibration-guide.jpg' },
+                        { label: 'Clinic Setup', path: '/images/blog/clinic-setup-checklist.jpg' },
+                        { label: 'X-Ray', path: '/images/blog/xray-selection-guide.jpg' },
+                      ].map((preset) => (
+                        <button
+                          key={preset.path}
+                          type="button"
+                          onClick={() => setBlogFormData({ ...blogFormData, image: preset.path })}
+                          className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-blue-600 text-[10px] text-slate-300 hover:text-white font-mono border border-slate-700 transition-colors cursor-pointer"
+                        >
+                          {preset.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block font-bold text-slate-400 uppercase tracking-wider mb-1">
                       Markdown / MDX Content *
                     </label>
                     <textarea
@@ -1064,6 +1116,7 @@ export default function AdminDashboardPage() {
                 </div>
               ) : (
                 <div className="p-6 bg-slate-950 rounded-2xl border border-slate-800 prose prose-invert max-w-none prose-sm">
+
                   <h1 className="text-xl font-extrabold text-white mb-2">{blogFormData.title || 'Untitled Post'}</h1>
                   <p className="text-xs text-blue-400 font-semibold mb-4">{blogFormData.category} | By {blogFormData.author}</p>
                   <div className="whitespace-pre-wrap font-sans leading-relaxed text-slate-300">

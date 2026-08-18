@@ -6,6 +6,7 @@ import { getArticleSchema, getBreadcrumbSchema, SITE_CONFIG } from '@/lib/seo/sc
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { Calendar, Clock, ArrowLeft, Tag, MessageSquare, ShieldCheck } from 'lucide-react';
 import CtaBanner from '@/components/CtaBanner';
+import ExpandableImage from '@/components/ExpandableImage';
 
 interface PageProps {
   params: Promise<{
@@ -30,6 +31,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const imageUrl = post.image ? `${SITE_CONFIG.url}${post.image}` : SITE_CONFIG.ogImage;
+
   return {
     title: post.title,
     description: post.metaDescription,
@@ -45,11 +48,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${SITE_CONFIG.url}/blog/${post.slug}`,
       publishedTime: post.date,
       authors: [post.author || SITE_CONFIG.name],
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.metaDescription,
+      images: [imageUrl],
     },
   };
 }
@@ -126,11 +138,21 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
 
       {/* Body Content */}
       <div className="py-12 sm:py-16 bg-white">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
           
+          {/* Featured Article Image with Click-to-Expand Lightbox */}
+          {post.image && (
+            <ExpandableImage
+              src={post.image}
+              alt={post.title}
+              title={post.title}
+              caption="Technical Overview — Click image to expand high-resolution view"
+            />
+          )}
+
           {/* Target Keyword Banner */}
           {post.targetKeyword && (
-            <div className="mb-8 rounded-xl bg-slate-50 border border-slate-200 p-3.5 flex items-center justify-between text-xs text-slate-600 font-semibold">
+            <div className="rounded-xl bg-slate-50 border border-slate-200 p-3.5 flex items-center justify-between text-xs text-slate-600 font-semibold">
               <div className="flex items-center gap-2">
                 <Tag className="h-4 w-4 text-blue-700" />
                 <span>Focus SEO Keyword: <strong className="text-slate-900">{post.targetKeyword}</strong></span>
@@ -138,6 +160,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
               <span className="text-[10px] font-mono text-slate-400 uppercase">Index Target</span>
             </div>
           )}
+
 
           {/* MDX Rendered Body */}
           <div className="prose prose-slate prose-blue max-w-none prose-headings:font-extrabold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-li:text-slate-700 prose-strong:text-slate-900 prose-table:text-sm">
