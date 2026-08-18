@@ -1083,7 +1083,8 @@ export default function AdminDashboardPage() {
                       <span className="text-[10px] text-slate-500 font-bold uppercase">Quick Presets:</span>
                       {[
                         { label: 'Hematology', path: '/images/blog/hematology-analyzer-guide.png' },
-                        { label: 'Chemistry', path: '/images/blog/chemistry-analyzer-guide.jpg' },
+                        { label: 'Chemistry POCT', path: '/images/blog/chemistry-analyzer-guide.jpg' },
+                        { label: 'Biochem Guide', path: '/images/blog/biochemistry-buyers-guide-kenya.jpg' },
                         { label: 'Calibration', path: '/images/blog/biomedical-calibration-guide.jpg' },
                         { label: 'Clinic Setup', path: '/images/blog/clinic-setup-checklist.jpg' },
                         { label: 'X-Ray', path: '/images/blog/xray-selection-guide.jpg' },
