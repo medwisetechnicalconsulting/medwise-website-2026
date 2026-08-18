@@ -1,0 +1,83 @@
+[
+  {
+    "id": "consulting",
+    "category": "consulting",
+    "iconName": "FileSearch",
+    "image": "/images/services/pre-purchase-consulting.png",
+    "alt": "Biomedical engineer and healthcare administrator reviewing medical equipment blueprints and technical specifications",
+    "title": "Pre-Purchase Consulting",
+    "subtitle": "Making Informed Technical Decisions",
+    "description": "Comprehensive needs assessment, technical specification drafting, and site readiness planning. We help you select medical machinery that matches your clinical volume and financial parameters.",
+    "features": [
+      "Clinical needs & workload analysis",
+      "Technical specification drafting",
+      "Facility power & site readiness evaluation",
+      "Total cost of ownership (TCO) modeling"
+    ]
+  },
+  {
+    "id": "sourcing",
+    "category": "sourcing",
+    "iconName": "ShoppingCart",
+    "image": "/images/services/equipment-sourcing.png",
+    "alt": "Modern medical equipment warehouse featuring Ultrasound, Patient Monitors, and Laboratory Analyzers ready for hospital procurement",
+    "title": "Equipment Sourcing & Supply",
+    "subtitle": "Multi-Category Device Procurement",
+    "description": "Access to high-grade diagnostic and treatment devices across Imaging, Laboratory, ICU, Surgical Theatre, and Maternity categories from trusted international manufacturers.",
+    "features": [
+      "Imaging (DR X-Ray, Ultrasound, Mammography)",
+      "Laboratory (Hematology, Chemistry, Centrifuges)",
+      "ICU & Theatre (Monitors, Anesthesia, Ventilators)",
+      "Maternity (Fetal Dopplers, Incubators, Phototherapy)"
+    ],
+    "neutralNotice": "We supply equipment, but our first job is to advise you neutrally."
+  },
+  {
+    "id": "installation",
+    "category": "maintenance",
+    "iconName": "Settings",
+    "image": "/images/services/installation-calibration.png",
+    "alt": "Certified biomedical engineer performing precision metrological calibration and electrical safety testing on hospital machinery",
+    "title": "Installation & Calibration",
+    "subtitle": "Precision Engineering Integration",
+    "description": "Flawless mechanical, electrical, and radiological installation. Every device undergoes certified calibration using traceable standards to ensure diagnostic accuracy from day one.",
+    "features": [
+      "Unboxing, positioning & safety wiring",
+      "Metrological calibration against certified standards",
+      "Radiation shielding compliance (KNRA)",
+      "Documentation & certification for audit readiness"
+    ]
+  },
+  {
+    "id": "training",
+    "category": "training",
+    "iconName": "GraduationCap",
+    "image": "/images/services/staff-training.png",
+    "alt": "Clinical specialist training African laboratory technologists and healthcare operators on medical device workflows",
+    "title": "Staff Operational Training",
+    "subtitle": "Empowering Your Clinical Team",
+    "description": "Comprehensive hands-on training for clinical operators, lab technologists, and facility staff on device usage, daily quality control checks, and basic troubleshooting.",
+    "features": [
+      "On-site operational workflows",
+      "Daily QC protocols & sample prep training",
+      "Basic routine maintenance & care routines",
+      "Certification for clinical operators"
+    ]
+  },
+  {
+    "id": "maintenance",
+    "category": "maintenance",
+    "iconName": "Activity",
+    "image": "/images/services/maintenance-service-qc.png",
+    "alt": "Biomedical service engineer conducting preventive maintenance and Quality Control analysis on clinical analyzer",
+    "title": "Maintenance, Service & QC Analysis",
+    "subtitle": "Guaranteed Operational Uptime",
+    "description": "Scheduled preventive maintenance, emergency repair dispatch, genuine replacement parts, and ongoing quality assurance analysis to maximize device longevity.",
+    "features": [
+      "Scheduled Preventive Maintenance (PM)",
+      "Rapid emergency response team",
+      "Quality control (QC) verification & report logging",
+      "Genuine factory spare parts supply"
+    ]
+  }
+]

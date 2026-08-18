@@ -225,6 +225,9 @@ export default function Footer() {
             <Link href="/contact" className="hover:text-slate-900 transition-colors">
               Contact
             </Link>
+            <Link href="/admin" className="hover:text-blue-700 font-bold transition-colors text-blue-800 flex items-center gap-1">
+              <span>Admin Portal</span>
+            </Link>
           </div>
         </div>
 
@@ -232,3 +235,4 @@ export default function Footer() {
     </footer>
   );
 }
+

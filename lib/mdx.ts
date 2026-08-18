@@ -87,3 +87,63 @@ export function getPostBySlug(slug: string): BlogPost | null {
     return null;
   }
 }
+
+export function savePost(
+  slug: string,
+  meta: Partial<BlogPostMeta>,
+  content: string
+): BlogPost | null {
+  try {
+    if (!fs.existsSync(BLOG_DIR)) {
+      fs.mkdirSync(BLOG_DIR, { recursive: true });
+    }
+
+    const cleanSlug = slug
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+    const filePath = path.join(BLOG_DIR, `${cleanSlug}.mdx`);
+
+    const frontmatter = {
+      title: meta.title || cleanSlug,
+      metaDescription: meta.metaDescription || '',
+      targetKeyword: meta.targetKeyword || '',
+      date: meta.date || new Date().toISOString().split('T')[0],
+      author: meta.author || 'Medwise Biomedical Advisory Team',
+      category: meta.category || 'Laboratory Diagnostics',
+      image: meta.image || '/images/blog-default.jpg',
+    };
+
+    const fileContent = matter.stringify(content, frontmatter);
+    fs.writeFileSync(filePath, fileContent, 'utf8');
+
+    return getPostBySlug(cleanSlug);
+  } catch (error) {
+    console.error(`Error saving post ${slug}:`, error);
+    return null;
+  }
+}
+
+export function deletePost(slug: string): boolean {
+  try {
+    const mdxPath = path.join(BLOG_DIR, `${slug}.mdx`);
+    const mdPath = path.join(BLOG_DIR, `${slug}.md`);
+
+    if (fs.existsSync(mdxPath)) {
+      fs.unlinkSync(mdxPath);
+      return true;
+    }
+    if (fs.existsSync(mdPath)) {
+      fs.unlinkSync(mdPath);
+      return true;
+    }
+    return false;
+  } catch (error) {
+    console.error(`Error deleting post ${slug}:`, error);
+    return false;
+  }
+}
+

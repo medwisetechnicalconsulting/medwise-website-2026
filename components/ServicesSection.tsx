@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FileSearch, 
@@ -15,8 +16,125 @@ import {
   ShieldCheck
 } from 'lucide-react';
 
+interface ServiceItem {
+  id: string;
+  category: string;
+  image: string;
+  alt: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  features: string[];
+  neutralNotice?: string;
+}
+
+const DEFAULT_SERVICES: ServiceItem[] = [
+  {
+    id: 'consulting',
+    category: 'consulting',
+    image: '/images/services/pre-purchase-consulting.png',
+    alt: 'Biomedical engineer and healthcare administrator reviewing medical equipment blueprints and technical specifications',
+    title: "Pre-Purchase Consulting",
+    subtitle: "Making Informed Technical Decisions",
+    description:
+      "Comprehensive needs assessment, technical specification drafting, and site readiness planning. We help you select medical machinery that matches your clinical volume and financial parameters.",
+    features: [
+      "Clinical needs & workload analysis",
+      "Technical specification drafting",
+      "Facility power & site readiness evaluation",
+      "Total cost of ownership (TCO) modeling",
+    ],
+  },
+  {
+    id: 'sourcing',
+    category: 'sourcing',
+    image: '/images/services/equipment-sourcing.png',
+    alt: 'Modern medical equipment warehouse featuring Ultrasound, Patient Monitors, and Laboratory Analyzers ready for hospital procurement',
+    title: "Equipment Sourcing & Supply",
+    subtitle: "Multi-Category Device Procurement",
+    description:
+      "Access to high-grade diagnostic and treatment devices across Imaging, Laboratory, ICU, Surgical Theatre, and Maternity categories from trusted international manufacturers.",
+    features: [
+      "Imaging (DR X-Ray, Ultrasound, Mammography)",
+      "Laboratory (Hematology, Chemistry, Centrifuges)",
+      "ICU & Theatre (Monitors, Anesthesia, Ventilators)",
+      "Maternity (Fetal Dopplers, Incubators, Phototherapy)",
+    ],
+    neutralNotice: "We supply equipment, but our first job is to advise you neutrally.",
+  },
+  {
+    id: 'installation',
+    category: 'maintenance',
+    image: '/images/services/installation-calibration.png',
+    alt: 'Certified biomedical engineer performing precision metrological calibration and electrical safety testing on hospital machinery',
+    title: "Installation & Calibration",
+    subtitle: "Precision Engineering Integration",
+    description:
+      "Flawless mechanical, electrical, and radiological installation. Every device undergoes certified calibration using traceable standards to ensure diagnostic accuracy from day one.",
+    features: [
+      "Unboxing, positioning & safety wiring",
+      "Metrological calibration against certified standards",
+      "Radiation shielding compliance (KNRA)",
+      "Documentation & certification for audit readiness",
+    ],
+  },
+  {
+    id: 'training',
+    category: 'training',
+    image: '/images/services/staff-training.png',
+    alt: 'Clinical specialist training African laboratory technologists and healthcare operators on medical device workflows',
+    title: "Staff Operational Training",
+    subtitle: "Empowering Your Clinical Team",
+    description:
+      "Comprehensive hands-on training for clinical operators, lab technologists, and facility staff on device usage, daily quality control checks, and basic troubleshooting.",
+    features: [
+      "On-site operational workflows",
+      "Daily QC protocols & sample prep training",
+      "Basic routine maintenance & care routines",
+      "Certification for clinical operators",
+    ],
+  },
+  {
+    id: 'maintenance',
+    category: 'maintenance',
+    image: '/images/services/maintenance-service-qc.png',
+    alt: 'Biomedical service engineer conducting preventive maintenance and Quality Control analysis on clinical analyzer',
+    title: "Maintenance, Service & QC Analysis",
+    subtitle: "Guaranteed Operational Uptime",
+    description:
+      "Scheduled preventive maintenance, emergency repair dispatch, genuine replacement parts, and ongoing quality assurance analysis to maximize device longevity.",
+    features: [
+      "Scheduled Preventive Maintenance (PM)",
+      "Rapid emergency response team",
+      "Quality control (QC) verification & report logging",
+      "Genuine factory spare parts supply",
+    ],
+  },
+];
+
+const ICON_MAP: Record<string, typeof FileSearch> = {
+  consulting: FileSearch,
+  sourcing: ShoppingCart,
+  installation: Settings,
+  training: GraduationCap,
+  maintenance: Activity,
+};
+
 export default function ServicesSection() {
   const [activeTab, setActiveTab] = useState<string>('all');
+  const [servicesList, setServicesList] = useState<ServiceItem[]>(DEFAULT_SERVICES);
+
+  useEffect(() => {
+    fetch('/api/admin/services')
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setServicesList(data);
+        }
+      })
+      .catch((err) => console.error('Failed to load dynamic services:', err));
+  }, []);
+
 
   const services = [
     {
@@ -108,8 +226,8 @@ export default function ServicesSection() {
   ];
 
   const filteredServices = activeTab === 'all' 
-    ? services 
-    : services.filter(s => s.category === activeTab);
+    ? servicesList 
+    : servicesList.filter(s => s.category === activeTab);
 
   return (
     <section id="services" className="py-16 sm:py-24 bg-slate-50 border-y border-slate-200 text-slate-900 overflow-hidden">
@@ -162,7 +280,7 @@ export default function ServicesSection() {
         <motion.div layout className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
             {filteredServices.map((service, index) => {
-              const Icon = service.icon;
+              const Icon = ICON_MAP[service.id] || ICON_MAP[service.category] || FileSearch;
               return (
                 <motion.div
                   key={service.id}
@@ -174,6 +292,7 @@ export default function ServicesSection() {
                   whileHover={{ y: -6 }}
                   className="relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white overflow-hidden shadow-sm hover:shadow-xl hover:border-blue-500/40 transition-all group"
                 >
+
                   <div>
                     {/* Service Banner Image */}
                     <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
