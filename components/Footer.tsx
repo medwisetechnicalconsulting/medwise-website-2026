@@ -191,8 +191,10 @@ export default function Footer() {
 
           {/* Google Maps Location Integration */}
           <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Kisumu HQ & Nairobi Field Coverage</h3>
-            <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-slate-200 bg-white flex items-center justify-center p-4 text-center">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Kisumu HQ & Regional Hub</h3>
+            </div>
+            <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-slate-200 bg-white flex items-center justify-center p-4 text-center group">
               <iframe
                 title="Medwise Technical Consulting Location Map - Kisumu Kakamega Road"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.817342!2d34.768!3d-0.0917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182aa4c575cf26d9%3A0xb35a0f624d77b587!2sKisumu%20Kakamega%20Rd%2C%20Kisumu!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"
@@ -202,12 +204,23 @@ export default function Footer() {
                 allowFullScreen={false}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 opacity-90 hover:opacity-100 transition-opacity"
+                className="absolute inset-0 opacity-90 group-hover:opacity-100 transition-opacity"
               />
             </div>
-            <p className="text-[10px] text-slate-500 text-center font-medium">
-              Kisumu Kakamega Road (HQ) & Nairobi Region, Kenya
-            </p>
+            <div className="flex flex-col gap-1.5 text-center">
+              <p className="text-[11px] text-slate-600 font-medium">
+                📍 Kisumu Kakamega Road (HQ) | Nairobi Hub
+              </p>
+              <a
+                href={SITE_CONFIG.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-1 text-[11px] font-bold text-blue-700 hover:text-blue-800 hover:underline transition-colors"
+              >
+                <span>Open in Google Maps / Google Profile</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
           </div>
 
         </div>

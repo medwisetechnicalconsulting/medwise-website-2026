@@ -182,7 +182,21 @@ export default function ContactPage() {
 
               {/* Google Map Location Frame */}
               <div className="rounded-3xl bg-white p-6 border border-slate-200 shadow-sm space-y-4">
-                <h3 className="text-base font-bold text-slate-900">Kisumu Office Location Map</h3>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">Office Location & Google Maps</h3>
+                    <p className="text-xs text-slate-500">Kisumu Kakamega Road (HQ) | Nairobi Hub Coverage</p>
+                  </div>
+                  <a
+                    href={SITE_CONFIG.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-blue-50 px-3.5 py-2 text-xs font-bold text-blue-700 hover:bg-blue-100 transition-colors border border-blue-200 w-fit"
+                  >
+                    <span>Open in Google Maps</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
                 <div className="aspect-video w-full rounded-2xl overflow-hidden border border-slate-200">
                   <iframe
                     title="Medwise Google Map Location"
@@ -194,9 +208,10 @@ export default function ContactPage() {
                     loading="lazy"
                   />
                 </div>
-                <p className="text-xs text-slate-500 font-medium">
-                  📍 Kisumu Kakamega Road, Kisumu, Kenya.
-                </p>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1 text-xs text-slate-600 font-medium">
+                  <p>📍 Kisumu Kakamega Road, Kisumu, Kenya.</p>
+                  <p className="text-slate-500">Coordinates: -0.0917° S, 34.7680° E</p>
+                </div>
               </div>
 
             </div>

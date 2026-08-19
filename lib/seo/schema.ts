@@ -9,10 +9,18 @@ export const SITE_CONFIG = {
   altTelephone: '+254711233522',
   whatsappNumber: '254117233522',
   email: 'medwisetechnicalconsulting@gmail.com',
+  googleMapsUrl: 'https://maps.google.com/?q=Medwise+Technical+Consulting+Kisumu+Kakamega+Road+Kenya',
   address: {
-    streetAddress: 'Kisumu Kakamega Road (HQ) | Nairobi Region Hub',
-    addressLocality: 'Kisumu & Nairobi',
-    addressRegion: 'Nyanza / Western & Nairobi Metropolitan',
+    streetAddress: 'Kisumu Kakamega Road (HQ)',
+    addressLocality: 'Kisumu',
+    addressRegion: 'Kisumu County',
+    postalCode: '40100',
+    addressCountry: 'KE',
+  },
+  nairobiHub: {
+    streetAddress: 'Nairobi Metropolitan Field Hub',
+    addressLocality: 'Nairobi',
+    addressRegion: 'Nairobi County',
     addressCountry: 'KE',
   },
   geo: {
@@ -22,6 +30,7 @@ export const SITE_CONFIG = {
   openingHours: 'Mo-Fr 08:00-17:00, Sa 09:00-13:00',
   priceRange: '$$',
   socialLinks: {
+    googleMaps: 'https://maps.google.com/?q=Medwise+Technical+Consulting+Kisumu+Kakamega+Road+Kenya',
     tiktok: 'https://www.tiktok.com/@medwise.technical',
     linkedin: 'https://www.linkedin.com/company/medwisetechnicalconsulting/',
     facebook: 'https://www.facebook.com/share/1DcUPmPes2/',
@@ -33,21 +42,36 @@ export const SITE_CONFIG = {
 export function getMedicalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
-    '@type': ['MedicalBusiness', 'LocalBusiness'],
+    '@type': ['MedicalBusiness', 'LocalBusiness', 'ProfessionalService'],
     '@id': `${SITE_CONFIG.url}/#organization`,
     name: SITE_CONFIG.name,
+    legalName: SITE_CONFIG.name,
+    alternateName: [
+      'Medwise',
+      'Medwise Kenya',
+      'Medwise Technical',
+      'Medwise Medical Consulting',
+    ],
     description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
     telephone: SITE_CONFIG.telephone,
     email: SITE_CONFIG.email,
     priceRange: SITE_CONFIG.priceRange,
     image: `${SITE_CONFIG.url}${SITE_CONFIG.ogImage}`,
-    logo: `${SITE_CONFIG.url}/images/medwise-logo.png`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_CONFIG.url}/images/medwise-logo.png`,
+      caption: SITE_CONFIG.name,
+    },
+    hasMap: SITE_CONFIG.googleMapsUrl,
+    currenciesAccepted: 'KES, USD',
+    paymentAccepted: 'Cash, Credit Card, Bank Transfer, M-Pesa',
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE_CONFIG.address.streetAddress,
       addressLocality: SITE_CONFIG.address.addressLocality,
       addressRegion: SITE_CONFIG.address.addressRegion,
+      postalCode: SITE_CONFIG.address.postalCode,
       addressCountry: SITE_CONFIG.address.addressCountry,
     },
     geo: {
@@ -69,6 +93,22 @@ export function getMedicalBusinessSchema() {
         closes: '13:00',
       },
     ],
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: SITE_CONFIG.telephone,
+        contactType: 'customer service',
+        areaServed: 'KE',
+        availableLanguage: ['English', 'Swahili'],
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: SITE_CONFIG.altTelephone,
+        contactType: 'technical support',
+        areaServed: 'KE',
+        availableLanguage: ['English', 'Swahili'],
+      },
+    ],
     areaServed: [
       {
         '@type': 'City',
@@ -79,9 +119,26 @@ export function getMedicalBusinessSchema() {
         name: 'Nairobi',
       },
       {
+        '@type': 'City',
+        name: 'Eldoret',
+      },
+      {
+        '@type': 'City',
+        name: 'Nakuru',
+      },
+      {
         '@type': 'Country',
         name: 'Kenya',
       },
+    ],
+    knowsAbout: [
+      'Medical Equipment Consulting Kenya',
+      'Biomedical Engineering Technical Support',
+      'Medical Device Sourcing & Procurement Kenya',
+      'Clinical Laboratory Device Calibration',
+      'Ultrasound Machine Maintenance Kenya',
+      'Zybio Z3 Hematology Analyzer Troubleshooting',
+      'Hospital Setup & Medical Technology Advisory',
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -135,6 +192,7 @@ export function getMedicalBusinessSchema() {
       ],
     },
     sameAs: [
+      SITE_CONFIG.googleMapsUrl,
       SITE_CONFIG.socialLinks.whatsapp,
       SITE_CONFIG.socialLinks.tiktok,
       SITE_CONFIG.socialLinks.linkedin,
