@@ -40,11 +40,18 @@
   display: block;
   max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .prose pre {
   max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Custom Keyframe Animations for Next-Gen Futuristic Effects */

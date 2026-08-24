@@ -139,8 +139,11 @@ export function getMedicalBusinessSchema() {
       'Clinical Laboratory Centrifuges & Brushless Systems Kenya',
       'Laboratory Microscope Calibration Olympus Kenya',
       'Immunoassay Analyzers FIA ELISA CLIA Kenya',
+      'Automated Hematology Analyzers 3-Part 5-Part Kenya',
+      'Automated Biochemistry Analyzers Kenya',
+      'Digital X-Ray Machines Kenya & Radiation Safety',
       'Ultrasound Machine Maintenance Kenya',
-      'Zybio Z3 Hematology Analyzer Troubleshooting',
+      'Zybio Z3 and Mindray BC Hematology Analyzer Troubleshooting',
       'Hospital Setup & Medical Technology Advisory',
     ],
     hasOfferCatalog: {
