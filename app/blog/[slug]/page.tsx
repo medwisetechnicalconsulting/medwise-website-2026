@@ -80,6 +80,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
     slug: post.slug,
     datePublished: post.date,
     authorName: post.author,
+    image: post.image,
   });
 
   const breadcrumbLd = getBreadcrumbSchema([
