@@ -68,9 +68,29 @@ If a low-cost centrifuge has a small rotor radius, spinning at 4,000 RPM may gen
 
 **Overview:** These are the classic, economical desktop workhorses found in many upcoming health centers, dispensaries (*zahanati*), maternity homes, and small private laboratories across Kenya. They are straightforward, mechanical units engineered for standard routine spinning.
 
-```
-[ Carbon Brush AC Motor ] ➔ [ Fixed-Angle 45° Rotor ] ➔ [ Mechanical Spring Timer ] ➔ [ Rubber Damped / Glass Lid ]
-```
+<div className="my-6 p-4.5 rounded-2xl bg-slate-50 border border-slate-200">
+  <div className="text-xs font-bold uppercase tracking-wider text-slate-600 mb-3">
+    Traditional Centrifuge Mechanical Architecture
+  </div>
+  <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 text-xs font-semibold text-slate-800">
+    <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-amber-600 text-[10px] font-bold uppercase tracking-wider mb-0.5">Drive Unit</span>
+      Carbon Brush AC Motor
+    </div>
+    <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-blue-600 text-[10px] font-bold uppercase tracking-wider mb-0.5">Rotor Assembly</span>
+      Fixed-Angle 45° Rotor
+    </div>
+    <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-indigo-600 text-[10px] font-bold uppercase tracking-wider mb-0.5">Timing</span>
+      Mechanical Spring Timer
+    </div>
+    <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-slate-600 text-[10px] font-bold uppercase tracking-wider mb-0.5">Enclosure</span>
+      Rubber Damped / Glass Lid
+    </div>
+  </div>
+</div>
 
 ### Popular Traditional Models in Kenya:
 1. **Round 6-Tube Desktop Centrifuge (With Rubber Cover Lids):** A very basic, highly affordable compact desktop model. It accommodates 6 collection tubes (typically up to 15ml) and relies on a protective rubberized internal cover to damp acoustic noise, cushion the rotor housing, and catch accidental droplets.
@@ -98,9 +118,29 @@ If a low-cost centrifuge has a small rotor radius, spinning at 4,000 RPM may gen
 
 **Overview:** If you run a medium-to-high throughput diagnostic facility, county referral hospital, busy maternity hospital, or reference laboratory, upgrading to a modern digital system equipped with a **Brushless DC (BLDC) motor** is a superior, long-term technical investment.
 
-```
-[ Brushless BLDC Motor ] ➔ [ Microprocessor Control ] ➔ [ Electronic Lid Interlock Sensor ] ➔ [ Digital RPM/RCF LCD ]
-```
+<div className="my-6 p-4.5 rounded-2xl bg-slate-50 border border-slate-200">
+  <div className="text-xs font-bold uppercase tracking-wider text-blue-900 mb-3">
+    Modern Brushless (BLDC) Digital Architecture
+  </div>
+  <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 text-xs font-semibold text-slate-800">
+    <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-emerald-600 text-[10px] font-bold uppercase tracking-wider mb-0.5">Power System</span>
+      Brushless BLDC Motor
+    </div>
+    <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-blue-600 text-[10px] font-bold uppercase tracking-wider mb-0.5">Logic Unit</span>
+      Microprocessor Control
+    </div>
+    <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-indigo-600 text-[10px] font-bold uppercase tracking-wider mb-0.5">Safety Protection</span>
+      Electronic Lid Interlock Sensor
+    </div>
+    <div className="bg-blue-50/80 border border-blue-200 text-blue-900 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-blue-700 text-[10px] font-bold uppercase tracking-wider mb-0.5">User Interface</span>
+      Digital RPM / RCF LCD
+    </div>
+  </div>
+</div>
 
 ### 1. Brushless Motor Technology (Zero Carbon Dust, Zero Maintenance)
 Traditional centrifuges rely on carbon brushes that spark, generate thermal friction, and shed carbon particulates. Modern brushless centrifuges utilize electromagnetic induction coils to spin the rotor without physical brush contact [[1](https://www.biocompare.com/Editorial-Articles/170190-Keep-Your-Centrifuge-Spinning-with-These-Cleaning-and-Maintenance-Tips/), [2](https://www.rivieraglass.co.in/centrifuge.php), [3](https://ahn-bio.com/product/ahn-mylab-high-speed-microcentrifuge-15000-rpm/)].
@@ -197,15 +237,36 @@ Regardless of whether you choose a traditional entry-level unit or an advanced b
 ### The Symmetry Rule of Centrifugation
 When loading sample tubes into your centrifuge rotor, every individual tube must be opposed by a tube of identical weight directly 180° across the rotor center:
 
-```
-    2-TUBE BALANCE         3-TUBE BALANCE         4-TUBE BALANCE
-      (6-Slot Rotor)         (6-Slot Rotor)         (6-Slot Rotor)
-
-         [ 1 ]                  [ 1 ]                  [ 1 ]
-       ( )   ( )              ( )   ( )              [4]   [2]
-         [ 4 ]                  [ 3 ] [ 5 ]              [ 3 ]
-       (Opposite)             (Equilateral)          (Opposite Pairs)
-```
+<div className="my-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+  <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs text-center">
+    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">2-Tube Balance</span>
+    <p className="text-xs text-slate-600 mb-3">Slots 1 &amp; 4 (Directly Opposite Across Center)</p>
+    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-dashed border-slate-300 relative bg-slate-50 font-bold text-xs">
+      <span className="absolute top-1 text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded-full text-[10px]">[1]</span>
+      <span className="text-slate-400 text-[10px]">● Center</span>
+      <span className="absolute bottom-1 text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded-full text-[10px]">[4]</span>
+    </div>
+  </div>
+  <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs text-center">
+    <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 block mb-1">3-Tube Balance</span>
+    <p className="text-xs text-slate-600 mb-3">Slots 1, 3 &amp; 5 (Equilateral Triangle Geometry)</p>
+    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-dashed border-slate-300 relative bg-slate-50 font-bold text-xs">
+      <span className="absolute top-1 text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded-full text-[10px]">[1]</span>
+      <span className="absolute bottom-2 left-2 text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded-full text-[10px]">[5]</span>
+      <span className="absolute bottom-2 right-2 text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded-full text-[10px]">[3]</span>
+    </div>
+  </div>
+  <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs text-center">
+    <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-700 block mb-1">4-Tube Balance</span>
+    <p className="text-xs text-slate-600 mb-3">Slots 1, 2, 4 &amp; 5 (Opposed Paired Sets)</p>
+    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-dashed border-slate-300 relative bg-slate-50 font-bold text-xs">
+      <span className="absolute top-1 text-indigo-600 bg-indigo-100 px-1.5 py-0.5 rounded-full text-[10px]">[1]</span>
+      <span className="absolute right-1 text-indigo-600 bg-indigo-100 px-1.5 py-0.5 rounded-full text-[10px]">[2]</span>
+      <span className="absolute bottom-1 text-indigo-600 bg-indigo-100 px-1.5 py-0.5 rounded-full text-[10px]">[4]</span>
+      <span className="absolute left-1 text-indigo-600 bg-indigo-100 px-1.5 py-0.5 rounded-full text-[10px]">[5]</span>
+    </div>
+  </div>
+</div>
 
 ### Essential Centrifuge Best Practices:
 1. **Always Use Balance Water Blanks:** If you have an odd number of patient samples (e.g., 3 blood tubes in a 6-tube or 8-tube rotor), prepare a blank tube filled with water to the exact same liquid meniscus height as the sample tube.
