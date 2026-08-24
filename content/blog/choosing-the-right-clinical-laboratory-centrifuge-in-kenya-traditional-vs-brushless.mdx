@@ -20,7 +20,7 @@ At **Medwise Technical Consulting**, our biomedical engineering team helps clini
 
 In medical laboratory diagnostics, over **70% of all laboratory testing errors occur during the pre-analytical phase**—before the specimen is ever loaded into a biochemistry, immunoassay, or electrolyte analyzer [[1](https://druckerdiagnostics.com/solutions/clinical-lab/lab-manager/)]. 
 
-Centrifugation represents the critical link between phlebotomy and analytical testing. When whole blood is spun at the proper Relative Centrifugal Force ($g$-force) and duration, the cellular components (erythrocytes, leukocytes, and platelets) separate cleanly from the liquid phase (serum or plasma).
+Centrifugation represents the critical link between phlebotomy and analytical testing. When whole blood is spun at the proper Relative Centrifugal Force (g-force) and duration, the cellular components (erythrocytes, leukocytes, and platelets) separate cleanly from the liquid phase (serum or plasma).
 
 <div className="overflow-x-auto my-6">
   <table className="min-w-full border border-slate-200 text-left text-xs text-slate-800 rounded-xl overflow-hidden shadow-xs">
@@ -45,20 +45,22 @@ Centrifugation represents the critical link between phlebotomy and analytical te
       <tr className="bg-white hover:bg-slate-50">
         <td className="p-3.5 font-bold border-r border-slate-200 text-red-700">Bottom: Gel Barrier / Packed RBCs</td>
         <td className="p-3.5 border-r border-slate-200">Thixotropic polyester polymer gel &amp; concentrated Erythrocytes (RBCs)</td>
-        <td className="p-3.5">Prevents cellular glycolysis and protects serum potassium ($\text{K}^+$) from red cell leakage</td>
+        <td className="p-3.5">Prevents cellular glycolysis and protects serum potassium (K+) from red cell leakage</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-### RPM vs. RCF ($g$-force): Why Speed Alone is Not Enough
-A common mistake among laboratory buyers in Kenya is evaluating centrifuges solely by **Revolutions Per Minute (RPM)**. However, biological separation is driven by **Relative Centrifugal Force (RCF)**, measured in gravities ($g$). 
+### RPM vs. RCF (g-force): Why Speed Alone is Not Enough
+A common mistake among laboratory buyers in Kenya is evaluating centrifuges solely by **Revolutions Per Minute (RPM)**. However, biological separation is driven by **Relative Centrifugal Force (RCF)**, measured in gravities (g-force or g). 
 
-The actual force exerted on your sample depends on both the rotational speed and the radius ($r$) of the centrifuge rotor:
+The actual force exerted on your sample depends on both the rotational speed and the radius (r) of the centrifuge rotor:
 
-$$\text{RCF} (g) = 1.118 \times 10^{-5} \times r \times (\text{RPM})^2$$
+<div className="p-4 bg-slate-50 border border-slate-200 rounded-xl font-mono text-sm text-slate-900 text-center my-4 shadow-2xs">
+  <strong>RCF (g) = 1.118 × 10⁻⁵ × r × (RPM)²</strong>
+</div>
 
-If a low-cost centrifuge has a small rotor radius, spinning at 4,000 RPM may generate insufficient $g$-force to cleanly activate the gel barrier in Serum Separator Tubes (SST), leading to incomplete barrier formation and sample contamination. Conversely, excessive uncalibrated acceleration causes mechanical shear stress that ruptures red blood cells (**in-vitro hemolysis**), falsely elevating potassium ($\text{K}^+$), LDH, and AST test results.
+If a low-cost centrifuge has a small rotor radius, spinning at 4,000 RPM may generate insufficient g-force to cleanly activate the gel barrier in Serum Separator Tubes (SST), leading to incomplete barrier formation and sample contamination. Conversely, excessive uncalibrated acceleration causes mechanical shear stress that ruptures red blood cells (**in-vitro hemolysis**), falsely elevating potassium (K+), LDH, and AST test results.
 
 ---
 
@@ -77,7 +79,7 @@ If a low-cost centrifuge has a small rotor radius, spinning at 4,000 RPM may gen
 * **The Clinical Need:** Perfect for small clinics, dispensaries (*zahanati*), and level-2 outpatient centers processing under 15 to 20 routine blood or urine chemistry samples per day on a tight startup budget.
 * **Key Technical Specifications:**
   * **Tube Capacity:** 6-tube or 12-tube fixed-angle rotor (fits 5ml, 7ml, 10ml, and 15ml tubes).
-  * **Speed Range:** Stepless analog dial control, typically adjustable up to **4,000 RPM** (~1,790 $\times g$).
+  * **Speed Range:** Stepless analog dial control, typically adjustable up to **4,000 RPM** (~1,790 × g).
   * **Timer Mechanism:** Mechanical bell timer (0 to 60 minutes or continuous hold).
   * **Motor Construction:** Traditional carbon brush AC motor.
 * **Advantages:**
@@ -113,7 +115,7 @@ Modern brushless centrifuges come standard with an **electronic safety lid inter
 * **Aerosol Biohazard Containment:** In the event of a cracked or shattered collection tube, the sealed lid remains locked until rotation stops completely, containing hazardous bloodborne pathogens and aerosolized micro-droplets.
 
 ### 3. Digital Microprocessor Control & Imbalance Detection
-* **Dual Display (RPM & RCF):** Technicians can program exact speed (e.g., 3,500 RPM) or target $g$-force (e.g., 2,000 $\times g$) with precise digital LED/LCD readouts.
+* **Dual Display (RPM & RCF):** Technicians can program exact speed (e.g., 3,500 RPM) or target g-force (e.g., 2,000 × g) with precise digital LED/LCD readouts.
 * **Electronic Imbalance Sensor:** Automatically shuts down the motor if asymmetric tube loading or broken tube weight disparities are detected, protecting the central drive shaft and bearings from bending.
 * **The Clinical Need:** Ideal for Level 4/5 hospitals, high-volume private diagnostic hubs, commercial reference labs, and institutions requiring rigorous ISO 15189 compliance and zero downtime.
 * **Estimated Price Range in Kenya:** **KES 45,000 – KES 120,000+** *(Depending on tube capacity [6, 8, 12, or 24 tubes], maximum speed capabilities [4,000 to 6,000+ RPM], and swing-out vs. fixed-angle rotor builds).*
@@ -155,7 +157,7 @@ Modern brushless centrifuges come standard with an **electronic safety lid inter
       <tr className="bg-white hover:bg-slate-50">
         <td className="p-3.5 font-bold border-r border-slate-200">Speed &amp; Force Control</td>
         <td className="p-3.5 border-r border-slate-200">Stepless Analog Knob (Approximate RPM)</td>
-        <td className="p-3.5 font-bold text-blue-700">Digital Microprocessor Control (Exact RPM &amp; RCF $g$-force)</td>
+        <td className="p-3.5 font-bold text-blue-700">Digital Microprocessor Control (Exact RPM &amp; RCF g-force)</td>
       </tr>
       <tr className="bg-slate-50/50 hover:bg-slate-50">
         <td className="p-3.5 font-bold border-r border-slate-200">Tube Capacity Options</td>
@@ -193,7 +195,7 @@ Modern brushless centrifuges come standard with an **electronic safety lid inter
 Regardless of whether you choose a traditional entry-level unit or an advanced brushless system, **improper rotor balancing is the #1 cause of motor bearing failure and benchtop accidents** [[2](https://cambridgeenviro.com/blogs/news/how-to-balance-a-centrifuge-canada)].
 
 ### The Symmetry Rule of Centrifugation
-When loading sample tubes into your centrifuge rotor, every individual tube must be opposed by a tube of identical weight directly $180^\circ$ across the rotor center:
+When loading sample tubes into your centrifuge rotor, every individual tube must be opposed by a tube of identical weight directly 180° across the rotor center:
 
 ```
     2-TUBE BALANCE         3-TUBE BALANCE         4-TUBE BALANCE
@@ -229,28 +231,28 @@ To ensure optimal analytical results for clinical chemistry, serology, and urina
     </thead>
     <tbody className="divide-y divide-slate-200">
       <tr className="bg-white hover:bg-slate-50">
-        <td className="p-3 font-bold border-r border-slate-200">SST (Yellow/Gold Top) / Plain Red Top</td>
-        <td className="p-3 border-r border-slate-200">Serum for Clinical Chemistry &amp; Hormones</td>
-        <td className="p-3 border-r border-slate-200">3,000 – 3,500 RPM (1,500 – 2,000 $\times g$)</td>
-        <td className="p-3">10 – 15 Minutes</td>
+        <td className="p-3.5 font-bold border-r border-slate-200">SST (Yellow/Gold Top) / Plain Red Top</td>
+        <td className="p-3.5 border-r border-slate-200">Serum for Clinical Chemistry &amp; Hormones</td>
+        <td className="p-3.5 border-r border-slate-200">3,000 – 3,500 RPM (1,500 – 2,000 x g)</td>
+        <td className="p-3.5">10 – 15 Minutes</td>
       </tr>
       <tr className="bg-slate-50/50 hover:bg-slate-50">
-        <td className="p-3 font-bold border-r border-slate-200">Sodium Citrate (Light Blue Top)</td>
-        <td className="p-3 border-r border-slate-200">Platelet-Poor Plasma (PPP) for PT/INR &amp; APTT</td>
-        <td className="p-3 border-r border-slate-200">3,000 – 3,500 RPM (1,500 $\times g$)</td>
-        <td className="p-3">15 Minutes</td>
+        <td className="p-3.5 font-bold border-r border-slate-200">Sodium Citrate (Light Blue Top)</td>
+        <td className="p-3.5 border-r border-slate-200">Platelet-Poor Plasma (PPP) for PT/INR &amp; APTT</td>
+        <td className="p-3.5 border-r border-slate-200">3,000 – 3,500 RPM (1,500 x g)</td>
+        <td className="p-3.5">15 Minutes</td>
       </tr>
       <tr className="bg-white hover:bg-slate-50">
-        <td className="p-3 font-bold border-r border-slate-200">Urine Conical Centrifuge Tube</td>
-        <td className="p-3 border-r border-slate-200">Urinary Sediment for Microscopy (Casts/Crystals)</td>
-        <td className="p-3 border-r border-slate-200">1,500 – 2,000 RPM (400 – 500 $\times g$)</td>
-        <td className="p-3">5 Minutes</td>
+        <td className="p-3.5 font-bold border-r border-slate-200">Urine Conical Centrifuge Tube</td>
+        <td className="p-3.5 border-r border-slate-200">Urinary Sediment for Microscopy (Casts/Crystals)</td>
+        <td className="p-3.5 border-r border-slate-200">1,500 – 2,000 RPM (400 – 500 x g)</td>
+        <td className="p-3.5">5 Minutes</td>
       </tr>
       <tr className="bg-slate-50/50 hover:bg-slate-50">
-        <td className="p-3 font-bold border-r border-slate-200">Capillary Microhematocrit Tube</td>
-        <td className="p-3 border-r border-slate-200">Packed Cell Volume (PCV / Hematocrit)</td>
-        <td className="p-3 border-r border-slate-200">11,000 – 12,000 RPM (14,000+ $\times g$)</td>
-        <td className="p-3">5 Minutes</td>
+        <td className="p-3.5 font-bold border-r border-slate-200">Capillary Microhematocrit Tube</td>
+        <td className="p-3.5 border-r border-slate-200">Packed Cell Volume (PCV / Hematocrit)</td>
+        <td className="p-3.5 border-r border-slate-200">11,000 – 12,000 RPM (14,000+ x g)</td>
+        <td className="p-3.5">5 Minutes</td>
       </tr>
     </tbody>
   </table>
@@ -260,8 +262,8 @@ To ensure optimal analytical results for clinical chemistry, serology, and urina
 
 ## 7. Frequently Asked Questions (FAQs) for Laboratory Centrifuges in Kenya
 
-### Q1: What is the main difference between RPM and RCF ($g$-force)?
-RPM (Revolutions Per Minute) simply measures how many times the rotor turns per minute. RCF (Relative Centrifugal Force, measured in $g$) is the actual gravitational force exerted on the sample. RCF depends on both RPM and rotor radius. Diagnostic protocols require specific RCF to properly activate gel barriers and separate blood without causing hemolysis.
+### Q1: What is the main difference between RPM and RCF (g-force)?
+RPM (Revolutions Per Minute) simply measures how many times the rotor turns per minute. RCF (Relative Centrifugal Force, measured in g-force or g) is the actual gravitational force exerted on the sample. RCF depends on both RPM and rotor radius. Diagnostic protocols require specific RCF to properly activate gel barriers and separate blood without causing hemolysis.
 
 ### Q2: Why is a brushless centrifuge recommended for busy Kenyan hospitals?
 Brushless centrifuges eliminate carbon brushes, meaning zero carbon dust, whisper-quiet operation, minimal chamber heat buildup, and a significantly longer operating lifespan. They also feature electronic lid safety sensors that halt the motor immediately if the lid is opened, ensuring maximum staff safety.
