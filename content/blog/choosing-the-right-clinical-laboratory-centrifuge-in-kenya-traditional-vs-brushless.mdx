@@ -22,15 +22,34 @@ In medical laboratory diagnostics, over **70% of all laboratory testing errors o
 
 Centrifugation represents the critical link between phlebotomy and analytical testing. When whole blood is spun at the proper Relative Centrifugal Force ($g$-force) and duration, the cellular components (erythrocytes, leukocytes, and platelets) separate cleanly from the liquid phase (serum or plasma).
 
-```
-   ┌────────────────────────────────────────────────────────────────────────┐
-   │             BLOOD FRACTION SEPARATION DURING CENTRIFUGATION            │
-   ├────────────────────────────────────────────────────────────────────────┤
-   │  [ Serum / Plasma Layer ]  ➔  Electrolytes, Enzymes, Hormones, Lipids  │
-   │  [ Buffy Coat Layer ]      ➔  White Blood Cells (WBCs) & Platelets     │
-   │  [ Gel Barrier / RBCs ]    ➔  Separator Gel Barrier & Packed Red Cells │
-   └────────────────────────────────────────────────────────────────────────┘
-```
+<div className="overflow-x-auto my-6">
+  <table className="min-w-full border border-slate-200 text-left text-xs text-slate-800 rounded-xl overflow-hidden shadow-xs">
+    <thead className="bg-slate-100 border-b border-slate-200 text-slate-900 font-bold uppercase tracking-wider">
+      <tr>
+        <th className="p-3.5 border-r border-slate-200">Separated Fraction Layer</th>
+        <th className="p-3.5 border-r border-slate-200">Biological Constituents</th>
+        <th className="p-3.5">Primary Clinical Diagnostic Target in Kenya</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-slate-200">
+      <tr className="bg-white hover:bg-slate-50">
+        <td className="p-3.5 font-bold border-r border-slate-200 text-amber-700">Top: Serum / Plasma Layer</td>
+        <td className="p-3.5 border-r border-slate-200">Liquid fraction containing water, proteins, electrolytes, enzymes &amp; hormones</td>
+        <td className="p-3.5">Liver/Kidney chemistry panels, immunoassay serology &amp; coagulation profiling</td>
+      </tr>
+      <tr className="bg-slate-50/50 hover:bg-slate-50">
+        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">Middle: Buffy Coat Layer</td>
+        <td className="p-3.5 border-r border-slate-200">Thin white interphase containing Leukocytes (WBCs) &amp; Platelets</td>
+        <td className="p-3.5">DNA extraction, specialized hematology differentials &amp; blood banking cross-matches</td>
+      </tr>
+      <tr className="bg-white hover:bg-slate-50">
+        <td className="p-3.5 font-bold border-r border-slate-200 text-red-700">Bottom: Gel Barrier / Packed RBCs</td>
+        <td className="p-3.5 border-r border-slate-200">Thixotropic polyester polymer gel &amp; concentrated Erythrocytes (RBCs)</td>
+        <td className="p-3.5">Prevents cellular glycolysis and protects serum potassium ($\text{K}^+$) from red cell leakage</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ### RPM vs. RCF ($g$-force): Why Speed Alone is Not Enough
 A common mistake among laboratory buyers in Kenya is evaluating centrifuges solely by **Revolutions Per Minute (RPM)**. However, biological separation is driven by **Relative Centrifugal Force (RCF)**, measured in gravities ($g$). 

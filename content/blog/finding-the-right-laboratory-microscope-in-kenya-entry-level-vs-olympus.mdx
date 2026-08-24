@@ -136,20 +136,60 @@ The global benchmark in this tier is the **Olympus CX Series**—specifically th
 
 A clinical microscope is deployed across several critical diagnostic benches. Choosing the right optical tier ensures your technologist can reliably identify key pathology:
 
-```
-   ┌────────────────────────────────────────────────────────────────────────┐
-   │             PRIMARY MICROSCOPY BENCH DISCIPLINES IN KENYA              │
-   ├───────────────────┬───────────────────┬────────────────────────────────┤
-   │  1. Parasitology  │  2. Microbiology  │  3. Urinalysis & Fluids        │
-   │  • Malaria Smears │  • Gram Staining  │  • Urinary Sediments & Casts   │
-   │  • Giemsa 100x Oil│  • AFB (TB ZN)    │  • Wet Prep / Wet Mounts       │
-   │  • Stool O&P      │  • Fungal Hyphae  │  • Synovial & CSF Cell Count   │
-   ├───────────────────┼───────────────────┼────────────────────────────────┤
-   │  4. Hematology    │  5. Histopathology│  6. Semen Analysis             │
-   │  • WBC Differential│ • Tissue Biopsies│  • Motility & Morphology       │
-   │  • RBC Morphology │  • Pap Smears     │  • Vitality Staining           │
-   └───────────────────┴───────────────────┴────────────────────────────────┘
-```
+<div className="overflow-x-auto my-6">
+  <table className="min-w-full border border-slate-200 text-left text-xs text-slate-800 rounded-xl overflow-hidden shadow-xs">
+    <thead className="bg-slate-100 border-b border-slate-200 text-slate-900 font-bold uppercase tracking-wider">
+      <tr>
+        <th className="p-3.5 border-r border-slate-200">Diagnostic Bench Discipline</th>
+        <th className="p-3.5 border-r border-slate-200">Key Pathology &amp; Smear Types</th>
+        <th className="p-3.5">Optical Requirements in Kenya</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-slate-200">
+      <tr className="bg-white hover:bg-slate-50">
+        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">1. Parasitology</td>
+        <td className="p-3.5 border-r border-slate-200">
+          • Giemsa thick/thin blood smears for <em>Plasmodium falciparum</em> malaria<br />
+          • Wet mounts for stool Ova &amp; Parasites (O&amp;P) and protozoan cysts
+        </td>
+        <td className="p-3.5">100x Oil immersion with high numerical aperture (N.A. 1.25) Abbe condenser and iris diaphragm.</td>
+      </tr>
+      <tr className="bg-slate-50/50 hover:bg-slate-50">
+        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">2. Microbiology</td>
+        <td className="p-3.5 border-r border-slate-200">
+          • Gram staining (Gram-positive vs. Gram-negative bacteria)<br />
+          • Ziehl-Neelsen (ZN) acid-fast bacilli (AFB) for TB screening<br />
+          • Fungal hyphae &amp; yeast cell identification (KOH mounts)
+        </td>
+        <td className="p-3.5">Plan Achromat optics (Olympus CX tier) eliminate color fringing and chromatic aberration on stained bacteria.</td>
+      </tr>
+      <tr className="bg-white hover:bg-slate-50">
+        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">3. Urinalysis &amp; Body Fluids</td>
+        <td className="p-3.5 border-r border-slate-200">
+          • Urinary sediments (hyaline/granular casts, calcium oxalate crystals, RBCs/WBCs)<br />
+          • Synovial, pleural &amp; cerebrospinal fluid (CSF) cell counts
+        </td>
+        <td className="p-3.5">10x and 40x dry objectives with fine contrast adjustment and coaxial focus tension control.</td>
+      </tr>
+      <tr className="bg-slate-50/50 hover:bg-slate-50">
+        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">4. Manual Hematology</td>
+        <td className="p-3.5 border-r border-slate-200">
+          • Manual WBC differential counts (neutrophils, bands, blasts)<br />
+          • RBC morphological abnormalities (sickle cells, target cells, schistocytes)
+        </td>
+        <td className="p-3.5">Flat field of view (FN 20 mm) across the full scanning area to review peripheral blood films efficiently.</td>
+      </tr>
+      <tr className="bg-white hover:bg-slate-50">
+        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">5. Cytology &amp; Semen Analysis</td>
+        <td className="p-3.5 border-r border-slate-200">
+          • Pap smears and fine-needle aspirate cytology (FNAC)<br />
+          • Semen motility, progressive velocity, vitality &amp; morphology
+        </td>
+        <td className="p-3.5">Consistent daylight LED illumination (CX23) to eliminate specimen thermal heating during live sperm motility observation.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 1. **Malaria Parasite Detection (Blood Smears):** Under $1000\times$ oil immersion magnification, distinguishing *Plasmodium falciparum* ring trophozoites, Maurer’s clefts, and gametocytes from platelet artifacts requires high resolving power ($N.A. 1.25$ Abbe condenser with iris alignment).
 2. **Stool & Urine Parasitology:** Examining wet saline preparations for *Entamoeba histolytica* cysts, *Giardia lamblia* trophozoites, *Schistosoma mansoni* / *haematobium* ova, and hookworm eggs.
