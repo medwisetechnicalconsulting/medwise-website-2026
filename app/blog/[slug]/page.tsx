@@ -100,8 +100,8 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      {/* Header - Clean Light Design */}
-      <article className="bg-gradient-to-b from-blue-50/80 via-white to-slate-50 text-slate-900 py-12 sm:py-16 border-b border-slate-200">
+      {/* Header - Clean Editorial Design */}
+      <article className="bg-slate-50 text-slate-900 py-12 sm:py-16 border-b border-slate-200">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-4">
           <Link
             href="/blog"
@@ -147,7 +147,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
               src={post.image}
               alt={post.title}
               title={post.title}
-              caption="Technical Overview — Click image to expand high-resolution view"
+              caption="Technical Overview: Click image to expand high-resolution view"
             />
           )}
 
@@ -162,14 +162,13 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
             </div>
           )}
 
-
           {/* MDX Rendered Body */}
           <div className="prose prose-slate prose-blue max-w-none prose-headings:font-extrabold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-li:text-slate-700 prose-strong:text-slate-900 prose-table:text-sm">
             <MDXRemote source={post.content} />
           </div>
 
           {/* Internal Linking CTA Box */}
-          <div className="mt-12 rounded-3xl bg-blue-50 border border-blue-200 p-8 text-slate-900 space-y-4 shadow-sm">
+          <div className="mt-12 rounded-xl bg-blue-50 border border-blue-200 p-8 text-slate-900 space-y-4 shadow-xs">
             <h3 className="text-xl font-extrabold text-blue-950">Need Engineering Guidance for Your Facility?</h3>
             <p className="text-sm text-slate-700 leading-relaxed">
               Medwise Technical Consulting provides brand-neutral equipment selection, procurement, installation, and calibration across Kenya. Speak with our biomedical team today.
@@ -179,14 +178,14 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
                 href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Inquiry%20from%20blog%20post:%20${encodeURIComponent(post.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-700 px-5 py-3 text-xs font-bold text-white hover:bg-blue-800 transition-colors shadow-xs"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-5 py-3 text-xs font-bold text-white hover:bg-blue-800 transition-colors shadow-xs"
               >
                 <MessageSquare className="h-4 w-4" />
                 <span>Chat on WhatsApp</span>
               </a>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-xs font-bold text-slate-800 hover:bg-slate-50 transition-colors shadow-2xs"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-3 text-xs font-bold text-slate-800 hover:bg-slate-50 transition-colors shadow-xs"
               >
                 <span>View Our Technical Services</span>
               </Link>

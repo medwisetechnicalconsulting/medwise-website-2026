@@ -174,7 +174,7 @@ export function getMedicalBusinessSchema() {
             '@type': 'Service',
             name: 'Installation & Calibration',
             description:
-              'Seamless device installation and precise calibration to manufacturer and regulatory standards.',
+              'Certified medical device installation, room commissioning, and precise metrology calibration to manufacturer standards.',
           },
         },
         {

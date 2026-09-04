@@ -83,7 +83,7 @@ export function getServicesList(): ServiceData[] {
       image: '/images/services/staff-training.png',
       alt: 'Staff operational training',
       title: 'Staff Operational Training',
-      subtitle: 'Empowering Your Clinical Team',
+      subtitle: 'Hands-On Clinical Operator Protocols',
       description: 'Hands-on training for clinical operators, lab technologists, and facility staff.',
       features: [
         'On-site operational workflows',

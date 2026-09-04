@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: `${SITE_CONFIG.name} — Technical Services & Medical Calibration`,
+        alt: `${SITE_CONFIG.name}: Technical Services & Medical Calibration`,
       },
     ],
   },
@@ -56,21 +56,21 @@ export default function ServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      {/* Services Hero Header - Clean Light Design */}
-      <section className="bg-gradient-to-b from-blue-50/80 via-white to-slate-50 text-slate-900 py-16 lg:py-20 border-b border-slate-200">
+      {/* Services Hero Header - Clean Editorial Design */}
+      <section className="bg-slate-50 text-slate-900 py-14 lg:py-20 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900 shadow-2xs">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900">
               <ShieldCheck className="h-4 w-4 text-red-600" />
-              <span>Biomedical Engineering Excellence</span>
+              <span>Biomedical Engineering Field Services</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
-              Our Technical Services & Solutions
+              Technical Services & Medical Equipment Support
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Medwise Technical Consulting provides comprehensive end-to-end support throughout the medical device lifecycle. From initial technical feasibility to routine metrological calibration, we protect your clinical investments.
+              Medwise Technical Consulting provides structured biomedical engineering support across the medical device lifecycle. From pre-purchase clinical workflow feasibility to scheduled metrology calibration, we protect your capital equipment investments.
             </p>
           </div>
         </div>
@@ -78,17 +78,17 @@ export default function ServicesPage() {
 
       {/* Detailed Services Sections */}
       <section className="py-16 sm:py-24 bg-slate-50 space-y-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
 
           {/* Service 1: Pre-Purchase Consulting */}
-          <div id="consulting" className="rounded-3xl bg-white p-8 sm:p-12 border border-slate-200 shadow-sm space-y-6 scroll-mt-24">
+          <div id="consulting" className="rounded-xl bg-white p-8 sm:p-10 border border-slate-200 shadow-xs space-y-6 scroll-mt-24">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6">
               <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-700 text-white shadow-md">
-                  <FileSearch className="h-7 w-7" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-700 text-white shadow-xs">
+                  <FileSearch className="h-6 w-6" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-extrabold text-slate-900">Pre-Purchase Consulting & Needs Assessment</h2>
+                  <h2 className="text-2xl font-extrabold text-slate-900">Pre-Purchase Consulting & Technical Audits</h2>
                   <p className="text-xs font-bold text-blue-700 uppercase tracking-wider">Independent Advisory & Specification Drafting</p>
                 </div>
               </div>
@@ -96,25 +96,25 @@ export default function ServicesPage() {
                 href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Inquiry%20regarding%20Pre-Purchase%20Consulting`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-4 py-2.5 text-xs font-bold text-white hover:bg-blue-800 transition-colors shadow-xs"
+                className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-xs font-bold text-white hover:bg-blue-800 transition-colors shadow-xs"
               >
                 <MessageSquare className="h-4 w-4" />
                 <span>Consult an Engineer</span>
               </a>
             </div>
 
-            <p className="text-slate-700 leading-relaxed">
+            <p className="text-slate-700 leading-relaxed text-sm">
               Selecting medical equipment requires evaluating clinical workflow, expected patient volume, space constraints, power stability, and total cost of ownership. Our biomedical engineering team conducts thorough site readiness audits, creates technical RFP specifications, and evaluates vendor quotes neutrally.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
               {[
                 'Workload & throughput modeling',
-                'Power & radiation safety evaluation',
+                'Power & electrical safety evaluation',
                 'Multi-vendor specification comparison',
-                'ROI & total cost of ownership (TCO)',
+                'Consumable cost & total cost of ownership',
               ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 rounded-xl bg-slate-50 p-3.5 border border-slate-200/80 text-xs font-bold text-slate-800">
+                <div key={idx} className="flex items-start gap-2.5 rounded-lg bg-slate-50 p-3.5 border border-slate-200 text-xs font-semibold text-slate-800">
                   <CheckCircle2 className="h-4 w-4 text-blue-700 shrink-0 mt-0.5" />
                   <span>{item}</span>
                 </div>
@@ -123,22 +123,22 @@ export default function ServicesPage() {
           </div>
 
           {/* Service 2: Equipment Sourcing & Supply */}
-          <div id="sourcing" className="rounded-3xl bg-white p-8 sm:p-12 border border-slate-200 shadow-sm space-y-6 scroll-mt-24">
+          <div id="sourcing" className="rounded-xl bg-white p-8 sm:p-10 border border-slate-200 shadow-xs space-y-6 scroll-mt-24">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6">
               <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-700 text-white shadow-md">
-                  <ShoppingCart className="h-7 w-7" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-700 text-white shadow-xs">
+                  <ShoppingCart className="h-6 w-6" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-extrabold text-slate-900">Quality Medical Device Sourcing & Supply</h2>
-                  <p className="text-xs font-bold text-blue-700 uppercase tracking-wider">Multi-Category Procurement Across Kenya</p>
+                  <h2 className="text-2xl font-extrabold text-slate-900">Medical Device Procurement & Sourcing</h2>
+                  <p className="text-xs font-bold text-blue-700 uppercase tracking-wider">Direct Delivery Across Kenya with Warranty</p>
                 </div>
               </div>
               <a
                 href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Inquiry%20regarding%20Equipment%20Sourcing`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-4 py-2.5 text-xs font-bold text-white hover:bg-blue-800 transition-colors shadow-xs"
+                className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-xs font-bold text-white hover:bg-blue-800 transition-colors shadow-xs"
               >
                 <MessageSquare className="h-4 w-4" />
                 <span>Request Equipment Quote</span>
@@ -146,56 +146,56 @@ export default function ServicesPage() {
             </div>
 
             {/* Prominent Neutrality Disclaimer */}
-            <div className="rounded-2xl border border-blue-200 bg-blue-50/80 p-4 text-sm text-blue-950 font-semibold">
-              💡 <strong>Neutral Advisory Commitment:</strong> We supply equipment, but our first job is to advise you neutrally. We never push proprietary single-brand sales margins over your clinic’s actual clinical requirements.
+            <div className="rounded-lg border border-blue-200 bg-blue-50/70 p-4 text-xs sm:text-sm text-blue-950 font-medium">
+              <strong className="text-blue-900 font-bold">Neutral Advisory Commitment:</strong> We supply equipment, but our primary duty is objective guidance. We do not push locked, single-brand distributorships over your laboratory’s clinical reality.
             </div>
 
-            <p className="text-slate-700 leading-relaxed">
-              We leverage our extensive relationships with trusted international manufacturers to supply high-performance equipment across major healthcare verticals:
+            <p className="text-slate-700 leading-relaxed text-sm">
+              We leverage direct supply channels to provide verified clinical instruments with manufacturer warranty and local spare parts availability:
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-              <div className="rounded-2xl bg-slate-50 p-5 border border-slate-200 space-y-2">
+              <div className="rounded-lg bg-slate-50 p-5 border border-slate-200 space-y-2">
                 <h3 className="font-bold text-slate-900 text-sm">Imaging & Radiology</h3>
                 <p className="text-xs text-slate-600">Digital DR X-Ray generators, Flat Panel Detectors, Ultrasound systems, Mammography, and CR readers.</p>
               </div>
 
-              <div className="rounded-2xl bg-slate-50 p-5 border border-slate-200 space-y-2">
+              <div className="rounded-lg bg-slate-50 p-5 border border-slate-200 space-y-2">
                 <h3 className="font-bold text-slate-900 text-sm">Laboratory & Diagnostics</h3>
-                <p className="text-xs text-slate-600">Automated 3-part / 5-part Hematology analyzers (such as Zybio Z3), Clinical Chemistry, Binocular Microscopes, Centrifuges, and Incubators.</p>
+                <p className="text-xs text-slate-600">Automated 3-part and 5-part Hematology analyzers, Clinical Chemistry analyzers, Centrifuges, and LED Microscopes.</p>
               </div>
 
-              <div className="rounded-2xl bg-slate-50 p-5 border border-slate-200 space-y-2">
+              <div className="rounded-lg bg-slate-50 p-5 border border-slate-200 space-y-2">
                 <h3 className="font-bold text-slate-900 text-sm">ICU, Theatre & Maternity</h3>
-                <p className="text-xs text-slate-600">Patient vital sign monitors, Defibrillators, Anesthesia machines, Suction units, Fetal Dopplers, and Infant Incubators.</p>
+                <p className="text-xs text-slate-600">Multiparameter patient monitors, Defibrillators, Surgical suction machines, Fetal Dopplers, and Infant Warmers.</p>
               </div>
             </div>
           </div>
 
           {/* Service 3: Installation & Calibration */}
-          <div id="installation" className="rounded-3xl bg-white p-8 sm:p-12 border border-slate-200 shadow-sm space-y-6 scroll-mt-24">
+          <div id="installation" className="rounded-xl bg-white p-8 sm:p-10 border border-slate-200 shadow-xs space-y-6 scroll-mt-24">
             <div className="flex items-center gap-4 border-b border-slate-100 pb-6">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-700 text-white shadow-md">
-                <Settings className="h-7 w-7" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-700 text-white shadow-xs">
+                <Settings className="h-6 w-6" />
               </div>
               <div>
-                <h2 className="text-2xl font-extrabold text-slate-900">Seamless Installation & Precision Calibration</h2>
-                <p className="text-xs font-bold text-blue-700 uppercase tracking-wider">Certified Metrological Accuracy</p>
+                <h2 className="text-2xl font-extrabold text-slate-900">Installation, Commissioning & Metrology Calibration</h2>
+                <p className="text-xs font-bold text-blue-700 uppercase tracking-wider">Certified Metrological Accuracy & Electrical Safety</p>
               </div>
             </div>
 
-            <p className="text-slate-700 leading-relaxed">
-              Proper installation and baseline calibration prevent premature device failure and clinical errors. Our qualified biomedical engineers execute physical positioning, electrical safety checks, and metrological adjustment using certified simulator tools.
+            <p className="text-slate-700 leading-relaxed text-sm">
+              Proper installation and baseline calibration prevent premature component wear and diagnostic errors. Our qualified biomedical engineers execute physical positioning, earth ground verification, and metrological adjustment using calibrated measurement tools.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 'Power conditioning & AVR setup',
                 'Metrological simulator calibration',
-                'Quality Control (QC) verification',
+                'Quality Control (QC) run validation',
                 'Radiation shielding safety audits',
               ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 rounded-xl bg-slate-50 p-3.5 border border-slate-200/80 text-xs font-bold text-slate-800">
+                <div key={idx} className="flex items-start gap-2.5 rounded-lg bg-slate-50 p-3.5 border border-slate-200 text-xs font-semibold text-slate-800">
                   <CheckCircle2 className="h-4 w-4 text-blue-700 shrink-0 mt-0.5" />
                   <span>{item}</span>
                 </div>
@@ -204,36 +204,36 @@ export default function ServicesPage() {
           </div>
 
           {/* Service 4: Staff Training */}
-          <div id="training" className="rounded-3xl bg-white p-8 sm:p-12 border border-slate-200 shadow-sm space-y-6 scroll-mt-24">
+          <div id="training" className="rounded-xl bg-white p-8 sm:p-10 border border-slate-200 shadow-xs space-y-6 scroll-mt-24">
             <div className="flex items-center gap-4 border-b border-slate-100 pb-6">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-700 text-white shadow-md">
-                <GraduationCap className="h-7 w-7" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-700 text-white shadow-xs">
+                <GraduationCap className="h-6 w-6" />
               </div>
               <div>
-                <h2 className="text-2xl font-extrabold text-slate-900">Clinical & Laboratory Staff Operational Training</h2>
-                <p className="text-xs font-bold text-blue-700 uppercase tracking-wider">Empowering Your Team for Maximum Uptime</p>
+                <h2 className="text-2xl font-extrabold text-slate-900">Clinical & Laboratory Operator Training</h2>
+                <p className="text-xs font-bold text-blue-700 uppercase tracking-wider">Standard Operating Procedures & Quality Control Workflows</p>
               </div>
             </div>
 
-            <p className="text-slate-700 leading-relaxed">
-              Equipment is only as effective as the hands operating it. We deliver hands-on operational training for doctors, radiographers, nurses, and laboratory technologists. We train your personnel on routine workflows, daily quality control checks, reagent preparation, and basic user troubleshooting.
+            <p className="text-slate-700 leading-relaxed text-sm">
+              Equipment is only as reliable as the personnel operating it. We deliver hands-on operational training for radiographers, laboratory technologists, and nursing teams covering daily startup protocols, calibration verification, reagent management, and frontline troubleshooting.
             </p>
           </div>
 
           {/* Service 5: Maintenance & Service */}
-          <div id="maintenance" className="rounded-3xl bg-white p-8 sm:p-12 border border-slate-200 shadow-sm space-y-6 scroll-mt-24">
+          <div id="maintenance" className="rounded-xl bg-white p-8 sm:p-10 border border-slate-200 shadow-xs space-y-6 scroll-mt-24">
             <div className="flex items-center gap-4 border-b border-slate-100 pb-6">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-700 text-white shadow-md">
-                <Activity className="h-7 w-7" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-700 text-white shadow-xs">
+                <Activity className="h-6 w-6" />
               </div>
               <div>
-                <h2 className="text-2xl font-extrabold text-slate-900">Comprehensive Maintenance, Service & QC Analysis</h2>
-                <p className="text-xs font-bold text-blue-700 uppercase tracking-wider">Proactive Technical Support & Rapid Repair</p>
+                <h2 className="text-2xl font-extrabold text-slate-900">Preventative Maintenance & Field Breakdown Service</h2>
+                <p className="text-xs font-bold text-blue-700 uppercase tracking-wider">Planned Servicing, Diagnostics & Rapid Response</p>
               </div>
             </div>
 
-            <p className="text-slate-700 leading-relaxed">
-              Our core business revolves around providing exceptional after-sales support and ongoing maintenance. We offer tailored Preventive Maintenance Contracts (PMC), rapid emergency field dispatch (like motor drive board repairs), genuine replacement components, and documented quality control verification.
+            <p className="text-slate-700 leading-relaxed text-sm">
+              Our core engineering operations center on dependable technical support and scheduled servicing. We provide structured Service Level Agreements (SLAs), emergency breakdown dispatch, genuine spare parts replacement, and documented quality control verifications.
             </p>
           </div>
 

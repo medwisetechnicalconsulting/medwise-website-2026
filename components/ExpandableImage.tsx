@@ -20,7 +20,7 @@ export default function ExpandableImage({ src, alt, title, caption }: Expandable
       <div className="space-y-2">
         <div
           onClick={() => setIsOpen(true)}
-          className="relative aspect-video sm:aspect-[21/9] w-full rounded-3xl overflow-hidden border border-slate-200 shadow-md cursor-pointer group bg-slate-100 transition-all hover:border-blue-500/50 hover:shadow-xl"
+          className="relative aspect-video sm:aspect-[21/9] w-full rounded-xl overflow-hidden border border-slate-200 shadow-xs cursor-pointer group bg-slate-100 transition-all hover:border-slate-400"
         >
           <Image
             src={src}
@@ -28,14 +28,14 @@ export default function ExpandableImage({ src, alt, title, caption }: Expandable
             fill
             priority
             sizes="(max-width: 768px) 100vw, 1200px"
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            className="object-cover object-center group-hover:scale-102 transition-transform duration-300"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+          <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/10 transition-colors" />
 
           {/* Hover Expand Badge */}
-          <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-slate-950/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-xl border border-white/20 shadow-lg group-hover:scale-105 transition-transform">
+          <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-slate-900/90 text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-white/20 shadow-md">
             <ZoomIn className="h-3.5 w-3.5 text-blue-400" />
-            <span>Click to Expand Image</span>
+            <span>Click to Expand</span>
           </div>
         </div>
 
@@ -49,7 +49,7 @@ export default function ExpandableImage({ src, alt, title, caption }: Expandable
       {/* Lightbox Fullscreen Modal */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-slate-950/95 flex flex-col items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200"
           onClick={() => setIsOpen(false)}
         >
           {/* Top Bar Controls */}
@@ -64,7 +64,7 @@ export default function ExpandableImage({ src, alt, title, caption }: Expandable
                 e.stopPropagation();
                 setIsOpen(false);
               }}
-              className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-white transition-colors cursor-pointer border border-white/10 flex items-center gap-1 text-xs font-bold"
+              className="p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-colors cursor-pointer border border-white/10 flex items-center gap-1 text-xs font-bold"
             >
               <X className="h-4 w-4" />
               <span>Close</span>
@@ -73,7 +73,7 @@ export default function ExpandableImage({ src, alt, title, caption }: Expandable
 
           {/* Full Resolution Image Container */}
           <div
-            className="relative w-full max-w-6xl max-h-[80vh] aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+            className="relative w-full max-w-6xl max-h-[80vh] aspect-video rounded-xl overflow-hidden shadow-2xl border border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
             <Image

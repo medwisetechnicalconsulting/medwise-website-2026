@@ -437,7 +437,7 @@ export default function AdminDashboardPage() {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 text-white">
-        <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
+        <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-xl p-8 shadow-2xl space-y-6">
           <div className="text-center space-y-2">
             <div className="mx-auto h-14 w-14 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
               <Lock className="h-7 w-7" />
@@ -825,7 +825,7 @@ export default function AdminDashboardPage() {
 
         {/* TAB 3: SITE SETTINGS */}
         {activeTab === 'settings' && (
-          <form onSubmit={handleSaveSettings} className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 max-w-3xl mx-auto">
+          <form onSubmit={handleSaveSettings} className="bg-slate-900 border border-slate-800 rounded-xl p-6 sm:p-8 space-y-6 max-w-3xl mx-auto">
             <div className="space-y-1 border-b border-slate-800 pb-4">
               <h2 className="text-lg font-extrabold text-white">Website Information & Contact Settings</h2>
               <p className="text-xs text-slate-400">
@@ -942,7 +942,7 @@ export default function AdminDashboardPage() {
       {/* MODAL: BLOG POST EDITOR / CREATOR */}
       {isBlogModalOpen && (
         <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+          <div className="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
             {/* Modal Header */}
             <div className="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-900">
               <div>
@@ -1152,7 +1152,7 @@ export default function AdminDashboardPage() {
       {/* MODAL: SERVICE EDITOR / CREATOR */}
       {isServiceModalOpen && (
         <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl">
+          <div className="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
             <div className="p-6 border-b border-slate-800 flex items-center justify-between">
               <h3 className="text-base font-extrabold text-white">
                 {editingServiceId ? 'Edit Service' : 'Add New Service'}

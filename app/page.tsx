@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Medwise Technical Consulting — Medical Device Advisory & Sourcing Kenya',
+    title: 'Medwise Technical Consulting: Medical Device Advisory & Sourcing Kenya',
     description:
-      'Independent medical device consulting, equipment procurement, calibration, and biomedical maintenance for healthcare facilities in Kenya.',
+      'Independent biomedical engineering consulting, medical equipment sourcing, and laboratory maintenance for healthcare facilities across Kenya.',
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: `${SITE_CONFIG.name} — Independent Medical Device Advisory Kenya`,
+        alt: `${SITE_CONFIG.name}: Independent Medical Device Advisory Kenya`,
       },
     ],
   },

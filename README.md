@@ -1,4 +1,4 @@
-# Medwise Technical Consulting — Website & SEO Platform
+# Medwise Technical Consulting: Website & SEO Platform
 
 Production web platform for **Medwise Technical Consulting**, a Kenya-based independent medical equipment consulting firm (advisory + sourcing + installation + training + maintenance).
 

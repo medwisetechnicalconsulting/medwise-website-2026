@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: `${SITE_CONFIG.name} — Technical Knowledge & Guides`,
+        alt: `${SITE_CONFIG.name}: Technical Knowledge & Guides`,
       },
     ],
   },
@@ -50,13 +50,13 @@ export default function BlogIndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      {/* Header - Clean Light Design */}
-      <section className="bg-gradient-to-b from-blue-50/80 via-white to-slate-50 text-slate-900 py-16 lg:py-20 border-b border-slate-200">
+      {/* Header - Clean Editorial Design */}
+      <section className="bg-slate-50 text-slate-900 py-14 lg:py-20 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900 shadow-2xs">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900">
               <BookOpen className="h-4 w-4 text-red-600" />
-              <span>Biomedical Knowledge & SEO Hub</span>
+              <span>Biomedical Knowledge & Technical Guides</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
@@ -78,7 +78,7 @@ export default function BlogIndexPage() {
             {posts.map((post) => (
               <article
                 key={post.slug}
-                className="flex flex-col justify-between rounded-3xl bg-white border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-blue-500/40 transition-all group"
+                className="flex flex-col justify-between rounded-xl bg-white border border-slate-200 overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 transition-all group"
               >
                 {/* Card Featured Image */}
                 <Link href={`/blog/${post.slug}`} className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 block">
@@ -87,11 +87,11 @@ export default function BlogIndexPage() {
                     alt={post.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center group-hover:scale-102 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity" />
+                  <div className="absolute inset-0 bg-slate-950/10 group-hover:bg-transparent transition-colors" />
                   <div className="absolute top-4 left-4">
-                    <span className="font-bold text-blue-900 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs border border-white/50 shadow-xs">
+                    <span className="font-semibold text-slate-800 bg-white/95 px-2.5 py-1 rounded-md text-xs border border-slate-200 shadow-xs">
                       {post.category}
                     </span>
                   </div>

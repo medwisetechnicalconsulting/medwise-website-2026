@@ -2,139 +2,100 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { MessageSquare, Phone, ShieldCheck, CheckCircle2, ArrowRight, Award, Wrench, Sparkles } from 'lucide-react';
+import { MessageSquare, Phone, ShieldCheck, CheckCircle2, ArrowRight, Award, Wrench } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-slate-900 py-16 sm:py-20 lg:py-28 text-white min-h-[80vh] flex items-center">
-      {/* Background Image with High Visibility */}
+    <section className="relative overflow-hidden bg-slate-950 py-16 sm:py-20 lg:py-24 text-white min-h-[75vh] flex items-center border-b border-slate-800">
+      {/* Authentic Hero Background Image */}
       <Image
         src="/images/hero-bg.jpg"
-        alt="Medwise Technical Consulting biomedical engineers evaluating medical equipment"
+        alt="Medwise Technical Consulting biomedical engineers evaluating clinical medical equipment"
         fill
         priority
         quality={90}
         sizes="100vw"
-        className="object-cover object-center opacity-75 pointer-events-none"
+        className="object-cover object-center opacity-40 pointer-events-none"
       />
 
-      {/* Balanced Transparent Gradient Overlays for Image Visibility & Text Contrast */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/65 to-slate-900/30 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-slate-950/40 pointer-events-none" />
-
-      {/* Ambient Glows */}
-      <div className="absolute top-1/4 left-10 h-96 w-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none animate-morph-pulse" />
-      <div className="absolute bottom-10 right-10 h-80 w-80 bg-red-600/15 rounded-full blur-3xl pointer-events-none animate-morph-pulse" style={{ animationDelay: '3s' }} />
+      {/* Solid Flat Overlay for Strong Text Contrast & Professional Hierarchy */}
+      <div className="absolute inset-0 bg-slate-950/75 pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-4xl space-y-7">
+        <div className="max-w-3xl space-y-6">
           
-          {/* Top Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-blue-400/40 bg-slate-950/85 px-4 py-2 text-xs sm:text-sm font-bold text-blue-200 shadow-xl backdrop-blur-md"
-          >
-            <ShieldCheck className="h-4 w-4 text-red-500 animate-pulse shrink-0" />
-            <span>Independent Medical Equipment Advisory • Kisumu & Nairobi, Kenya</span>
-            <Sparkles className="h-3.5 w-3.5 text-blue-400 shrink-0" />
-          </motion.div>
+          {/* Top Editorial Label */}
+          <div className="inline-flex items-center gap-2 rounded-md border border-slate-700 bg-slate-900/90 px-3.5 py-1.5 text-xs font-semibold text-slate-200">
+            <ShieldCheck className="h-4 w-4 text-blue-400 shrink-0" />
+            <span>Independent Medical Equipment Advisory • Kisumu &amp; Nairobi, Kenya</span>
+          </div>
 
           {/* Main Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-          >
-            Buy the Right Medical Equipment.{' '}
-            <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-teal-300 bg-clip-text text-transparent">
-              The First Time.
-            </span>
-          </motion.h1>
+          <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            Buy the Right Medical Equipment. The First Time.
+          </h1>
 
-          {/* Subtext */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-lg lg:text-xl text-slate-100 max-w-3xl leading-relaxed font-medium drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]"
-          >
-            Medwise Technical Consulting is a Kenya-based independent medical engineering firm. We evaluate your facility&apos;s clinical needs and budget to advise, source, install, train, and maintain high-value medical devices—without single-brand bias.
-          </motion.p>
+          {/* Supporting Copy */}
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed font-normal">
+            Medwise Technical Consulting is an independent biomedical engineering firm based in Kenya. We evaluate your facility&apos;s clinical workload, space, and power infrastructure to recommend, source, install, and calibrate high-value medical devices without single-brand sales pressure.
+          </p>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
-          >
-            <motion.a
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+          {/* Practical Call to Action Actions */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+            <a
               href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20book%20a%20consultation.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-blue-600/40 hover:bg-blue-500 transition-all border border-blue-400/40"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-5 py-3 text-sm font-bold text-white hover:bg-blue-600 transition-colors shadow-xs"
             >
-              <MessageSquare className="h-5 w-5 fill-white stroke-none" />
+              <MessageSquare className="h-4 w-4 fill-white stroke-none" />
               <span>Chat on WhatsApp</span>
-            </motion.a>
+            </a>
 
-            <motion.a
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+            <a
               href={`tel:${SITE_CONFIG.telephone}`}
-              className="inline-flex items-center justify-center gap-2.5 rounded-xl border border-slate-500 bg-slate-950/85 px-6 py-3.5 text-sm font-bold text-white shadow-xl backdrop-blur-md hover:bg-slate-900 hover:border-slate-400 transition-all"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-900 px-5 py-3 text-sm font-bold text-white hover:bg-slate-800 hover:border-slate-500 transition-colors shadow-xs"
             >
-              <Phone className="h-5 w-5 text-red-500" />
+              <Phone className="h-4 w-4 text-red-500" />
               <span>Call {SITE_CONFIG.telephone}</span>
-            </motion.a>
+            </a>
 
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-1.5 text-sm font-bold text-blue-200 hover:text-white py-2 sm:px-3 transition-colors group drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]"
+              href="/products"
+              className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold text-slate-300 hover:text-white py-2 sm:px-2 transition-colors group"
             >
-              <span>Book 15-Min Free Consultation</span>
+              <span>Explore Equipment Catalog</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-          </motion.div>
+          </div>
 
-          {/* 3 Core Trust Pillars */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="pt-7 border-t border-slate-700/60 grid grid-cols-1 sm:grid-cols-3 gap-4"
-          >
-            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-950/75 border border-slate-700/70 backdrop-blur-md shadow-lg group hover:border-slate-500 transition-colors">
-              <CheckCircle2 className="h-5 w-5 text-blue-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+          {/* 3 Core Engineering Trust Pillars */}
+          <div className="pt-6 border-t border-slate-800/90 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-900/90 border border-slate-800">
+              <CheckCircle2 className="h-4 w-4 text-blue-400 shrink-0 mt-0.5" />
               <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider">Neutral Advice</h3>
-                <p className="text-xs text-slate-200 font-medium mt-0.5">Comparing options based on clinical need, not sales margins.</p>
+                <h3 className="text-xs font-bold text-white uppercase tracking-wider">Brand Neutral</h3>
+                <p className="text-xs text-slate-400 mt-0.5">We evaluate models against clinical needs, not sales commissions.</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-950/75 border border-slate-700/70 backdrop-blur-md shadow-lg group hover:border-slate-500 transition-colors">
-              <Award className="h-5 w-5 text-red-500 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-900/90 border border-slate-800">
+              <Award className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
               <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider">Value for Money</h3>
-                <p className="text-xs text-slate-200 font-medium mt-0.5">Competitive pricing & transparent procurement costs.</p>
+                <h3 className="text-xs font-bold text-white uppercase tracking-wider">Transparent Costs</h3>
+                <p className="text-xs text-slate-400 mt-0.5">Clear pricing in KSh with upfront total cost of ownership modeling.</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-950/75 border border-slate-700/70 backdrop-blur-md shadow-lg group hover:border-slate-500 transition-colors">
-              <Wrench className="h-5 w-5 text-blue-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-900/90 border border-slate-800">
+              <Wrench className="h-4 w-4 text-blue-400 shrink-0 mt-0.5" />
               <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider">After-Sales Support</h3>
-                <p className="text-xs text-slate-200 font-medium mt-0.5">Flawless installation, calibration & maintenance.</p>
+                <h3 className="text-xs font-bold text-white uppercase tracking-wider">Field Support</h3>
+                <p className="text-xs text-slate-400 mt-0.5">Rapid dispatch from Kisumu HQ and Nairobi for calibration and repairs.</p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>

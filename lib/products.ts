@@ -205,7 +205,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     priceFormatted: 'KSh 380,000',
     tagline: 'Budget-friendly 3-part CBC analyzer with massive 500,000-result memory.',
     description:
-      'The Bioelab EC-30 offers unmatched value for small to medium healthcare facilities establishing or upgrading their diagnostic laboratory. With 60 samples/hour throughput, 9 μL sample aspiration, built-in thermal printer, and one-key blockage removal, it delivers maximum diagnostic return on investment.',
+      'The Bioelab EC-30 delivers dependable, cost-effective performance for small to medium healthcare facilities establishing or upgrading their diagnostic laboratory. With 60 samples/hour throughput, 9 μL sample aspiration, built-in thermal printer, and one-key blockage removal, it delivers maximum diagnostic return on investment.',
     badge: 'Best Value Investment',
     highlights: [
       'Throughput: 60 tests/hour',
@@ -427,7 +427,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     priceFormatted: 'KSh 450,000',
     tagline: 'Zero reagent waste microfluidic disc analyzer delivering full profiles in 12 minutes.',
     description:
-      'The Seamaty SD 1 revolutionizes clinical biochemistry for specialist clinics, mobile medical camps, and low-to-medium volume centers. Utilizing single-use microfluidic reagent discs containing lyophilized beads, it tests 19+ parameters (including enzymes and electrolytes) in just 12 minutes from 100 μL of whole blood—with zero liquid reagent expiry waste.',
+      'The Seamaty SD 1 revolutionizes clinical biochemistry for specialist clinics, mobile medical camps, and low-to-medium volume centers. Utilizing single-use microfluidic reagent discs containing lyophilized beads, it tests 19+ parameters (including enzymes and electrolytes) in just 12 minutes from 100 μL of whole blood, with zero liquid reagent expiry waste.',
     badge: 'Zero Liquid Reagent Waste',
     highlights: [
       'Rapid turnaround: Complete panel in 12 minutes',
@@ -644,7 +644,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Multi-channel POCT analyzer with 4 incubation channels + 1 STAT emergency channel.',
     description:
-      'The Getein 1160 is a multi-channel immunofluorescence quantitative analyzer engineered with 4 constant-temperature (32°C) incubation channels and 1 dedicated STAT emergency channel. With a 10.1-inch HD touchscreen and lyophilized bead test technology, it handles multi-sample patient queues seamlessly.',
+      'The Getein 1160 is a multi-channel immunofluorescence quantitative analyzer engineered with 4 constant-temperature (32°C) incubation channels and 1 dedicated STAT emergency channel. With a 10.1-inch HD touchscreen and lyophilized bead test technology, it handles multi-sample patient queues efficiently without reagent loss.',
     badge: '4 Incubation + 1 STAT Channel',
     highlights: [
       'Channel configuration: 4 incubation channels (32°C constant) + 1 STAT emergency channel',

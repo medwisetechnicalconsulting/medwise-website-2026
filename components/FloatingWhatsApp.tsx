@@ -19,19 +19,19 @@ export default function FloatingWhatsApp() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="mb-3 w-[calc(100vw-3rem)] sm:w-80 rounded-3xl bg-white p-5 shadow-2xl border border-slate-200 text-slate-900 space-y-3"
+            className="mb-3 w-[calc(100vw-3rem)] sm:w-80 rounded-xl bg-white p-5 shadow-xl border border-slate-200 text-slate-900 space-y-3"
           >
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2.5">
                 <div className="relative">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-xs">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-600 text-white font-bold text-xs shadow-xs">
                     <MessageSquare className="h-5 w-5" />
                   </div>
                   <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-emerald-500 border-2 border-white animate-pulse" />
                 </div>
                 <div>
                   <h4 className="text-xs font-extrabold text-slate-900">Medwise Technical Help Desk</h4>
-                  <p className="text-[10px] text-emerald-700 font-bold">● Engineers Online Now</p>
+                  <p className="text-[10px] text-emerald-700 font-bold">● Engineers Online</p>
                 </div>
               </div>
               <button
@@ -52,7 +52,7 @@ export default function FloatingWhatsApp() {
                 href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise,%20I%20would%20like%20to%20request%20an%20equipment%20quote.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-xl bg-slate-50 p-2.5 text-xs font-bold text-slate-800 border border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-900 transition-all"
+                className="flex items-center justify-between rounded-lg bg-slate-50 p-2.5 text-xs font-bold text-slate-800 border border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-900 transition-all"
               >
                 <span className="flex items-center gap-2">
                   <Wrench className="h-4 w-4 text-emerald-600" />
@@ -65,7 +65,7 @@ export default function FloatingWhatsApp() {
                 href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=URGENT%3A%20Biomedical%20Technical%20Support%20Required`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-xl bg-slate-50 p-2.5 text-xs font-bold text-slate-800 border border-slate-200 hover:bg-red-50 hover:border-red-300 hover:text-red-900 transition-all"
+                className="flex items-center justify-between rounded-lg bg-slate-50 p-2.5 text-xs font-bold text-slate-800 border border-slate-200 hover:bg-red-50 hover:border-red-300 hover:text-red-900 transition-all"
               >
                 <span className="flex items-center gap-2">
                   <PhoneCall className="h-4 w-4 text-red-600" />
@@ -78,11 +78,11 @@ export default function FloatingWhatsApp() {
                 href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise,%20I%20would%20like%20to%20book%20a%20free%20consultation.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-xl bg-slate-50 p-2.5 text-xs font-bold text-slate-800 border border-slate-200 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-900 transition-all"
+                className="flex items-center justify-between rounded-lg bg-slate-50 p-2.5 text-xs font-bold text-slate-800 border border-slate-200 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-900 transition-all"
               >
                 <span className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-blue-600" />
-                  <span>Book Free 15-Min Consultation</span>
+                  <span>Book 15-Min Consultation</span>
                 </span>
                 <span className="text-[10px] text-slate-400 font-mono">→</span>
               </a>
@@ -93,10 +93,10 @@ export default function FloatingWhatsApp() {
 
       {/* Main Floating Trigger Button */}
       <motion.button
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2.5 rounded-full bg-emerald-600 px-4 py-3 text-xs font-extrabold text-white shadow-xl shadow-emerald-600/30 hover:bg-emerald-500 transition-all cursor-pointer border border-emerald-400/40"
+        className="flex items-center gap-2.5 rounded-full bg-emerald-600 px-4 py-3 text-xs font-extrabold text-white shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 transition-colors cursor-pointer border border-emerald-500"
         aria-label="Chat with Medwise Biomedical Engineer on WhatsApp"
       >
         {/* Official SVG WhatsApp Logo */}

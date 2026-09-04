@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     canonical: '/contact',
   },
   openGraph: {
-    title: 'Contact Medwise Technical Consulting — Kisumu Kakamega Road',
+    title: 'Contact Medwise Technical Consulting: Kisumu Kakamega Road',
     description:
       'Direct biomedical engineering helpline for medical device selection, Zybio Z3 analyzer repairs, calibration, and emergency technical support in Kenya.',
     url: `${SITE_CONFIG.url}/contact`,
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: `${SITE_CONFIG.name} — Contact & Office Location`,
+        alt: `${SITE_CONFIG.name}: Contact & Office Location`,
       },
     ],
   },
@@ -40,11 +40,11 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      {/* Header - Clean Light Design */}
-      <section className="bg-gradient-to-b from-blue-50/80 via-white to-slate-50 text-slate-900 py-16 lg:py-20 border-b border-slate-200">
+      {/* Header - Clean Editorial Design */}
+      <section className="bg-slate-50 text-slate-900 py-14 lg:py-20 border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900 shadow-2xs">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900">
               <ShieldCheck className="h-4 w-4 text-red-600" />
               <span>Direct Biomedical Helpline • Kisumu (HQ) & Nairobi, Kenya</span>
             </div>
@@ -68,14 +68,14 @@ export default function ContactPage() {
             {/* Direct Contact Cards (Left 5 Cols) */}
             <div className="lg:col-span-5 space-y-6">
               
-              <div className="rounded-3xl bg-white p-8 border border-slate-200 shadow-sm space-y-6">
+              <div className="rounded-xl bg-white p-8 border border-slate-200 shadow-xs space-y-6">
                 <h2 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4">
                   Direct Contact & Location
                 </h2>
 
                 <div className="space-y-5 text-xs sm:text-sm text-slate-700">
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-100 text-red-600 shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50 text-red-600 shrink-0 border border-red-100">
                       <MapPin className="h-5 w-5" />
                     </div>
                     <div className="space-y-1">
@@ -90,7 +90,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700 shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-700 shrink-0 border border-blue-100">
                       <Phone className="h-5 w-5" />
                     </div>
                     <div>
@@ -104,7 +104,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700 shrink-0 border border-emerald-100">
                       <MessageSquare className="h-5 w-5" />
                     </div>
                     <div>
@@ -121,7 +121,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700 shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-700 shrink-0 border border-blue-100">
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
@@ -133,7 +133,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3.5 pt-2 border-t border-slate-100">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-700 shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-700 shrink-0">
                       <Clock className="h-5 w-5" />
                     </div>
                     <div>
@@ -147,7 +147,7 @@ export default function ContactPage() {
               </div>
 
               {/* Emergency Support Card - Clean Blue */}
-              <div className="rounded-3xl bg-blue-50 border border-blue-200 p-8 text-slate-900 space-y-4 shadow-sm">
+              <div className="rounded-xl bg-blue-50 border border-blue-200 p-8 text-slate-900 space-y-4 shadow-xs">
                 <h3 className="text-lg font-extrabold text-blue-950">Need Urgent Field Technical Support?</h3>
                 <p className="text-xs text-slate-700 leading-relaxed">
                   Our qualified biomedical technicians dispatch rapidly across Kisumu, Sagana, Nairobi, and healthcare facilities nationwide.
@@ -157,14 +157,14 @@ export default function ContactPage() {
                     href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=URGENT%3A%20Biomedical%20Technical%20Support%20Required`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-xl bg-blue-700 py-3 text-xs font-bold text-white hover:bg-blue-800 transition-colors shadow-xs"
+                    className="flex items-center justify-center gap-2 rounded-lg bg-blue-700 py-3 text-xs font-bold text-white hover:bg-blue-800 transition-colors shadow-xs"
                   >
                     <MessageSquare className="h-4 w-4" />
                     <span>WhatsApp Technical Support</span>
                   </a>
                   <a
                     href={`tel:${SITE_CONFIG.telephone}`}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white py-3 text-xs font-bold text-slate-900 hover:bg-slate-50 transition-colors shadow-2xs"
+                    className="flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white py-3 text-xs font-bold text-slate-900 hover:bg-slate-50 transition-colors shadow-xs"
                   >
                     <Phone className="h-4 w-4 text-red-600" />
                     <span>Call {SITE_CONFIG.telephone}</span>
@@ -181,7 +181,7 @@ export default function ContactPage() {
               <ContactForm />
 
               {/* Google Map Location Frame */}
-              <div className="rounded-3xl bg-white p-6 border border-slate-200 shadow-sm space-y-4">
+              <div className="rounded-xl bg-white p-6 border border-slate-200 shadow-xs space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
                     <h3 className="text-base font-bold text-slate-900">Office Location & Google Maps</h3>
@@ -191,13 +191,13 @@ export default function ContactPage() {
                     href={SITE_CONFIG.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-blue-50 px-3.5 py-2 text-xs font-bold text-blue-700 hover:bg-blue-100 transition-colors border border-blue-200 w-fit"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-blue-50 px-3.5 py-2 text-xs font-bold text-blue-700 hover:bg-blue-100 transition-colors border border-blue-200 w-fit"
                   >
                     <span>Open in Google Maps</span>
                     <span aria-hidden="true">↗</span>
                   </a>
                 </div>
-                <div className="aspect-video w-full rounded-2xl overflow-hidden border border-slate-200">
+                <div className="aspect-video w-full rounded-lg overflow-hidden border border-slate-200">
                   <iframe
                     title="Medwise Google Map Location"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.817342!2d34.768!3d-0.0917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182aa4c575cf26d9%3A0xb35a0f624d77b587!2sKisumu%20Kakamega%20Rd%2C%20Kisumu!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"

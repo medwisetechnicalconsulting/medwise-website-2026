@@ -1,101 +1,89 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ClipboardCheck, Sparkles, Truck, HeartHandshake } from 'lucide-react';
+import { ClipboardCheck, SlidersHorizontal, Truck, Wrench } from 'lucide-react';
 
 export default function HowWeHelp() {
   const steps = [
     {
-      number: "01",
+      number: '01',
       icon: ClipboardCheck,
-      title: "Assess Needs & Budget",
+      title: 'Facility & Clinical Assessment',
       description:
-        "Our biomedical engineers conduct thorough facility evaluations, clinical workload assessments, and power infrastructure reviews.",
+        'Our biomedical engineers visit your site to review daily test volumes, available square footage, power quality, and water filtration setups.',
     },
     {
-      number: "02",
-      icon: Sparkles,
-      title: "Recommend Neutrally",
+      number: '02',
+      icon: SlidersHorizontal,
+      title: 'Objective Equipment Comparison',
       description:
-        "We provide transparent, multi-brand device comparisons matched to your technical specifications and financial parameters.",
+        'We compare equipment specifications, reagent contracts, and maintenance history across leading manufacturers within your allocated budget.',
     },
     {
-      number: "03",
+      number: '03',
       icon: Truck,
-      title: "Supply & Install",
+      title: 'Sourcing, Delivery & Installation',
       description:
-        "We handle quality-verified sourcing, secure delivery, precision installation, and electrical/radiological integration.",
+        'We manage secure delivery, mechanical placement, electrical stabilization, and certified metrological calibration before clinical handover.',
     },
     {
-      number: "04",
-      icon: HeartHandshake,
-      title: "Train & Maintain",
+      number: '04',
+      icon: Wrench,
+      title: 'Operator Training & Scheduled PM',
       description:
-        "We deliver hands-on clinical operator training, regular metrological calibration, and guaranteed ongoing technical maintenance.",
+        'We conduct hands-on training for laboratory technologists and nurses, providing scheduled preventive maintenance and rapid field support.',
     },
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-white overflow-hidden">
+    <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto space-y-3"
-        >
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3.5 py-1 rounded-full border border-blue-200">
-            End-to-End Biomedical Workflow
+        <div className="max-w-3xl space-y-3">
+          <span className="text-xs font-bold uppercase tracking-wider text-blue-800 bg-blue-50 px-3 py-1 rounded-md border border-blue-200">
+            Lifecycle Workflow
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-            How Medwise Empowers Your Healthcare Facility
+            Our 4-Step Medical Equipment Deployment Process
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
-            A structured 4-step medical device lifecycle process designed for long-term reliability and accurate patient diagnostics.
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            A methodical biomedical process that ensures healthcare facilities invest in dependable diagnostic systems with verified accuracy and local repair support.
           </p>
-        </motion.div>
+        </div>
 
         {/* 4 Steps Timeline Grid */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.12 }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="relative flex flex-col justify-between rounded-3xl bg-slate-50 p-6 border border-slate-200 hover:border-blue-500/50 hover:bg-blue-50/40 hover:shadow-xl transition-all group"
+                className="flex flex-col justify-between rounded-xl bg-slate-50 p-6 border border-slate-200 hover:border-blue-400/60 transition-colors"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-700 text-white shadow-md shadow-blue-700/20 group-hover:scale-110 transition-transform">
-                      <Icon className="h-6 w-6" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-700 text-white font-bold text-sm shadow-xs">
+                      <Icon className="h-5 w-5" />
                     </div>
-                    <span className="text-3xl font-black text-slate-300 group-hover:text-blue-600 transition-colors font-mono">
+                    <span className="text-2xl font-bold text-slate-300 font-mono">
                       {step.number}
                     </span>
                   </div>
 
-                  <h3 className="mt-5 text-lg font-extrabold text-slate-900 group-hover:text-blue-800 transition-colors">
+                  <h3 className="mt-5 text-base font-bold text-slate-900">
                     {step.title}
                   </h3>
 
-                  <p className="mt-2 text-sm text-slate-600 leading-relaxed font-medium">
+                  <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-500 font-bold">
-                  <span>Step {index + 1} of 4</span>
-                  <span className="text-blue-700">Medwise Standard</span>
+                <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-500 font-semibold">
+                  <span>Phase {index + 1} of 4</span>
+                  <span className="text-blue-700 font-bold">Standardized Protocol</span>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -104,3 +92,4 @@ export default function HowWeHelp() {
     </section>
   );
 }
+
