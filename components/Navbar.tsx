@@ -12,19 +12,19 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-xs">
       {/* Top Banner Notice - Clean Light Slate/Blue */}
-      <div className="bg-slate-100 border-b border-slate-200/80 px-4 py-1.5 text-xs font-semibold text-slate-700 sm:px-6">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 rounded-full bg-red-600 animate-pulse"></span>
-            <span className="text-slate-900 font-bold">Medwise Technical Consulting</span>
-            <span className="hidden md:inline text-slate-500">• Kisumu (Kisumu Kakamega Rd) & Nairobi, Kenya</span>
+      <div className="bg-slate-100 border-b border-slate-200/80 px-3 sm:px-6 py-1.5 text-xs font-semibold text-slate-700">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="inline-block h-2 w-2 rounded-full bg-red-600 animate-pulse shrink-0"></span>
+            <span className="text-slate-900 font-bold truncate text-[11px] sm:text-xs">Medwise Technical Consulting</span>
+            <span className="hidden md:inline text-slate-500">• Kisumu &amp; Nairobi, Kenya</span>
           </div>
-          <div className="flex items-center gap-4 text-slate-600">
+          <div className="flex items-center gap-4 text-slate-600 shrink-0">
             <a
               href={`tel:${SITE_CONFIG.telephone}`}
-              className="hover:text-blue-700 transition-colors flex items-center gap-1 font-bold text-slate-900"
+              className="hover:text-blue-700 transition-colors flex items-center gap-1 font-bold text-slate-900 text-[11px] sm:text-xs whitespace-nowrap"
             >
-              <Phone className="h-3 w-3 text-red-600" />
+              <Phone className="h-3 w-3 text-red-600 shrink-0" />
               <span>{SITE_CONFIG.telephone}</span>
             </a>
           </div>
@@ -39,14 +39,14 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8 text-sm font-semibold text-slate-700">
           <Link href="/" className="hover:text-blue-700 transition-colors">
             Home
           </Link>
           <Link href="/services" className="hover:text-blue-700 transition-colors">
             Services
           </Link>
-          <Link href="/products" className="hover:text-blue-700 transition-colors">
+          <Link href="/products" className="hover:text-blue-700 transition-colors text-blue-800 font-bold">
             Products
           </Link>
           <Link href="/about" className="hover:text-blue-700 transition-colors">

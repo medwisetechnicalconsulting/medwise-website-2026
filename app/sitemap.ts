@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/mdx';
 import { SITE_CONFIG } from '@/lib/seo/schema';
+import { CATEGORIES_CONFIG } from '@/lib/products';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_CONFIG.url.replace(/\/$/, '');
@@ -52,6 +53,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
+  // Equipment Category SEO Pages
+  const categoryPages: MetadataRoute.Sitemap = CATEGORIES_CONFIG.map((cat) => ({
+    url: `${baseUrl}/products?category=${cat.id}`,
+    lastModified: currentDate,
+    changeFrequency: 'daily',
+    priority: 0.9,
+    images: [`${baseUrl}/images/medwise-og.jpg`],
+  }));
+
   // Dynamic Blog & Insight Articles
   const posts = getAllPosts();
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => {
@@ -70,5 +80,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  return [...staticPages, ...blogPages];
+  return [...staticPages, ...categoryPages, ...blogPages];
 }

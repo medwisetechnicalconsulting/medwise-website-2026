@@ -51,15 +51,15 @@ export default function ProductSpecModal({ product, onClose }: ProductSpecModalP
       role="dialog"
       aria-modal="true"
       aria-labelledby="spec-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl border border-slate-200 text-slate-800"
+        className="relative w-full max-w-3xl max-h-[92vh] flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl border border-slate-200 text-slate-800"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 bg-white/95 px-6 py-4 backdrop-blur-sm">
+        <div className="shrink-0 flex items-center justify-between border-b border-slate-200 bg-white/95 px-4 sm:px-6 py-3.5 sm:py-4 backdrop-blur-sm">
           <div>
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center rounded-md bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-800 uppercase tracking-wider">
@@ -69,7 +69,7 @@ export default function ProductSpecModal({ product, onClose }: ProductSpecModalP
                 {product.subcategory}
               </span>
             </div>
-            <h2 id="spec-modal-title" className="mt-1 text-lg sm:text-xl font-extrabold text-slate-900">
+            <h2 id="spec-modal-title" className="mt-1 text-base sm:text-lg lg:text-xl font-extrabold text-slate-900">
               {product.name}
             </h2>
           </div>
@@ -84,9 +84,9 @@ export default function ProductSpecModal({ product, onClose }: ProductSpecModalP
         </div>
 
         {/* Modal Body */}
-        <div className="px-6 py-6 space-y-6 text-sm">
+        <div className="overflow-y-auto px-4 sm:px-6 py-4 sm:py-6 space-y-5 sm:space-y-6 text-xs sm:text-sm">
           {/* Tagline & Description */}
-          <div className="rounded-xl bg-slate-50 border border-slate-200/80 p-4">
+          <div className="rounded-xl bg-slate-50 border border-slate-200/80 p-3.5 sm:p-4">
             <p className="font-semibold text-blue-900 mb-1">
               {product.tagline}
             </p>
@@ -167,10 +167,10 @@ export default function ProductSpecModal({ product, onClose }: ProductSpecModalP
                       key={idx}
                       className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'}
                     >
-                      <td className="w-1/3 py-3 px-4 font-bold text-slate-900 border-r border-slate-200 align-top">
+                      <td className="w-1/3 py-2.5 sm:py-3 px-3 sm:px-4 font-bold text-slate-900 border-r border-slate-200 align-top text-xs sm:text-sm">
                         {item.label}
                       </td>
-                      <td className="w-2/3 py-3 px-4 text-slate-700 leading-relaxed">
+                      <td className="w-2/3 py-2.5 sm:py-3 px-3 sm:px-4 text-slate-700 leading-relaxed text-xs sm:text-sm">
                         {item.value}
                       </td>
                     </tr>
@@ -182,7 +182,7 @@ export default function ProductSpecModal({ product, onClose }: ProductSpecModalP
 
           {/* Medwise Technical Advisory Value-Add */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-            <div className="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 p-3.5">
+            <div className="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-3.5">
               <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
               <div>
                 <span className="font-bold text-slate-900 block">Warranty & Calibration:</span>
@@ -192,7 +192,7 @@ export default function ProductSpecModal({ product, onClose }: ProductSpecModalP
               </div>
             </div>
 
-            <div className="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 p-3.5">
+            <div className="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-3.5">
               <Truck className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
               <div>
                 <span className="font-bold text-slate-900 block">Kenya Nationwide Dispatch:</span>
@@ -205,15 +205,15 @@ export default function ProductSpecModal({ product, onClose }: ProductSpecModalP
         </div>
 
         {/* Modal Footer */}
-        <div className="flex items-center justify-between border-t border-slate-200 bg-slate-50 px-6 py-3.5 text-xs text-slate-500">
-          <span>Official Medwise Technical Sourcing • Model: {product.model}</span>
+        <div className="shrink-0 flex items-center justify-between border-t border-slate-200 bg-slate-50 px-4 sm:px-6 py-3 text-xs text-slate-500">
+          <span className="truncate">Medwise Sourcing • Model: {product.model}</span>
           <a
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1"
+            className="font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 shrink-0 ml-2"
           >
-            <span>Direct WhatsApp Inquiry</span>
+            <span>WhatsApp Inquiry</span>
             <ExternalLink className="h-3 w-3" />
           </a>
         </div>

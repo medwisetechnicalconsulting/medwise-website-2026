@@ -31,19 +31,36 @@ export default function ProductsCatalogClient() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSpecProduct, setActiveSpecProduct] = useState<Product | null>(null);
 
-  // Auto-scroll to anchor hash on initial load if present (e.g. #mindray-bc-10)
+  // Sync URL query parameters (?category=, ?q=) and anchor hash on initial load
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.location.hash) {
-      const id = window.location.hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          element.classList.add('ring-2', 'ring-blue-500');
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const catParam = params.get('category');
+      if (
+        catParam &&
+        ['hematology', 'biochemistry', 'immunoassay', 'microscopes', 'lab-equipment', 'consumables'].includes(
+          catParam
+        )
+      ) {
+        setSelectedCategory(catParam as ProductCategory);
+      }
+      const qParam = params.get('q');
+      if (qParam) {
+        setSearchQuery(qParam);
+      }
+
+      if (window.location.hash) {
+        const id = window.location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
           setTimeout(() => {
-            element.classList.remove('ring-2', 'ring-blue-500');
-          }, 2500);
-        }, 300);
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            element.classList.add('ring-2', 'ring-blue-500');
+            setTimeout(() => {
+              element.classList.remove('ring-2', 'ring-blue-500');
+            }, 2500);
+          }, 400);
+        }
       }
     }
   }, []);
@@ -62,10 +79,19 @@ export default function ProductsCatalogClient() {
     return Array.from(set);
   }, [selectedCategory]);
 
-  // Handle category change (reset subcategory)
+  // Handle category change (reset subcategory & update URL query param)
   const handleCategoryChange = (cat: ProductCategory | 'all') => {
     setSelectedCategory(cat);
     setSelectedSubcategory('all');
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      if (cat === 'all') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', cat);
+      }
+      window.history.replaceState({}, '', url.toString());
+    }
   };
 
   // Filtered products calculation
@@ -176,11 +202,11 @@ export default function ProductsCatalogClient() {
       </div>
 
       {/* Main Category Filter Tabs */}
-      <div className="overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+      <div className="overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none touch-pan-x">
         <div className="flex items-center gap-2 min-w-max">
           <button
             onClick={() => handleCategoryChange('all')}
-            className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition-all ${
+            className={`shrink-0 min-h-[42px] inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-all ${
               selectedCategory === 'all'
                 ? 'bg-blue-700 text-white shadow-xs'
                 : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:text-slate-900'
@@ -198,7 +224,7 @@ export default function ProductsCatalogClient() {
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.id)}
-                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition-all ${
+                className={`shrink-0 min-h-[42px] inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-all ${
                   isSelected
                     ? 'bg-blue-700 text-white shadow-xs'
                     : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:text-slate-900'

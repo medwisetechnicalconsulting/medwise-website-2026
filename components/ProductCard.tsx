@@ -66,7 +66,7 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
   return (
     <article
       id={product.id}
-      className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 scroll-mt-28"
+      className="group relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs hover:shadow-xl hover:border-blue-400 transition-all duration-300 scroll-mt-28"
     >
       {/* Top Meta Bar: Subcategory, Brand & Badge */}
       <div>
@@ -172,13 +172,13 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
         </button>
 
         {/* Price & "Buy via WhatsApp" Button (Directly Next to Each Other) */}
-        <div className="flex items-center justify-between gap-2.5 pt-1">
+        <div className="flex items-center justify-between gap-2 pt-1">
           {/* Price Container */}
-          <div className="shrink-0">
+          <div className="shrink-0 min-w-0">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
               Price (KSh)
             </span>
-            <span className={`font-black tracking-tight ${product.price ? 'text-lg sm:text-xl text-slate-900' : 'text-xs sm:text-sm text-slate-700'}`}>
+            <span className={`font-black tracking-tight ${product.price ? 'text-base sm:text-lg lg:text-xl text-slate-900' : 'text-xs sm:text-sm text-slate-700'}`}>
               {product.priceFormatted}
             </span>
           </div>
@@ -189,7 +189,7 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Buy ${product.name} via WhatsApp`}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-3 py-2.5 text-xs font-extrabold text-white shadow-sm hover:shadow-md transition-all hover:scale-102 active:scale-98"
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-3 py-2.5 text-xs font-extrabold text-white shadow-xs hover:shadow-md transition-all hover:scale-102 active:scale-98 shrink-0 min-h-[42px]"
           >
             <MessageSquare className="h-4 w-4 shrink-0 fill-white" />
             <span className="whitespace-nowrap">Buy via WhatsApp</span>

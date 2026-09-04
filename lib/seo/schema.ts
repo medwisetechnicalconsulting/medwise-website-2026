@@ -273,3 +273,66 @@ export function getFaqSchema(faqs: { question: string; answer: string }[]) {
     })),
   };
 }
+
+export function getProductListSchema(products: {
+  id: string;
+  name: string;
+  model: string;
+  brand: string;
+  category: string;
+  subcategory: string;
+  price: number | null;
+  priceFormatted: string;
+  description: string;
+  specs: { label: string; value: string }[];
+}[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Medical & Laboratory Equipment Sourcing Catalog Kenya',
+    description:
+      'Verified clinical laboratory machinery, hematology analyzers, biochemistry analyzers, immunoassay POCT, and microscopes with KSh prices in Kenya.',
+    url: `${SITE_CONFIG.url}/products`,
+    numberOfItems: products.length,
+    itemListElement: products.map((product, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Product',
+        '@id': `${SITE_CONFIG.url}/products#${product.id}`,
+        name: product.name,
+        description: product.description,
+        model: product.model,
+        sku: `MEDWISE-${product.model.replace(/\s+/g, '-').toUpperCase()}`,
+        mpn: product.model,
+        brand: {
+          '@type': 'Brand',
+          name: product.brand,
+        },
+        category: `Medical Equipment > ${product.subcategory}`,
+        image: `${SITE_CONFIG.url}/images/medwise-og.jpg`,
+        offers: {
+          '@type': 'Offer',
+          url: `${SITE_CONFIG.url}/products#${product.id}`,
+          priceCurrency: 'KES',
+          price: product.price ? product.price : undefined,
+          priceValidUntil: '2027-12-31',
+          availability: 'https://schema.org/InStock',
+          itemCondition: 'https://schema.org/NewCondition',
+          seller: {
+            '@type': 'MedicalBusiness',
+            name: SITE_CONFIG.name,
+            url: SITE_CONFIG.url,
+            telephone: SITE_CONFIG.telephone,
+          },
+        },
+        additionalProperty: product.specs.map((spec) => ({
+          '@type': 'PropertyValue',
+          name: spec.label,
+          value: spec.value,
+        })),
+      },
+    })),
+  };
+}
+
