@@ -46,6 +46,9 @@ export default function Navbar() {
           <Link href="/services" className="hover:text-blue-700 transition-colors">
             Services
           </Link>
+          <Link href="/products" className="hover:text-blue-700 transition-colors">
+            Products
+          </Link>
           <Link href="/about" className="hover:text-blue-700 transition-colors">
             About Us
           </Link>
@@ -105,6 +108,13 @@ export default function Navbar() {
               className="px-2 py-1.5 rounded-md hover:bg-slate-100"
             >
               Services
+            </Link>
+            <Link
+              href="/products"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-2 py-1.5 rounded-md hover:bg-slate-100"
+            >
+              Products
             </Link>
             <Link
               href="/about"

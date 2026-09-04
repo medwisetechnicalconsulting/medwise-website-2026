@@ -23,6 +23,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       images: [`${baseUrl}/images/medwise-og.jpg`],
     },
     {
+      url: `${baseUrl}/products`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+      images: [`${baseUrl}/images/medwise-og.jpg`],
+    },
+    {
       url: `${baseUrl}/blog`,
       lastModified: currentDate,
       changeFrequency: 'daily',
