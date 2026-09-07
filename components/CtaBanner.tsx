@@ -9,7 +9,7 @@ export default function CtaBanner() {
     <section className="bg-slate-900 border-t border-slate-800 py-16 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-5">
         
-        <div className="inline-flex items-center gap-2 rounded-md border border-slate-700 bg-slate-850 px-3.5 py-1 text-xs font-semibold text-slate-300">
+        <div className="inline-flex items-center gap-2 rounded-md border border-slate-700 bg-slate-800 px-3.5 py-1 text-xs font-semibold text-slate-300">
           <ShieldCheck className="h-4 w-4 text-blue-400" />
           <span>Independent Technical Guidance • Zero Sales Quotas</span>
         </div>

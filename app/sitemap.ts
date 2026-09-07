@@ -1,11 +1,16 @@
 import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/mdx';
 import { SITE_CONFIG } from '@/lib/seo/schema';
-import { CATEGORIES_CONFIG } from '@/lib/products';
+import { CATEGORIES_CONFIG, PRODUCTS_CATALOG } from '@/lib/products';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_CONFIG.url.replace(/\/$/, '');
   const currentDate = new Date().toISOString();
+
+  // All valid product image URLs
+  const allProductImages = PRODUCTS_CATALOG.filter((p) => p.image).map(
+    (p) => `${baseUrl}${p.image}`
+  );
 
   // Core Static SEO Pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -28,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.95,
-      images: [`${baseUrl}/images/medwise-og.jpg`],
+      images: [`${baseUrl}/images/medwise-og.jpg`, ...allProductImages],
     },
     {
       url: `${baseUrl}/blog`,
@@ -54,13 +59,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // Equipment Category SEO Pages
-  const categoryPages: MetadataRoute.Sitemap = CATEGORIES_CONFIG.map((cat) => ({
-    url: `${baseUrl}/products?category=${cat.id}`,
-    lastModified: currentDate,
-    changeFrequency: 'daily',
-    priority: 0.9,
-    images: [`${baseUrl}/images/medwise-og.jpg`],
-  }));
+  const categoryPages: MetadataRoute.Sitemap = CATEGORIES_CONFIG.map((cat) => {
+    const catImages = PRODUCTS_CATALOG.filter(
+      (p) => p.category === cat.id && p.image
+    ).map((p) => `${baseUrl}${p.image}`);
+
+    return {
+      url: `${baseUrl}/products?category=${cat.id}`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.9,
+      images: [`${baseUrl}/images/medwise-og.jpg`, ...catImages],
+    };
+  });
 
   // Dynamic Blog & Insight Articles
   const posts = getAllPosts();

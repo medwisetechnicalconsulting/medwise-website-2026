@@ -59,11 +59,13 @@ export default function TestimonialsSection() {
         </div>
 
         {/* 3 Grounded Service Record Cards */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {serviceRecords.map((record, index) => (
             <div
               key={index}
-              className="flex flex-col justify-between rounded-xl bg-white border border-slate-200 overflow-hidden shadow-xs hover:border-slate-300 transition-colors"
+              className={`flex flex-col justify-between rounded-xl bg-white border border-slate-200 overflow-hidden shadow-xs hover:border-slate-300 transition-colors ${
+                index === 2 ? 'sm:col-span-2 lg:col-span-1' : ''
+              }`}
             >
               <div className="p-6 space-y-4">
                 {/* Facility & Location Header */}

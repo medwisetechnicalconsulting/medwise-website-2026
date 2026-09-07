@@ -91,7 +91,7 @@ const productsFaqs = [
   {
     question: 'How does the "Buy via WhatsApp" feature work?',
     answer:
-      'Every product card has a "Buy via WhatsApp" button located directly next to the price. Clicking this button immediately launches a WhatsApp chat with Medwise Technical Consulting (+254 117 233 522), automatically prefilling the exact model, price in KSh, and direct link so our biomedical team can promptly advise you on stock availability, payment terms, and delivery to your county.',
+      'Every product card has a "Buy via WhatsApp" button. Clicking this button immediately launches a WhatsApp chat with Medwise Technical Consulting (+254 117 233 522), automatically prefilling the exact model and direct link so our biomedical team can promptly advise you on current pricing, stock availability, payment terms, and delivery to your county.',
   },
   {
     question: 'Do you provide delivery, installation, and calibration across Kenya?',
@@ -148,32 +148,32 @@ export default function ProductsPage() {
               <span>Independent Medical Device Sourcing &amp; Calibration Kenya</span>
             </div>
 
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
               Medical &amp; Laboratory Equipment Catalog
             </h1>
 
             <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
-              Compare verified clinical laboratory machines with transparent prices in Kenyan Shillings (KSh). Every analyzer includes manufacturer warranty, precision metrological calibration, and professional biomedical installation by Medwise engineers.
+              Compare verified clinical laboratory machines with independent technical specifications. Every analyzer includes manufacturer warranty, precision metrological calibration, and professional biomedical installation by Medwise engineers.
             </p>
           </div>
 
           {/* Value Propositions Grid */}
           <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800 text-xs sm:text-sm">
-            <div className="flex items-center gap-2.5 rounded-lg bg-slate-850 p-3 border border-slate-800">
+            <div className="flex items-center gap-2.5 rounded-lg bg-slate-800/80 p-3 border border-slate-700/80">
               <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0" />
               <span className="font-semibold text-slate-200 text-xs sm:text-sm">
                 1-Year Warranty &amp; Onsite Calibration
               </span>
             </div>
 
-            <div className="flex items-center gap-2.5 rounded-lg bg-slate-850 p-3 border border-slate-800">
+            <div className="flex items-center gap-2.5 rounded-lg bg-slate-800/80 p-3 border border-slate-700/80">
               <Truck className="h-4 w-4 text-blue-400 shrink-0" />
               <span className="font-semibold text-slate-200 text-xs sm:text-sm">
                 Fast Dispatch Across All 47 Counties
               </span>
             </div>
 
-            <div className="flex items-center gap-2.5 rounded-lg bg-slate-850 p-3 border border-slate-800">
+            <div className="flex items-center gap-2.5 rounded-lg bg-slate-800/80 p-3 border border-slate-700/80">
               <MessageSquare className="h-4 w-4 text-emerald-400 shrink-0" />
               <span className="font-semibold text-slate-200 text-xs sm:text-sm">
                 Instant Buying Guidance via WhatsApp
@@ -208,7 +208,7 @@ export default function ProductsPage() {
             {productsFaqs.map((faq, index) => (
               <article
                 key={index}
-                className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 hover:bg-white hover:shadow-md hover:border-blue-200 transition-all"
+                className="rounded-xl border border-slate-200 bg-slate-50/70 p-5 hover:bg-white hover:shadow-md hover:border-blue-200 transition-all"
               >
                 <h3 className="text-sm font-bold text-slate-900 flex items-start gap-2">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-700 text-[10px] font-bold text-white mt-0.5">

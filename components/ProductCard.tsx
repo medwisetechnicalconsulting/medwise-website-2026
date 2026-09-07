@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import {
   MessageSquare,
-  Sparkles,
   Info,
   Check,
   Droplet,
@@ -82,7 +81,7 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
         </div>
 
         {/* Product Visual Area */}
-        <div className="relative mb-4 flex h-40 w-full items-center justify-center overflow-hidden rounded-lg bg-slate-50 border border-slate-200/80 p-4">
+        <div className="relative mb-4 flex h-44 w-full items-center justify-center overflow-hidden rounded-lg bg-white border border-slate-200/80 p-3">
           {product.image && !imgError ? (
             <img
               src={product.image}
@@ -160,8 +159,8 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
         </div>
       </div>
 
-      {/* Action Section: Specs Drawer Trigger & Pricing + Buy via WhatsApp */}
-      <div className="pt-2 space-y-2.5">
+      {/* Action Section: Specs Drawer Trigger & Buy via WhatsApp */}
+      <div className="pt-2 space-y-2">
         {/* View Full Specs Trigger */}
         <button
           onClick={() => onOpenSpecs(product)}
@@ -171,30 +170,17 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
           <span>View Technical Specifications</span>
         </button>
 
-        {/* Price & "Buy via WhatsApp" Button (Directly Next to Each Other) */}
-        <div className="flex items-center justify-between gap-2 pt-1">
-          {/* Price Container */}
-          <div className="shrink-0 min-w-0">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-              Price (KSh)
-            </span>
-            <span className={`font-extrabold tracking-tight ${product.price ? 'text-base sm:text-lg lg:text-xl text-slate-900' : 'text-xs sm:text-sm text-slate-700'}`}>
-              {product.priceFormatted}
-            </span>
-          </div>
-
-          {/* Buy via WhatsApp Button */}
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Buy ${product.name} via WhatsApp`}
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 px-3 py-2.5 text-xs font-bold text-white shadow-xs transition-colors shrink-0 min-h-[40px]"
-          >
-            <MessageSquare className="h-4 w-4 shrink-0 fill-white" />
-            <span className="whitespace-nowrap">Buy via WhatsApp</span>
-          </a>
-        </div>
+        {/* Buy via WhatsApp Button */}
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Buy ${product.name} via WhatsApp`}
+          className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 px-3 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs transition-colors min-h-[38px]"
+        >
+          <MessageSquare className="h-4 w-4 shrink-0 fill-white" />
+          <span className="whitespace-nowrap">Buy via WhatsApp</span>
+        </a>
       </div>
     </article>
   );

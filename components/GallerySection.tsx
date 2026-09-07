@@ -266,13 +266,13 @@ export default function GallerySection() {
                 {selectedImage.description}
               </p>
 
-              <div className="pt-2 flex items-center justify-between text-xs text-slate-500 font-semibold">
+              <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500 font-semibold">
                 <span>Category: <strong className="text-blue-700 uppercase">{selectedImage.category}</strong></span>
                 <a
                   href="https://wa.me/254117233522?text=Inquiry%20regarding%20similar%20service%20to%20field%20project"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-blue-700 px-3.5 py-2 text-xs font-bold text-white hover:bg-blue-800 transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-blue-700 px-3.5 py-2 text-xs font-bold text-white hover:bg-blue-800 transition-colors"
                 >
                   <span>Request Similar Technical Support</span>
                 </a>

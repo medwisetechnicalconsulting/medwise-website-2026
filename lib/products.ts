@@ -97,6 +97,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 500000,
     priceFormatted: 'KSh 500,000',
     tagline: 'Ultra-compact 3-part CBC analyzer ideal for primary clinics and dispensaries.',
+    image: '/images/products/mindray-bc-10.webp',
     description:
       'The Mindray BC-10 is a compact, cost-effective 3-part differential automated hematology analyzer. Requiring only 9 μL of whole blood, it is engineered for community health centers, outpatient clinics, and private medical practices requiring reliable diagnostic quality without excessive bench space.',
     badge: 'Popular for Starter Clinics',
@@ -133,6 +134,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 450000,
     priceFormatted: 'KSh 450,000',
     tagline: 'High-speed 70 tests/hr cell counter with brilliant 10.4-inch interface.',
+    image: '/images/products/zybio-z3.webp',
     description:
       'The Zybio Z3 delivers class-leading speed in the 3-part segment, processing up to 70 samples per hour with a low aspiration volume of 10 μL. Featuring an intuitive 10.4-inch HD touchscreen, low reagent consumption, and robust fluidic design, it is a proven favorite across Kenyan outpatient facilities.',
     badge: 'High Speed (70 T/H)',
@@ -169,6 +171,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 450000,
     priceFormatted: 'KSh 450,000',
     tagline: 'Reliable 60 T/H CBC workhorse with intelligent fluidic blockage protection.',
+    image: '/images/products/dymind-dh36.webp',
     description:
       'The Dymind DH36 is a robust 3-part differential automated hematology analyzer built for demanding daily routine testing. It combines rapid 60 tests/hr throughput with 9 μL micro-aspiration and advanced fluidic blockage clearing, making it exceptionally reliable in rural and urban clinics alike.',
     badge: 'Reliable Workhorse',
@@ -204,6 +207,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 380000,
     priceFormatted: 'KSh 380,000',
     tagline: 'Budget-friendly 3-part CBC analyzer with massive 500,000-result memory.',
+    image: '/images/products/bioelab-ec-30.webp',
     description:
       'The Bioelab EC-30 delivers dependable, cost-effective performance for small to medium healthcare facilities establishing or upgrading their diagnostic laboratory. With 60 samples/hour throughput, 9 μL sample aspiration, built-in thermal printer, and one-key blockage removal, it delivers maximum diagnostic return on investment.',
     badge: 'Best Value Investment',
@@ -244,6 +248,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 1000000,
     priceFormatted: 'KSh 1,000,000',
     tagline: 'Miniaturized laser flow cytometry 5-part CBC analyzer for modern hospitals.',
+    image: '/images/products/mindray-bc-5000.webp',
     description:
       'The Mindray BC-5000 is an advanced 5-part differential hematology analyzer that packages Tri-angle Laser Scatter and semiconductor flow cytometry into a miniature desktop footprint. Requiring only 15 μL of blood, it is ideal for Level 4/5 hospitals, referral laboratories, and pediatric centers requiring high clinical specificity.',
     badge: 'Laser Flow Cytometry',
@@ -279,6 +284,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 900000,
     priceFormatted: 'KSh 900,000',
     tagline: '60 T/H 5-part differential analyzer with 29 reportable parameters & dedicated basophil channel.',
+    image: '/images/products/zybio-z50.webp',
     description:
       'The Zybio Z50 delivers high-throughput 60 tests/hour 5-part WBC differentiation using tri-angle laser scatter and flow cytometry. Engineered with a dedicated optical channel for basophils and 29 parameters, it provides referral-grade diagnostic accuracy for busy Kenyan hospitals and clinical laboratories.',
     badge: '29 Parameters + 60 T/H',
@@ -314,6 +320,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 900000,
     priceFormatted: 'KSh 900,000',
     tagline: 'High-speed 60 T/H 5-part analyzer with 25 diagnostic + 6 research parameters.',
+    image: '/images/products/dymind-df-55.webp',
     description:
       'The Dymind DF 55 is a precision 5-part hematology analyzer built with flow cytometry (FCM) and tri-angle laser scatter. Capable of analyzing 60 samples per hour with 20 μL aspiration, it offers 25 diagnostic parameters plus 6 advanced research parameters (including NRBC & immature cells), backed by 100,000-record storage.',
     badge: '25+6 Parameters (NRBC)',
@@ -353,6 +360,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 170000,
     priceFormatted: 'KSh 170,000',
     tagline: 'High-precision quartz flow cell photometer with built-in multi-temperature incubator.',
+    image: '/images/products/icubio-ichem-535.webp',
     description:
       'The Icubio iChem-535 is an exceptionally reliable semi-automated clinical chemistry analyzer designed for entry-level clinics, dispensaries, and private medical laboratories. Featuring a 32 μL quartz glass flow cell, 7 standard optical filters (340–630 nm), and an integrated incubator, it handles Liver, Kidney, Lipid, and Cardiac profiles with ease.',
     badge: 'Affordable Starter Analyzer',
@@ -388,6 +396,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 170000,
     priceFormatted: 'KSh 170,000',
     tagline: 'Dual-purpose biochemistry & coagulation analyzer with 8 wavelengths.',
+    image: '/images/products/dymind-dp-c16.webp',
     description:
       'The Dymind DP-C16 offers unique dual functionality: high-accuracy clinical chemistry photometry combined with integrated blood coagulation testing (PT, APTT, TT, FIB). With 8 wavelengths (340–660 nm), 300,000-record storage, and compact 6 kg portability, it maximizes diagnostic scope for upcoming clinics.',
     badge: 'Chemistry + Coagulation',
@@ -426,6 +435,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 450000,
     priceFormatted: 'KSh 450,000',
     tagline: 'Zero reagent waste microfluidic disc analyzer delivering full profiles in 12 minutes.',
+    image: '/images/products/seamaty-sd-1.webp',
     description:
       'The Seamaty SD 1 revolutionizes clinical biochemistry for specialist clinics, mobile medical camps, and low-to-medium volume centers. Utilizing single-use microfluidic reagent discs containing lyophilized beads, it tests 19+ parameters (including enzymes and electrolytes) in just 12 minutes from 100 μL of whole blood, with zero liquid reagent expiry waste.',
     badge: 'Zero Liquid Reagent Waste',
@@ -466,6 +476,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 1200000,
     priceFormatted: 'KSh 1,200,000',
     tagline: 'High-throughput 240 T/H desktop clinical chemistry workstation with 6-step auto cuvette wash.',
+    image: '/images/products/zybio-exc-200.webp',
     description:
       'The Zybio EXC 200 is a fully automated, random-access clinical chemistry analyzer delivering constant 240 tests/hour throughput (single reagent). Featuring 40 refrigerated reagent positions (24h non-stop 2°C–8°C), 63 reusable optical cuvettes with automated 6-step washing, and 12 wavelengths, it is the ultimate workhorse for high-volume Kenyan hospitals.',
     badge: 'High Throughput (240 T/H)',
@@ -502,6 +513,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 1000000,
     priceFormatted: 'KSh 1,000,000',
     tagline: 'Constant 150 T/H automated chemistry analyzer with 80 refrigerated reagent positions.',
+    image: '/images/products/bioelab-as-160.webp',
     description:
       'The Bioelab AS-160 is a reliable, compact fully automated biochemistry analyzer providing constant 150 tests/hour throughput for both single and dual reagent assays. With an expansive 80 refrigerated reagent compartment, 44 high-transmittance reaction cuvettes, and 150 μL micro-reaction volume, it drives down operational cost per test.',
     badge: '80 Reagent Positions',
@@ -537,6 +549,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: 1200000,
     priceFormatted: 'KSh 1,200,000',
     tagline: 'Benchmark 200 T/H automated chemistry platform (up to 400 T/H with ISE) for hospitals.',
+    image: '/images/products/mindray-bs-240.webp',
     description:
       'The Mindray BS-240 is an industry-benchmark fully automated benchtop chemistry analyzer offering up to 200 photometric tests/hour (expandable to 400 tests/hour with optional ISE). Featuring an 80-position refrigerated carousel, reusable reaction cuvettes with automated step-washing, and 100 μL micro-reaction volume, it sets the gold standard for clinical reliability.',
     badge: 'Industry Gold Standard',
@@ -575,6 +588,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Leading fluorescence immunoassay POCT analyzer with 50+ biomarker menu.',
+    image: '/images/products/finecare-fs-113.webp',
     description:
       'The Finecare™ FS-113 (FIA Meter Plus) is a portable fluorescence immunoassay analyzer for quantitative point-of-care testing. Delivering clinical results in 3 to 15 minutes, it supports over 50 test parameters including high-sensitivity Troponin I, NT-proBNP, D-Dimer, hs-CRP, PCT, HbA1c, and fertility hormones.',
     badge: 'Most Popular POCT FIA',
@@ -609,6 +623,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Time-Resolved Fluorescence (TRFIA) POCT analyzer with high analytical sensitivity.',
+    image: '/images/products/anbio-fia-analyzer.webp',
     description:
       'The Anbio AF-100 series employs Time-Resolved Fluorescence Immunoassay (TRFIA) technology to eliminate background fluorescence scatter, achieving clinical sensitivity comparable to chemiluminescence. Supporting rapid testing for cardiac, thyroid, inflammation, and hormone markers, it is ideal for triage and outpatient labs.',
     badge: 'TRFIA High Sensitivity',
@@ -643,6 +658,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Multi-channel POCT analyzer with 4 incubation channels + 1 STAT emergency channel.',
+    image: '/images/products/getein-1160.webp',
     description:
       'The Getein 1160 is a multi-channel immunofluorescence quantitative analyzer engineered with 4 constant-temperature (32°C) incubation channels and 1 dedicated STAT emergency channel. With a 10.1-inch HD touchscreen and lyophilized bead test technology, it handles multi-sample patient queues efficiently without reagent loss.',
     badge: '4 Incubation + 1 STAT Channel',
@@ -682,6 +698,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Durable, affordable binocular clinical microscope for routine parasitology and hematology.',
+    image: '/images/products/yxz-microscope.webp',
     description:
       'The YXZ / XSZ series is Kenya’s most widely deployed routine clinical and educational biological microscope. Featuring 4 achromatic objectives (4X, 10X, 40X, 100X Oil), a double-layer mechanical stage with coaxial coarse/fine focusing, and bright variable illumination, it is the standard for stool, urine, and blood smear analysis.',
     badge: 'Kenyan Clinical Standard',
@@ -716,6 +733,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Renowned UIS2 infinity optical clarity and legendary mechanical durability.',
+    image: '/images/products/olympus-cx-21.webp',
     description:
       'The Olympus CX21 is a globally respected biological microscope renowned for its UIS2 infinity-corrected optics, crystal-clear flat field images, and exceptional mechanical longevity. Built to endure decades of continuous laboratory workload, it remains a gold standard for hospital diagnostic pathology.',
     badge: 'UIS2 Optical System',
@@ -751,6 +769,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Modern ergonomic design with daylight-balanced 20,000-hour LED illumination & FN 20.',
+    image: '/images/products/olympus-cx-23.webp',
     description:
       'The Olympus CX23 is the advanced evolution of the CX series, featuring a wide Field Number 20, long-life LED illumination (20,000 hours, daylight-balanced 5500K color temperature), and an ergonomic lightweight frame (5.9 kg) with built-in carrying grips. Designed for modern clinical labs, it delivers crisp, high-contrast imagery.',
     badge: 'Daylight LED + FN 20',
@@ -1188,20 +1207,15 @@ export function getProductWhatsAppUrl(
   const baseUrl = (options?.customBaseUrl || SITE_CONFIG.url || 'https://www.medwisetechnicalconsulting.co.ke').replace(/\/$/, '');
   const productUrl = `${baseUrl}/products#${product.id}`;
 
-  const priceText = product.price
-    ? `Listed Price: ${product.priceFormatted}`
-    : `Listed Price: Inquire for Quote / Competitive Hospital Rate`;
-
   const message = [
     `Hello Medwise Technical Consulting,`,
     ``,
     `I would like to BUY / INQUIRE via WhatsApp regarding:`,
     `• Product: ${product.name} (${product.model})`,
     `• Category: ${product.subcategory}`,
-    `• ${priceText}`,
     `• Product Link: ${productUrl}`,
     ``,
-    `Please provide availability, delivery details to my facility, and purchasing guidance. Thank you!`,
+    `Please provide current pricing, stock availability, delivery details to my facility, and purchasing guidance. Thank you!`,
   ].join('\n');
 
   return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;

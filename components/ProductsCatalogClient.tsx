@@ -161,7 +161,7 @@ export default function ProductsCatalogClient() {
   return (
     <div className="space-y-8">
       {/* Search Bar & Stats Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-2xl bg-white p-4 sm:p-5 border border-slate-200 shadow-xs">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-xl bg-white p-4 sm:p-5 border border-slate-200 shadow-xs">
         {/* Search Input */}
         <div className="relative flex-1 max-w-xl">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -277,7 +277,7 @@ export default function ProductsCatalogClient() {
 
       {/* Products Grid */}
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}
@@ -288,8 +288,8 @@ export default function ProductsCatalogClient() {
         </div>
       ) : (
         /* Empty Search/Filter State */
-        <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-12 text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-slate-400 mb-4">
+        <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 sm:p-12 text-center">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-slate-100 text-slate-400 mb-4">
             <Search className="h-6 w-6" />
           </div>
           <h3 className="text-base font-extrabold text-slate-900">
@@ -302,7 +302,7 @@ export default function ProductsCatalogClient() {
           <div className="mt-6 flex items-center justify-center gap-3 flex-wrap">
             <button
               onClick={resetAllFilters}
-              className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors"
+              className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors"
             >
               Reset All Filters
             </button>
@@ -313,7 +313,7 @@ export default function ProductsCatalogClient() {
               )}.%20Do%20you%20have%20it%20available?`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-emerald-700 transition-all"
+              className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-emerald-700 transition-all"
             >
               <MessageSquare className="h-4 w-4" />
               <span>Inquire via WhatsApp</span>
