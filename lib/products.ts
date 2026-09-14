@@ -809,6 +809,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Digital PID temperature-controlled incubator for microbiology culture and diagnostic incubation.',
+    image: '/images/products/laboratory-incubator.webp',
     description:
       'Essential for microbiology, bacteriology, and clinical diagnostic incubation, this benchtop laboratory incubator features a digital PID microcomputer controller, high-grade stainless steel interior, and a tempered glass inner observation door to observe culture plates without losing internal heat.',
     badge: 'Microbiology Essential',
@@ -843,6 +844,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Quiet brushless centrifuge for rapid serum, plasma, and urine sample separation.',
+    image: '/images/products/clinical-centrifuges.webp',
     description:
       'High-performance benchtop laboratory centrifuge designed for routine clinical sample preparation (blood serum, plasma separation, and urine sediment). Available in traditional and modern digital brushless motor formats (up to 4000 RPM / 2150 x g) with automatic lid lock security.',
     badge: 'Serum & Plasma Separation',
@@ -877,6 +879,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Simultaneous rocking and rolling motion for thorough, gentle blood anticoagulation mixing.',
+    image: '/images/products/roller-mixer.webp',
     description:
       'The 6-roller blood tube mixer provides gentle, highly efficient mixing of hematology whole blood samples in EDTA, heparin, and citrate tubes. Combining simultaneous 360° rolling and gentle axial rocking motions, it prevents cell settling and clot formation without damaging red blood cells.',
     badge: 'Hematology Essential',
@@ -910,6 +913,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Adjustable 0–210 RPM orbital rotator for VDRL, syphilis RPR, blood grouping, and agglutination assays.',
+    image: '/images/products/vdrl-shaker.webp',
     description:
       'Engineered specifically for serological agglutination testing, VDRL test for syphilis, blood grouping, and latex agglutination cards. Features an adjustable orbital speed of 0 to 210 RPM, a non-slip platform with spring clips, and an integrated 60-minute mechanical timer.',
     badge: 'Serology Workhorse',
@@ -941,6 +945,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Forced-air convection dry heat sterilizer (50°C–250°C) for laboratory glassware and instruments.',
+    image: '/images/products/hot-air-oven.webp',
     description:
       'Heavy-duty forced-air convection hot air oven designed for dry heat sterilization of laboratory glassware, pipettes, metal surgical instruments, and sample drying. Equipped with digital microcomputer temperature control up to 250°C and a stainless steel inner chamber.',
     badge: 'Sterilization & Drying',
@@ -974,6 +979,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'Strict 2°C–8°C forced-air medical pharmacy & laboratory refrigerator with digital temperature alarms.',
+    image: '/images/products/laboratory-fridge.webp',
     description:
       'Designed specifically for the strict preservation of laboratory reagents, blood control materials, vaccines, and diagnostic test kits. Featuring microcomputer temperature control at 2°C to 8°C, forced-air cooling, anti-condensation heated glass door, and audible/visual alarms for high/low temperature and power disruption.',
     badge: 'Reagent Cold-Chain Essential',
@@ -1008,6 +1014,7 @@ export const PRODUCTS_CATALOG: Product[] = [
     price: null,
     priceFormatted: 'Price on Request / Inquire',
     tagline: 'ISO 8655 compliant ergonomic variable pipettes with autoclavable tip cones.',
+    image: '/images/products/micropipettes.webp',
     description:
       'High-precision variable volume single-channel micropipettes available in standard clinical laboratory ranges: 10–100 μL and 100–1000 μL. Featuring an ultra-lightweight ergonomic design, low plunger force to prevent hand fatigue (RSI), clear digital volume counter, and autoclavable tip ejector cone.',
     badge: 'ISO 8655 Calibrated',

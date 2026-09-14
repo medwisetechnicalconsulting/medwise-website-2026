@@ -83,14 +83,24 @@ def match_product(filename):
 def process_image(src_path, dest_path):
     dest_path.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(src_path) as img:
-        # Convert to RGBA
+        has_alpha = False
+        if img.mode in ("RGBA", "LA") or (img.mode == "P" and "transparency" in img.info):
+            img_rgba = img.convert("RGBA")
+            extrema = img_rgba.getextrema()
+            # If any alpha channel pixel is transparent (< 240)
+            if len(extrema) >= 4 and extrema[3][0] < 240:
+                has_alpha = True
+        
         img = img.convert("RGBA")
         
         # Calculate aspect ratio preserving thumbnail
         img.thumbnail((TARGET_SIZE[0] - 40, TARGET_SIZE[1] - 40), Image.Resampling.LANCZOS)
         
-        # Create clean white or transparent canvas
-        canvas = Image.new("RGBA", TARGET_SIZE, (255, 255, 255, 0))
+        # Use transparent canvas if source has transparency, else solid white canvas
+        if has_alpha:
+            canvas = Image.new("RGBA", TARGET_SIZE, (255, 255, 255, 0))
+        else:
+            canvas = Image.new("RGBA", TARGET_SIZE, (255, 255, 255, 255))
         
         # Paste centered
         offset_x = (TARGET_SIZE[0] - img.width) // 2
@@ -129,7 +139,12 @@ def main():
     raw_files = []
     for raw_dir in RAW_DIRS:
         if raw_dir.exists():
-            files = [f for f in raw_dir.iterdir() if f.is_file() and f.suffix.lower() in [".png", ".jpg", ".jpeg", ".webp", ".jfif", ".tiff", ".bmp"]]
+            files = [
+                f for f in raw_dir.iterdir()
+                if f.is_file() and f.suffix.lower() in [
+                    ".png", ".jpg", ".jpeg", ".webp", ".jfif", ".tiff", ".bmp", ".avif"
+                ]
+            ]
             if files:
                 print(f"Found {len(files)} files in {raw_dir}")
                 raw_files.extend(files)
@@ -141,9 +156,25 @@ def main():
     force_all = "--all" in sys.argv
     matched_map = {}
     
+    # Sort files so .webp, .png, and .avif take priority over .jpg with duplicate numbers (e.g. Pippettes 2.jpg)
+    def file_sort_key(p):
+        name = p.name.lower()
+        priority = 0
+        if "2." in name or "copy" in name:
+            priority = 10
+        if p.suffix.lower() in [".webp", ".png", ".avif"]:
+            priority -= 2
+        return (priority, name)
+        
+    raw_files.sort(key=file_sort_key)
+    
     for file in raw_files:
         product_id = match_product(file.name)
         if product_id:
+            if product_id in matched_map:
+                print(f"Skipping duplicate raw image for {product_id}: {file.name}")
+                continue
+                
             dest_file = OUTPUT_DIR / f"{product_id}.webp"
             if force_all or not dest_file.exists() or file.stat().st_mtime > dest_file.stat().st_mtime:
                 process_image(file, dest_file)
