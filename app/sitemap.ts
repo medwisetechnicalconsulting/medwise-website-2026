@@ -2,15 +2,18 @@ import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/mdx';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 import { CATEGORIES_CONFIG, PRODUCTS_CATALOG } from '@/lib/products';
+import { CONSUMABLES_CATEGORIES } from '@/lib/consumables';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_CONFIG.url.replace(/\/$/, '');
   const currentDate = new Date().toISOString();
 
-  // All valid product image URLs
+  // All valid machinery product image URLs
   const allProductImages = PRODUCTS_CATALOG.filter((p) => p.image).map(
     (p) => `${baseUrl}${p.image}`
   );
+
+  const consumablesBannerImage = `${baseUrl}/images/products/consumables-banner.webp`;
 
   // Core Static SEO Pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -20,13 +23,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 1.0,
       images: [`${baseUrl}/images/medwise-og.jpg`, `${baseUrl}/images/medwise-logo.png`],
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-      images: [`${baseUrl}/images/medwise-og.jpg`],
     },
     {
       url: `${baseUrl}/products`,
@@ -40,10 +36,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.95,
-      images: [
-        `${baseUrl}/images/medwise-og.jpg`,
-        `${baseUrl}/images/products/consumables-banner.webp`,
-      ],
+      images: [`${baseUrl}/images/medwise-og.jpg`, consumablesBannerImage],
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      images: [`${baseUrl}/images/medwise-og.jpg`],
     },
     {
       url: `${baseUrl}/blog`,
@@ -68,8 +68,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Equipment Category SEO Pages
-  const categoryPages: MetadataRoute.Sitemap = CATEGORIES_CONFIG.map((cat) => {
+  // Diagnostic Machinery Category SEO Pages
+  const machineryCategoryPages: MetadataRoute.Sitemap = CATEGORIES_CONFIG.map((cat) => {
     const catImages = PRODUCTS_CATALOG.filter(
       (p) => p.category === cat.id && p.image
     ).map((p) => `${baseUrl}${p.image}`);
@@ -83,7 +83,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  // Dynamic Blog & Insight Articles
+  // Consumables Subcategory SEO Pages
+  const consumablesCategoryPages: MetadataRoute.Sitemap = CONSUMABLES_CATEGORIES.filter(
+    (cat) => cat.id !== 'all'
+  ).map((cat) => ({
+    url: `${baseUrl}/products/consumables?category=${cat.id}`,
+    lastModified: currentDate,
+    changeFrequency: 'daily',
+    priority: 0.9,
+    images: [`${baseUrl}/images/medwise-og.jpg`, consumablesBannerImage],
+  }));
+
+  // Dynamic Blog & Clinical Insight Articles
   const posts = getAllPosts();
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => {
     const postImageUrl = post.image
@@ -101,5 +112,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  return [...staticPages, ...categoryPages, ...blogPages];
+  return [
+    ...staticPages,
+    ...machineryCategoryPages,
+    ...consumablesCategoryPages,
+    ...blogPages,
+  ];
 }
