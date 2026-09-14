@@ -115,8 +115,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="hover:text-blue-700 transition-colors text-blue-800 font-bold">
-                  Medical Equipment Catalog
+                <Link href="/products" className="hover:text-blue-700 transition-colors">
+                  Diagnostic Machinery Catalog
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/consumables" className="hover:text-blue-700 transition-colors text-amber-800 font-bold">
+                  Consumables &amp; Reagents
                 </Link>
               </li>
               <li>

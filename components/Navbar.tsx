@@ -2,12 +2,13 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Phone, MessageSquare, Menu, X } from 'lucide-react';
+import { Phone, MessageSquare, Menu, X, ChevronDown, Cpu, PackageCheck } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 import MedwiseLogo from './MedwiseLogo';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-xs">
@@ -46,9 +47,50 @@ export default function Navbar() {
           <Link href="/services" className="hover:text-blue-700 transition-colors">
             Services
           </Link>
-          <Link href="/products" className="hover:text-blue-700 transition-colors text-blue-800 font-bold">
-            Products
-          </Link>
+          {/* Products Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setProductsOpen(true)}
+            onMouseLeave={() => setProductsOpen(false)}
+          >
+            <Link
+              href="/products"
+              className="hover:text-blue-700 transition-colors text-blue-800 font-bold inline-flex items-center gap-1 py-1"
+            >
+              <span>Products</span>
+              <ChevronDown className="h-3.5 w-3.5" />
+            </Link>
+
+            {productsOpen && (
+              <div className="absolute top-full left-0 mt-1 w-64 rounded-xl border border-slate-200 bg-white p-2 shadow-lg ring-1 ring-black/5 z-50">
+                <Link
+                  href="/products"
+                  className="flex items-start gap-2.5 rounded-lg p-2.5 hover:bg-slate-50 transition-colors"
+                  onClick={() => setProductsOpen(false)}
+                >
+                  <Cpu className="h-5 w-5 text-blue-700 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-xs font-bold text-slate-900">Diagnostic Machinery</div>
+                    <div className="text-[11px] text-slate-500">Hematology, Biochemistry &amp; POCT</div>
+                  </div>
+                </Link>
+                <Link
+                  href="/products/consumables"
+                  className="flex items-start gap-2.5 rounded-lg p-2.5 hover:bg-amber-50/70 transition-colors"
+                  onClick={() => setProductsOpen(false)}
+                >
+                  <PackageCheck className="h-5 w-5 text-amber-700 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-xs font-bold text-amber-900 flex items-center gap-1.5">
+                      <span>Consumables &amp; Reagents</span>
+                      <span className="rounded-sm bg-amber-200/80 px-1 text-[9px] font-extrabold text-amber-900">34+</span>
+                    </div>
+                    <div className="text-[11px] text-slate-500">Vacutainers, Stains &amp; Rapid Kits</div>
+                  </div>
+                </Link>
+              </div>
+            )}
+          </div>
           <Link href="/about" className="hover:text-blue-700 transition-colors">
             About Us
           </Link>
@@ -112,9 +154,18 @@ export default function Navbar() {
             <Link
               href="/products"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 rounded-md hover:bg-slate-100"
+              className="px-2 py-1.5 rounded-md hover:bg-slate-100 flex items-center justify-between"
             >
-              Products
+              <span>Diagnostic Machinery</span>
+              <span className="text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded-sm">26 Models</span>
+            </Link>
+            <Link
+              href="/products/consumables"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-2 py-1.5 rounded-md hover:bg-amber-50 text-amber-900 font-bold flex items-center justify-between"
+            >
+              <span>Consumables &amp; Reagents</span>
+              <span className="text-[10px] bg-amber-200 text-amber-900 font-extrabold px-1.5 py-0.5 rounded-sm">34+ Items</span>
             </Link>
             <Link
               href="/about"

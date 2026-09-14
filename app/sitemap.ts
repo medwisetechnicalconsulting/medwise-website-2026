@@ -36,6 +36,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       images: [`${baseUrl}/images/medwise-og.jpg`, ...allProductImages],
     },
     {
+      url: `${baseUrl}/products/consumables`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+      images: [
+        `${baseUrl}/images/medwise-og.jpg`,
+        `${baseUrl}/images/products/consumables-banner.webp`,
+      ],
+    },
+    {
       url: `${baseUrl}/blog`,
       lastModified: currentDate,
       changeFrequency: 'daily',

@@ -155,6 +155,16 @@ export default function ProductsPage() {
             <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
               Compare verified clinical laboratory machines with independent technical specifications. Every analyzer includes manufacturer warranty, precision metrological calibration, and professional biomedical installation by Medwise engineers.
             </p>
+
+            <div className="pt-1 flex flex-wrap items-center gap-2 text-xs">
+              <span className="text-slate-400">Need reagents, tubes, or stains?</span>
+              <Link
+                href="/products/consumables"
+                className="font-bold text-amber-400 hover:text-amber-300 underline inline-flex items-center gap-1 transition-colors"
+              >
+                <span>Visit Consumables &amp; Reagents Catalog (34+ items) &rarr;</span>
+              </Link>
+            </div>
           </div>
 
           {/* Value Propositions Grid */}
