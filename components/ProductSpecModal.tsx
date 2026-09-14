@@ -120,42 +120,44 @@ export default function ProductSpecModal({ product, onClose }: ProductSpecModalP
               </span>
             </div>
 
-            <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+            <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap w-full sm:w-auto">
               <a
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-emerald-700 transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-emerald-700 transition-colors w-full sm:w-auto min-h-[42px]"
               >
                 <MessageSquare className="h-4 w-4" />
                 <span>Buy via WhatsApp</span>
               </a>
 
-              <a
-                href={`tel:${SITE_CONFIG.telephone}`}
-                className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors"
-              >
-                <Phone className="h-3.5 w-3.5 text-blue-700" />
-                <span>Call Engineer</span>
-              </a>
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <a
+                  href={`tel:${SITE_CONFIG.telephone}`}
+                  className="inline-flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors min-h-[38px]"
+                >
+                  <Phone className="h-3.5 w-3.5 text-blue-700" />
+                  <span>Call Engineer</span>
+                </a>
 
-              <button
-                onClick={copyProductLink}
-                title="Copy direct product link"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-              >
-                {copied ? (
-                  <>
-                    <CheckCheck className="h-3.5 w-3.5 text-emerald-600" />
-                    <span className="text-emerald-700">Copied</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="h-3.5 w-3.5" />
-                    <span>Copy Link</span>
-                  </>
-                )}
-              </button>
+                <button
+                  onClick={copyProductLink}
+                  title="Copy direct product link"
+                  className="inline-flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors min-h-[38px]"
+                >
+                  {copied ? (
+                    <>
+                      <CheckCheck className="h-3.5 w-3.5 text-emerald-600" />
+                      <span className="text-emerald-700">Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-3.5 w-3.5" />
+                      <span>Copy Link</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
 

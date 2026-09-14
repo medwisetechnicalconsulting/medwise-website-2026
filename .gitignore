@@ -45,3 +45,5 @@ next-env.d.ts
 
 # Local raw assets
 public/images/products-raw/
+products-raw/
+
