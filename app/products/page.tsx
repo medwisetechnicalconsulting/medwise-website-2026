@@ -194,9 +194,9 @@ export default function ProductsPage() {
       </section>
 
       {/* Main Interactive Catalog Section */}
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:py-10 sm:px-6 lg:px-8">
+      <section aria-label="Machinery Catalog" className="mx-auto max-w-7xl px-4 py-8 sm:py-10 sm:px-6 lg:px-8">
         <ProductsCatalogClient />
-      </main>
+      </section>
 
       {/* Equipment FAQ & Rich Search Snippets Section */}
       <section className="border-t border-slate-200 bg-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8">

@@ -9,7 +9,7 @@ export default function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-auto">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end pointer-events-auto">
       
       {/* Expandable Quick Action Popup */}
       <AnimatePresence>
@@ -19,7 +19,7 @@ export default function FloatingWhatsApp() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="mb-3 w-[calc(100vw-3rem)] sm:w-80 rounded-xl bg-white p-5 shadow-xl border border-slate-200 text-slate-900 space-y-3"
+            className="mb-3 w-[calc(100vw-2rem)] sm:w-80 max-w-[340px] rounded-xl bg-white p-4 sm:p-5 shadow-xl border border-slate-200 text-slate-900 space-y-3"
           >
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2.5">

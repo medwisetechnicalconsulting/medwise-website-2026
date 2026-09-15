@@ -160,13 +160,15 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5">
-                <Phone className="h-4 w-4 text-blue-700 shrink-0" />
-                <div>
-                  <span className="font-bold text-slate-900">Phones: </span>
-                  <a href={`tel:${SITE_CONFIG.telephone}`} className="hover:text-blue-700 transition-colors font-mono font-bold">
+              <div className="flex items-start gap-2.5">
+                <Phone className="h-4 w-4 text-blue-700 shrink-0 mt-0.5" />
+                <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
+                  <span className="font-bold text-slate-900">Phones:</span>
+                  <a href={`tel:${SITE_CONFIG.telephone}`} className="hover:text-blue-700 transition-colors font-mono font-bold whitespace-nowrap">
                     {SITE_CONFIG.telephone}
-                  </a> / <a href={`tel:${SITE_CONFIG.altTelephone}`} className="hover:text-blue-700 transition-colors font-mono font-bold">
+                  </a>
+                  <span className="text-slate-400">/</span>
+                  <a href={`tel:${SITE_CONFIG.altTelephone}`} className="hover:text-blue-700 transition-colors font-mono font-bold whitespace-nowrap">
                     {SITE_CONFIG.altTelephone}
                   </a>
                 </div>

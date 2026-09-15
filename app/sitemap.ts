@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/mdx';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 import { CATEGORIES_CONFIG, PRODUCTS_CATALOG } from '@/lib/products';
-import { CONSUMABLES_CATEGORIES } from '@/lib/consumables';
+import { CONSUMABLES_CATEGORIES, CONSUMABLES_CATALOG } from '@/lib/consumables';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_CONFIG.url.replace(/\/$/, '');
@@ -13,7 +13,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     (p) => `${baseUrl}${p.image}`
   );
 
-  const consumablesBannerImage = `${baseUrl}/images/products/consumables-banner.webp`;
+  // All valid consumables product image URLs
+  const allConsumablesImages = CONSUMABLES_CATALOG.filter((c) => c.image).map(
+    (c) => `${baseUrl}${c.image}`
+  );
 
   // Core Static SEO Pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -36,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.95,
-      images: [`${baseUrl}/images/medwise-og.jpg`, consumablesBannerImage],
+      images: [`${baseUrl}/images/medwise-og.jpg`, ...allConsumablesImages],
     },
     {
       url: `${baseUrl}/services`,
@@ -86,13 +89,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Consumables Subcategory SEO Pages
   const consumablesCategoryPages: MetadataRoute.Sitemap = CONSUMABLES_CATEGORIES.filter(
     (cat) => cat.id !== 'all'
-  ).map((cat) => ({
-    url: `${baseUrl}/products/consumables?category=${cat.id}`,
-    lastModified: currentDate,
-    changeFrequency: 'daily',
-    priority: 0.9,
-    images: [`${baseUrl}/images/medwise-og.jpg`, consumablesBannerImage],
-  }));
+  ).map((cat) => {
+    const catImages = CONSUMABLES_CATALOG.filter(
+      (c) => c.category === cat.id && c.image
+    ).map((c) => `${baseUrl}${c.image}`);
+
+    return {
+      url: `${baseUrl}/products/consumables?category=${cat.id}`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.9,
+      images: [`${baseUrl}/images/medwise-og.jpg`, ...catImages],
+    };
+  });
 
   // Dynamic Blog & Clinical Insight Articles
   const posts = getAllPosts();

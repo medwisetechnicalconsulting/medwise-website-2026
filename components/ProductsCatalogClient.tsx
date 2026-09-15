@@ -177,7 +177,7 @@ export default function ProductsCatalogClient() {
               <span className="inline-flex items-center rounded-md bg-amber-100 px-2 py-0.5 text-[11px] font-extrabold text-amber-800 uppercase tracking-wide">
                 Special Consumables Page
               </span>
-              <span className="text-xs font-semibold text-slate-500">34+ Clinical Items &bull; Bulk Procurement</span>
+              <span className="text-xs font-semibold text-slate-500">38+ Clinical Items &bull; Bulk Procurement</span>
             </div>
             <h2 className="text-sm sm:text-base font-bold text-slate-900 mt-0.5">
               Looking for Blood Tubes, Microscope Slides, Stains &amp; Rapid Test Kits?
@@ -206,7 +206,7 @@ export default function ProductsCatalogClient() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search machines by model (BC 10, Z3, BS 240), brand (Mindray, Zybio, Olympus), or spec..."
-            className="w-full rounded-xl border border-slate-300 bg-slate-50/50 py-2.5 pl-10 pr-9 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"
+            className="w-full rounded-xl border border-slate-300 bg-slate-50/50 py-2.5 pl-10 pr-9 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"
           />
           {searchQuery && (
             <button

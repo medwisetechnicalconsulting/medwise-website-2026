@@ -83,7 +83,7 @@ export default function Navbar() {
                   <div>
                     <div className="text-xs font-bold text-amber-900 flex items-center gap-1.5">
                       <span>Consumables &amp; Reagents</span>
-                      <span className="rounded-sm bg-amber-200/80 px-1 text-[9px] font-extrabold text-amber-900">34+</span>
+                      <span className="rounded-sm bg-amber-200/80 px-1 text-[9px] font-extrabold text-amber-900">38+</span>
                     </div>
                     <div className="text-[11px] text-slate-500">Vacutainers, Stains &amp; Rapid Kits</div>
                   </div>
@@ -140,51 +140,51 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 rounded-md hover:bg-slate-100"
+              className="px-3 py-2.5 min-h-[44px] flex items-center rounded-lg hover:bg-slate-100 transition-colors"
             >
               Home
             </Link>
             <Link
               href="/services"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 rounded-md hover:bg-slate-100"
+              className="px-3 py-2.5 min-h-[44px] flex items-center rounded-lg hover:bg-slate-100 transition-colors"
             >
               Services
             </Link>
             <Link
               href="/products"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 rounded-md hover:bg-slate-100 flex items-center justify-between"
+              className="px-3 py-2.5 min-h-[44px] rounded-lg hover:bg-slate-100 flex items-center justify-between transition-colors"
             >
               <span>Diagnostic Machinery</span>
-              <span className="text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded-sm">26 Models</span>
+              <span className="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded-md">26 Models</span>
             </Link>
             <Link
               href="/products/consumables"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 rounded-md hover:bg-amber-50 text-amber-900 font-bold flex items-center justify-between"
+              className="px-3 py-2.5 min-h-[44px] rounded-lg hover:bg-amber-50 text-amber-900 font-bold flex items-center justify-between transition-colors"
             >
               <span>Consumables &amp; Reagents</span>
-              <span className="text-[10px] bg-amber-200 text-amber-900 font-extrabold px-1.5 py-0.5 rounded-sm">34+ Items</span>
+              <span className="text-[10px] bg-amber-200 text-amber-900 font-extrabold px-2 py-0.5 rounded-md">38+ Items</span>
             </Link>
             <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 rounded-md hover:bg-slate-100"
+              className="px-3 py-2.5 min-h-[44px] flex items-center rounded-lg hover:bg-slate-100 transition-colors"
             >
               About Us
             </Link>
             <Link
               href="/blog"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 rounded-md hover:bg-slate-100"
+              className="px-3 py-2.5 min-h-[44px] flex items-center rounded-lg hover:bg-slate-100 transition-colors"
             >
-              Insights & Blog
+              Insights &amp; Blog
             </Link>
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 rounded-md hover:bg-slate-100"
+              className="px-3 py-2.5 min-h-[44px] flex items-center rounded-lg hover:bg-slate-100 transition-colors"
             >
               Contact
             </Link>

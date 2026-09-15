@@ -218,11 +218,11 @@ export default function ConsumablesPage() {
       </header>
 
       {/* Main Content Area */}
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:py-10 sm:px-6 lg:px-8 space-y-8">
+      <section aria-label="Consumables Catalog" className="mx-auto max-w-7xl px-4 py-8 sm:py-10 sm:px-6 lg:px-8 space-y-8">
 
         {/* Interactive Consumables Catalog Client Component */}
         <ConsumablesCatalogClient />
-      </main>
+      </section>
 
       {/* Equipment vs Consumables Gateway Callout */}
       <section className="border-t border-slate-200 bg-white py-12 px-4 sm:px-6 lg:px-8">

@@ -31,7 +31,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const imageUrl = post.image ? `${SITE_CONFIG.url}${post.image}` : SITE_CONFIG.ogImage;
+  const imageUrl = post.image
+    ? post.image.startsWith('http')
+      ? post.image
+      : `${SITE_CONFIG.url}${post.image}`
+    : `${SITE_CONFIG.url}${SITE_CONFIG.ogImage}`;
 
   return {
     title: post.title,

@@ -548,7 +548,7 @@ export default function AdminDashboardPage() {
       </header>
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Quick Stats Overview */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex items-center justify-between">
@@ -937,7 +937,7 @@ export default function AdminDashboardPage() {
             )}
           </form>
         )}
-      </main>
+      </div>
 
       {/* MODAL: BLOG POST EDITOR / CREATOR */}
       {isBlogModalOpen && (

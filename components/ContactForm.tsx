@@ -21,7 +21,7 @@ export default function ContactForm() {
               type="text"
               required
               placeholder="e.g. Dr. Brian Musango"
-              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-base sm:text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
 
@@ -31,7 +31,7 @@ export default function ContactForm() {
               type="text"
               required
               placeholder="e.g. Thagana County Medical Center"
-              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-base sm:text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         </div>
@@ -43,7 +43,7 @@ export default function ContactForm() {
               type="tel"
               required
               placeholder="+254 7XX XXX XXX"
-              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-base sm:text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
 
@@ -52,14 +52,14 @@ export default function ContactForm() {
             <input
               type="email"
               placeholder="medwisetechnicalconsulting@gmail.com"
-              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
+              className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-base sm:text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
             />
           </div>
         </div>
 
         <div className="space-y-1.5">
           <label className="text-xs font-bold text-slate-700">Service Category Needed *</label>
-          <select className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none bg-white">
+          <select className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-base sm:text-xs text-slate-900 focus:border-blue-600 focus:outline-none bg-white">
             <option>Pre-Purchase Consulting & Equipment Selection</option>
             <option>Medical Device Sourcing & Procurement</option>
             <option>Device Installation & Room Setup</option>
@@ -74,7 +74,7 @@ export default function ContactForm() {
           <textarea
             rows={4}
             placeholder="Describe your equipment requirements, machine model (e.g. Zybio Z3 hematology analyzer), timeline, or issue..."
-            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
+            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-base sm:text-xs text-slate-900 focus:border-blue-600 focus:outline-none"
           ></textarea>
         </div>
 
