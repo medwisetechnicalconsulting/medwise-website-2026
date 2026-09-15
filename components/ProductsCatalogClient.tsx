@@ -4,7 +4,6 @@ import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Search,
-  Filter,
   Droplet,
   FlaskConical,
   Activity,
@@ -16,7 +15,6 @@ import {
   MessageSquare,
   Sparkles,
   ArrowRight,
-  ChevronDown,
 } from 'lucide-react';
 import {
   Product,
@@ -31,7 +29,6 @@ import { SITE_CONFIG } from '@/lib/seo/schema';
 
 export default function ProductsCatalogClient() {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory | 'all'>('all');
-  const [selectedSubcategory, setSelectedSubcategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSpecProduct, setActiveSpecProduct] = useState<Product | null>(null);
 
@@ -73,24 +70,9 @@ export default function ProductsCatalogClient() {
     }
   }, []);
 
-  // Compute available subcategories for the current category selection
-  const availableSubcategories = useMemo(() => {
-    if (selectedCategory === 'all') {
-      const set = new Set<string>();
-      PRODUCTS_CATALOG.forEach((p) => set.add(p.subcategory));
-      return Array.from(set);
-    }
-    const set = new Set<string>();
-    PRODUCTS_CATALOG.filter((p) => p.category === selectedCategory).forEach((p) =>
-      set.add(p.subcategory)
-    );
-    return Array.from(set);
-  }, [selectedCategory]);
-
-  // Handle category change (reset subcategory & update URL query param)
+  // Handle category change (update URL query param)
   const handleCategoryChange = (cat: ProductCategory | 'all') => {
     setSelectedCategory(cat);
-    setSelectedSubcategory('all');
     if (typeof window !== 'undefined') {
       const url = new URL(window.location.href);
       if (cat === 'all') {
@@ -107,11 +89,6 @@ export default function ProductsCatalogClient() {
     return PRODUCTS_CATALOG.filter((product) => {
       // Category filter
       if (selectedCategory !== 'all' && product.category !== selectedCategory) {
-        return false;
-      }
-
-      // Subcategory filter
-      if (selectedSubcategory !== 'all' && product.subcategory !== selectedSubcategory) {
         return false;
       }
 
@@ -135,7 +112,7 @@ export default function ProductsCatalogClient() {
 
       return true;
     });
-  }, [selectedCategory, selectedSubcategory, searchQuery]);
+  }, [selectedCategory, searchQuery]);
 
   // Category Icon helper
   const getTabIcon = (catId: ProductCategory | 'all') => {
@@ -157,12 +134,10 @@ export default function ProductsCatalogClient() {
     }
   };
 
-  const isFiltering =
-    selectedCategory !== 'all' || selectedSubcategory !== 'all' || searchQuery.trim() !== '';
+  const isFiltering = selectedCategory !== 'all' || searchQuery.trim() !== '';
 
   const resetAllFilters = () => {
     setSelectedCategory('all');
-    setSelectedSubcategory('all');
     setSearchQuery('');
   };
 
@@ -286,106 +261,6 @@ export default function ProductsCatalogClient() {
           </Link>
         </div>
       </div>
-
-      {/* Subcategory Filter (Clean Mobile Dropdown + Single-Row Horizontal Swipe, Responsive Wrap on Desktop) */}
-      {availableSubcategories.length > 1 && (
-        <div className="space-y-2 pt-1">
-          {/* Mobile View: Clean Quick Dropdown Selector */}
-          <div className="sm:hidden flex items-center gap-2">
-            <div className="relative flex-1">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-blue-600">
-                <Filter className="h-3.5 w-3.5" />
-              </div>
-              <select
-                aria-label="Filter by Subcategory"
-                value={selectedSubcategory}
-                onChange={(e) => setSelectedSubcategory(e.target.value)}
-                className="w-full appearance-none rounded-xl border border-slate-300 bg-white py-2.5 pl-8 pr-8 text-xs font-bold text-slate-800 shadow-2xs focus:border-blue-600 focus:outline-hidden focus:ring-2 focus:ring-blue-100"
-              >
-                <option value="all">
-                  All Subcategories ({
-                    PRODUCTS_CATALOG.filter(
-                      (p) => selectedCategory === 'all' || p.category === selectedCategory
-                    ).length
-                  })
-                </option>
-                {availableSubcategories.map((subcat) => {
-                  const count = PRODUCTS_CATALOG.filter(
-                    (p) =>
-                      (selectedCategory === 'all' || p.category === selectedCategory) &&
-                      p.subcategory === subcat
-                  ).length;
-                  return (
-                    <option key={subcat} value={subcat}>
-                      {subcat} ({count})
-                    </option>
-                  );
-                })}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400">
-                <ChevronDown className="h-3.5 w-3.5" />
-              </div>
-            </div>
-
-            {selectedSubcategory !== 'all' && (
-              <button
-                onClick={() => setSelectedSubcategory('all')}
-                className="shrink-0 rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 flex items-center gap-1 shadow-2xs"
-                title="Reset subcategory filter"
-              >
-                <X className="h-3.5 w-3.5" />
-                <span>Reset</span>
-              </button>
-            )}
-          </div>
-
-          {/* Horizontal Swipeable Chips on Mobile, Flowing Pills on Desktop (NEVER Clustered) */}
-          <div className="overflow-x-auto pb-1.5 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none touch-pan-x flex items-center gap-1.5 sm:gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
-            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0 pr-1">
-              <Filter className="h-3 w-3 text-blue-600" />
-              <span>Subcategory:</span>
-            </span>
-
-            <button
-              onClick={() => setSelectedSubcategory('all')}
-              className={`shrink-0 min-h-[34px] rounded-lg px-3 py-1.5 text-xs font-bold transition-all cursor-pointer ${
-                selectedSubcategory === 'all'
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 hover:text-slate-900 shadow-2xs'
-              }`}
-            >
-              All ({
-                PRODUCTS_CATALOG.filter(
-                  (p) => selectedCategory === 'all' || p.category === selectedCategory
-                ).length
-              })
-            </button>
-
-            {availableSubcategories.map((subcat) => {
-              const isSelected = selectedSubcategory === subcat;
-              const count = PRODUCTS_CATALOG.filter(
-                (p) =>
-                  (selectedCategory === 'all' || p.category === selectedCategory) &&
-                  p.subcategory === subcat
-              ).length;
-
-              return (
-                <button
-                  key={subcat}
-                  onClick={() => setSelectedSubcategory(subcat)}
-                  className={`shrink-0 min-h-[34px] rounded-lg px-3 py-1.5 text-xs font-bold transition-all cursor-pointer ${
-                    isSelected
-                      ? 'bg-slate-900 text-white shadow-xs'
-                      : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 hover:text-slate-900 shadow-2xs'
-                  }`}
-                >
-                  {subcat} ({count})
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
 
       {/* Products Grid */}
       {filteredProducts.length > 0 ? (
