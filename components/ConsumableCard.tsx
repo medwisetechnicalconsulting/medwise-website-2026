@@ -23,6 +23,7 @@ interface ConsumableCardProps {
 
 export default function ConsumableCard({ item }: ConsumableCardProps) {
   const [copied, setCopied] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const currentUrl = typeof window !== 'undefined' ? window.location.origin : '';
   const waUrl = getConsumableWhatsAppUrl(item, { customBaseUrl: currentUrl });
@@ -60,41 +61,80 @@ export default function ConsumableCard({ item }: ConsumableCardProps) {
   return (
     <article
       id={item.id}
-      className="group relative flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 sm:p-6 shadow-xs hover:border-slate-300 hover:shadow-md transition-all scroll-mt-28"
+      className="group relative flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs hover:border-slate-300 transition-colors scroll-mt-28"
     >
       <div>
-        {/* Top Meta Bar: Subcategory Badge & Packaging Unit */}
+        {/* Top Meta Bar: Subcategory Badge */}
         <div className="flex items-center justify-between gap-2 mb-3">
-          <div className="flex items-center gap-1.5 rounded-md bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-700">
+          <div className="flex items-center gap-1.5 rounded bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-700">
             {getCategoryIcon()}
             <span>{item.subcategory}</span>
           </div>
 
+          <span className="rounded border border-slate-200 bg-white px-2 py-0.5 text-[11px] font-bold text-slate-700 shadow-2xs">
+            Clinical Lab
+          </span>
+        </div>
+
+        {/* Consumable Visual Area - Provisioning for images just like ProductCard */}
+        <div className="relative mb-4 flex h-44 w-full items-center justify-center overflow-hidden rounded-lg bg-white border border-slate-200/80 p-3">
+          {item.image && !imgError ? (
+            <img
+              src={item.image}
+              alt={item.name}
+              onError={() => setImgError(true)}
+              className="h-full w-full object-contain"
+              loading="lazy"
+            />
+          ) : (
+            <div className="flex flex-col items-center justify-center text-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white shadow-2xs border border-slate-200">
+                {item.category === 'diagnostic-kits' && (
+                  <Activity className="h-6 w-6 text-purple-600" />
+                )}
+                {item.category === 'collection-phlebotomy' && (
+                  <Droplet className="h-6 w-6 text-red-600" />
+                )}
+                {item.category === 'microscopy-staining' && (
+                  <Microscope className="h-6 w-6 text-blue-600" />
+                )}
+                {item.category === 'plasticware-general' && (
+                  <FlaskConical className="h-6 w-6 text-amber-600" />
+                )}
+                {item.category === 'safety-waste' && (
+                  <PackageCheck className="h-6 w-6 text-emerald-600" />
+                )}
+              </div>
+              <span className="mt-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                {item.subcategory}
+              </span>
+            </div>
+          )}
+
+          {/* Badge (if any) */}
+          {item.badge && (
+            <div className="absolute top-2 left-2 rounded bg-blue-700 px-2 py-0.5 text-[10px] font-bold text-white shadow-xs">
+              {item.badge}
+            </div>
+          )}
+
+          {/* Copy Link Button */}
           <button
             onClick={copyLink}
             aria-label={`Copy link for ${item.name}`}
             title="Copy shareable link"
-            className="rounded-md p-1 text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+            className="absolute top-2 right-2 rounded bg-white/95 p-1.5 text-slate-400 shadow-2xs hover:text-slate-800 transition-colors border border-slate-200"
           >
             {copied ? (
-              <CheckCheck className="h-4 w-4 text-emerald-600" />
+              <CheckCheck className="h-3.5 w-3.5 text-emerald-600" />
             ) : (
-              <Copy className="h-4 w-4" />
+              <Copy className="h-3.5 w-3.5" />
             )}
           </button>
         </div>
 
-        {/* Badge (if any) */}
-        {item.badge && (
-          <div className="mb-2.5">
-            <span className="inline-block rounded bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-800 border border-blue-200/80">
-              {item.badge}
-            </span>
-          </div>
-        )}
-
         {/* Item Title */}
-        <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+        <h3 className="text-base font-bold text-slate-900 leading-snug">
           {item.name}
         </h3>
 
@@ -105,7 +145,7 @@ export default function ConsumableCard({ item }: ConsumableCardProps) {
         </div>
 
         {/* Clinical Description */}
-        <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+        <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
           {item.description}
         </p>
 
@@ -122,7 +162,7 @@ export default function ConsumableCard({ item }: ConsumableCardProps) {
           {item.highlights.slice(0, 3).map((highlight, idx) => (
             <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
               <Check className="h-3.5 w-3.5 shrink-0 text-emerald-600 mt-0.5" />
-              <span>{highlight}</span>
+              <span className="line-clamp-1">{highlight}</span>
             </div>
           ))}
         </div>

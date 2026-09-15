@@ -19,6 +19,7 @@ export interface ConsumableItem {
   specs: { label: string; value: string }[];
   badge?: string;
   storage?: string;
+  image?: string;
 }
 
 export const CONSUMABLES_CATEGORIES: {
@@ -82,6 +83,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Febrile Agglutination',
     packaging: 'Kit of 4 or 8 Dropper Vials (O & H Antigens)',
+    image: '/images/products/consumables/widal-test-kit.webp',
     tagline: 'Standardized slide & tube agglutination reagent kit for Salmonella enterica antibodies.',
     description:
       'The Widal Test Kit is a qualitative and semi-quantitative slide and tube agglutination assay for detecting serum agglutinins against Salmonella enterica serovars (S. Typhi O & H, S. Paratyphi A, B, C). Essential for routine febrile illness diagnosis in Kenyan outpatient clinics, dispensaries, and hospitals.',
@@ -108,6 +110,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Febrile Agglutination',
     packaging: 'Dropper Vials (Brucella Abortus & Melitensis)',
+    image: '/images/products/consumables/brucella-test-kit.webp',
     tagline: 'Rapid stained bacterial suspension for zoonotic brucellosis diagnosis.',
     description:
       'Standardized stained bacterial suspensions of killed Brucella abortus and Brucella melitensis for rapid slide and tube agglutination. Designed for screening pastoral and clinical populations across Kenya presenting with persistent fever and joint pains associated with zoonotic transmission.',
@@ -134,6 +137,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Autoimmune & Inflammation',
     packaging: 'Complete Kit with Test Latex, Controls & Reaction Cards',
+    image: '/images/products/consumables/rf-test-kit.webp',
     tagline: 'Polystyrene latex particles coated with human gamma-globulin for RF autoantibody detection.',
     description:
       'Rapid slide agglutination test for the qualitative screening and semi-quantitative determination of Rheumatoid Factor (RF) in human serum. Polystyrene latex particles coated with purified heat-denatured human IgG agglutinate visibly in the presence of RF autoantibodies associated with rheumatoid arthritis.',
@@ -160,6 +164,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Autoimmune & Inflammation',
     packaging: 'Complete Kit with Latex Reagent, Controls & Test Cards',
+    image: '/images/products/consumables/asot-test-kit.webp',
     tagline: 'Standardized latex agglutination for post-streptococcal infection & rheumatic fever diagnosis.',
     description:
       'Rapid latex agglutination test for the detection and semi-quantitation of Antistreptolysin O (ASO) antibodies in serum. High titers indicate recent Streptococcus pyogenes infection, aiding in the clinical management of rheumatic fever and post-streptococcal glomerulonephritis.',
@@ -186,6 +191,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Rapid Diagnostic Tests (RDT)',
     packaging: 'Box of 50 or 100 Individually Foil-Wrapped Strips',
+    image: '/images/products/consumables/hcg-pregnancy-strips.webp',
     tagline: 'High-sensitivity 25 mIU/mL lateral flow chromatographic immunoassay for early pregnancy.',
     description:
       'Diagnostic-grade Human Chorionic Gonadotropin (hCG) lateral flow immunoassay test strips designed for early detection of pregnancy from urine specimens. Features double-antibody sandwich technology with clean background clearance and bold, high-contrast red indicator bands.',
@@ -212,6 +218,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Infectious Disease Serology',
     packaging: 'Carbon Antigen Suspension with Needle, Bottle & Reaction Cards',
+    image: '/images/products/consumables/vdrl-rpr-test-kit.webp',
     tagline: 'Non-treponemal flocculation test for Treponema pallidum screening in antenatal and blood donor clinics.',
     description:
       'The Rapid Plasma Reagin (RPR) / VDRL test kit contains stabilized carbon-coated cardiolipin antigen suspension for the detection of reagin antibodies in human serum or plasma. Widely mandated in Kenya for routine antenatal profile (ANC) screening and blood transfusion safety.',
@@ -238,6 +245,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Rapid Diagnostic Tests (RDT)',
     packaging: 'Box of 25 Cassettes with Extraction Buffer',
+    image: '/images/products/consumables/sat-salmonella-antigen-kit.webp',
     tagline: 'Direct lateral flow chromatographic immunoassay for Salmonella antigen detection.',
     description:
       'Rapid diagnostic test (RDT) cassette designed for the direct qualitative detection of Salmonella antigens in clinical stool or blood culture broth samples. Provides acute-phase diagnostic evidence of active salmonellosis prior to antibody seroconversion.',
@@ -264,6 +272,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Rapid Diagnostic Tests (RDT)',
     packaging: 'Box of 25 Cassettes with Sample Diluent',
+    image: '/images/products/consumables/sab-salmonella-antibody-kit.webp',
     tagline: 'Differential IgG and IgM rapid chromatographic cassette for Typhoid fever.',
     description:
       'Rapid lateral flow immunoassay for the simultaneous detection and differentiation of anti-Salmonella Typhi IgG and IgM antibodies in human whole blood, serum, or plasma. IgM positivity signifies active acute typhoid infection, while IgG indicates past infection or convalescence.',
@@ -290,6 +299,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Infectious Disease Serology',
     packaging: 'Box of 25 or 50 Individually Sealed Cassettes',
+    image: '/images/products/consumables/hbsag-rapid-test-kit.webp',
     tagline: 'High-sensitivity immunochromatographic assay for Hepatitis B Virus (HBV) screening.',
     description:
       'A rapid, single-step chromatographic immunoassay for the qualitative detection of Hepatitis B Surface Antigen (HBsAg) in human whole blood, serum, or plasma. Essential for mandatory antenatal screening, pre-operative screening, and blood donor qualification across healthcare facilities.',
@@ -316,6 +326,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Rapid Diagnostic Tests (RDT)',
     packaging: 'Box of 25 Cassettes with Buffer & Capillary Tubes',
+    image: '/images/products/consumables/malaria-pf-rdt-kit.webp',
     tagline: 'Antigen-based HRP-2 rapid cassette for Plasmodium falciparum malaria.',
     description:
       'WHO-prequalified rapid lateral flow chromatographic immunoassay for the qualitative detection of Plasmodium falciparum Histidine-Rich Protein II (HRP-2) in human whole blood. Designed for immediate point-of-care malaria diagnosis in endemic counties across Western Kenya, Nyanza, and Coastal regions.',
@@ -342,6 +353,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Immunohematology & Blood Banking',
     packaging: 'Set of 3 × 10 mL Dropper Vials (Anti-A Blue, Anti-B Yellow, Anti-D Clear)',
+    image: '/images/products/consumables/blood-grouping-antisera-kit.webp',
     tagline: 'High-potency monoclonal typing antisera for ABO and Rhesus (D) forward grouping.',
     description:
       'Monoclonal IgM blood grouping typing reagents formulated from murine hybridoma cell lines. Delivers rapid, robust, macroscopically visible agglutination without non-specific rouleaux formation, ensuring infallible ABO blood group forward typing and RhD status determination in maternity, emergency triage, and blood transfusion services.',
@@ -368,6 +380,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Immunohematology & Blood Banking',
     packaging: '10 mL Dropper Bottle (Green Color-Coded)',
+    image: '/images/products/consumables/ahg-coombs-reagent.webp',
     tagline: 'Polyspecific Anti-Human Globulin for direct and indirect antiglobulin crossmatching.',
     description:
       'Polyspecific Anti-Human Globulin (Coomb’s Reagent) containing anti-IgG and anti-C3d antibodies for detection of incomplete antibodies coating red blood cells. Crucial for pre-transfusion crossmatching, antibody screening, investigation of hemolytic disease of the newborn (HDN), and autoimmune hemolytic anemia (AIHA).',
@@ -394,6 +407,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Immunohematology & Blood Banking',
     packaging: '10 mL Dropper Bottle',
+    image: '/images/products/consumables/bovine-serum-albumin.webp',
     tagline: 'Serological potentiating reagent for antibody detection, titration, and blood grouping.',
     description:
       'Prepared from high-purity bovine plasma, Bovine Serum Albumin (22% and 30% concentrations) acts as a dielectric potentiator in clinical blood banking. Reduces the zeta potential between negatively charged erythrocytes, facilitating rapid agglutination by non-agglutinating incomplete IgG antibodies.',
@@ -420,6 +434,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Routine Biochemistry & Screening',
     packaging: 'Canister of 100 Multi-Parameter Test Strips',
+    image: '/images/products/consumables/urinalysis-strips-10-parameter.webp',
     tagline: '10-parameter comprehensive clinical urine diagnostic dipsticks with desiccant canister.',
     description:
       'Multiparameter clinical urinalysis test strips for qualitative and semi-quantitative determination of 10 key metabolic, renal, and hepatic parameters: Glucose, Protein, Leukocytes, Nitrite, Urobilinogen, Blood, Bilirubin, Ketones, Specific Gravity, and pH. Read visually against color chart or via automated strip readers.',
@@ -446,6 +461,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Rapid Diagnostic Tests (RDT)',
     packaging: 'Box of 25 Cassettes with Stool Collection Tubes & Diluent',
+    image: '/images/products/consumables/hpylori-antigen-test-kit.webp',
     tagline: 'Non-invasive lateral flow antigen cassette for active Helicobacter pylori infection.',
     description:
       'A rapid immunochromatographic assay for the direct qualitative detection of Helicobacter pylori antigens in human stool specimens. Detects active, ongoing bacterial colonization of the gastric mucosa, offering clinical superiority over antibody tests that cannot distinguish active from resolved infection.',
@@ -472,6 +488,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'diagnostic-kits',
     subcategory: 'Routine Biochemistry & Screening',
     packaging: 'Glucometer Kit + Canister of 50 Glucose Test Strips',
+    image: '/images/products/consumables/blood-glucose-meter-strips.webp',
     tagline: 'Electrochemical biosensor glucometer for rapid blood glucose monitoring with code-free strips.',
     description:
       'Precision digital blood glucose monitoring system utilizing electrochemical biosensor test strips. Delivers blood sugar readings in 5 seconds from a tiny 0.6 μL capillary whole blood droplet. Includes glucometer, lancing device, sterile lancets, and 50 test strips.',
@@ -502,6 +519,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'collection-phlebotomy',
     subcategory: 'Vacuum Blood Tubes',
     packaging: 'Tray of 100 Tubes | Master Carton of 1,200 Tubes',
+    image: '/images/products/consumables/edta-vacuum-tubes.webp',
     tagline: 'Standardized vacuum blood collection tubes with dipotassium/tripotassium EDTA for CBC.',
     description:
       'Sterile medical PET vacuum blood collection tubes spray-coated with K2 EDTA or K3 EDTA anticoagulant. Prevents blood coagulation by binding calcium ions while preserving cellular morphology of erythrocytes, leukocytes, and thrombocytes. The standard tube for Complete Blood Count (CBC), ESR, and HbA1c testing.',
@@ -527,6 +545,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'collection-phlebotomy',
     subcategory: 'Vacuum Blood Tubes',
     packaging: 'Tray of 100 Tubes | Master Carton of 1,200 Tubes',
+    image: '/images/products/consumables/plain-clot-activator-tubes.webp',
     tagline: 'Vacuum serum tubes spray-coated with micronized silica clot activator particles.',
     description:
       'Sterile vacuum tubes designed for serum clinical biochemistry, immunology, blood donor screening, and serological assays. Spray-coated with micronized silica particles that accelerate the natural coagulation cascade, yielding clear serum after centrifugation without fibrin residue.',
@@ -552,6 +571,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'collection-phlebotomy',
     subcategory: 'Vacuum Blood Tubes',
     packaging: 'Trays of 100 Tubes (Purple, Red, Yellow SST, Blue Top)',
+    image: '/images/products/consumables/vacutainer-tubes.webp',
     tagline: 'Complete range of ISO standardized vacuum blood collection tubes for Kenya labs.',
     description:
       'Comprehensive inventory of sterile medical vacuum blood collection tubes covering all diagnostic departments: Purple Top (EDTA for CBC), Red Top (Clot Activator for serum), Yellow Top (SST Gel & Clot Activator for chemistry), and Light Blue Top (Sodium Citrate 3.2% for coagulation PT/INR).',
@@ -577,6 +597,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'collection-phlebotomy',
     subcategory: 'Phlebotomy Supplies',
     packaging: 'Box of 100 Needles | Carton of 1,000 Needles',
+    image: '/images/products/consumables/vacutainer-needles.webp',
     tagline: 'Precision-beveled multi-sample needles with safety rubber sleeve for painless venipuncture.',
     description:
       'Sterile, stainless steel multi-sample needles designed for evacuated blood collection tube systems. Featuring ultra-sharp tri-beveled lancet tips with silicone coating to minimize patient insertion discomfort, and a synthetic rubber sleeve that prevents blood leakage when switching multiple tubes.',
@@ -602,6 +623,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'collection-phlebotomy',
     subcategory: 'Phlebotomy Supplies',
     packaging: 'Individual Sealed Pack | Clinic Multipack',
+    image: '/images/products/consumables/phlebotomy-tourniquet.webp',
     tagline: 'Washable elastic compression band with ergonomic quick-release buckle.',
     description:
       'High-elasticity fabric tourniquet equipped with a sturdy ABS plastic buckle mechanism. Allows rapid, one-handed tensioning and instantaneous quick-release with zero skin pinching, facilitating efficient vein engorgement during clinical phlebotomy and IV cannulation.',
@@ -627,6 +649,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'collection-phlebotomy',
     subcategory: 'Specimen Containers',
     packaging: 'Bag of 100 Individually Wrapped Sterile Cups',
+    image: '/images/products/consumables/sterile-urine-containers.webp',
     tagline: 'Leak-proof polypropylene urine specimen containers with secure screw cap and patient label.',
     description:
       'Medical-grade virgin polypropylene specimen collection cups designed for urine routine, urinalysis, microscopy, and microbiology culture. Features a leak-proof polyethylene screw cap, molded volume graduations up to 60 mL, and a matte writable patient information label area.',
@@ -652,6 +675,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'collection-phlebotomy',
     subcategory: 'Specimen Containers',
     packaging: 'Bag of 100 Specimen Poly Pots',
+    image: '/images/products/consumables/poly-pots-specimen-containers.webp',
     tagline: 'Hygienic stool specimen containers with integrated spoon lid for parasitology.',
     description:
       'Graduated polystyrene poly pots engineered for the hygienic collection and transport of stool and sputum specimens. The screw cap features an integrated collection scoop/spoon that allows clean, non-contact sampling of solid or semi-solid fecal matter for routine stool microscopy and occult blood testing.',
@@ -677,6 +701,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'collection-phlebotomy',
     subcategory: 'Hematology Manual Testing',
     packaging: '10-Well ESR Stand + Box of Graduated Westergren Pipettes',
+    image: '/images/products/consumables/esr-westergren-tube-stand.webp',
     tagline: 'Standard Westergren erythrocyte sedimentation rate rack with spring-loaded tube holders.',
     description:
       'Manual Westergren Erythrocyte Sedimentation Rate (ESR) testing station comprising a 10-tube heavy acrylic/metal rack with leveling bubble, leveling screws, and calibrated 0–200 mm Westergren glass/plastic pipettes. The gold standard reference method for monitoring systemic inflammation.',
@@ -706,6 +731,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'microscopy-staining',
     subcategory: 'Microscopy Glassware',
     packaging: 'Box of 50 or 72 Slides | Vacuum Pack of 10 Boxes',
+    image: '/images/products/consumables/microscope-slides-plain.webp',
     tagline: 'Standard 25.4 × 76.2 mm clear float glass slides with 90° ground safety edges.',
     description:
       'Pre-cleaned, degreased clinical microscope slides manufactured from premium optical soda-lime float glass. Completely clear on both ends with 90° ground safety edges that protect technologists from accidental cuts and glove punctures. Ideal for routine wet mounts, urinalysis sediment, and blood smears.',
@@ -731,6 +757,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'microscopy-staining',
     subcategory: 'Microscopy Glassware',
     packaging: 'Box of 50 or 72 Slides | Vacuum Pack of 10 Boxes',
+    image: '/images/products/consumables/microscope-slides-frosted.webp',
     tagline: 'Pre-cleaned glass slides with 20 mm sandblasted frosted end for permanent labeling.',
     description:
       'Standard 25.4 × 76.2 mm clinical microscope slides with a fine sandblasted frosted finish on one end (approx. 20 mm). Allows clean, smear-free sample identification using lead pencil, diamond marker, or lab histology pens. Resistant to staining solvents and alcohol washes.',
@@ -756,6 +783,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'microscopy-staining',
     subcategory: 'Microscopy Glassware',
     packaging: 'Hinged Dispenser Box of 100 Pcs | Pack of 10 Boxes',
+    image: '/images/products/consumables/cover-slips.webp',
     tagline: 'Ultra-thin No. 1 borosilicate glass coverslips for crystal-clear slide examination.',
     description:
       'Square optical cover slips fabricated from pure, non-corrosive borosilicate glass. With uniform No. 1 thickness (0.13 to 0.17 mm), they keep liquid specimens in a flat plane, prevent objective lens contamination with immersion oil, and deliver bubble-free clarity across high-power 40X and 100X fields.',
@@ -781,6 +809,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'microscopy-staining',
     subcategory: 'Staining Reagents',
     packaging: 'Set of 4 Reagent Bottles with Dispenser Caps',
+    image: '/images/products/consumables/grams-staining-kit.webp',
     tagline: 'Standard 4-step differential staining kit for Gram-positive and Gram-negative bacteria.',
     description:
       'Complete, ready-to-use 4-step bacteriological staining kit for differentiating Gram-positive and Gram-negative microorganisms. Formulated with stabilized Crystal Violet (primary stain), Lugol’s Iodine (mordant), Decolorizing Solution (acetone-alcohol), and Safranin / Neutral Red (counterstain).',
@@ -807,6 +836,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'microscopy-staining',
     subcategory: 'Staining Reagents',
     packaging: 'Twin Set of 2 × 250 mL or 2 × 500 mL Bottles',
+    image: '/images/products/consumables/malaria-field-staining-kit.webp',
     tagline: 'Ultra-fast Romanowsky stain for thick blood film malaria parasite identification.',
     description:
       'Field’s Stain is an ultra-fast Romanowsky-type staining method specifically optimized for thick blood smears in malaria microscopy. Consists of Field Stain A (buffered methylene blue/azure) and Field Stain B (eosin in buffer). Delivers stained blood films in under 15 seconds.',
@@ -833,6 +863,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'microscopy-staining',
     subcategory: 'Staining Reagents',
     packaging: 'Set of 3 × 250 mL Reagent Bottles',
+    image: '/images/products/consumables/afb-staining-kit.webp',
     tagline: 'Classic hot Ziehl-Neelsen acid-fast staining kit for Mycobacterium tuberculosis diagnosis.',
     description:
       'Complete Ziehl-Neelsen (ZN) acid-fast bacilli staining set for the microscopic detection of Mycobacterium tuberculosis in clinical sputum, pleural fluid, and gastric aspirates. Includes Strong Carbol Fuchsin, Acid Alcohol Decolorizer (3% HCl in Ethanol), and 0.3% Methylene Blue counterstain.',
@@ -863,6 +894,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'plasticware-general',
     subcategory: 'Liquid Handling',
     packaging: 'Bulk Bag of 1,000 Tips | 96-Tip Racks Available',
+    image: '/images/products/consumables/yellow-tips-200ul.webp',
     tagline: 'Precision-molded virgin polypropylene yellow tips compatible with all standard micropipettes.',
     description:
       'Universal 200 μL yellow micropipette tips manufactured from medical-grade virgin polypropylene. Featuring hydrophobic, low-retention interior surfaces, micro-orifice tip finish, and precision-molded graduation marks at 10 μL, 50 μL, and 100 μL for immediate pipetting volume verification.',
@@ -888,6 +920,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'plasticware-general',
     subcategory: 'Liquid Handling',
     packaging: 'Bulk Bag of 500 / 1,000 Tips',
+    image: '/images/products/consumables/blue-tips-1000ul.webp',
     tagline: 'High-volume 1000 μL blue micropipette tips with universal tapered cone fit.',
     description:
       'Universal 1000 μL (1 mL) blue pipette tips manufactured from virgin medical-grade polypropylene. Engineered for high-volume reagent dispensing, buffer prep, biochemistry dilution, and serological sample aliquoting with zero sample hang-up.',
@@ -913,6 +946,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'plasticware-general',
     subcategory: 'Laboratory Glassware',
     packaging: 'Pack of 10 Pieces | Box of 100 Pieces',
+    image: '/images/products/consumables/glass-test-tubes-pack.webp',
     tagline: 'Heavy-duty uniform-wall borosilicate glass test tubes for heating and chemical reactions.',
     description:
       'Laboratory glass test tubes manufactured from high-quality 3.3 borosilicate glass. Resistant to thermal shock, boiling, and corrosive clinical laboratory acids. Featuring fire-polished rims and uniform wall thickness, they are ideal for blood grouping tube tests, Widal titration, and urine protein boiling tests.',
@@ -938,6 +972,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'plasticware-general',
     subcategory: 'General Accessories',
     packaging: 'Box of 100 / 500 Pieces',
+    image: '/images/products/consumables/wooden-applicator-sticks.webp',
     tagline: 'Smooth, splinter-free natural birchwood sticks for smear preparation and sample mixing.',
     description:
       'Natural white birchwood applicator sticks with smooth, splinter-free surfaces and uniform diameter. Widely utilized in clinical laboratories for stool wet mount preparation, breaking blood clots, specimen transfer, and agglutination mixing on ceramic tiles.',
@@ -963,6 +998,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'plasticware-general',
     subcategory: 'Laboratory Accessories',
     packaging: 'Single Assembled Unit | Pack of 5 Racks',
+    image: '/images/products/consumables/test-tube-rack-polypropylene.webp',
     tagline: 'Multi-tier detachable polypropylene test tube rack with alphanumeric well grid.',
     description:
       'Heavy-duty 3-tier test tube rack fabricated from chemical-resistant polypropylene (PP). Designed with molded alphanumeric grid coordinates for unambiguous specimen tube tracking during clinical chemistry, blood banking, and serology workflows. Submersible and fully autoclavable.',
@@ -992,6 +1028,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'safety-waste',
     subcategory: 'Personal Protective Equipment',
     packaging: 'Dispenser Box of 100 Pcs (50 Pairs) | Carton of 10 Boxes',
+    image: '/images/products/consumables/medical-examination-gloves.webp',
     tagline: 'High-tensile powder-free examination gloves with micro-textured fingertips.',
     description:
       'Premium medical examination gloves available in Powder-Free Natural Rubber Latex and 100% Synthetic Nitrile (hypoallergenic). Engineered with micro-textured fingertips for sensitive pipetting and needle handling, beaded cuffs to resist roll-down, and strict AQL 1.5 pinhole inspection standards.',
@@ -1017,6 +1054,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'safety-waste',
     subcategory: 'Biohazard Waste Management',
     packaging: 'Single Safety Unit | Bundle of 10 Units',
+    image: '/images/products/consumables/biohazard-sharps-container-5l.webp',
     tagline: 'Puncture-resistant high-density safety container for contaminated needles and lancets.',
     description:
       'Rigid, puncture-resistant biohazard sharps disposal container compliant with WHO, NEMA, and Ministry of Health (MoH) healthcare waste management standards. Designed with a tamper-proof rotating safety lid, needle unwinder notch, and a permanent locking mechanism once filled to maximum line.',
@@ -1042,6 +1080,7 @@ export const CONSUMABLES_CATALOG: ConsumableItem[] = [
     category: 'safety-waste',
     subcategory: 'Biohazard Waste Management',
     packaging: 'Complete 3-Bin Color-Coded System (Set of 3 Bins)',
+    image: '/images/products/consumables/waste-segregation-bins-ryb.webp',
     tagline: 'Color-coded foot-pedal waste segregation bins for infectious, sharp & general hospital waste.',
     description:
       'Standardized hospital waste segregation pedal bin set comprising three color-coded heavy-duty plastic bins: Yellow (Infectious biohazard clinical waste), Red (Highly infectious / anatomic / anatomical waste), and Black (Non-infectious general municipal waste). Built with hands-free foot pedals to enforce infection prevention control (IPC).',

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   ShieldCheck,
   Truck,
@@ -11,7 +10,6 @@ import {
   ArrowLeft,
   FileCheck2,
   CalendarCheck,
-  Sparkles,
 } from 'lucide-react';
 import ConsumablesCatalogClient from '@/components/ConsumablesCatalogClient';
 import { SITE_CONFIG, getBreadcrumbSchema, getFaqSchema } from '@/lib/seo/schema';
@@ -52,7 +50,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     images: [
       {
-        url: '/images/products/consumables-banner.webp',
+        url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
         alt: 'Medwise Laboratory Consumables & Diagnostic Reagents Kenya',
@@ -64,7 +62,7 @@ export const metadata: Metadata = {
     title: 'Laboratory Consumables & Diagnostic Kits Kenya | Medwise',
     description:
       'Verified clinical lab consumables, vacutainer tubes, staining solutions, and rapid test kits for Kenyan healthcare facilities.',
-    images: ['/images/products/consumables-banner.webp'],
+    images: [SITE_CONFIG.ogImage],
   },
 };
 
@@ -221,49 +219,6 @@ export default function ConsumablesPage() {
 
       {/* Main Content Area */}
       <main className="mx-auto max-w-7xl px-4 py-8 sm:py-10 sm:px-6 lg:px-8 space-y-8">
-        
-        {/* Consolidated Visual Banner Section (Ready for User Custom Artwork) */}
-        <section aria-label="Consolidated Consumables Overview Banner" className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 shadow-xs">
-          <div className="relative w-full aspect-[21/9] sm:aspect-[24/8] min-h-[220px] max-h-[380px] flex items-center justify-center overflow-hidden">
-            <Image
-              src="/images/products/consumables-banner.webp"
-              alt="Consolidated clinical laboratory consumables in Kenya including vacutainer tubes, microscope slides, pipette tips, and rapid diagnostic kits"
-              fill
-              priority
-              className="object-cover object-center"
-              sizes="(max-width: 1280px) 100vw, 1280px"
-            />
-            {/* Dark gradient overlay for visual depth */}
-            <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-900/40 to-transparent pointer-events-none" />
-
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 text-white pointer-events-none">
-              <div>
-                <span className="inline-flex items-center gap-1.5 rounded bg-blue-600 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-white">
-                  <Sparkles className="h-3 w-3" />
-                  Full Supply Inventory
-                </span>
-                <h2 className="mt-1 text-base sm:text-xl md:text-2xl font-black text-white drop-shadow-sm">
-                  Clinical Diagnostics &amp; Laboratory Consumables Catalog
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-200 drop-shadow-sm max-w-xl hidden sm:block">
-                  Standardized vacutainer tubes, staining solutions, rapid test cassettes, glassware &amp; clinical PPE.
-                </p>
-              </div>
-
-              <div className="pointer-events-auto">
-                <a
-                  href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20inquire%20about%20laboratory%20consumables%20and%20reagents.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 px-3.5 py-2 text-xs font-bold text-white shadow-xs transition-colors"
-                >
-                  <MessageSquare className="h-3.5 w-3.5" />
-                  <span>WhatsApp Inquiries</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Interactive Consumables Catalog Client Component */}
         <ConsumablesCatalogClient />
