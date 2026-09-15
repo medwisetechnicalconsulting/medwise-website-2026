@@ -16,6 +16,7 @@ import {
   MessageSquare,
   Sparkles,
   ArrowRight,
+  ChevronDown,
 } from 'lucide-react';
 import {
   Product,
@@ -23,6 +24,7 @@ import {
   CATEGORIES_CONFIG,
   PRODUCTS_CATALOG,
 } from '@/lib/products';
+import { CONSUMABLES_CATALOG } from '@/lib/consumables';
 import ProductCard from './ProductCard';
 import ProductSpecModal from './ProductSpecModal';
 import { SITE_CONFIG } from '@/lib/seo/schema';
@@ -280,43 +282,108 @@ export default function ProductsCatalogClient() {
             className="shrink-0 min-h-[42px] inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 hover:border-amber-400 transition-all"
           >
             <PackageCheck className="h-4 w-4 text-amber-700" />
-            <span>Consumables &amp; Reagents (34) &rarr;</span>
+            <span>Consumables &amp; Reagents ({CONSUMABLES_CATALOG.length}) &rarr;</span>
           </Link>
         </div>
       </div>
 
-      {/* Subcategory Pills (if available) */}
+      {/* Subcategory Filter (Clean Mobile Dropdown + Single-Row Horizontal Swipe, Responsive Wrap on Desktop) */}
       {availableSubcategories.length > 1 && (
-        <div className="flex items-center gap-2 flex-wrap text-xs pt-1">
-          <span className="font-bold text-slate-500 uppercase tracking-wider text-[11px] flex items-center gap-1">
-            <Filter className="h-3 w-3 text-slate-400" />
-            <span>Filter:</span>
-          </span>
+        <div className="space-y-2 pt-1">
+          {/* Mobile View: Clean Quick Dropdown Selector */}
+          <div className="sm:hidden flex items-center gap-2">
+            <div className="relative flex-1">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-blue-600">
+                <Filter className="h-3.5 w-3.5" />
+              </div>
+              <select
+                aria-label="Filter by Subcategory"
+                value={selectedSubcategory}
+                onChange={(e) => setSelectedSubcategory(e.target.value)}
+                className="w-full appearance-none rounded-xl border border-slate-300 bg-white py-2.5 pl-8 pr-8 text-xs font-bold text-slate-800 shadow-2xs focus:border-blue-600 focus:outline-hidden focus:ring-2 focus:ring-blue-100"
+              >
+                <option value="all">
+                  All Subcategories ({
+                    PRODUCTS_CATALOG.filter(
+                      (p) => selectedCategory === 'all' || p.category === selectedCategory
+                    ).length
+                  })
+                </option>
+                {availableSubcategories.map((subcat) => {
+                  const count = PRODUCTS_CATALOG.filter(
+                    (p) =>
+                      (selectedCategory === 'all' || p.category === selectedCategory) &&
+                      p.subcategory === subcat
+                  ).length;
+                  return (
+                    <option key={subcat} value={subcat}>
+                      {subcat} ({count})
+                    </option>
+                  );
+                })}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400">
+                <ChevronDown className="h-3.5 w-3.5" />
+              </div>
+            </div>
 
-          <button
-            onClick={() => setSelectedSubcategory('all')}
-            className={`rounded-lg px-3 py-1 font-semibold transition-colors ${
-              selectedSubcategory === 'all'
-                ? 'bg-slate-900 text-white'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-            }`}
-          >
-            All Subcategories
-          </button>
+            {selectedSubcategory !== 'all' && (
+              <button
+                onClick={() => setSelectedSubcategory('all')}
+                className="shrink-0 rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 flex items-center gap-1 shadow-2xs"
+                title="Reset subcategory filter"
+              >
+                <X className="h-3.5 w-3.5" />
+                <span>Reset</span>
+              </button>
+            )}
+          </div>
 
-          {availableSubcategories.map((subcat) => (
+          {/* Horizontal Swipeable Chips on Mobile, Flowing Pills on Desktop (NEVER Clustered) */}
+          <div className="overflow-x-auto pb-1.5 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none touch-pan-x flex items-center gap-1.5 sm:gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
+            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0 pr-1">
+              <Filter className="h-3 w-3 text-blue-600" />
+              <span>Subcategory:</span>
+            </span>
+
             <button
-              key={subcat}
-              onClick={() => setSelectedSubcategory(subcat)}
-              className={`rounded-lg px-3 py-1 font-semibold transition-colors ${
-                selectedSubcategory === subcat
-                  ? 'bg-slate-900 text-white'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              onClick={() => setSelectedSubcategory('all')}
+              className={`shrink-0 min-h-[34px] rounded-lg px-3 py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                selectedSubcategory === 'all'
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 hover:text-slate-900 shadow-2xs'
               }`}
             >
-              {subcat}
+              All ({
+                PRODUCTS_CATALOG.filter(
+                  (p) => selectedCategory === 'all' || p.category === selectedCategory
+                ).length
+              })
             </button>
-          ))}
+
+            {availableSubcategories.map((subcat) => {
+              const isSelected = selectedSubcategory === subcat;
+              const count = PRODUCTS_CATALOG.filter(
+                (p) =>
+                  (selectedCategory === 'all' || p.category === selectedCategory) &&
+                  p.subcategory === subcat
+              ).length;
+
+              return (
+                <button
+                  key={subcat}
+                  onClick={() => setSelectedSubcategory(subcat)}
+                  className={`shrink-0 min-h-[34px] rounded-lg px-3 py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                    isSelected
+                      ? 'bg-slate-900 text-white shadow-xs'
+                      : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 hover:text-slate-900 shadow-2xs'
+                  }`}
+                >
+                  {subcat} ({count})
+                </button>
+              );
+            })}
+          </div>
         </div>
       )}
 
