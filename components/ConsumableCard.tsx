@@ -105,34 +105,16 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
       }`}
     >
       <div>
-        {/* Top Meta Bar: Subcategory Badge & Expand State Hint */}
+        {/* Top Meta Bar: Subcategory Badge */}
         <div className="flex items-center justify-between gap-2 mb-3">
           <div className="flex items-center gap-1.5 rounded bg-slate-100 px-2.5 py-1 text-[11px] font-semibold text-slate-700">
             {getCategoryIcon()}
             <span>{item.subcategory}</span>
           </div>
 
-          <div className="flex items-center gap-1.5">
-            <span
-              className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold transition-colors ${
-                isExpanded
-                  ? 'bg-blue-100 text-blue-800'
-                  : 'bg-slate-100 text-slate-600 group-hover:bg-blue-50 group-hover:text-blue-700'
-              }`}
-            >
-              {isExpanded ? (
-                <>
-                  <span>Expanded</span>
-                  <ChevronUp className="h-3 w-3" />
-                </>
-              ) : (
-                <>
-                  <span>Tap to expand</span>
-                  <ChevronDown className="h-3 w-3" />
-                </>
-              )}
-            </span>
-          </div>
+          <span className="rounded border border-slate-200 bg-white px-2 py-0.5 text-[11px] font-bold text-slate-700 shadow-2xs">
+            Clinical Lab
+          </span>
         </div>
 
         {/* Consumable Visual Area */}
@@ -207,21 +189,13 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
         </div>
 
         {/* Clinical Description - Expanded shows FULL text with NO line-clamp */}
-        <div className="mt-3">
-          <p
-            className={`text-xs sm:text-sm text-slate-600 leading-relaxed transition-all ${
-              isExpanded ? 'text-slate-800' : 'line-clamp-3'
-            }`}
-          >
-            {item.description}
-          </p>
-          {!isExpanded && (
-            <span className="mt-1.5 inline-flex items-center gap-1 text-xs font-bold text-blue-700 hover:text-blue-900 group-hover:underline">
-              <span>Read more &amp; view specs</span>
-              <ChevronDown className="h-3.5 w-3.5" />
-            </span>
-          )}
-        </div>
+        <p
+          className={`mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed transition-all ${
+            isExpanded ? 'text-slate-800' : 'line-clamp-3'
+          }`}
+        >
+          {item.description}
+        </p>
 
         {/* Storage Instruction (if applicable) */}
         {item.storage && (

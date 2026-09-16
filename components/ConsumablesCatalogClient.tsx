@@ -14,7 +14,6 @@ import {
   LayoutGrid,
   FileSpreadsheet,
   CheckCircle2,
-  Sparkles,
 } from 'lucide-react';
 import {
   ConsumableCategory,
@@ -168,14 +167,6 @@ export default function ConsumablesCatalogClient() {
             );
           })}
         </div>
-      </div>
-
-      {/* Mobile Interaction Hint */}
-      <div className="flex items-center gap-2 rounded-xl bg-blue-50/80 border border-blue-200/80 p-3 text-xs text-blue-900 sm:hidden shadow-2xs">
-        <Sparkles className="h-4 w-4 text-blue-600 shrink-0" />
-        <span className="leading-snug">
-          <strong>Tip:</strong> Tap any consumable card to expand full clinical description, all highlights &amp; technical specs.
-        </span>
       </div>
 
       {/* Consumables Cards Grid (with Image Provisioning) */}
