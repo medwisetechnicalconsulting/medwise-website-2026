@@ -65,7 +65,21 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
   return (
     <article
       id={product.id}
-      className="group relative flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs hover:border-slate-300 transition-colors scroll-mt-28"
+      onClick={(e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('a') || target.closest('button')) return;
+        onOpenSpecs(product);
+      }}
+      onKeyDown={(e) => {
+        if ((e.key === 'Enter' || e.key === ' ') && e.target === e.currentTarget) {
+          e.preventDefault();
+          onOpenSpecs(product);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`View technical specifications for ${product.name}`}
+      className="group relative flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs hover:border-blue-300 hover:shadow-md transition-all cursor-pointer scroll-mt-28 outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600"
     >
       {/* Top Meta Bar: Subcategory, Brand & Badge */}
       <div>
@@ -87,7 +101,7 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
               src={product.image}
               alt={product.name}
               onError={() => setImgError(true)}
-              className="h-full w-full object-contain"
+              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
             />
           ) : (
@@ -127,10 +141,11 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
 
           {/* Copy Link Button */}
           <button
+            type="button"
             onClick={copyProductLink}
             aria-label={`Copy link for ${product.name}`}
             title="Copy shareable product link"
-            className="absolute top-2 right-2 rounded bg-white/95 p-1.5 text-slate-400 shadow-2xs hover:text-slate-800 transition-colors border border-slate-200"
+            className="absolute top-2 right-2 rounded bg-white/95 p-1.5 text-slate-400 shadow-2xs hover:text-slate-800 transition-colors border border-slate-200 cursor-pointer"
           >
             {copied ? (
               <CheckCheck className="h-3.5 w-3.5 text-emerald-600" />
@@ -163,8 +178,12 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
       <div className="pt-2 space-y-2">
         {/* View Full Specs Trigger */}
         <button
-          onClick={() => onOpenSpecs(product)}
-          className="w-full flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 py-2 text-xs font-bold text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-colors"
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenSpecs(product);
+          }}
+          className="w-full flex items-center justify-center gap-1.5 rounded-lg border border-blue-200/80 bg-blue-50/70 py-2 text-xs font-bold text-blue-800 hover:bg-blue-100 hover:text-blue-900 transition-colors cursor-pointer"
         >
           <Info className="h-3.5 w-3.5" />
           <span>View Technical Specifications</span>
@@ -175,8 +194,9 @@ export default function ProductCard({ product, onOpenSpecs }: ProductCardProps) 
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
           aria-label={`Buy ${product.name} via WhatsApp`}
-          className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 px-3 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs transition-colors min-h-[38px]"
+          className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 px-3 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs transition-colors min-h-[38px] cursor-pointer"
         >
           <MessageSquare className="h-4 w-4 shrink-0 fill-white" />
           <span className="whitespace-nowrap">Buy via WhatsApp</span>
