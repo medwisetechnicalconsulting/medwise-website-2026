@@ -33,17 +33,17 @@ const mdxComponents = {
     return (
       <h2
         id={id}
-        className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-foreground tracking-tight mt-12 mb-5 pt-7 border-t border-border flex items-center gap-3 scroll-mt-24 first:mt-0 first:pt-0"
+        className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-foreground tracking-tight mt-14 mb-6 pt-8 border-t border-border flex items-center gap-3 scroll-mt-24 first:mt-0 first:pt-0"
         {...props}
       >
-        <span className="w-1.5 h-6 rounded-full bg-primary shrink-0 hidden sm:inline-block" />
+        <span className="w-1.5 h-6 rounded-full bg-primary shrink-0 inline-block" />
         <span>{children}</span>
       </h2>
     );
   },
   h3: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="text-lg sm:text-xl font-bold text-foreground tracking-tight mt-8 mb-3.5 scroll-mt-24"
+      className="text-lg sm:text-xl font-bold text-foreground tracking-tight mt-10 mb-4 scroll-mt-24 flex items-center gap-2.5 before:w-1.5 before:h-4 before:rounded-full before:bg-primary/60 before:inline-block"
       {...props}
     >
       {children}
@@ -51,23 +51,24 @@ const mdxComponents = {
   ),
   h4: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
-      className="text-base sm:text-lg font-bold text-foreground tracking-tight mt-6 mb-2"
+      className="text-xs sm:text-sm font-extrabold text-primary uppercase tracking-wider mt-8 mb-3 flex items-center gap-2"
       {...props}
     >
-      {children}
+      <span className="w-1.5 h-3 rounded-full bg-primary/40 inline-block" />
+      <span>{children}</span>
     </h4>
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-5 font-normal" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="my-5 space-y-2 list-disc list-inside text-sm sm:text-base text-slate-600 pl-1" {...props} />
+    <ul className="my-5 space-y-2.5 list-outside list-disc ml-6 text-sm sm:text-base text-slate-600 marker:text-primary" {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="my-5 space-y-2 list-decimal list-inside text-sm sm:text-base text-slate-600 pl-1" {...props} />
+    <ol className="my-5 space-y-2.5 list-outside list-decimal ml-6 text-sm sm:text-base text-slate-600 marker:text-primary marker:font-bold" {...props} />
   ),
   li: (props: React.LiHTMLAttributes<HTMLLIElement>) => (
-    <li className="leading-relaxed text-slate-600 font-normal pl-1" {...props} />
+    <li className="leading-relaxed text-slate-600 font-normal pl-1.5" {...props} />
   ),
   blockquote: ({ children, ...props }: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
@@ -94,10 +95,10 @@ const mdxComponents = {
     <strong className="text-foreground font-bold" {...props} />
   ),
   table: ({ children, className = '', ...props }: React.TableHTMLAttributes<HTMLTableElement>) => (
-    <div className="my-8 w-full rounded-2xl border border-border bg-white shadow-xs overflow-hidden">
+    <div className="my-8 w-full rounded-2xl border border-border bg-white shadow-xs overflow-hidden not-prose">
       <div className="flex items-center justify-between px-4 py-2.5 bg-muted/60 border-b border-border text-xs text-slate-600 font-medium select-none">
         <div className="flex items-center gap-2">
-          <span className="flex h-2 w-2 rounded-full bg-primary" />
+          <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
           <span className="font-semibold text-foreground text-[11px] sm:text-xs">
             Technical Specification Matrix
           </span>
@@ -118,17 +119,17 @@ const mdxComponents = {
     </div>
   ),
   thead: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
-    <thead className="bg-muted/80 border-b border-border text-foreground font-bold text-xs uppercase tracking-wider" {...props} />
+    <thead className="bg-muted/85 border-b border-border text-foreground font-bold text-xs uppercase tracking-wider" {...props} />
   ),
   tbody: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
     <tbody className="divide-y divide-border bg-white" {...props} />
   ),
   tr: (props: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr className="hover:bg-primary-light/20 transition-colors even:bg-muted/15" {...props} />
+    <tr className="hover:bg-primary-light/20 transition-colors even:bg-muted/20" {...props} />
   ),
   th: ({ className = '', ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) => (
     <th
-      className={`px-5 py-3.5 font-extrabold text-foreground border-r border-b border-border last:border-r-0 tracking-wider text-xs uppercase whitespace-nowrap min-w-[180px] bg-muted/80 ${className}`}
+      className={`px-5 py-3.5 font-extrabold text-foreground border-r border-b border-border last:border-r-0 tracking-wider text-xs uppercase whitespace-nowrap min-w-[180px] bg-muted/85 ${className}`}
       {...props}
     />
   ),
@@ -202,6 +203,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+function prepareContent(content: string): string {
+  return content.replace(
+    /(?:<div[^>]*class(?:Name)?="[^"]*table-scroll-wrapper[^"]*"[\s\S]*?<\/div>\s*<\/div>)|(<table[\s\S]*?<\/table>)/gi,
+    (match, tableGroup) => {
+      if (!tableGroup) return match;
+      return `<div className="my-8 rounded-2xl border border-border bg-white shadow-xs overflow-hidden not-prose">
+  <div className="flex items-center justify-between px-4 py-2.5 bg-muted/60 border-b border-border text-xs text-slate-600 font-medium select-none">
+    <div className="flex items-center gap-2">
+      <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
+      <span className="font-semibold text-foreground text-[11px] sm:text-xs">Technical Comparison Matrix</span>
+    </div>
+    <span className="text-[11px] text-primary font-semibold flex items-center gap-1.5">⇄ Scroll horizontally to view all columns</span>
+  </div>
+  <div className="table-scroll-wrapper overflow-x-auto overscroll-x-contain touch-pan-x p-0">
+    ${tableGroup}
+  </div>
+</div>`;
+    }
+  );
+}
+
 export default async function BlogPostDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
@@ -209,6 +231,8 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
   if (!post) {
     notFound();
   }
+
+  const processedContent = prepareContent(post.content);
 
   const articleLd = getArticleSchema({
     title: post.title,
@@ -349,7 +373,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
 
           {/* MDX Rendered Body */}
           <div className="prose prose-slate max-w-none prose-headings:font-extrabold prose-headings:text-foreground prose-headings:tracking-tight prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600 prose-strong:text-foreground prose-table:text-sm">
-            <MDXRemote source={post.content} components={mdxComponents} />
+            <MDXRemote source={processedContent} components={mdxComponents} />
           </div>
 
           {/* Internal Linking CTA Box - Vivid Blue Banner */}
