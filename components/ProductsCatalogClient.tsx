@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   Search,
   Droplet,
@@ -27,17 +28,18 @@ import ProductSpecModal from './ProductSpecModal';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 
 export default function ProductsCatalogClient() {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSpecProduct, setActiveSpecProduct] = useState<Product | null>(null);
 
-  // Sync URL query parameters (?category=, ?q=) and anchor hash on initial load
+  // Sync URL query parameters and anchor hash on initial load
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const catParam = params.get('category');
       if (catParam === 'consumables') {
-        window.location.href = '/products/consumables';
+        router.push('/products/consumables');
         return;
       }
       if (
@@ -59,17 +61,17 @@ export default function ProductsCatalogClient() {
         if (element) {
           setTimeout(() => {
             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            element.classList.add('ring-2', 'ring-blue-500');
+            element.classList.add('ring-2', 'ring-[hsl(var(--primary))]');
             setTimeout(() => {
-              element.classList.remove('ring-2', 'ring-blue-500');
+              element.classList.remove('ring-2', 'ring-[hsl(var(--primary))]');
             }, 2500);
           }, 400);
         }
       }
     }
-  }, []);
+  }, [router]);
 
-  // Handle category change (update URL query param)
+  // Handle category change
   const handleCategoryChange = (cat: ProductCategory | 'all') => {
     setSelectedCategory(cat);
     if (typeof window !== 'undefined') {
@@ -86,12 +88,10 @@ export default function ProductsCatalogClient() {
   // Filtered products calculation
   const filteredProducts = useMemo(() => {
     return PRODUCTS_CATALOG.filter((product) => {
-      // Category filter
       if (selectedCategory !== 'all' && product.category !== selectedCategory) {
         return false;
       }
 
-      // Search query filter
       if (searchQuery.trim() !== '') {
         const query = searchQuery.toLowerCase().trim();
         const matchName = product.name.toLowerCase().includes(query);
@@ -113,23 +113,22 @@ export default function ProductsCatalogClient() {
     });
   }, [selectedCategory, searchQuery]);
 
-  // Category Icon helper
   const getTabIcon = (catId: ProductCategory | 'all') => {
     switch (catId) {
       case 'hematology':
-        return <Droplet className="h-4 w-4" />;
+        return <Droplet className="w-3.5 h-3.5" />;
       case 'biochemistry':
-        return <FlaskConical className="h-4 w-4" />;
+        return <FlaskConical className="w-3.5 h-3.5" />;
       case 'immunoassay':
-        return <Activity className="h-4 w-4" />;
+        return <Activity className="w-3.5 h-3.5" />;
       case 'microscopes':
-        return <Microscope className="h-4 w-4" />;
+        return <Microscope className="w-3.5 h-3.5" />;
       case 'lab-equipment':
-        return <Cpu className="h-4 w-4" />;
+        return <Cpu className="w-3.5 h-3.5" />;
       case 'consumables':
-        return <PackageCheck className="h-4 w-4" />;
+        return <PackageCheck className="w-3.5 h-3.5" />;
       default:
-        return <LayoutGrid className="h-4 w-4" />;
+        return <LayoutGrid className="w-3.5 h-3.5" />;
     }
   };
 
@@ -141,87 +140,88 @@ export default function ProductsCatalogClient() {
   };
 
   return (
-    <div className="space-y-6 sm:space-y-8">
-      {/* Consumables Gateway Banner - Solid Physical Design (Zero Gradients) */}
-      <div className="rounded-xl border border-amber-300 bg-amber-50/60 p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xs">
-        <div className="flex items-start sm:items-center gap-3.5">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-amber-700 text-white shadow-xs">
-            <PackageCheck className="h-6 w-6" />
+    <div className="space-y-8">
+      {/* Consumables Callout Banner */}
+      <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-2xs">
+        <div className="flex items-start sm:items-center gap-4">
+          <div className="w-11 h-11 shrink-0 rounded-full bg-amber-800 text-white flex items-center justify-center shadow-xs">
+            <PackageCheck className="w-5 h-5" />
           </div>
           <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="inline-flex items-center rounded bg-amber-200 px-2 py-0.5 text-[11px] font-extrabold text-amber-950 uppercase tracking-wide">
-                Special Consumables Page
+            <div className="flex items-center gap-2 flex-wrap mb-1">
+              <span className="chip-label bg-amber-100 text-amber-900 shadow-2xs">
+                CONSUMABLES CATALOG
               </span>
-              <span className="text-xs font-semibold text-slate-600">38+ Clinical Items &bull; Bulk Procurement</span>
+              <span className="font-light text-xs text-[hsl(var(--muted-foreground))]">
+                38+ Clinical Reagents &amp; Supplies
+              </span>
             </div>
-            <h2 className="text-sm sm:text-base font-bold text-slate-900 mt-1">
-              Looking for Blood Tubes, Microscope Slides, Stains &amp; Rapid Test Kits?
-            </h2>
-            <p className="text-xs text-slate-600">
-              Explore our dedicated consumables catalog featuring vacutainers, pipette tips, Widal/Brucella kits, urinalysis strips &amp; safety supplies.
+            <h3 className="font-bold text-base text-[hsl(var(--foreground))]">
+              Need Vacutainer Tubes, Microscope Slides, Stains or Rapid Kits?
+            </h3>
+            <p className="font-light text-xs text-[hsl(var(--muted-foreground))] mt-1 leading-relaxed">
+              Explore our dedicated consumables catalog with guaranteed cold-chain and nationwide county delivery.
             </p>
           </div>
         </div>
         <Link
           href="/products/consumables"
-          className="shrink-0 inline-flex items-center justify-center gap-2 rounded-lg bg-amber-800 hover:bg-amber-900 text-white px-4 py-2.5 text-xs sm:text-sm font-bold shadow-xs transition-colors min-h-[44px]"
+          className="btn-pill-primary shrink-0 bg-amber-800 hover:bg-amber-900 text-white text-xs h-11 px-6 font-semibold"
         >
-          <span>Explore Consumables &amp; Reagents</span>
-          <ArrowRight className="h-4 w-4" />
+          <span>Consumables Catalog ({CONSUMABLES_CATALOG.length}) &rarr;</span>
         </Link>
       </div>
 
-      {/* Search Bar & Stats Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-xl bg-white p-4 sm:p-5 border border-slate-200 shadow-xs">
+      {/* Search Bar & Counter */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-2xl bg-white p-4 sm:p-5 border border-[hsl(var(--border))] shadow-2xs">
         {/* Search Input */}
         <div className="relative flex-1 max-w-xl">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[hsl(var(--muted-foreground))]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search machines by model (BC 10, Z3, BS 240), brand (Mindray, Zybio, Olympus), or spec..."
-            className="w-full rounded-xl border border-slate-300 bg-slate-50/50 py-2.5 pl-10 pr-9 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"
+            placeholder="Search machines by model (BC 10, Z3, BS 240), brand, or specification..."
+            className="w-full rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--muted))] py-2.5 pl-11 pr-10 text-sm text-[hsl(var(--foreground))] placeholder:text-[hsl(var(--muted-foreground))] focus:border-[hsl(var(--primary))] focus:bg-white focus:outline-none transition-all"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]"
             >
-              <X className="h-4 w-4" />
+              <X className="w-4 h-4" />
             </button>
           )}
         </div>
 
         {/* Quick Stats & Reset Filter */}
         <div className="flex items-center justify-between md:justify-end gap-3 text-xs">
-          <span className="font-semibold text-slate-600">
-            Showing <strong className="text-slate-900 font-extrabold">{filteredProducts.length}</strong> of{' '}
-            {PRODUCTS_CATALOG.length} diagnostic machines
+          <span className="font-light text-[hsl(var(--muted-foreground))]">
+            Showing <strong className="font-bold text-[hsl(var(--foreground))]">{filteredProducts.length}</strong> of{' '}
+            {PRODUCTS_CATALOG.length} models
           </span>
 
           {isFiltering && (
             <button
               onClick={resetAllFilters}
-              className="font-bold text-blue-700 hover:text-blue-900 hover:underline inline-flex items-center gap-1"
+              className="font-semibold text-[hsl(var(--primary))] hover:underline inline-flex items-center gap-1 cursor-pointer"
             >
-              <X className="h-3 w-3" />
-              <span>Reset Filters</span>
+              <X className="w-3.5 h-3.5" />
+              <span>Reset</span>
             </button>
           )}
         </div>
       </div>
 
-      {/* Main Category Filter Tabs */}
+      {/* Category Filter Pills (Pill System) */}
       <div className="overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none touch-pan-x">
         <div className="flex items-center gap-2 min-w-max">
           <button
             onClick={() => handleCategoryChange('all')}
-            className={`shrink-0 min-h-[42px] inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-all ${
+            className={`shrink-0 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
               selectedCategory === 'all'
-                ? 'bg-blue-700 text-white shadow-xs'
-                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:text-slate-900'
+                ? 'bg-[hsl(var(--primary))] text-white shadow-xs'
+                : 'bg-white text-[hsl(var(--muted-foreground))] border border-[hsl(var(--border))] hover:border-[hsl(var(--foreground))] hover:text-[hsl(var(--foreground))]'
             }`}
           >
             {getTabIcon('all')}
@@ -236,10 +236,10 @@ export default function ProductsCatalogClient() {
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.id)}
-                className={`shrink-0 min-h-[42px] inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-all ${
+                className={`shrink-0 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                   isSelected
-                    ? 'bg-blue-700 text-white shadow-xs'
-                    : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:text-slate-900'
+                    ? 'bg-[hsl(var(--primary))] text-white shadow-xs'
+                    : 'bg-white text-[hsl(var(--muted-foreground))] border border-[hsl(var(--border))] hover:border-[hsl(var(--foreground))] hover:text-[hsl(var(--foreground))]'
                 }`}
               >
                 {getTabIcon(cat.id)}
@@ -250,20 +250,19 @@ export default function ProductsCatalogClient() {
             );
           })}
 
-          {/* Consumables Direct Link Tab */}
           <Link
             href="/products/consumables"
-            className="shrink-0 min-h-[42px] inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 hover:border-amber-400 transition-all"
+            className="shrink-0 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold bg-amber-50 text-amber-900 border border-amber-200 hover:bg-amber-100 transition-all"
           >
-            <PackageCheck className="h-4 w-4 text-amber-700" />
-            <span>Consumables &amp; Reagents ({CONSUMABLES_CATALOG.length}) &rarr;</span>
+            <PackageCheck className="w-3.5 h-3.5 text-amber-800" />
+            <span>Consumables ({CONSUMABLES_CATALOG.length}) &rarr;</span>
           </Link>
         </div>
       </div>
 
       {/* Products Grid */}
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}
@@ -273,35 +272,35 @@ export default function ProductsCatalogClient() {
           ))}
         </div>
       ) : (
-        /* Empty Search/Filter State */
-        <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 sm:p-12 text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-slate-100 text-slate-400 mb-4">
-            <Search className="h-6 w-6" />
+        /* Empty State */
+        <div className="rounded-2xl border border-dashed border-[hsl(var(--border))] bg-white p-12 text-center">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] mb-4">
+            <Search className="w-6 h-6" />
           </div>
-          <h3 className="text-base font-extrabold text-slate-900">
+          <h3 className="font-extrabold text-base text-[hsl(var(--foreground))]">
             No equipment matched &ldquo;{searchQuery}&rdquo;
           </h3>
-          <p className="mt-1 text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
-            We source all models of clinical machinery across Kenya even if not listed in this catalog view.
+          <p className="font-light text-sm text-[hsl(var(--muted-foreground))] max-w-md mx-auto mt-2 leading-relaxed">
+            We source all models of clinical machinery across Kenya even if not listed in this preview view.
           </p>
 
           <div className="mt-6 flex items-center justify-center gap-3 flex-wrap">
             <button
               onClick={resetAllFilters}
-              className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors"
+              className="btn-pill-secondary text-xs h-10 px-5"
             >
-              Reset All Filters
+              Reset Filters
             </button>
 
             <a
-              href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20am%20looking%20for%20a%20specific%20medical%20equipment%20model:%20${encodeURIComponent(
+              href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20am%20looking%20for:%20${encodeURIComponent(
                 searchQuery || 'Medical Machine'
-              )}.%20Do%20you%20have%20it%20available?`}
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-emerald-700 transition-all"
+              className="btn-pill-primary text-xs h-10 px-5 bg-emerald-600 hover:bg-emerald-700"
             >
-              <MessageSquare className="h-4 w-4" />
+              <MessageSquare className="w-3.5 h-3.5 fill-white" />
               <span>Inquire via WhatsApp</span>
             </a>
           </div>

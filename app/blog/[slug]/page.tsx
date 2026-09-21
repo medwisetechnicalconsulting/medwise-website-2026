@@ -104,19 +104,19 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      {/* Header - Clean Editorial Design */}
-      <article className="bg-[#F8FAFC] text-slate-900 py-12 sm:py-16 border-b border-slate-200">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-4">
+      {/* Header - Clean Editorial White Design */}
+      <article className="bg-white text-foreground py-12 sm:py-16 border-b border-border">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-5">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0F2942] hover:text-[#DC2626] transition-colors py-1"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-white hover:bg-muted text-xs font-semibold text-foreground px-4 py-2 transition-colors w-fit"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-3.5 w-3.5 text-primary" />
             <span>Back to All Engineering Insights</span>
           </Link>
 
-          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600 font-semibold pt-1">
-            <span className="font-bold text-slate-900 bg-white px-3 py-1 rounded text-xs border border-slate-300 shadow-2xs">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 font-medium pt-1">
+            <span className="font-semibold text-primary bg-primary-light px-3 py-1 rounded-full text-xs shadow-xs">
               {post.category}
             </span>
             <div className="flex items-center gap-1.5 text-slate-500 font-mono text-[11px]">
@@ -130,66 +130,72 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground leading-[1.2]">
             {post.title}
           </h1>
 
-          <div className="flex items-center gap-2 pt-1 text-xs font-semibold text-slate-700">
-            <ShieldCheck className="h-4 w-4 text-[#DC2626]" />
-            <span>Authored by {post.author}</span>
+          <div className="flex items-center gap-2 pt-1 text-xs font-medium text-slate-600">
+            <ShieldCheck className="h-4 w-4 text-primary" />
+            <span>Authored by <strong className="text-foreground font-semibold">{post.author}</strong></span>
           </div>
         </div>
       </article>
 
       {/* Body Content */}
-      <div className="py-12 sm:py-16 bg-white">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
+      <div className="py-14 sm:py-20 bg-white">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-10">
           
           {/* Featured Article Image with Click-to-Expand Lightbox */}
           {post.image && (
-            <ExpandableImage
-              src={post.image}
-              alt={post.title}
-              title={post.title}
-              caption="Technical Overview: Click image to expand high-resolution view"
-            />
+            <div className="rounded-3xl overflow-hidden border border-border shadow-xs">
+              <ExpandableImage
+                src={post.image}
+                alt={post.title}
+                title={post.title}
+                caption="Technical Overview: Click image to expand high-resolution view"
+              />
+            </div>
           )}
 
           {/* Target Keyword Banner */}
           {post.targetKeyword && (
-            <div className="rounded-xl bg-[#F8FAFC] border border-slate-200 p-3.5 flex items-center justify-between text-xs text-slate-700 font-semibold shadow-2xs">
+            <div className="rounded-2xl bg-muted/50 border border-border p-4 flex items-center justify-between text-xs text-slate-700 font-medium">
               <div className="flex items-center gap-2">
-                <Tag className="h-4 w-4 text-[#0F2942]" />
-                <span>Focus SEO Keyword: <strong className="text-slate-900">{post.targetKeyword}</strong></span>
+                <Tag className="h-4 w-4 text-primary" />
+                <span>Focus SEO Keyword: <strong className="text-foreground font-semibold">{post.targetKeyword}</strong></span>
               </div>
               <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wide">Index Verified</span>
             </div>
           )}
 
           {/* MDX Rendered Body */}
-          <div className="prose prose-slate max-w-none prose-headings:font-extrabold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-li:text-slate-700 prose-strong:text-slate-900 prose-table:text-sm">
+          <div className="prose prose-slate max-w-none prose-headings:font-extrabold prose-headings:text-foreground prose-headings:tracking-tight prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600 prose-strong:text-foreground prose-table:text-sm">
             <MDXRemote source={post.content} />
           </div>
 
-          {/* Internal Linking CTA Box - Solid Clinical Navy */}
-          <div className="mt-12 rounded-xl bg-[#0F2942] border border-[#1E3A5F] p-6 sm:p-8 text-white space-y-4 shadow-xs">
-            <h3 className="text-lg sm:text-xl font-extrabold text-white">Need Engineering Guidance for Your Healthcare Facility?</h3>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
+          {/* Internal Linking CTA Box - Vivid Blue Banner */}
+          <div className="mt-14 rounded-3xl bg-primary text-white p-8 sm:p-10 shadow-xl space-y-4 relative overflow-hidden">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white/90">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              <span>Biomedical Advisory</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Need Engineering Guidance for Your Healthcare Facility?</h3>
+            <p className="text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl font-normal">
               Medwise Technical Consulting provides brand-neutral equipment selection, procurement, installation, and precision calibration across Kenya. Speak directly with our practicing biomedical team today.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row gap-3 pt-3">
               <a
                 href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Inquiry%20from%20blog%20post:%20${encodeURIComponent(post.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-5 py-3 text-xs sm:text-sm font-bold text-white transition-colors shadow-xs min-h-[44px]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-6 py-3.5 text-sm font-semibold text-white transition-colors shadow-md min-h-[44px]"
               >
                 <MessageSquare className="h-4 w-4 fill-white shrink-0" />
                 <span>Chat on WhatsApp</span>
               </a>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#2B4C74] bg-[#1E3A5F] hover:bg-[#2B4C74] px-5 py-3 text-xs sm:text-sm font-bold text-white transition-colors shadow-xs min-h-[44px]"
+                className="btn-pill-ghost text-center py-3.5 px-6 text-sm"
               >
                 <span>View Our Technical Services</span>
               </Link>

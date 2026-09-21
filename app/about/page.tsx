@@ -46,16 +46,25 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      {/* About Hero Header - Clean Editorial Design */}
-      <section className="bg-[#F8FAFC] text-slate-900 py-14 lg:py-20 border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* About Hero Header - Clean Editorial White Design */}
+      <section className="bg-white text-foreground py-14 lg:py-20 border-b border-border">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumbs Navigation */}
+          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-slate-500 font-medium">
+            <a href="/" className="hover:text-primary transition-colors">
+              Home
+            </a>
+            <span className="text-slate-300">/</span>
+            <span className="text-foreground font-semibold">About Us</span>
+          </nav>
+
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3.5 py-1 text-xs font-bold text-[#0F2942] shadow-xs">
-              <ShieldCheck className="h-4 w-4 text-[#DC2626]" />
+            <div className="chip-label inline-flex items-center gap-2">
+              <ShieldCheck className="h-3.5 w-3.5 text-primary" />
               <span>Biomedical Engineering Led • Kisumu HQ &amp; Nairobi Field Hub</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.15]">
               Technical Knowledge and Field Support for Kenyan Healthcare
             </h1>
 
@@ -67,48 +76,48 @@ export default function AboutPage() {
       </section>
 
       {/* Core Mission & Pillars */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0F2942] bg-slate-100 px-3 py-1 rounded-md border border-slate-200">
+            <div className="chip-label inline-flex items-center">
               Our Core Mission
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground tracking-tight">
               Supporting Diagnostic Labs &amp; Hospitals Across Kenya
             </h2>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
               Our engineering team handles pre-purchase technical assessments, equipment commissioning, preventative maintenance, and metrology calibration so your clinical analyzers deliver dependable results every test cycle.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="rounded-xl bg-[#F8FAFC] p-6 sm:p-8 border border-slate-200 space-y-3 shadow-xs">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#0F2942] text-white font-mono font-bold text-base shadow-xs">
+            <div className="rounded-3xl bg-muted/30 p-8 sm:p-10 border border-border space-y-4 shadow-xs hover:bg-white hover:border-primary/30 hover:shadow-md transition-all duration-200">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-light text-primary font-bold text-sm">
                 01
               </div>
-              <h3 className="text-lg font-bold text-slate-900">Objective Advisory</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <h3 className="text-xl font-bold text-foreground">Objective Advisory</h3>
+              <p className="text-sm text-slate-600 leading-relaxed font-normal">
                 We provide comparative technical guidance so healthcare facilities procure the right laboratory and diagnostic machines at honest market prices without single-brand sales pressure.
               </p>
             </div>
 
-            <div className="rounded-xl bg-[#F8FAFC] p-6 sm:p-8 border border-slate-200 space-y-3 shadow-xs">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#0F2942] text-white font-mono font-bold text-base shadow-xs">
+            <div className="rounded-3xl bg-muted/30 p-8 sm:p-10 border border-border space-y-4 shadow-xs hover:bg-white hover:border-primary/30 hover:shadow-md transition-all duration-200">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-light text-primary font-bold text-sm">
                 02
               </div>
-              <h3 className="text-lg font-bold text-slate-900">Reliable Field Support</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <h3 className="text-xl font-bold text-foreground">Reliable Field Support</h3>
+              <p className="text-sm text-slate-600 leading-relaxed font-normal">
                 Handling physical commissioning, manufacturer-spec preventive maintenance schedules, and precise optics and fluidics calibration for clinical analyzers.
               </p>
             </div>
 
-            <div className="rounded-xl bg-[#F8FAFC] p-6 sm:p-8 border border-slate-200 space-y-3 shadow-xs">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#0F2942] text-white font-mono font-bold text-base shadow-xs">
+            <div className="rounded-3xl bg-muted/30 p-8 sm:p-10 border border-border space-y-4 shadow-xs hover:bg-white hover:border-primary/30 hover:shadow-md transition-all duration-200">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-light text-primary font-bold text-sm">
                 03
               </div>
-              <h3 className="text-lg font-bold text-slate-900">Lifecycle Management</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <h3 className="text-xl font-bold text-foreground">Lifecycle Management</h3>
+              <p className="text-sm text-slate-600 leading-relaxed font-normal">
                 Structuring maintenance service level agreements (SLAs), open-reagent guidance, and operator training to keep equipment operational and avoid costly idle time.
               </p>
             </div>
@@ -118,62 +127,65 @@ export default function AboutPage() {
       </section>
 
       {/* Why Healthcare Facilities Choose Medwise */}
-      <section className="py-16 sm:py-20 bg-[#F8FAFC] border-t border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="py-16 sm:py-24 bg-muted/30 border-t border-border">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <div className="chip-label inline-flex items-center">
+              Our Track Record
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground tracking-tight">
               Why Healthcare Facilities Partner With Medwise
             </h2>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm sm:text-base text-slate-600 font-normal">
               Built on biomedical engineering qualifications and practical field experience in Kenyan facilities.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            <div className="rounded-xl bg-white p-6 sm:p-8 border border-slate-200 shadow-xs flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-[#0F2942] shrink-0 border border-slate-200 shadow-xs">
-                <Award className="h-6 w-6 text-[#DC2626]" />
+            <div className="rounded-3xl bg-white p-7 sm:p-9 border border-border shadow-xs flex items-start gap-5 hover:shadow-md transition-all duration-200">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-light text-primary shrink-0">
+                <Award className="h-6 w-6 text-primary" />
               </div>
-              <div className="space-y-1.5">
-                <h3 className="text-base font-bold text-slate-900">Qualified Biomedical Engineers</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <div className="space-y-2">
+                <h3 className="text-base sm:text-lg font-bold text-foreground">Qualified Biomedical Engineers</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
                   Our technical specialists possess practical field experience servicing hematology, biochemistry, and ultrasound equipment, ensuring objective advice based on actual performance in Kenyan lab environments.
                 </p>
               </div>
             </div>
 
-            <div className="rounded-xl bg-white p-6 sm:p-8 border border-slate-200 shadow-xs flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-[#0F2942] shrink-0 border border-slate-200 shadow-xs">
-                <HeartHandshake className="h-6 w-6 text-[#DC2626]" />
+            <div className="rounded-3xl bg-white p-7 sm:p-9 border border-border shadow-xs flex items-start gap-5 hover:shadow-md transition-all duration-200">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-light text-primary shrink-0">
+                <HeartHandshake className="h-6 w-6 text-primary" />
               </div>
-              <div className="space-y-1.5">
-                <h3 className="text-base font-bold text-slate-900">Neutral Equipment Evaluation</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <div className="space-y-2">
+                <h3 className="text-base sm:text-lg font-bold text-foreground">Neutral Equipment Evaluation</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
                   We evaluate your patient throughput, electrical supply stability, and reagent access to recommend medical devices that match your actual budget and operating capacity.
                 </p>
               </div>
             </div>
 
-            <div className="rounded-xl bg-white p-6 sm:p-8 border border-slate-200 shadow-xs flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-[#0F2942] shrink-0 border border-slate-200 shadow-xs">
-                <Wrench className="h-6 w-6 text-[#0F2942]" />
+            <div className="rounded-3xl bg-white p-7 sm:p-9 border border-border shadow-xs flex items-start gap-5 hover:shadow-md transition-all duration-200">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-light text-primary shrink-0">
+                <Wrench className="h-6 w-6 text-primary" />
               </div>
-              <div className="space-y-1.5">
-                <h3 className="text-base font-bold text-slate-900">Preventive Maintenance Focus</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <div className="space-y-2">
+                <h3 className="text-base sm:text-lg font-bold text-foreground">Preventive Maintenance Focus</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
                   Regular planned servicing and optical/sensor calibration reduce emergency breakdown risks, preserving equipment life and preventing diagnostic delays for patients.
                 </p>
               </div>
             </div>
 
-            <div className="rounded-xl bg-white p-6 sm:p-8 border border-slate-200 shadow-xs flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-[#0F2942] shrink-0 border border-slate-200 shadow-xs">
-                <Users className="h-6 w-6 text-[#0F2942]" />
+            <div className="rounded-3xl bg-white p-7 sm:p-9 border border-border shadow-xs flex items-start gap-5 hover:shadow-md transition-all duration-200">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-light text-primary shrink-0">
+                <Users className="h-6 w-6 text-primary" />
               </div>
-              <div className="space-y-1.5">
-                <h3 className="text-base font-bold text-slate-900">Direct Engineering Access</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <div className="space-y-2">
+                <h3 className="text-base sm:text-lg font-bold text-foreground">Direct Engineering Access</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
                   When you call or WhatsApp Medwise, you speak directly with practicing biomedical technicians who understand sample preparation, fluidic blockages, and error codes.
                 </p>
               </div>
@@ -181,12 +193,12 @@ export default function AboutPage() {
           </div>
 
           {/* Real Company Office Details */}
-          <div className="rounded-xl border border-slate-300 bg-white p-6 sm:p-8 text-center space-y-2 shadow-xs">
-            <span className="text-xs font-mono text-[#0F2942] font-bold uppercase tracking-widest block">
+          <div className="rounded-3xl border border-primary/20 bg-primary-light/40 p-8 sm:p-10 text-center space-y-3 shadow-xs">
+            <span className="text-xs text-primary font-bold uppercase tracking-widest block">
               Medwise Technical Consulting • Kisumu HQ &amp; Nairobi Regional Hub
             </span>
-            <p className="text-xs text-slate-700 max-w-xl mx-auto leading-relaxed">
-              Our engineering team operates from <strong>Kisumu Kakamega Road, Kisumu</strong> and <strong>Nairobi, Kenya</strong>, serving healthcare facilities, county hospitals, and private laboratories nationwide.
+            <p className="text-sm text-slate-700 max-w-xl mx-auto leading-relaxed font-normal">
+              Our engineering team operates from <strong className="font-semibold text-foreground">Kisumu Kakamega Road, Kisumu</strong> and <strong className="font-semibold text-foreground">Nairobi, Kenya</strong>, serving healthcare facilities, county hospitals, and private laboratories nationwide.
             </p>
           </div>
 

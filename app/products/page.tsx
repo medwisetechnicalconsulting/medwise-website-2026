@@ -7,11 +7,7 @@ import {
   Phone,
   MessageSquare,
   HelpCircle,
-  FileText,
-  BadgePercent,
-  Check,
   Wrench,
-  Activity,
 } from 'lucide-react';
 import ProductsCatalogClient from '@/components/ProductsCatalogClient';
 import { SITE_CONFIG, getBreadcrumbSchema, getProductListSchema, getFaqSchema } from '@/lib/seo/schema';
@@ -114,7 +110,7 @@ export default function ProductsPage() {
   const faqLd = getFaqSchema(productsFaqs);
 
   return (
-    <div className="bg-white min-h-screen text-slate-800">
+    <div className="bg-white min-h-screen text-[hsl(var(--foreground))]">
       {/* Structured SEO Schemas */}
       <script
         type="application/ld+json"
@@ -129,103 +125,96 @@ export default function ProductsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
       />
 
-      {/* Hero Header Section - Solid Clinical Navy */}
-      <section className="bg-[#0A1B2D] text-white py-10 sm:py-14 px-4 sm:px-6 lg:px-8 border-b border-[#1E3A5F]">
-        <div className="mx-auto max-w-7xl">
-          {/* Breadcrumbs Navigation */}
-          <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-xs text-slate-400">
-            <Link href="/" className="hover:text-white transition-colors">
+      {/* Hero Header Section - Pure White & Centered */}
+      <section className="bg-white py-14 sm:py-20 px-4 sm:px-8 md:px-[72px] border-b border-[hsl(var(--border))]">
+        <div className="max-w-[1200px] mx-auto">
+          {/* Breadcrumb Pill */}
+          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))]">
+            <Link href="/" className="hover:text-[hsl(var(--foreground))] transition-colors">
               Home
             </Link>
-            <span className="text-slate-600">/</span>
-            <span className="text-slate-200 font-semibold">Equipment Catalog</span>
+            <span>/</span>
+            <span className="text-[hsl(var(--foreground))] font-semibold">Equipment Catalog</span>
           </nav>
 
-          <div className="max-w-3xl space-y-3">
-            <div className="inline-flex items-center gap-2 rounded-md bg-[#0F2942] px-3 py-1 text-xs font-semibold text-slate-200 border border-[#2B4C74]">
-              <ShieldCheck className="h-3.5 w-3.5 text-[#DC2626] shrink-0" />
-              <span>Independent Medical Device Sourcing &amp; Calibration Kenya</span>
-            </div>
+          <div className="max-w-3xl">
+            <span className="font-semibold text-xs tracking-[0.2em] uppercase text-[hsl(var(--primary))] block mb-3">
+              INDEPENDENT MEDICAL DEVICE SOURCING &amp; CALIBRATION
+            </span>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
-              Medical &amp; Laboratory Equipment Catalog
+            <h1 className="font-extrabold text-[clamp(2.4rem,4.5vw,4.2rem)] tracking-[-0.04em] leading-[1.05] text-[hsl(var(--foreground))]">
+              Medical &amp; Laboratory <br />
+              <span className="text-[hsl(var(--primary))]">Equipment Catalog.</span>
             </h1>
 
-            <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
+            <p className="font-light text-base sm:text-lg text-[hsl(var(--muted-foreground))] leading-relaxed mt-5 max-w-2xl">
               Compare verified clinical laboratory machines with independent technical specifications. Every analyzer includes manufacturer warranty, precision metrological calibration, and professional biomedical installation by Medwise engineers.
             </p>
 
-            <div className="pt-1 flex flex-wrap items-center gap-2 text-xs">
-              <span className="text-slate-400">Need reagents, tubes, or stains?</span>
+            <div className="pt-4 flex flex-wrap items-center gap-2 text-xs">
+              <span className="text-[hsl(var(--muted-foreground))]">Need reagents, tubes, or test kits?</span>
               <Link
                 href="/products/consumables"
-                className="font-bold text-amber-400 hover:text-amber-300 underline inline-flex items-center gap-1 transition-colors"
+                className="font-semibold text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3.5 py-1 rounded-full transition-colors inline-flex items-center gap-1"
               >
-                <span>Visit Consumables &amp; Reagents Catalog (38+ items) &rarr;</span>
+                <span>Visit Consumables &amp; Reagents (38+ items) &rarr;</span>
               </Link>
             </div>
           </div>
 
-          {/* Value Propositions Grid (Solid Uiverse Style) */}
-          <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-[#1E3A5F] text-xs sm:text-sm">
-            <div className="flex items-center gap-2.5 rounded-lg bg-[#0F2942] p-3 border border-[#1E3A5F] shadow-xs">
-              <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0" />
-              <span className="font-semibold text-slate-200 text-xs sm:text-sm">
-                1-Year Warranty &amp; Onsite Calibration
-              </span>
+          {/* Value Propositions Trust Chips */}
+          <div className="mt-8 flex flex-wrap gap-2.5 pt-6 border-t border-[hsl(var(--border))] text-xs">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--muted))] border border-[hsl(var(--border))] px-4 py-2 font-medium">
+              <ShieldCheck className="w-4 h-4 text-[hsl(var(--success))]" />
+              <span>1-Year Warranty &amp; Onsite Metrology</span>
             </div>
 
-            <div className="flex items-center gap-2.5 rounded-lg bg-[#0F2942] p-3 border border-[#1E3A5F] shadow-xs">
-              <Truck className="h-4 w-4 text-blue-400 shrink-0" />
-              <span className="font-semibold text-slate-200 text-xs sm:text-sm">
-                Fast Dispatch Across All 47 Counties
-              </span>
+            <div className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--muted))] border border-[hsl(var(--border))] px-4 py-2 font-medium">
+              <Truck className="w-4 h-4 text-[hsl(var(--primary))]" />
+              <span>Dispatch Across All 47 Counties</span>
             </div>
 
-            <div className="flex items-center gap-2.5 rounded-lg bg-[#0F2942] p-3 border border-[#1E3A5F] shadow-xs">
-              <MessageSquare className="h-4 w-4 text-emerald-400 shrink-0" />
-              <span className="font-semibold text-slate-200 text-xs sm:text-sm">
-                Instant Buying Guidance via WhatsApp
-              </span>
+            <div className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--muted))] border border-[hsl(var(--border))] px-4 py-2 font-medium">
+              <MessageSquare className="w-4 h-4 text-emerald-600" />
+              <span>Instant WhatsApp Engineer Advisory</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Main Interactive Catalog Section */}
-      <section aria-label="Machinery Catalog" className="mx-auto max-w-7xl px-4 py-8 sm:py-10 sm:px-6 lg:px-8">
+      <section aria-label="Machinery Catalog" className="max-w-[1200px] mx-auto py-12 px-4 sm:px-8 md:px-[72px]">
         <ProductsCatalogClient />
       </section>
 
-      {/* Equipment FAQ Section */}
-      <section className="border-t border-slate-200 bg-[#F8FAFC] py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl space-y-8">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-1.5 rounded-md bg-white px-3 py-1 text-xs font-bold text-[#0F2942] border border-slate-200 shadow-xs">
-              <HelpCircle className="h-3.5 w-3.5 text-[#DC2626]" />
-              <span>Equipment Buying FAQs</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-              Frequently Asked Questions on Medical Equipment in Kenya
+      {/* Equipment FAQ Section - Muted Background */}
+      <section className="border-t border-[hsl(var(--border))] bg-[hsl(var(--muted))] py-20 px-4 sm:px-8 md:px-[72px]">
+        <div className="max-w-3xl mx-auto space-y-10">
+          <div className="text-center space-y-2">
+            <span className="font-semibold text-xs tracking-[0.2em] uppercase text-[hsl(var(--primary))] block mb-2">
+              EQUIPMENT FAQS
+            </span>
+            <h2 className="font-extrabold text-[clamp(2rem,3vw,2.6rem)] tracking-[-0.025em] text-[hsl(var(--foreground))]">
+              Frequently asked questions on medical machinery.
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="font-light text-sm text-[hsl(var(--muted-foreground))]">
               Transparent answers regarding machinery pricing in KSh, differential technologies, warranties, and delivery across Kenyan counties.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-2">
+          <div className="space-y-4">
             {productsFaqs.map((faq, index) => (
               <article
                 key={index}
-                className="rounded-xl border border-slate-200 bg-white p-5 hover:border-[#0F2942] hover:shadow-sm transition-all"
+                className="rounded-2xl border border-[hsl(var(--border))] bg-white p-6 shadow-2xs hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] transition-all"
               >
-                <h3 className="text-sm font-bold text-slate-900 flex items-start gap-2.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#0F2942] text-[10px] font-bold text-white mt-0.5">
+                <h3 className="font-bold text-base text-[hsl(var(--foreground))] flex items-start gap-3">
+                  <span className="w-6 h-6 rounded-full bg-[hsl(var(--primary-light))] text-[hsl(var(--primary))] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
                     Q
                   </span>
                   <span>{faq.question}</span>
                 </h3>
-                <p className="mt-2.5 text-xs text-slate-600 leading-relaxed pl-7.5">
+                <p className="font-light text-sm text-[hsl(var(--muted-foreground))] leading-relaxed pl-9 mt-2">
                   {faq.answer}
                 </p>
               </article>
@@ -234,33 +223,32 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Advisory & Consulting Callout Section */}
-      <section className="border-t border-slate-200 bg-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl rounded-xl bg-[#0A1B2D] p-6 sm:p-10 lg:p-12 text-white border border-[#1E3A5F]">
+      {/* Advisory & Consulting Callout - Vibrant Blue Banner */}
+      <section className="bg-white py-16 px-4 sm:px-8 md:px-[72px]">
+        <div className="max-w-[1200px] mx-auto rounded-3xl bg-[hsl(var(--primary))] p-8 sm:p-12 text-white shadow-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-3">
-              <div className="inline-flex items-center gap-1.5 rounded-md bg-[#0F2942] px-2.5 py-1 text-xs font-semibold text-slate-200 border border-[#2B4C74]">
-                <Wrench className="h-3.5 w-3.5 text-[#DC2626]" />
-                <span>Pre-Purchase Engineering Review</span>
-              </div>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white">
-                Unsure Which Analyzer Fits Your Daily Patient Volume?
+              <span className="chip-label bg-white/20 text-white shadow-2xs">
+                PRE-PURCHASE WORKLOAD AUDIT
+              </span>
+              <h2 className="font-extrabold text-2xl sm:text-3xl md:text-4xl text-white tracking-[-0.025em]">
+                Unsure which analyzer fits your daily patient volume?
               </h2>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
+              <p className="font-light text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl">
                 Purchasing an incompatible laboratory machine can lead to high operating costs, reagent wastage, and frequent downtime. Medwise Technical Consulting conducts independent facility workload audits to ensure you invest in equipment appropriate for your clinical tier.
               </p>
 
-              <div className="pt-2 flex items-center gap-4 text-xs font-medium text-slate-300 flex-wrap">
+              <div className="pt-3 flex items-center gap-4 text-xs font-light text-white/70 flex-wrap">
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0" />
                   Independent Brand-Neutral Advice
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0" />
                   Cost-Per-Test (CPT) Financial Analysis
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0" />
                   Local Spare Parts Verification
                 </span>
               </div>
@@ -271,17 +259,17 @@ export default function ProductsPage() {
                 href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20expert%20equipment%20consulting%20to%20help%20my%20clinic%20choose%20the%20right%20analyzers.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-5 py-3 text-xs sm:text-sm font-bold text-white transition-colors text-center shadow-xs min-h-[44px]"
+                className="btn-pill-ghost h-12 text-sm font-semibold justify-center shadow-md"
               >
-                <MessageSquare className="h-4 w-4 shrink-0 fill-white" />
+                <MessageSquare className="w-4 h-4 fill-[hsl(var(--primary))] shrink-0" />
                 <span>Chat with Senior Engineer</span>
               </a>
 
               <a
                 href={`tel:${SITE_CONFIG.telephone}`}
-                className="flex items-center justify-center gap-2 rounded-lg border border-[#2B4C74] bg-[#0F2942] hover:bg-[#1E3A5F] px-5 py-3 text-xs sm:text-sm font-bold text-white transition-colors text-center shadow-xs min-h-[44px]"
+                className="bg-transparent border border-white/40 hover:border-white text-white font-semibold text-sm rounded-full h-12 px-6 transition-colors inline-flex items-center justify-center gap-2 shrink-0"
               >
-                <Phone className="h-4 w-4 text-[#DC2626] shrink-0" />
+                <Phone className="w-4 h-4 text-white shrink-0" />
                 <span>Call {SITE_CONFIG.telephone}</span>
               </a>
             </div>

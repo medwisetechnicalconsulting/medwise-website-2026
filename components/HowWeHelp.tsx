@@ -1,91 +1,97 @@
 'use client';
 
-import { ClipboardCheck, SlidersHorizontal, Truck, Wrench, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function HowWeHelp() {
   const steps = [
     {
       number: '01',
-      icon: ClipboardCheck,
-      title: 'Facility & Clinical Assessment',
-      description:
-        'Our biomedical engineers visit your site to audit daily test volume, available square footage, electrical load, voltage stability, and water filtration setups.',
+      title: 'Facility & Clinical Audit',
+      description: 'Our biomedical engineers evaluate daily patient volume, room dimensions, power stability, and water filtration requirements.',
+      image: '/images/services/pre-purchase-consulting.png',
+      alt: 'Biomedical engineer evaluating clinical facility specifications',
     },
     {
       number: '02',
-      icon: SlidersHorizontal,
-      title: 'Objective Equipment Comparison',
-      description:
-        'We compare equipment specifications, reagent contracts, and maintenance history across leading manufacturers within your allocated budget.',
+      title: 'Multi-Brand Comparison',
+      description: 'We objectively compare machinery specifications, reagent contracts, and 3-year operating costs across leading manufacturers.',
+      image: '/images/services/equipment-sourcing.png',
+      alt: 'Multi-brand medical equipment catalog comparison',
     },
     {
       number: '03',
-      icon: Truck,
-      title: 'Sourcing, Delivery & Installation',
-      description:
-        'We manage secure delivery, mechanical placement, electrical stabilization, and certified metrological calibration before clinical handover.',
+      title: 'Sourcing & Metrology',
+      description: 'We manage secure delivery, mechanical placement, electrical stabilization, and certified metrological calibration.',
+      image: '/images/services/installation-calibration.png',
+      alt: 'Biomedical engineer executing precision equipment calibration',
     },
     {
       number: '04',
-      icon: Wrench,
-      title: 'Operator Training & Scheduled PM',
-      description:
-        'We conduct hands-on training for laboratory technologists and nurses, providing scheduled preventive maintenance and rapid field repair dispatch.',
+      title: 'Staff Training & SLA',
+      description: 'Certified hands-on operator training for laboratory technologists and nurses, backed by structured preventive maintenance.',
+      image: '/images/services/staff-training.png',
+      alt: 'Clinical staff training on diagnostic equipment operation',
     },
   ];
 
   return (
-    <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-[hsl(var(--muted))] py-20 sm:py-24 px-4 sm:px-8 md:px-[72px]">
+      <div className="max-w-[1200px] mx-auto">
         
-        {/* Section Header */}
-        <div className="max-w-3xl space-y-3">
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0F2942] bg-slate-100 px-3 py-1 rounded-md border border-slate-200">
-            Biomedical Lifecycle Protocol
+        {/* Label + H2 */}
+        <div className="text-center mb-14 sm:mb-16">
+          <span className="font-semibold text-xs tracking-[0.2em] uppercase text-[hsl(var(--primary))] block mb-3">
+            HOW IT WORKS
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Our 4-Step Medical Equipment Deployment Process
+          <h2 className="font-extrabold text-[clamp(2rem,3.2vw,2.8rem)] tracking-[-0.025em] text-[hsl(var(--foreground))]">
+            From clinical audit to turnkey diagnostic operation.
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            A methodical engineering process that ensures Kenyan healthcare facilities invest in dependable diagnostic systems with verified accuracy and local repair support.
-          </p>
         </div>
 
-        {/* 4 Steps Timeline Grid */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <div
-                key={index}
-                className="flex flex-col justify-between rounded-xl bg-[#F8FAFC] p-6 border border-slate-200 hover:border-[#0F2942] transition-all shadow-xs"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#0F2942] text-white font-bold text-sm shadow-xs">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <span className="text-2xl font-extrabold text-slate-300 font-mono">
+        {/* 4 Step Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {steps.map((step) => (
+            <div
+              key={step.number}
+              className="bg-white rounded-2xl overflow-hidden border border-[hsl(var(--border))] flex flex-col justify-between hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] transition-all duration-200"
+            >
+              <div>
+                {/* Photo Area */}
+                <div className="relative h-36 w-full overflow-hidden bg-slate-100 border-b border-[hsl(var(--border))]">
+                  <Image
+                    src={step.image}
+                    alt={step.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover object-center"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="p-5">
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-full bg-[hsl(var(--primary))] text-white font-bold text-xs flex items-center justify-center shrink-0">
                       {step.number}
                     </span>
+                    <h3 className="font-bold text-sm text-[hsl(var(--foreground))]">
+                      {step.title}
+                    </h3>
                   </div>
 
-                  <h3 className="mt-5 text-base font-bold text-slate-900">
-                    {step.title}
-                  </h3>
-
-                  <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className="font-light text-sm text-[hsl(var(--muted-foreground))] mt-3 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-semibold">
-                  <span>Phase 0{index + 1} of 04</span>
-                  <span className="text-[#0F2942] font-bold">Verified SOP</span>
-                </div>
               </div>
-            );
-          })}
+
+              {/* Card Footer Step Indicator */}
+              <div className="px-5 pb-4 pt-0">
+                <span className="text-[11px] font-semibold text-[hsl(var(--primary))] block">
+                  Phase {step.number} of 04 &middot; Verified SOP
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>

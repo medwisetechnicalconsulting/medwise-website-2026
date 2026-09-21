@@ -1,258 +1,213 @@
+'use client';
+
 import Link from 'next/link';
-import { Phone, MessageSquare, Mail, MapPin, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
-import MedwiseLogo from './MedwiseLogo';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F8FAFC] text-slate-700 border-t border-slate-200 text-sm">
-      {/* Upper Footer: Contact & Navigation */}
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
+    <footer className="bg-[hsl(var(--foreground))] text-white py-16 px-4 sm:px-8 md:px-[72px] border-t border-white/10">
+      <div className="max-w-[1200px] mx-auto">
+        
+        {/* Main 4-Column Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           
-          {/* Brand & Description Column */}
-          <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="flex items-center">
-              <MedwiseLogo variant="light" size="lg" />
-            </Link>
-
-            <p className="text-xs text-slate-600 leading-relaxed max-w-sm">
-              Proactive technical support, independent medical equipment advisory, sourcing, installation, training, precision calibration, and preventive maintenance for healthcare facilities across Kenya.
+          {/* Col 1 — Brand */}
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="font-extrabold text-xl text-white tracking-[-0.02em]">
+                MEDWISE<span className="text-[hsl(var(--primary))]">.</span>
+              </span>
+            </div>
+            <p className="font-light text-xs text-white/40 tracking-[0.12em] uppercase mt-1">
+              Biomedical Engineering Specialists
+            </p>
+            <p className="font-light text-xs text-white/40 mt-1">
+              Kisumu HQ &amp; Nairobi Field Hub &middot; Kenya
             </p>
 
-            {/* Official Social Media Channels (Solid Brand Colors - Zero Gradients) */}
-            <div className="space-y-2 pt-1">
-              <span className="text-[11px] font-extrabold text-slate-900 uppercase tracking-wider block">Connect on Official Channels:</span>
-              <div className="flex items-center gap-2.5 flex-wrap">
-                {/* Official TikTok */}
-                <a
-                  href={SITE_CONFIG.socialLinks.tiktok}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Official TikTok"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-black text-white shadow-xs hover:bg-slate-800 transition-colors border border-black min-h-[36px] min-w-[36px]"
-                >
-                  <svg className="h-4 w-4 fill-white" viewBox="0 0 24 24">
-                    <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 1.733 6.338 6.338 0 0 0 8.86 8.986V9.664a8.212 8.212 0 0 0 5.769 2.26V8.479a4.814 4.814 0 0 1-2.756-1.793z"/>
-                  </svg>
-                </a>
-
-                {/* Official LinkedIn */}
-                <a
-                  href={SITE_CONFIG.socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Official LinkedIn"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0A66C2] text-white shadow-xs hover:bg-[#084e96] transition-colors min-h-[36px] min-w-[36px]"
-                >
-                  <svg className="h-4 w-4 fill-white" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                  </svg>
-                </a>
-
-                {/* Official Facebook */}
-                <a
-                  href={SITE_CONFIG.socialLinks.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Official Facebook"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1877F2] text-white shadow-xs hover:bg-[#0c63d4] transition-colors min-h-[36px] min-w-[36px]"
-                >
-                  <svg className="h-4 w-4 fill-white" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                </a>
-
-                {/* Official Instagram (Solid Brand Color - Zero Gradients) */}
-                <a
-                  href={SITE_CONFIG.socialLinks.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Official Instagram"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#E1306C] text-white shadow-xs hover:bg-[#c92059] transition-colors min-h-[36px] min-w-[36px]"
-                >
-                  <svg className="h-4 w-4 fill-white" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                </a>
-
-                {/* Official WhatsApp */}
-                <a
-                  href={SITE_CONFIG.socialLinks.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Official WhatsApp"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs hover:bg-emerald-700 transition-colors min-h-[36px] min-w-[36px]"
-                >
-                  <svg className="h-4 w-4 fill-white" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Mandatory Independence Disclaimer Box */}
-            <div className="rounded-xl border border-slate-200 bg-white p-3.5 text-xs text-slate-700 shadow-xs">
-              <span className="font-bold text-[#0F2942] flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-[#DC2626]" />
-                <span>Independent Advisory Standard:</span>
-              </span>
-              <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                Medwise offers equipment sourcing but maintains independent consulting standards to ensure objective advice tailored to your budget and clinical needs.
-              </p>
+            <div className="mt-5 space-y-1.5">
+              <a
+                href={`tel:${SITE_CONFIG.telephone}`}
+                className="font-semibold text-sm text-white hover:text-[hsl(var(--primary-light))] transition-colors block"
+              >
+                {SITE_CONFIG.telephone}
+              </a>
+              <a
+                href={`tel:${SITE_CONFIG.altTelephone}`}
+                className="font-normal text-xs text-white/60 hover:text-white transition-colors block"
+              >
+                Alt: {SITE_CONFIG.altTelephone}
+              </a>
+              <a
+                href={`mailto:${SITE_CONFIG.email}`}
+                className="font-normal text-xs text-white/50 hover:text-white transition-colors block break-all pt-1"
+              >
+                {SITE_CONFIG.email}
+              </a>
             </div>
           </div>
 
-          {/* Quick Links Column */}
-          <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Quick Navigation</h3>
-            <ul className="space-y-2 text-xs font-bold">
+          {/* Col 2 — Services */}
+          <div>
+            <span className="font-semibold text-[0.62rem] tracking-[0.2em] uppercase text-white/30 block mb-5">
+              SERVICES
+            </span>
+            <ul className="space-y-3 font-normal text-sm text-white/55">
               <li>
-                <Link href="/" className="hover:text-[#0F2942] transition-colors py-1 block">
-                  Home
+                <Link href="/services#consulting" className="hover:text-white transition-colors">
+                  Pre-Purchase Consulting
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-[#0F2942] transition-colors py-1 block">
-                  Our Services
+                <Link href="/services#sourcing" className="hover:text-white transition-colors">
+                  Equipment Sourcing &amp; Supply
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="hover:text-[#0F2942] transition-colors py-1 block">
-                  Diagnostic Machinery Catalog
+                <Link href="/services#installation" className="hover:text-white transition-colors">
+                  Installation &amp; Calibration
                 </Link>
               </li>
               <li>
-                <Link href="/products/consumables" className="text-amber-800 hover:text-amber-950 transition-colors py-1 block font-extrabold">
-                  Consumables &amp; Reagents (38+)
+                <Link href="/services#training" className="hover:text-white transition-colors">
+                  Staff Operational Training
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#0F2942] transition-colors py-1 block">
-                  About Medwise
+                <Link href="/services#maintenance" className="hover:text-white transition-colors">
+                  Preventive Maintenance &amp; SLA
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-[#0F2942] transition-colors py-1 block">
-                  Engineering Insights &amp; Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#0F2942] transition-colors py-1 block">
-                  Contact Us
+                <Link href="/services#emergency" className="hover:text-white transition-colors">
+                  24/7 Breakdown &amp; PCB Repair
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info (NAP) Column */}
-          <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Direct Contact &amp; NAP</h3>
-            
-            <div className="space-y-3 text-xs text-slate-700">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="h-4 w-4 text-[#DC2626] shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <span className="font-bold text-slate-900 block">Locations &amp; Field Hubs:</span>
-                  <p className="text-slate-800 font-semibold">
-                    📍 <strong>Kisumu HQ:</strong> {SITE_CONFIG.address.streetAddress.split(' | ')[0]}, Kisumu, Kenya
-                  </p>
-                  <p className="text-slate-600">
-                    📍 <strong>Nairobi Hub:</strong> Nairobi Region, Kenya
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-2.5">
-                <Phone className="h-4 w-4 text-[#0F2942] shrink-0 mt-0.5" />
-                <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
-                  <span className="font-bold text-slate-900">Phones:</span>
-                  <a href={`tel:${SITE_CONFIG.telephone}`} className="hover:text-[#0F2942] transition-colors font-mono font-bold whitespace-nowrap">
-                    {SITE_CONFIG.telephone}
-                  </a>
-                  <span className="text-slate-400">/</span>
-                  <a href={`tel:${SITE_CONFIG.altTelephone}`} className="hover:text-[#0F2942] transition-colors font-mono font-bold whitespace-nowrap">
-                    {SITE_CONFIG.altTelephone}
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-                <MessageSquare className="h-4 w-4 text-emerald-600 shrink-0" />
-                <div>
-                  <span className="font-bold text-slate-900">WhatsApp: </span>
-                  <a
-                    href={`https://wa.me/${SITE_CONFIG.whatsappNumber}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-emerald-700 transition-colors font-mono font-bold text-emerald-800"
-                  >
-                    +254 117 233 522
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-                <Mail className="h-4 w-4 text-[#0F2942] shrink-0" />
-                <div>
-                  <span className="font-bold text-slate-900">Email: </span>
-                  <a href={`mailto:${SITE_CONFIG.email}`} className="hover:text-[#0F2942] transition-colors font-semibold">
-                    {SITE_CONFIG.email}
-                  </a>
-                </div>
-              </div>
-            </div>
+          {/* Col 3 — Company & Catalog */}
+          <div>
+            <span className="font-semibold text-[0.62rem] tracking-[0.2em] uppercase text-white/30 block mb-5">
+              EQUIPMENT &amp; COMPANY
+            </span>
+            <ul className="space-y-3 font-normal text-sm text-white/55">
+              <li>
+                <Link href="/products" className="hover:text-white transition-colors">
+                  Diagnostic Machinery Catalog
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/consumables" className="hover:text-white transition-colors">
+                  Consumables &amp; Reagents (38+)
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-white transition-colors">
+                  About Medwise
+                </Link>
+              </li>
+              <li>
+                <Link href="/#gallery" className="hover:text-white transition-colors">
+                  Fieldwork Project Gallery
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="hover:text-white transition-colors">
+                  Engineering Insights Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact &amp; Field Hubs
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* Google Maps Location Integration */}
-          <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Kisumu HQ &amp; Regional Hub</h3>
-            <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-slate-200 bg-white flex items-center justify-center p-4 text-center group shadow-xs">
-              <iframe
-                title="Medwise Technical Consulting Location Map - Kisumu Kakamega Road"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.817342!2d34.768!3d-0.0917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182aa4c575cf26d9%3A0xb35a0f624d77b587!2sKisumu%20Kakamega%20Rd%2C%20Kisumu!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 opacity-95 group-hover:opacity-100 transition-opacity"
-              />
-            </div>
-            <div className="flex flex-col gap-1.5 text-center">
-              <p className="text-[11px] text-slate-600 font-medium">
-                📍 Kisumu Kakamega Road (HQ) | Nairobi Hub
+          {/* Col 4 — Hours & Emergency */}
+          <div>
+            <span className="font-semibold text-[0.62rem] tracking-[0.2em] uppercase text-white/30 block mb-5">
+              HOURS &amp; DISPATCH
+            </span>
+            <div className="space-y-1.5 font-normal text-sm text-white/55">
+              <p>Mon&ndash;Fri: 8:00am &ndash; 5:00pm</p>
+              <p>Saturday: 9:00am &ndash; 1:00pm</p>
+              <p className="text-white/40 text-xs">Sunday: Emergency Dispatch Only</p>
+              <p className="text-white/80 font-medium text-xs pt-2">
+                24/7 Emergency: {SITE_CONFIG.telephone}
               </p>
+            </div>
+
+            {/* Social Channels Row */}
+            <div className="flex items-center gap-4 mt-6 text-white/40">
               <a
-                href={SITE_CONFIG.googleMapsUrl}
+                href={SITE_CONFIG.socialLinks.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-1 text-[11px] font-bold text-[#0F2942] hover:text-[#DC2626] transition-colors"
+                aria-label="WhatsApp"
+                className="hover:text-white transition-colors"
               >
-                <span>Open in Google Maps / Business Profile</span>
-                <span aria-hidden="true">→</span>
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                </svg>
+              </a>
+              <a
+                href={SITE_CONFIG.socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="hover:text-white transition-colors"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+              <a
+                href={SITE_CONFIG.socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="hover:text-white transition-colors"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
+              <a
+                href={SITE_CONFIG.socialLinks.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                className="hover:text-white transition-colors"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 1.733 6.338 6.338 0 0 0 8.86 8.986V9.664a8.212 8.212 0 0 0 5.769 2.26V8.479a4.814 4.814 0 0 1-2.756-1.793z" />
+                </svg>
               </a>
             </div>
           </div>
 
         </div>
 
-        {/* Lower Footer: Copyright & Legal */}
-        <div className="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-semibold">
-          <p>© {new Date().getFullYear()} Medwise Technical Consulting. All rights reserved.</p>
+        {/* Bottom Bar */}
+        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center flex-wrap gap-4 font-light text-xs text-white/35">
+          <p>&copy; {new Date().getFullYear()} Medwise Technical Consulting. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link href="/services" className="hover:text-slate-900 transition-colors">
+            <Link href="/services" className="hover:text-white/70 transition-colors">
               Services
             </Link>
-            <Link href="/blog" className="hover:text-slate-900 transition-colors">
-              Insights
+            <Link href="/products" className="hover:text-white/70 transition-colors">
+              Equipment
             </Link>
-            <Link href="/contact" className="hover:text-slate-900 transition-colors">
+            <Link href="/about" className="hover:text-white/70 transition-colors">
+              About
+            </Link>
+            <Link href="/contact" className="hover:text-white/70 transition-colors">
               Contact
             </Link>
-            <Link href="/admin" className="hover:text-[#0F2942] font-bold transition-colors text-slate-700 flex items-center gap-1">
-              <span>Admin Portal</span>
+            <Link href="/admin" className="hover:text-white/70 transition-colors">
+              Admin Portal
             </Link>
           </div>
         </div>

@@ -1,259 +1,146 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  FileSearch, 
-  ShoppingCart, 
-  Settings, 
-  GraduationCap, 
-  Activity, 
-  CheckCircle2, 
-  ArrowRight,
-  ShieldCheck
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface ServiceItem {
   id: string;
-  category: string;
+  badge: string;
+  title: string;
+  description: string;
   image: string;
   alt: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  features: string[];
-  neutralNotice?: string;
+  gradientBg: string;
 }
 
-const DEFAULT_SERVICES: ServiceItem[] = [
+const SERVICES: ServiceItem[] = [
   {
     id: 'consulting',
-    category: 'consulting',
-    image: '/images/services/pre-purchase-consulting.png',
-    alt: 'Biomedical engineer and healthcare administrator reviewing medical equipment blueprints and technical specifications in Kenya',
+    badge: 'INDEPENDENT ADVISORY',
     title: 'Pre-Purchase Technical Consulting',
-    subtitle: 'Needs Assessment & Specification Drafting',
-    description:
-      'Facility workload evaluation, technical specification drafting, and site readiness audits. We ensure clinical facilities invest in machinery matched to their clinical volumes and power infrastructure.',
-    features: [
-      'Clinical workload & patient throughput modeling',
-      'Technical specification drafting (RFP preparation)',
-      'Facility power stability & site readiness review',
-      'Total Cost of Ownership (TCO) financial modeling',
-    ],
+    description: 'Workload evaluation, technical specification drafting, and site readiness audits matched to your clinical throughput.',
+    image: '/images/services/pre-purchase-consulting.png',
+    alt: 'Biomedical engineer reviewing medical blueprints and equipment specs',
+    gradientBg: 'from-blue-50 to-blue-100/40',
   },
   {
     id: 'sourcing',
-    category: 'sourcing',
-    image: '/images/services/equipment-sourcing.png',
-    alt: 'Medical equipment warehouse featuring ultrasound, patient monitors, and laboratory analyzers ready for procurement',
+    badge: 'MULTI-BRAND SOURCING',
     title: 'Equipment Sourcing & Supply',
-    subtitle: 'Multi-Brand Medical Procurement',
-    description:
-      'Direct sourcing of verified diagnostic and therapeutic equipment across Imaging, Laboratory, ICU, Surgical Theatre, and Maternity verticals from reputable global manufacturers.',
-    features: [
-      'Imaging: Digital DR X-Ray, Ultrasound, Mammography',
-      'Laboratory: 3-part / 5-part Hematology, Biochemistry, Centrifuges',
-      'ICU & Theatre: Patient Monitors, Anesthesia, Suction Units',
-      'Maternity: Fetal Dopplers, Infant Incubators, Phototherapy',
-    ],
-    neutralNotice: 'We source equipment, but our primary responsibility is independent technical advice.',
+    description: 'Direct procurement of verified diagnostic and therapeutic equipment across Imaging, Laboratory, ICU, and Theatre.',
+    image: '/images/services/equipment-sourcing.png',
+    alt: 'Medical equipment warehouse with laboratory analyzers',
+    gradientBg: 'from-amber-50 to-amber-100/40',
   },
   {
     id: 'installation',
-    category: 'maintenance',
+    badge: 'VERIFIED METROLOGY',
+    title: 'Installation & Calibration',
+    description: 'Electrical and mechanical setup with certified metrological calibration traceable to international hospital standards.',
     image: '/images/services/installation-calibration.png',
-    alt: 'Biomedical engineer performing metrological calibration and electrical safety testing on hospital machinery',
-    title: 'Installation & Metrological Calibration',
-    subtitle: 'Precision Handover & Certification',
-    description:
-      'Mechanical, electrical, and radiological installation. Every unit undergoes certified metrological calibration against traceable standards to guarantee accurate diagnostic readings from day one.',
-    features: [
-      'Unboxing, positioning & safety wiring',
-      'Metrological simulator calibration with traceable certificates',
-      'Radiation safety & KNRA room shielding compliance',
-      'Audit-ready equipment service documentation',
-    ],
+    alt: 'Engineer performing calibration and electrical safety testing',
+    gradientBg: 'from-emerald-50 to-emerald-100/40',
   },
   {
     id: 'training',
-    category: 'training',
-    image: '/images/services/staff-training.png',
-    alt: 'Clinical specialist training laboratory technologists and healthcare operators on medical device workflows in Kenya',
+    badge: 'OPERATOR TRAINING',
     title: 'Staff Operational Training',
-    subtitle: 'Hands-On Clinical Operator Training',
-    description:
-      'Structured on-site training for doctors, laboratory technologists, and nursing staff covering operational workflows, routine quality control (QC) checks, and first-line user maintenance.',
-    features: [
-      'Daily equipment operation workflows',
-      'Quality Control (QC) run protocols & sample preparation',
-      'Routine operator maintenance & cleaning routines',
-      'Operator competence certification upon completion',
-    ],
+    description: 'Hands-on training for technologists and clinical staff on device operation, Quality Control (QC), and daily upkeep.',
+    image: '/images/services/staff-training.png',
+    alt: 'Clinical specialist training laboratory technologists',
+    gradientBg: 'from-indigo-50 to-indigo-100/40',
   },
   {
     id: 'maintenance',
-    category: 'maintenance',
+    badge: 'SCHEDULED PM & QC',
+    title: 'Preventive Maintenance & SLA',
+    description: 'Scheduled preventive maintenance, fluidic line flushing, optical alignment, and genuine manufacturer parts replacement.',
     image: '/images/services/maintenance-service-qc.png',
-    alt: 'Biomedical service engineer conducting preventive maintenance and Quality Control analysis on clinical analyzer',
-    title: 'Maintenance, Service & QC Analysis',
-    subtitle: 'Preventive Maintenance & Rapid Repairs',
-    description:
-      'Scheduled preventive maintenance, rapid emergency engineer dispatch, genuine spare parts replacement, and quality control verification to maximize operational uptime.',
-    features: [
-      'Structured Preventive Maintenance (PM) contracts',
-      'Emergency technician dispatch for board-level repairs',
-      'Quality control (QC) verification & documentation',
-      'Original manufacturer spare parts & fluidic tubing',
-    ],
+    alt: 'Service engineer conducting preventive maintenance on clinical analyzer',
+    gradientBg: 'from-teal-50 to-teal-100/40',
+  },
+  {
+    id: 'emergency',
+    badge: '24/7 RAPID DISPATCH',
+    title: 'Urgent Breakdown & Board Repair',
+    description: 'Motor PCB board repairs, hydraulic pump troubleshooting, and rapid engineer dispatch across Kenya.',
+    image: '/images/gallery/zybio-board-repair.png',
+    alt: 'Biomedical technician repairing motor PCB drive board',
+    gradientBg: 'from-slate-100 to-slate-200/50',
   },
 ];
 
-const ICON_MAP: Record<string, typeof FileSearch> = {
-  consulting: FileSearch,
-  sourcing: ShoppingCart,
-  installation: Settings,
-  training: GraduationCap,
-  maintenance: Activity,
-};
-
 export default function ServicesSection() {
-  const [activeTab, setActiveTab] = useState<string>('all');
-  const [servicesList, setServicesList] = useState<ServiceItem[]>(DEFAULT_SERVICES);
-
-  useEffect(() => {
-    fetch('/api/admin/services')
-      .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-          setServicesList(data);
-        }
-      })
-      .catch((err) => console.error('Failed to load dynamic services:', err));
-  }, []);
-
-  const filteredServices = activeTab === 'all' 
-    ? servicesList 
-    : servicesList.filter(s => s.category === activeTab);
-
   return (
-    <section id="services" className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-slate-200 text-slate-900">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="services" className="bg-[hsl(var(--muted))] py-20 sm:py-24 px-4 sm:px-8 md:px-[72px]">
+      <div className="max-w-[1200px] mx-auto">
         
-        {/* Section Header */}
-        <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-1 text-xs font-bold text-[#0F2942] border border-slate-200 shadow-xs">
-            <ShieldCheck className="h-3.5 w-3.5 text-[#DC2626]" />
-            <span>Biomedical Engineering Capabilities</span>
+        {/* Header Row */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-14 gap-6">
+          <div>
+            <span className="font-semibold text-[0.68rem] tracking-[0.2em] uppercase text-[hsl(var(--primary))] block mb-3">
+              OUR SERVICES
+            </span>
+            <h2 className="font-extrabold text-[clamp(2rem,3.2vw,2.8rem)] tracking-[-0.025em] leading-[1.15] text-[hsl(var(--foreground))]">
+              Biomedical advisory, sourcing, and <br className="hidden sm:inline" />
+              everything in between.
+            </h2>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
-            Medical Equipment Services &amp; Technical Support
-          </h2>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            From pre-purchase technical evaluations to certified calibration and emergency board repairs, Medwise provides qualified biomedical engineering support across Kenya.
-          </p>
+
+          <Link
+            href="/services"
+            className="btn-pill-secondary h-11 px-7 text-sm font-semibold shrink-0"
+          >
+            <span>All services &rarr;</span>
+          </Link>
         </div>
 
-        {/* Uiverse.io Inspired Segmented Controls */}
-        <div className="mt-8 flex flex-wrap items-center gap-2 text-xs font-bold">
-          {[
-            { id: 'all', label: 'All Technical Services' },
-            { id: 'consulting', label: 'Pre-Purchase Advisory' },
-            { id: 'sourcing', label: 'Device Procurement' },
-            { id: 'maintenance', label: 'Maintenance & Calibration' },
-            { id: 'training', label: 'Operator Training' },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`rounded-lg px-4 py-2.5 transition-all cursor-pointer border min-h-[40px] font-bold ${
-                activeTab === tab.id
-                  ? 'bg-[#0F2942] text-white border-[#0F2942] shadow-xs'
-                  : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-slate-300'
-              }`}
+        {/* 6 Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SERVICES.map((service) => (
+            <Link
+              key={service.id}
+              href={`/services#${service.id}`}
+              className="bg-white rounded-2xl overflow-hidden border border-[hsl(var(--border))] cursor-pointer service-card flex flex-col justify-between group"
             >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Services Cards Grid */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredServices.map((service, index) => {
-            const Icon = ICON_MAP[service.id] || ICON_MAP[service.category] || FileSearch;
-            return (
-              <div
-                key={service.id}
-                className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:border-slate-400 transition-all"
-              >
-                <div>
-                  {/* Service Banner Image */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 border-b border-slate-200">
-                    <Image
-                      src={service.image}
-                      alt={service.alt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover object-center"
-                    />
-                  </div>
-
-                  {/* Content Section */}
-                  <div className="p-5 sm:p-6 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-xs font-bold text-[#0F2942]">
-                        <Icon className="h-4 w-4 text-[#DC2626]" />
-                        <span>{service.subtitle}</span>
-                      </div>
-                      <span className="text-xs font-mono font-semibold text-slate-400">
-                        0{index + 1}
-                      </span>
-                    </div>
-
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      {service.description}
-                    </p>
-
-                    {/* Neutral Disclaimer Note on Sourcing */}
-                    {service.neutralNotice && (
-                      <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs text-slate-800 font-medium">
-                        <strong className="text-slate-900">Note:</strong> {service.neutralNotice}
-                      </div>
-                    )}
-
-                    {/* Features List */}
-                    <ul className="mt-4 space-y-2 pt-3 border-t border-slate-100">
-                      {service.features.map((feat, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-700">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              <div>
+                {/* Image Area with soft tint container */}
+                <div className={`h-[160px] relative overflow-hidden bg-gradient-to-br ${service.gradientBg} border-b border-[hsl(var(--border))]`}>
+                  <Image
+                    src={service.image}
+                    alt={service.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
 
-                {/* Card Footer */}
-                <div className="px-5 sm:px-6 py-3.5 border-t border-slate-100 bg-[#F8FAFC] flex items-center justify-between mt-auto text-xs">
-                  <Link
-                    href={`/services#${service.id}`}
-                    className="inline-flex items-center gap-1.5 font-bold text-[#0F2942] hover:text-[#DC2626] transition-colors py-1"
-                  >
-                    <span>Read Service Scope</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                  <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wide">
-                    Kisumu &amp; Nairobi
+                {/* Card Content */}
+                <div className="p-6">
+                  <span className="chip-label mb-3">
+                    {service.badge}
                   </span>
+
+                  <h3 className="font-bold text-base text-[hsl(var(--foreground))] mb-2 group-hover:text-[hsl(var(--primary))] transition-colors">
+                    {service.title}
+                  </h3>
+
+                  <p className="font-light text-sm text-[hsl(var(--muted-foreground))] leading-[1.65]">
+                    {service.description}
+                  </p>
                 </div>
               </div>
-            );
-          })}
+
+              {/* Card Footer Link */}
+              <div className="px-6 pb-6 pt-0 mt-auto">
+                <span className="font-semibold text-sm text-[hsl(var(--primary))] inline-flex items-center gap-1 group-hover:gap-1.5 transition-all">
+                  <span>Learn more</span>
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
 
       </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/mdx';
-import { ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import AnimatedBlogCards from './AnimatedBlogCards';
 
 export default function BlogPreviewSection() {
@@ -11,30 +11,28 @@ export default function BlogPreviewSection() {
   }
 
   return (
-    <section className="py-16 sm:py-24 bg-white border-t border-slate-200 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-20 sm:py-24 bg-white border-t border-[hsl(var(--border))] px-4 sm:px-8 md:px-[72px]">
+      <div className="max-w-[1200px] mx-auto">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 rounded-md bg-[#F8FAFC] px-3 py-1 text-xs font-bold text-[#0F2942] border border-slate-200 shadow-xs">
-              <BookOpen className="h-4 w-4 text-[#DC2626]" />
-              <span>Technical Knowledge Hub</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Medical Equipment Insights &amp; Maintenance Guides
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span className="font-semibold text-xs tracking-[0.2em] uppercase text-[hsl(var(--primary))] block mb-3">
+              TECHNICAL KNOWLEDGE HUB
+            </span>
+            <h2 className="font-extrabold text-[clamp(2rem,3vw,2.8rem)] tracking-[-0.025em] text-[hsl(var(--foreground))]">
+              Medical equipment insights &amp; guides.
             </h2>
-            <p className="text-sm text-slate-600 max-w-xl font-medium leading-relaxed">
-              Practical biomedical engineering advice, equipment selection guides, and calibration standards for healthcare managers in Kenya.
+            <p className="font-light text-base text-[hsl(var(--muted-foreground))] mt-2 max-w-xl leading-relaxed">
+              Practical biomedical engineering advice, equipment selection comparisons, and calibration standards for Kenyan healthcare administrators.
             </p>
           </div>
 
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-bold text-[#0F2942] hover:text-[#DC2626] transition-colors group py-2"
+            className="btn-pill-secondary h-11 px-7 text-sm font-semibold shrink-0"
           >
-            <span>View All Engineering Guides</span>
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform text-[#DC2626]" />
+            <span>All guides &rarr;</span>
           </Link>
         </div>
 

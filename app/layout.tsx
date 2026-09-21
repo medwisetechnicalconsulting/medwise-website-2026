@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Outfit } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import Navbar from '@/components/Navbar';
@@ -8,15 +8,10 @@ import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import MobileActionBar from '@/components/MobileActionBar';
 import { SITE_CONFIG, getMedicalBusinessSchema } from '@/lib/seo/schema';
 
-const inter = Inter({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
-  display: 'swap',
-});
-
-const outfit = Outfit({
-  subsets: ['latin'],
-  variable: '--font-heading',
+  weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
 });
 
@@ -127,8 +122,14 @@ export default function RootLayout({
   const jsonLd = getMedicalBusinessSchema();
 
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} scroll-smooth`}>
+    <html lang="en" className={`${plusJakartaSans.variable} scroll-smooth`}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y1TFWLNSE" />
         <script
@@ -152,7 +153,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-white font-sans text-slate-900 antialiased flex flex-col justify-between selection:bg-blue-600 selection:text-white relative">
+      <body className="min-h-screen bg-white font-sans text-[hsl(var(--foreground))] antialiased flex flex-col justify-between selection:bg-[hsl(var(--primary))] selection:text-white relative">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />

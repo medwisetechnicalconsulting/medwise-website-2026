@@ -96,27 +96,27 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
       tabIndex={0}
       aria-expanded={isExpanded}
       aria-label={`${item.name} card, click to ${isExpanded ? 'collapse' : 'expand'} full details`}
-      className={`group relative flex flex-col justify-between rounded-xl border bg-white p-4 sm:p-5 shadow-xs transition-all duration-200 cursor-pointer scroll-mt-28 outline-hidden focus-visible:ring-2 focus-visible:ring-[#0F2942] ${
+      className={`group relative flex flex-col justify-between rounded-2xl border bg-white p-5 sm:p-6 shadow-xs transition-all duration-200 cursor-pointer scroll-mt-28 outline-hidden focus-visible:ring-2 focus-visible:ring-primary ${
         isExpanded
-          ? 'border-[#0F2942] ring-1 ring-[#0F2942] shadow-md bg-white'
-          : 'border-slate-200 hover:border-[#0F2942] hover:shadow-md'
+          ? 'border-primary ring-1 ring-primary shadow-md bg-white'
+          : 'border-border hover:border-primary/40 hover:shadow-md'
       }`}
     >
       <div>
         {/* Top Meta Bar: Subcategory Badge */}
-        <div className="flex items-center justify-between gap-2 mb-3">
-          <div className="flex items-center gap-1.5 rounded bg-slate-100 px-2.5 py-1 text-[11px] font-bold text-slate-700 border border-slate-200">
+        <div className="flex items-center justify-between gap-2 mb-4">
+          <div className="flex items-center gap-1.5 rounded-full bg-primary-light px-3 py-1 text-xs font-semibold text-primary">
             {getCategoryIcon()}
             <span>{item.subcategory}</span>
           </div>
 
-          <span className="rounded border border-slate-300 bg-white px-2 py-0.5 text-[11px] font-extrabold text-slate-800 shadow-2xs">
+          <span className="rounded-full border border-border bg-white px-2.5 py-0.5 text-xs font-medium text-slate-500">
             Clinical Lab
           </span>
         </div>
 
         {/* Consumable Visual Area */}
-        <div className="relative mb-4 flex h-44 w-full items-center justify-center overflow-hidden rounded-lg bg-[#F8FAFC] border border-slate-200 p-3">
+        <div className="relative mb-5 flex h-44 w-full items-center justify-center overflow-hidden rounded-2xl bg-muted/40 border border-border p-3">
           {item.image && !imgError ? (
             <img
               src={item.image}
@@ -127,15 +127,15 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
             />
           ) : (
             <div className="flex flex-col items-center justify-center text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white shadow-xs border border-slate-200">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white shadow-xs border border-border">
                 {item.category === 'diagnostic-kits' && (
                   <Activity className="h-6 w-6 text-purple-700" />
                 )}
                 {item.category === 'collection-phlebotomy' && (
-                  <Droplet className="h-6 w-6 text-[#DC2626]" />
+                  <Droplet className="h-6 w-6 text-accent" />
                 )}
                 {item.category === 'microscopy-staining' && (
-                  <Microscope className="h-6 w-6 text-[#0F2942]" />
+                  <Microscope className="h-6 w-6 text-primary" />
                 )}
                 {item.category === 'plasticware-general' && (
                   <FlaskConical className="h-6 w-6 text-amber-700" />
@@ -152,7 +152,7 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
 
           {/* Badge (if any) */}
           {item.badge && (
-            <div className="absolute top-2 left-2 rounded bg-[#0F2942] px-2 py-0.5 text-[10px] font-bold text-white shadow-xs border border-[#1E3A5F]">
+            <div className="absolute top-2.5 left-2.5 rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold text-white shadow-xs">
               {item.badge}
             </div>
           )}
@@ -163,7 +163,7 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
             onClick={copyLink}
             aria-label={`Copy link for ${item.name}`}
             title="Copy shareable link"
-            className="absolute top-2 right-2 rounded bg-white p-1.5 text-slate-400 shadow-xs hover:text-slate-800 transition-colors border border-slate-200 cursor-pointer min-h-[32px] min-w-[32px] flex items-center justify-center"
+            className="absolute top-2.5 right-2.5 rounded-full bg-white p-1.5 text-slate-400 shadow-xs hover:text-foreground transition-colors border border-border cursor-pointer min-h-[32px] min-w-[32px] flex items-center justify-center"
           >
             {copied ? (
               <CheckCheck className="h-3.5 w-3.5 text-emerald-600" />
@@ -174,22 +174,22 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
         </div>
 
         {/* Item Title */}
-        <h3 className="text-base font-bold text-slate-900 leading-snug">
+        <h3 className="text-base font-bold text-foreground leading-snug">
           {item.name}
         </h3>
 
         {/* Packaging Format Banner */}
-        <div className="mt-2 flex items-center gap-1.5 rounded-lg bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200">
-          <Package className="h-3.5 w-3.5 text-[#0F2942] shrink-0" />
+        <div className="mt-2.5 flex items-center gap-2 rounded-xl bg-muted/60 px-3.5 py-2 text-xs font-medium text-slate-700 border border-border">
+          <Package className="h-3.5 w-3.5 text-primary shrink-0" />
           <span className={isExpanded ? 'break-words' : 'truncate'}>
-            Packaging: <strong className="text-slate-900 font-bold">{item.packaging}</strong>
+            Packaging: <strong className="text-foreground font-bold">{item.packaging}</strong>
           </span>
         </div>
 
         {/* Clinical Description */}
         <p
-          className={`mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed transition-all ${
-            isExpanded ? 'text-slate-800' : 'line-clamp-3'
+          className={`mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal transition-all ${
+            isExpanded ? 'text-foreground' : 'line-clamp-3'
           }`}
         >
           {item.description}
@@ -197,22 +197,22 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
 
         {/* Storage Instruction (if applicable) */}
         {item.storage && (
-          <div className="mt-2.5 flex items-center gap-1.5 text-[11px] font-semibold text-amber-900 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">
+          <div className="mt-3 flex items-center gap-2 text-xs font-medium text-amber-900 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200">
             <Thermometer className="h-3.5 w-3.5 text-amber-700 shrink-0" />
             <span className={isExpanded ? 'break-words' : 'truncate'}>{item.storage}</span>
           </div>
         )}
 
         {/* Key Technical Highlights */}
-        <div className="my-3.5 space-y-1.5 border-t border-b border-slate-100 py-3">
-          <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+        <div className="my-4 space-y-2 border-t border-b border-border py-3.5">
+          <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
             <span>Key Highlights</span>
             <span className="text-[10px] text-slate-400 font-mono">
               {isExpanded ? `All ${item.highlights.length}` : `3 of ${item.highlights.length}`}
             </span>
           </div>
           {displayedHighlights.map((highlight, idx) => (
-            <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
+            <div key={idx} className="flex items-start gap-2 text-xs text-slate-600">
               <Check className="h-3.5 w-3.5 shrink-0 text-emerald-600 mt-0.5 stroke-[2.5]" />
               <span className={isExpanded ? 'leading-relaxed' : 'line-clamp-1'}>
                 {highlight}
@@ -223,24 +223,24 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
 
         {/* Full Technical Specifications Table - Visible when Expanded */}
         {isExpanded && item.specs && item.specs.length > 0 && (
-          <div className="my-4 rounded-xl border border-slate-200 bg-[#F8FAFC] p-3 space-y-2 animate-in fade-in duration-200">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900">
-              <FileText className="h-3.5 w-3.5 text-[#0F2942] shrink-0" />
+          <div className="my-4 rounded-2xl border border-border bg-muted/30 p-3.5 space-y-2.5 animate-in fade-in duration-200">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-foreground">
+              <FileText className="h-3.5 w-3.5 text-primary shrink-0" />
               <span>Technical &amp; Regulatory Specifications</span>
             </div>
 
-            <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-2xs">
+            <div className="overflow-hidden rounded-xl border border-border bg-white shadow-xs">
               <table className="w-full text-left text-xs">
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-border">
                   {item.specs.map((spec, sIdx) => (
                     <tr
                       key={sIdx}
-                      className={sIdx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}
+                      className={sIdx % 2 === 0 ? 'bg-white' : 'bg-muted/40'}
                     >
-                      <td className="w-2/5 py-2 px-2.5 font-bold text-slate-800 border-r border-slate-100 align-top break-words">
+                      <td className="w-2/5 py-2.5 px-3 font-bold text-foreground border-r border-border align-top break-words">
                         {spec.label}
                       </td>
-                      <td className="w-3/5 py-2 px-2.5 text-slate-600 leading-relaxed break-words">
+                      <td className="w-3/5 py-2.5 px-3 text-slate-600 leading-relaxed break-words">
                         {spec.value}
                       </td>
                     </tr>
@@ -259,10 +259,10 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
             setIsExpanded((prev) => !prev);
           }}
           aria-expanded={isExpanded}
-          className={`w-full mb-3 flex items-center justify-center gap-1.5 rounded-lg py-2.5 px-3 text-xs font-bold transition-all cursor-pointer min-h-[42px] ${
+          className={`w-full mb-3 flex items-center justify-center gap-2 rounded-full py-2.5 px-4 text-xs font-semibold transition-all cursor-pointer min-h-[42px] ${
             isExpanded
-              ? 'bg-slate-100 text-slate-800 hover:bg-slate-200 border border-slate-300'
-              : 'bg-slate-50 text-[#0F2942] hover:bg-slate-100 border border-slate-300'
+              ? 'bg-muted text-foreground hover:bg-slate-200 border border-border'
+              : 'bg-muted/50 text-slate-700 hover:bg-muted hover:text-foreground border border-border'
           }`}
         >
           {isExpanded ? (
@@ -272,9 +272,9 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
             </>
           ) : (
             <>
-              <FileText className="h-3.5 w-3.5 text-[#0F2942]" />
-              <span>Expand Full Specifications &amp; Details</span>
-              <ChevronDown className="h-3.5 w-3.5 text-[#0F2942]" />
+              <FileText className="h-3.5 w-3.5 text-primary" />
+              <span>Expand Full Specifications</span>
+              <ChevronDown className="h-3.5 w-3.5 text-primary" />
             </>
           )}
         </button>
@@ -288,7 +288,7 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
           aria-label={`Inquire or order ${item.name} via WhatsApp`}
-          className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs transition-colors min-h-[44px] cursor-pointer"
+          className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-4 py-3 text-xs sm:text-sm font-semibold text-white shadow-xs transition-colors min-h-[44px] cursor-pointer"
         >
           <MessageSquare className="h-4 w-4 shrink-0 fill-white" />
           <span>Inquire / Order via WhatsApp</span>

@@ -2,109 +2,144 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { MessageSquare, Phone, ShieldCheck, CheckCircle2, ArrowRight, Award, Wrench, MapPin } from 'lucide-react';
-import { SITE_CONFIG } from '@/lib/seo/schema';
+import { motion } from 'framer-motion';
+import { CheckCircle } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative bg-[#0A1B2D] text-white py-16 sm:py-20 lg:py-24 border-b border-[#1E3A5F] overflow-hidden">
-      {/* Authentic High-Resolution Clinical Engineering Background */}
-      <Image
-        src="/images/hero-bg.jpg"
-        alt="Medwise Technical Consulting biomedical engineers evaluating medical equipment"
-        fill
-        priority
-        quality={90}
-        sizes="100vw"
-        className="object-cover object-center opacity-30 pointer-events-none"
-      />
+    <section className="bg-white py-14 sm:py-20 min-h-[85vh] flex items-center px-4 sm:px-8 md:px-[72px] overflow-hidden">
+      <div className="max-w-[1200px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        {/* LEFT COLUMN */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="flex flex-col justify-center"
+        >
+          {/* Social Proof Row */}
+          <div className="flex items-center mb-8">
+            <div className="flex items-center shrink-0">
+              <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden relative shadow-xs">
+                <Image
+                  src="/images/services/staff-training.png"
+                  alt="Kenyan healthcare doctor"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-300 overflow-hidden relative -ml-2.5 shadow-xs">
+                <Image
+                  src="/images/services/pre-purchase-consulting.png"
+                  alt="Laboratory technologist"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-100 overflow-hidden relative -ml-2.5 shadow-xs flex items-center justify-center text-[10px] font-bold text-[hsl(var(--primary))]">
+                <span>MD</span>
+              </div>
+            </div>
 
-      {/* Solid High-Contrast Flat Tint (Zero Gradients) */}
-      <div className="absolute inset-0 bg-[#0A1B2D]/80 pointer-events-none" />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-3xl space-y-6">
-          
-          {/* Top Clinical Accreditation Badge */}
-          <div className="inline-flex items-center gap-2 rounded-md border border-[#2B4C74] bg-[#0F2942] px-3.5 py-1.5 text-xs font-semibold text-slate-200 shadow-xs">
-            <span className="h-2 w-2 rounded-full bg-[#DC2626] shrink-0"></span>
-            <span className="text-white font-bold">Independent Biomedical Advisory</span>
-            <span className="text-slate-400">• Kisumu HQ &amp; Nairobi Field Hub</span>
+            <div className="flex items-center ml-3.5 gap-1.5 flex-wrap">
+              <span className="font-semibold text-sm text-[hsl(var(--foreground))]">★ 4.9</span>
+              <span className="font-light text-sm text-[hsl(var(--muted-foreground))]">
+                from 150+ hospital &amp; clinic reviews
+              </span>
+            </div>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Buy the Right Medical Equipment. <span className="text-slate-100">The First Time.</span>
+          {/* H1 Headline */}
+          <h1 className="font-extrabold text-[clamp(2.8rem,5.2vw,5.4rem)] tracking-[-0.04em] leading-[0.96] text-[hsl(var(--foreground))]">
+            Medical <br />
+            Equipment <br />
+            <span className="text-[hsl(var(--primary))]">Done Right.</span>
           </h1>
 
-          {/* Supporting Copy Grounded in Kenyan Clinical Practice */}
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed font-normal">
-            Medwise Technical Consulting is an independent biomedical engineering firm based in Kenya. We evaluate your facility&apos;s daily patient volume, space, and power infrastructure to recommend, source, install, and calibrate diagnostic devices without single-brand sales pressure.
+          {/* Subline */}
+          <p className="font-light text-base text-[hsl(var(--muted-foreground))] leading-[1.75] mt-7 max-w-[430px]">
+            Independent biomedical engineers for Kenyan hospitals and clinics. Flat-rate pricing, same-day field dispatch, and certified metrological calibration on all equipment.
           </p>
 
-          {/* Practical Call to Action Actions (min 44px touch targets) */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-            <a
-              href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20book%20a%20consultation.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-5 py-3 text-sm font-bold text-white transition-colors shadow-xs min-h-[44px]"
-            >
-              <MessageSquare className="h-4.5 w-4.5 fill-white shrink-0" />
-              <span>WhatsApp Senior Engineer</span>
-            </a>
+          {/* Trust Chips Row */}
+          <div className="flex flex-wrap gap-2 mt-8">
+            <div className="inline-flex items-center gap-1.5 bg-[hsl(var(--muted))] border border-[hsl(var(--border))] rounded-full px-3.5 py-1.5">
+              <CheckCircle className="w-3.5 h-3.5 text-[hsl(var(--success))]" />
+              <span className="font-medium text-[0.72rem] text-[hsl(var(--foreground))]">Licensed Biomedical Engineers</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 bg-[hsl(var(--muted))] border border-[hsl(var(--border))] rounded-full px-3.5 py-1.5">
+              <CheckCircle className="w-3.5 h-3.5 text-[hsl(var(--success))]" />
+              <span className="font-medium text-[0.72rem] text-[hsl(var(--foreground))]">Certified Metrology Calibration</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 bg-[hsl(var(--muted))] border border-[hsl(var(--border))] rounded-full px-3.5 py-1.5">
+              <CheckCircle className="w-3.5 h-3.5 text-[hsl(var(--success))]" />
+              <span className="font-medium text-[0.72rem] text-[hsl(var(--foreground))]">Brand-Neutral Advisory</span>
+            </div>
+          </div>
 
-            <a
-              href={`tel:${SITE_CONFIG.telephone}`}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#2B4C74] bg-[#0F2942] hover:bg-[#1E3A5F] px-5 py-3 text-sm font-bold text-white transition-colors shadow-xs min-h-[44px]"
+          {/* CTA Row */}
+          <div className="flex flex-wrap gap-3.5 items-center mt-10">
+            <Link
+              href="/contact"
+              className="btn-pill-primary h-12 px-9 font-semibold text-sm"
             >
-              <Phone className="h-4.5 w-4.5 text-[#DC2626] shrink-0" />
-              <span>Call {SITE_CONFIG.telephone}</span>
-            </a>
+              <span>Get a Free Quote</span>
+            </Link>
 
             <Link
-              href="/products"
-              className="inline-flex items-center justify-center gap-2 text-sm font-bold text-slate-300 hover:text-white py-3 sm:px-3 transition-colors group min-h-[44px]"
+              href="/services"
+              className="btn-pill-secondary h-12 px-8 font-semibold text-sm"
             >
-              <span>Explore Equipment Catalog</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform text-[#DC2626]" />
+              <span>View Services</span>
             </Link>
           </div>
+        </motion.div>
 
-          {/* 3 Physical Engineering Trust Pillars (Uiverse.io inspired tactile cards) */}
-          <div className="pt-6 border-t border-[#1E3A5F] grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-            <div className="flex items-start gap-3 p-3.5 rounded-lg bg-[#0F2942] border border-[#1E3A5F] shadow-xs">
-              <div className="h-8 w-8 rounded bg-[#1E3A5F] flex items-center justify-center shrink-0 mt-0.5">
-                <CheckCircle2 className="h-4.5 w-4.5 text-emerald-400" />
-              </div>
-              <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider">Brand Neutral</h3>
-                <p className="text-xs text-slate-300 mt-0.5">Objective model evaluation based on clinical throughput, zero vendor quotas.</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3 p-3.5 rounded-lg bg-[#0F2942] border border-[#1E3A5F] shadow-xs">
-              <div className="h-8 w-8 rounded bg-[#1E3A5F] flex items-center justify-center shrink-0 mt-0.5">
-                <Award className="h-4.5 w-4.5 text-[#DC2626]" />
-              </div>
-              <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider">Transparent TCO</h3>
-                <p className="text-xs text-slate-300 mt-0.5">Upfront KSh pricing including annual reagents, power draw, and maintenance costs.</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3 p-3.5 rounded-lg bg-[#0F2942] border border-[#1E3A5F] shadow-xs">
-              <div className="h-8 w-8 rounded bg-[#1E3A5F] flex items-center justify-center shrink-0 mt-0.5">
-                <Wrench className="h-4.5 w-4.5 text-blue-400" />
-              </div>
-              <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider">Rapid Dispatch</h3>
-                <p className="text-xs text-slate-300 mt-0.5">Prompt technical response from Kisumu HQ and Nairobi for emergency repairs.</p>
-              </div>
-            </div>
+        {/* RIGHT COLUMN — Stadium Photo with Floating Stat Cards */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+          className="relative lg:pl-6 overflow-visible py-6"
+        >
+          {/* Stadium Photo Container */}
+          <div className="stadium-shape relative w-full h-[420px] sm:h-[500px] lg:h-[560px] bg-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-[hsl(var(--border))]">
+            <Image
+              src="/images/services/pre-purchase-consulting.png"
+              alt="Medwise biomedical engineer performing clinical equipment advisory in Kenya"
+              fill
+              priority
+              quality={90}
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
           </div>
 
-        </div>
+          {/* Floating Card — Bottom-Left (stat-card) */}
+          <div className="stat-card bottom-8 left-[-10px] sm:left-[-24px] lg:left-[-32px] max-w-[240px] z-10 hidden sm:block">
+            <span className="font-semibold text-[0.62rem] tracking-[0.18em] uppercase text-[hsl(var(--muted-foreground))] block">
+              PRECISION CALIBRATION
+            </span>
+            <span className="font-bold text-base text-[hsl(var(--foreground))] mt-1 block">
+              Certified Metrology
+            </span>
+            <span className="font-light text-xs text-[hsl(var(--muted-foreground))] mt-0.5 block leading-tight">
+              Traceable to international hospital standards
+            </span>
+          </div>
+
+          {/* Floating Card — Top-Right (stat-card-blue) */}
+          <div className="stat-card-blue top-8 right-[-10px] sm:right-[-20px] lg:right-[-24px] z-10 hidden sm:block text-white">
+            <div className="flex items-baseline gap-1">
+              <span className="font-extrabold text-2xl tracking-[-0.03em]">4hr</span>
+              <span className="font-light text-sm text-white/60">avg</span>
+            </div>
+            <span className="font-light text-xs text-white/80 mt-0.5 block">
+              Emergency Dispatch
+            </span>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

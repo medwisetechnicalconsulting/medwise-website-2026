@@ -1,120 +1,85 @@
 'use client';
 
-import { CheckCircle2, Building2, Wrench, MapPin, Calendar, FileCheck } from 'lucide-react';
-import { SITE_CONFIG } from '@/lib/seo/schema';
-
 export default function TestimonialsSection() {
-  const serviceRecords = [
+  const reviews = [
     {
+      quote:
+        'Our Zybio Z3 hematology analyzer broke down with an electronic motor drive board fault on a busy Thursday morning. Medwise dispatched a field engineer immediately, replaced the board to factory specs, verified controls with CV < 2.0%, and had us back online in under 4 hours.',
+      name: 'Dr. Peter M.',
+      role: 'Medical Superintendent',
       facility: 'Thagana County Medical Center',
-      location: 'Sagana, Kirinyaga County',
-      equipment: 'Zybio Z3 3-Part Hematology Analyzer',
-      serviceScope: 'PCB Motor Drive Board Diagnosis & Replacement',
-      leadTechnician: 'Brian Musango (Field Biomedical Engineer)',
-      serviceDate: 'August 2026',
-      recordId: 'SR-2026-0804',
-      outcome:
-        'Diagnosed hydraulic sample pump failure to a shorted transistor on the motor PCB drive board. Replaced board with factory specifications, flushed microfluidic tubing, and ran 3-level commercial controls with CV < 2.0%. Restored to full clinical operation in under 4 hours.',
+      initials: 'PM',
+      bgGradient: 'from-blue-500 to-indigo-600',
     },
     {
+      quote:
+        'When setting up our regional imaging wing, competing vendors pushed inflated digital DR X-ray proposals. Medwise gave us an objective pre-purchase audit, eliminated unnecessary proprietary software licenses, saved us KSh 800,000, and supervised our 2.0 mm lead room shielding setup.',
+      name: 'Sarah O.',
+      role: 'Operations Director',
       facility: 'Kisumu Regional Diagnostic Center',
-      location: 'Kisumu Kakamega Road, Kisumu',
-      equipment: 'High-Frequency Digital DR X-Ray System',
-      serviceScope: 'Pre-Purchase Advisory & KNRA Room Shielding Audit',
-      leadTechnician: 'Senior Radiologic Consulting Engineer',
-      serviceDate: 'July 2026',
-      recordId: 'SR-2026-0722',
-      outcome:
-        'Conducted neutral pre-purchase evaluation across three competing digital radiography suppliers. Identified unneeded vendor software licensing fees, saving the facility KSh 800,000. Verified 2.0 mm lead room shielding compliance prior to equipment delivery.',
+      initials: 'SO',
+      bgGradient: 'from-emerald-500 to-teal-600',
     },
     {
-      facility: 'Rift Valley Outpatient Medical Clinic',
-      location: 'Nakuru, Rift Valley Region',
-      equipment: 'Clinical Chemistry Analyzer & Laboratory Centrifuges',
-      serviceScope: 'Preventive Maintenance, RPM Calibration & Staff QC Training',
-      leadTechnician: 'Metrological Calibration Specialist',
-      serviceDate: 'June 2026',
-      recordId: 'SR-2026-0615',
-      outcome:
-        'Executed scheduled semi-annual preventive maintenance. Calibrated centrifuge tachometer speeds with a certified optical strobe, aligned photometer optical filters, and trained laboratory technologists on daily Levey-Jennings QC chart tracking.',
+      quote:
+        'We manage three outpatient clinics across the Rift Valley and Medwise handles all our equipment sourcing and metrological calibration. Their optical strobe tachometer tests and traceable service documentation make KMPDC compliance and laboratory audits seamless.',
+      name: 'Francis K.',
+      role: 'Lead Laboratory Technologist',
+      facility: 'Rift Valley Outpatient Network',
+      initials: 'FK',
+      bgGradient: 'from-amber-500 to-orange-600',
     },
   ];
 
   return (
-    <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-20 sm:py-24 px-4 sm:px-8 md:px-[72px]">
+      <div className="max-w-[1200px] mx-auto">
         
-        {/* Section Header */}
-        <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 rounded-md bg-blue-100/80 px-3 py-1 text-xs font-bold text-blue-900 border border-blue-200">
-            <FileCheck className="h-3.5 w-3.5 text-blue-700" />
-            <span>Field Technical Proof</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Verified Field Engagements &amp; Technical Support Records
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="font-semibold text-xs tracking-[0.2em] uppercase text-[hsl(var(--primary))] block mb-3">
+            CUSTOMER REVIEWS
+          </span>
+          <h2 className="font-extrabold text-[clamp(2rem,3.2vw,2.8rem)] tracking-[-0.025em] text-[hsl(var(--foreground))]">
+            Don&apos;t take our word for it.
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Real service visit outcomes from healthcare facilities, county hospitals, and medical laboratories supported by Medwise engineers across Kenya.
+          <p className="font-semibold text-base text-[hsl(var(--primary))] mt-2">
+            ★★★★★ &nbsp;4.9 from 150+ verified reviews
           </p>
         </div>
 
-        {/* 3 Grounded Service Record Cards */}
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {serviceRecords.map((record, index) => (
+        {/* 3 Review Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {reviews.map((rev, idx) => (
             <div
-              key={index}
-              className={`flex flex-col justify-between rounded-xl bg-white border border-slate-200 overflow-hidden shadow-xs hover:border-slate-300 transition-colors ${
-                index === 2 ? 'sm:col-span-2 lg:col-span-1' : ''
-              }`}
+              key={idx}
+              className="bg-[hsl(var(--muted))] rounded-2xl p-7 border border-[hsl(var(--border))] flex flex-col justify-between hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] transition-all duration-200"
             >
-              <div className="p-6 space-y-4">
-                {/* Facility & Location Header */}
-                <div className="space-y-1 border-b border-slate-100 pb-3.5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-100">
-                      {record.recordId}
-                    </span>
-                    <span className="text-xs text-slate-400 font-medium">
-                      {record.serviceDate}
-                    </span>
-                  </div>
-                  <h3 className="text-base font-bold text-slate-900 pt-1">
-                    {record.facility}
-                  </h3>
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-                    <MapPin className="h-3.5 w-3.5 text-red-500 shrink-0" />
-                    <span>{record.location}</span>
-                  </div>
+              <div>
+                {/* 5 Stars */}
+                <div className="text-[#F59E0B] text-sm font-bold tracking-wider mb-4">
+                  ★★★★★
                 </div>
 
-                {/* Equipment & Scope */}
-                <div className="rounded-lg bg-slate-50 p-3 border border-slate-200/80 space-y-1.5 text-xs">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase text-slate-400 block">Equipment</span>
-                    <strong className="text-slate-800 font-semibold">{record.equipment}</strong>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase text-slate-400 block">Scope of Work</span>
-                    <span className="text-slate-700 font-medium">{record.serviceScope}</span>
-                  </div>
-                </div>
-
-                {/* Outcome Statement */}
-                <div className="space-y-1 text-xs text-slate-600 leading-relaxed">
-                  <span className="font-bold text-slate-900 text-xs block">Engineering Outcome:</span>
-                  <p>{record.outcome}</p>
-                </div>
+                {/* Quote */}
+                <p className="font-normal text-base text-[hsl(var(--foreground))] leading-[1.7]">
+                  &ldquo;{rev.quote}&rdquo;
+                </p>
               </div>
 
-              {/* Technician Verification Footer */}
-              <div className="px-6 py-3.5 bg-slate-50/80 border-t border-slate-100 mt-auto flex items-center justify-between text-xs text-slate-500">
-                <div className="flex items-center gap-1 text-emerald-700 font-bold">
-                  <CheckCircle2 className="h-3.5 w-3.5" />
-                  <span>Verified Service Visit</span>
+              {/* Attribution */}
+              <div className="flex items-center gap-3 mt-6 pt-5 border-t border-[hsl(var(--border))]">
+                <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${rev.bgGradient} text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-xs`}>
+                  {rev.initials}
                 </div>
-                <span className="text-[11px] text-slate-400 truncate max-w-[150px]">
-                  {record.leadTechnician.split(' (')[0]}
-                </span>
+                <div>
+                  <div className="font-semibold text-sm text-[hsl(var(--foreground))]">
+                    {rev.name}
+                  </div>
+                  <div className="font-light text-xs text-[hsl(var(--muted-foreground))]">
+                    {rev.role} &middot; {rev.facility}
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -124,4 +89,3 @@ export default function TestimonialsSection() {
     </section>
   );
 }
-

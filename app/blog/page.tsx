@@ -50,16 +50,25 @@ export default function BlogIndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      {/* Header - Clean Editorial Design */}
-      <section className="bg-[#F8FAFC] text-slate-900 py-14 lg:py-20 border-b border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Header - Clean Editorial White Design */}
+      <section className="bg-white text-foreground py-14 lg:py-20 border-b border-border">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumbs Navigation */}
+          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-slate-500 font-medium">
+            <Link href="/" className="hover:text-primary transition-colors">
+              Home
+            </Link>
+            <span className="text-slate-300">/</span>
+            <span className="text-foreground font-semibold">Blog &amp; Insights</span>
+          </nav>
+
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3.5 py-1 text-xs font-bold text-[#0F2942] shadow-xs">
-              <BookOpen className="h-4 w-4 text-[#DC2626]" />
+            <div className="chip-label inline-flex items-center gap-2">
+              <BookOpen className="h-3.5 w-3.5 text-primary" />
               <span>Biomedical Engineering Insights &amp; Maintenance Guides</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.15]">
               Medical Equipment Insights &amp; Technical Guides
             </h1>
 
@@ -71,26 +80,26 @@ export default function BlogIndexPage() {
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="py-16 sm:py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 bg-muted/30">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
               <article
                 key={post.slug}
-                className="flex flex-col justify-between rounded-xl bg-white border border-slate-200 overflow-hidden shadow-xs hover:shadow-md hover:border-[#0F2942] transition-all group"
+                className="flex flex-col justify-between rounded-3xl bg-white border border-border overflow-hidden shadow-xs hover:shadow-md hover:border-primary/30 transition-all duration-200 group"
               >
                 {/* Card Featured Image */}
-                <Link href={`/blog/${post.slug}`} className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 block border-b border-slate-200">
+                <Link href={`/blog/${post.slug}`} className="relative aspect-[16/10] w-full overflow-hidden bg-muted block border-b border-border">
                   <Image
                     src={post.image || '/images/blog-default.jpg'}
                     alt={post.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-center group-hover:scale-102 transition-transform duration-300"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="font-bold text-slate-900 bg-white/95 px-2.5 py-1 rounded text-xs border border-slate-200 shadow-xs">
+                    <span className="font-semibold text-primary bg-primary-light px-3 py-1 rounded-full text-xs shadow-xs">
                       {post.category}
                     </span>
                   </div>
@@ -98,38 +107,38 @@ export default function BlogIndexPage() {
 
                 <div className="p-6 sm:p-7 space-y-4 flex-1 flex flex-col justify-between">
                   <div className="space-y-3">
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold">
+                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
                       <Clock className="h-3.5 w-3.5 text-slate-400" />
                       <span>{post.readTimeMinutes} min read</span>
                     </div>
 
-                    <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 group-hover:text-[#0F2942] transition-colors leading-snug">
+                    <h2 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
                       <Link href={`/blog/${post.slug}`}>
                         {post.title}
                       </Link>
                     </h2>
 
-                    <p className="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed font-normal">
                       {post.metaDescription}
                     </p>
 
                     {/* Target SEO Keyword Badge */}
                     {post.targetKeyword && (
-                      <div className="inline-flex items-center gap-1.5 text-[11px] font-mono font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">
-                        <Tag className="h-3 w-3 text-slate-400" />
+                      <div className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 bg-muted/60 px-3 py-1 rounded-full border border-border">
+                        <Tag className="h-3 w-3 text-primary" />
                         <span>Keyword: {post.targetKeyword}</span>
                       </div>
                     )}
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold mt-auto">
+                  <div className="pt-4 border-t border-border flex items-center justify-between text-xs font-semibold mt-auto">
                     <div className="flex items-center gap-1.5 text-slate-500 font-mono text-[11px]">
                       <Calendar className="h-3.5 w-3.5 text-slate-400" />
                       <span>{post.date}</span>
                     </div>
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="font-bold text-[#0F2942] group-hover:text-[#DC2626] group-hover:translate-x-1 transition-all flex items-center gap-1 py-1"
+                      className="font-bold text-primary group-hover:text-accent group-hover:translate-x-1 transition-all flex items-center gap-1 py-1"
                     >
                       <span>Read Full Guide</span>
                       <ArrowRight className="h-3.5 w-3.5" />

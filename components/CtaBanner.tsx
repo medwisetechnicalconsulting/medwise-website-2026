@@ -1,54 +1,60 @@
 'use client';
 
 import Link from 'next/link';
-import { MessageSquare, Phone, Calendar, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
+import { Phone } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 
 export default function CtaBanner() {
   return (
-    <section className="bg-[#0A1B2D] border-t border-[#1E3A5F] py-16 text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-5">
+    <section className="relative h-[360px] sm:h-[320px] overflow-hidden flex items-center">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="Medwise Technical Consulting biomedical engineering team"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        {/* Dark Gradient Overlay */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to right, rgba(13,17,23,0.88) 0%, rgba(13,17,23,0.65) 55%, rgba(13,17,23,0.2) 100%)'
+          }}
+        />
+      </div>
+
+      {/* Centered Content */}
+      <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-8 md:px-[72px] w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
         
-        <div className="inline-flex items-center gap-2 rounded-md border border-[#2B4C74] bg-[#0F2942] px-3.5 py-1 text-xs font-semibold text-slate-300">
-          <ShieldCheck className="h-4 w-4 text-[#DC2626]" />
-          <span>Independent Technical Guidance • Zero Sales Quotas</span>
+        {/* Left Headline & Subline */}
+        <div className="max-w-xl">
+          <h2 className="font-extrabold text-3xl sm:text-4xl tracking-[-0.025em] text-white leading-tight">
+            Ready to equip or service your facility?
+          </h2>
+          <p className="font-light text-base text-white/75 mt-2 leading-relaxed">
+            Independent advisory. Transparent flat-rate pricing. 100% clinical compliance.
+          </p>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white max-w-3xl mx-auto leading-tight">
-          Need Guidance Choosing or Servicing Medical Equipment?
-        </h2>
-
-        <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          Speak with our biomedical engineering team before committing your capital budget. We evaluate your clinic&apos;s daily volume, power setup, and test menus without sales pressure.
-        </p>
-
-        {/* Buttons (min 44px touch targets) */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-3">
-          <a
-            href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise,%20I%20would%20like%20to%20consult%20an%20engineer%20regarding%20medical%20equipment.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-5 py-3 text-sm font-bold text-white transition-colors shadow-xs min-h-[44px]"
+        {/* Right Buttons */}
+        <div className="flex flex-wrap items-center gap-4">
+          <Link
+            href="/contact"
+            className="btn-pill-ghost h-12 px-9 font-semibold text-sm"
           >
-            <MessageSquare className="h-4.5 w-4.5 fill-white stroke-none shrink-0" />
-            <span>WhatsApp Senior Engineer</span>
-          </a>
+            <span>Get a Free Quote</span>
+          </Link>
 
           <a
             href={`tel:${SITE_CONFIG.telephone}`}
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border border-[#2B4C74] bg-[#0F2942] hover:bg-[#1E3A5F] px-5 py-3 text-sm font-bold text-white transition-colors shadow-xs min-h-[44px]"
+            className="bg-transparent border border-white/50 text-white font-semibold text-sm rounded-full px-8 py-3.5 hover:border-white transition-colors inline-flex items-center justify-center gap-2 shrink-0"
           >
-            <Phone className="h-4 w-4 text-[#DC2626] shrink-0" />
-            <span>Call Kisumu HQ ({SITE_CONFIG.telephone})</span>
+            <Phone className="w-4 h-4 text-white" />
+            <span>{SITE_CONFIG.telephone}</span>
           </a>
-
-          <Link
-            href="/contact"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border border-slate-700 px-5 py-3 text-sm font-bold text-slate-300 hover:text-white hover:bg-slate-800 transition-colors min-h-[44px]"
-          >
-            <Calendar className="h-4 w-4 text-slate-400 shrink-0" />
-            <span>Book Facility Consultation</span>
-          </Link>
         </div>
 
       </div>

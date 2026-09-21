@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Cpu, Award, ExternalLink } from 'lucide-react';
+import { ShieldCheck, Award, ExternalLink } from 'lucide-react';
 
 interface Brand {
   name: string;
@@ -95,7 +95,7 @@ export default function BrandsSection() {
       logoScale: 'scale-110',
     },
     {
-      name: 'Thermo Fisher Scientific',
+      name: 'Thermo Fisher',
       slug: 'thermo-fisher',
       image: '/images/brands/thermo-fisher.svg',
       url: 'https://www.thermofisher.com',
@@ -121,26 +121,25 @@ export default function BrandsSection() {
   const marqueeBrands = [...brands, ...brands];
 
   return (
-    <section className="py-14 sm:py-20 bg-[#F8FAFC] border-b border-slate-200 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-white border-y border-[hsl(var(--border))] overflow-hidden px-4 sm:px-8 md:px-[72px]">
+      <div className="max-w-[1200px] mx-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 rounded-md bg-white px-3.5 py-1 text-xs font-bold text-[#0F2942] border border-slate-200 shadow-xs">
-            <Cpu className="h-4 w-4 text-[#0F2942]" />
-            <span>Multi-Vendor Technical Support &amp; Sourcing</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Equipment Brands &amp; Platform Compatibility
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="font-semibold text-xs tracking-[0.2em] uppercase text-[hsl(var(--primary))] block mb-3">
+            EQUIPMENT COMPATIBILITY
+          </span>
+          <h2 className="font-extrabold text-[clamp(2rem,3vw,2.8rem)] tracking-[-0.025em] text-[hsl(var(--foreground))]">
+            Multi-vendor technical support &amp; sourcing.
           </h2>
-          <p className="text-xs sm:text-base text-slate-600 font-medium">
+          <p className="font-light text-base text-[hsl(var(--muted-foreground))] mt-3 leading-relaxed">
             Our biomedical engineers maintain repair, routine calibration, and sourcing expertise across leading global healthcare equipment manufacturers.
           </p>
         </div>
 
-        {/* Physical Marquee Frame (Zero Gradients) */}
+        {/* Marquee Frame */}
         <div 
-          className="mt-8 sm:mt-12 relative overflow-hidden py-4 border-y border-slate-200 bg-white"
+          className="relative overflow-hidden py-4 border-y border-[hsl(var(--border))] bg-white"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -150,7 +149,7 @@ export default function BrandsSection() {
             transition={{
               repeat: Infinity,
               ease: 'linear',
-              duration: 32,
+              duration: 36,
             }}
           >
             {marqueeBrands.map((brand, index) => (
@@ -159,17 +158,15 @@ export default function BrandsSection() {
                 href={brand.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                title={`Visit official ${brand.name} website (${brand.url})`}
-                className="group relative w-44 sm:w-56 shrink-0 rounded-xl border border-slate-200 bg-white p-4 sm:p-5 text-center shadow-2xs hover:border-[#0F2942] hover:shadow-xs transition-colors overflow-hidden flex flex-col items-center justify-center h-28 sm:h-32"
+                title={`Visit official ${brand.name} website`}
+                className="group relative w-44 sm:w-52 shrink-0 rounded-2xl border border-[hsl(var(--border))] bg-white p-4 sm:p-5 text-center shadow-2xs hover:border-[hsl(var(--primary))] hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] transition-all overflow-hidden flex flex-col items-center justify-center h-28 sm:h-32"
               >
-                {/* External Link Indicator */}
-                <div className="absolute top-2.5 right-2.5 text-slate-300 group-hover:text-[#0F2942] transition-colors">
-                  <ExternalLink className="h-3.5 w-3.5" />
+                <div className="absolute top-2.5 right-2.5 text-slate-300 group-hover:text-[hsl(var(--primary))] transition-colors">
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </div>
 
-                {/* Brand Logo */}
-                <div className="relative h-14 sm:h-16 w-full flex items-center justify-center p-1">
-                  <div className={`relative h-12 sm:h-14 w-full flex items-center justify-center ${brand.logoScale || ''}`}>
+                <div className="relative h-12 sm:h-14 w-full flex items-center justify-center p-1">
+                  <div className={`relative h-10 sm:h-12 w-full flex items-center justify-center ${brand.logoScale || ''}`}>
                     <Image
                       src={brand.image}
                       alt={`${brand.name} official logo`}
@@ -180,8 +177,7 @@ export default function BrandsSection() {
                   </div>
                 </div>
 
-                {/* Brand Name */}
-                <span className="text-[11px] font-semibold text-slate-600 group-hover:text-[#0F2942] transition-colors mt-1 truncate max-w-full">
+                <span className="text-xs font-semibold text-[hsl(var(--muted-foreground))] group-hover:text-[hsl(var(--primary))] transition-colors mt-2 truncate max-w-full">
                   {brand.name}
                 </span>
               </a>
@@ -190,19 +186,18 @@ export default function BrandsSection() {
         </div>
 
         {/* Independent Neutrality Statement */}
-        <div className="mt-8 rounded-xl border border-slate-200 bg-white p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-800 shadow-xs">
-          <div className="flex items-center gap-3">
-            <ShieldCheck className="h-5 w-5 text-[#DC2626] shrink-0" />
+        <div className="mt-10 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--muted))] p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-[hsl(var(--foreground))]">
+          <div className="flex items-center gap-3.5">
+            <ShieldCheck className="w-5 h-5 text-[hsl(var(--primary))] shrink-0" />
             <div>
-              <span className="font-bold text-sm block text-slate-900">Brand-Neutral Engineering Notice</span>
-              <p className="text-slate-600 leading-relaxed">
-                Medwise Technical Consulting is an independent advisory and maintenance firm. Mention of manufacturer brand names reflects repair compatibility, routine calibration capability, and multi-vendor sourcing.
+              <span className="font-bold text-sm block text-[hsl(var(--foreground))]">Brand-Neutral Engineering Notice</span>
+              <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mt-0.5">
+                Medwise Technical Consulting is an independent advisory and maintenance practice. Mention of manufacturer brand names reflects repair compatibility, routine calibration capability, and multi-vendor sourcing.
               </p>
             </div>
           </div>
-          <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#0F2942] bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 shrink-0">
-            <Award className="h-3.5 w-3.5 text-[#DC2626]" />
-            <span>Independent Practice</span>
+          <span className="chip-label shrink-0">
+            Independent Practice
           </span>
         </div>
 
