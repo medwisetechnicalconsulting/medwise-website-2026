@@ -77,81 +77,81 @@ export default function ContactPage() {
             {/* Direct Contact Cards (Left 5 Cols) */}
             <div className="lg:col-span-5 space-y-6">
               
-              <div className="rounded-3xl bg-white p-8 sm:p-10 border border-border shadow-xs space-y-6">
+              <div className="rounded-3xl bg-white p-6 sm:p-8 md:p-10 border border-border shadow-xs space-y-6 overflow-hidden">
                 <h2 className="text-xl font-extrabold text-foreground border-b border-border pb-4">
                   Direct Contact &amp; Location
                 </h2>
 
                 <div className="space-y-6 text-sm text-slate-700">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-light text-primary shrink-0">
+                  <div className="flex items-start gap-3.5 sm:gap-4">
+                    <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-primary-light text-primary shrink-0">
                       <MapPin className="h-5 w-5" />
                     </div>
-                    <div className="space-y-1">
+                    <div className="min-w-0 flex-1 space-y-1">
                       <span className="font-bold text-foreground block">Locations &amp; Hubs:</span>
-                      <p className="text-slate-700 font-medium">
+                      <p className="text-slate-700 font-medium break-words text-xs sm:text-sm">
                         📍 <strong className="font-semibold text-foreground">Kisumu Main HQ:</strong> Kisumu Kakamega Road, Kisumu, Kenya
                       </p>
-                      <p className="text-slate-500 font-medium">
+                      <p className="text-slate-500 font-medium break-words text-xs sm:text-sm">
                         📍 <strong className="font-semibold text-foreground">Nairobi Hub:</strong> Nairobi Region, Kenya (Rapid Field Dispatch)
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-light text-primary shrink-0">
+                  <div className="flex items-start gap-3.5 sm:gap-4">
+                    <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-primary-light text-primary shrink-0">
                       <Phone className="h-5 w-5" />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <span className="font-bold text-foreground block">Phone Helplines:</span>
-                      <div className="mt-0.5 space-x-2">
-                        <a href={`tel:${SITE_CONFIG.telephone}`} className="text-primary font-bold hover:underline">
-                          {SITE_CONFIG.telephone}
+                      <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-1 sm:gap-x-2 text-xs sm:text-sm font-semibold">
+                        <a href={`tel:${SITE_CONFIG.telephone}`} className="text-primary font-bold hover:underline whitespace-nowrap">
+                          +254 117 233 522
                         </a>
-                        <span className="text-slate-400">/</span>
-                        <a href={`tel:${SITE_CONFIG.altTelephone}`} className="text-primary font-bold hover:underline">
-                          {SITE_CONFIG.altTelephone}
+                        <span className="hidden sm:inline text-slate-300">/</span>
+                        <a href={`tel:${SITE_CONFIG.altTelephone}`} className="text-primary font-bold hover:underline whitespace-nowrap">
+                          +254 711 233 522
                         </a>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 shrink-0">
+                  <div className="flex items-start gap-3.5 sm:gap-4">
+                    <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 shrink-0">
                       <MessageSquare className="h-5 w-5" />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <span className="font-bold text-foreground block">WhatsApp Direct:</span>
                       <a
                         href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20inquire%20about%20your%20services.`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-emerald-700 font-bold hover:underline block mt-0.5"
+                        className="text-emerald-700 font-bold hover:underline block mt-0.5 break-words text-xs sm:text-sm"
                       >
-                        +254 117 233 522 (Instant Chat)
+                        +254 117 233 522 <span className="font-normal text-emerald-800 text-xs">(Instant Chat)</span>
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-light text-primary shrink-0">
+                  <div className="flex items-start gap-3.5 sm:gap-4">
+                    <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-primary-light text-primary shrink-0">
                       <Mail className="h-5 w-5" />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <span className="font-bold text-foreground block">Email Inquiries:</span>
-                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-primary font-semibold hover:underline block mt-0.5">
+                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-primary font-semibold hover:underline block mt-0.5 break-all text-xs sm:text-sm">
                         {SITE_CONFIG.email}
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 pt-3 border-t border-border">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-muted text-slate-600 shrink-0">
+                  <div className="flex items-start gap-3.5 sm:gap-4 pt-3 border-t border-border">
+                    <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-muted text-slate-600 shrink-0">
                       <Clock className="h-5 w-5" />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <span className="font-bold text-foreground block">Operating Hours:</span>
-                      <p className="text-slate-600 text-xs mt-0.5 font-normal">
+                      <p className="text-slate-600 text-xs mt-0.5 font-normal break-words">
                         Mon – Fri: 8:00 AM – 5:00 PM | Sat: 9:00 AM – 1:00 PM
                       </p>
                     </div>
@@ -160,7 +160,7 @@ export default function ContactPage() {
               </div>
 
               {/* Emergency Support Card - Vivid Blue Banner */}
-              <div className="rounded-3xl bg-primary p-8 sm:p-9 text-white space-y-4 shadow-xl relative overflow-hidden">
+              <div className="rounded-3xl bg-primary p-6 sm:p-8 md:p-9 text-white space-y-4 shadow-xl relative overflow-hidden">
                 <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white/90">
                   <ShieldCheck className="h-3.5 w-3.5" />
                   <span>24/7 Field Support</span>
@@ -174,16 +174,16 @@ export default function ContactPage() {
                     href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=URGENT%3A%20Biomedical%20Technical%20Support%20Required`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 py-3.5 px-6 text-sm font-bold text-white transition-colors shadow-md min-h-[44px]"
+                    className="flex items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 py-3.5 px-5 sm:px-6 text-xs sm:text-sm font-bold text-white transition-colors shadow-md min-h-[44px] text-center"
                   >
-                    <MessageSquare className="h-4 w-4 fill-white" />
+                    <MessageSquare className="h-4 w-4 fill-white shrink-0" />
                     <span>WhatsApp Emergency Engineer</span>
                   </a>
                   <a
                     href={`tel:${SITE_CONFIG.telephone}`}
-                    className="btn-pill-ghost text-center py-3.5 text-sm"
+                    className="btn-pill-ghost text-center py-3.5 px-5 sm:px-6 text-xs sm:text-sm"
                   >
-                    <span>Call {SITE_CONFIG.telephone}</span>
+                    <span>Call +254 117 233 522</span>
                   </a>
                 </div>
               </div>
@@ -197,7 +197,7 @@ export default function ContactPage() {
               <ContactForm />
 
               {/* Google Map Location Frame */}
-              <div className="rounded-3xl bg-white p-8 border border-border shadow-xs space-y-4">
+              <div className="rounded-3xl bg-white p-6 sm:p-8 border border-border shadow-xs space-y-4 overflow-hidden">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
                     <h3 className="text-lg font-bold text-foreground">Office Location &amp; Google Maps</h3>
@@ -225,8 +225,8 @@ export default function ContactPage() {
                   />
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 text-xs text-slate-600 font-medium">
-                  <p>📍 Kisumu Kakamega Road, Kisumu, Kenya.</p>
-                  <p className="text-slate-400 font-mono">Coordinates: -0.0917° S, 34.7680° E</p>
+                  <p className="break-words">📍 Kisumu Kakamega Road, Kisumu, Kenya.</p>
+                  <p className="text-slate-400 font-mono break-all sm:break-normal">Coordinates: -0.0917° S, 34.7680° E</p>
                 </div>
               </div>
 

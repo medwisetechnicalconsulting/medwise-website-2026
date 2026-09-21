@@ -5,7 +5,6 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
-import MobileActionBar from '@/components/MobileActionBar';
 import { SITE_CONFIG, getMedicalBusinessSchema } from '@/lib/seo/schema';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -158,7 +157,6 @@ export default function RootLayout({
         <main className="flex-grow">{children}</main>
         <Footer />
         <FloatingWhatsApp />
-        <MobileActionBar />
       </body>
     </html>
   );

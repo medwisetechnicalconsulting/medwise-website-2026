@@ -5,7 +5,7 @@ import { SITE_CONFIG } from '@/lib/seo/schema';
 
 export default function ContactForm() {
   return (
-    <div className="rounded-3xl bg-white p-8 sm:p-10 border border-border shadow-xs space-y-6">
+    <div className="rounded-3xl bg-white p-6 sm:p-8 md:p-10 border border-border shadow-xs space-y-6">
       <div>
         <h2 className="text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">Request a Technical Consultation</h2>
         <p className="text-sm text-slate-600 mt-1 font-normal">
@@ -83,10 +83,11 @@ export default function ContactForm() {
           href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20request%20a%20consultation.`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-full items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 py-3.5 px-6 text-sm font-semibold text-white shadow-xs transition-colors min-h-[44px]"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 py-3.5 px-4 sm:px-6 text-xs sm:text-sm font-semibold text-white shadow-xs transition-colors min-h-[44px] text-center"
         >
           <MessageSquare className="h-4.5 w-4.5 fill-white shrink-0" />
-          <span>Submit Consultation Request via WhatsApp</span>
+          <span className="hidden sm:inline">Submit Consultation Request via WhatsApp</span>
+          <span className="sm:hidden">Request Consultation on WhatsApp</span>
         </a>
       </form>
     </div>

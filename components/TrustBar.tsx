@@ -16,8 +16,8 @@ export default function TrustBar() {
         <div className="flex flex-wrap items-center justify-center gap-y-4 divide-y md:divide-y-0 md:divide-x divide-[hsl(var(--border))]">
           
           {/* Google Reviews */}
-          <div className="px-6 md:px-8 first:pl-0 flex items-center gap-2.5">
-            <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+          <div className="px-3 sm:px-6 md:px-8 first:pl-0 flex items-center gap-2 sm:gap-2.5">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24">
               <path
                 fill="#4285F4"
                 d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.665-5.17 3.665-9.12z"
@@ -35,25 +35,25 @@ export default function TrustBar() {
                 d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.56 1.25 6.57l4.03 3.14c.95-2.83 3.6-4.96 6.72-4.96z"
               />
             </svg>
-            <span className="font-medium text-sm text-[hsl(var(--foreground))]">Google Reviews</span>
-            <span className="text-[#F59E0B] text-xs font-bold tracking-widest">★★★★★</span>
-            <span className="font-semibold text-sm text-[hsl(var(--foreground))]">4.9 / 5</span>
+            <span className="font-medium text-xs sm:text-sm text-[hsl(var(--foreground))]">Google Reviews</span>
+            <span className="text-[#F59E0B] text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest">★★★★★</span>
+            <span className="font-semibold text-xs sm:text-sm text-[hsl(var(--foreground))]">4.9 / 5</span>
           </div>
 
           {/* Clinical Metrology Standards */}
-          <div className="px-6 md:px-8 pt-3 md:pt-0 flex items-center gap-2.5">
-            <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-            <span className="font-medium text-sm text-[hsl(var(--foreground))]">Clinical Metrology</span>
-            <span className="text-[#F59E0B] text-xs font-bold tracking-widest">★★★★★</span>
-            <span className="font-semibold text-sm text-[hsl(var(--foreground))]">100% Traceable</span>
+          <div className="px-3 sm:px-6 md:px-8 pt-3 md:pt-0 flex items-center gap-2 sm:gap-2.5">
+            <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 shrink-0" />
+            <span className="font-medium text-xs sm:text-sm text-[hsl(var(--foreground))]">Clinical Metrology</span>
+            <span className="text-[#F59E0B] text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest">★★★★★</span>
+            <span className="font-semibold text-xs sm:text-sm text-[hsl(var(--foreground))]">100% Traceable</span>
           </div>
 
           {/* Biomedical Certification */}
-          <div className="px-6 md:px-8 pt-3 md:pt-0 flex items-center gap-2.5">
-            <Award className="w-5 h-5 text-[hsl(var(--primary))] shrink-0" />
-            <span className="font-medium text-sm text-[hsl(var(--foreground))]">Engineering Board</span>
-            <span className="text-[#F59E0B] text-xs font-bold tracking-widest">★★★★★</span>
-            <span className="font-semibold text-sm text-[hsl(var(--foreground))]">Certified</span>
+          <div className="px-3 sm:px-6 md:px-8 pt-3 md:pt-0 flex items-center gap-2 sm:gap-2.5">
+            <Award className="w-4 h-4 sm:w-5 sm:h-5 text-[hsl(var(--primary))] shrink-0" />
+            <span className="font-medium text-xs sm:text-sm text-[hsl(var(--foreground))]">Engineering Board</span>
+            <span className="text-[#F59E0B] text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest">★★★★★</span>
+            <span className="font-semibold text-xs sm:text-sm text-[hsl(var(--foreground))]">Certified</span>
           </div>
 
         </div>

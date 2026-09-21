@@ -9,7 +9,7 @@ export default function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-16 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end pointer-events-auto">
+    <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end pointer-events-auto">
       
       {/* Expandable Quick Action Popup */}
       <AnimatePresence>

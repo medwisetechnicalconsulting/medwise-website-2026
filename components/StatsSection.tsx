@@ -63,21 +63,19 @@ export default function StatsSection() {
       ref={sectionRef}
       className="bg-[hsl(var(--primary))] py-16 px-4 sm:px-8 md:px-[72px] text-white"
     >
-      <div className="max-w-[1200px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-white/20">
+      <div className="max-w-[1200px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center lg:divide-x divide-white/20">
         {STATS.map((stat, idx) => (
           <div
             key={idx}
-            className={`px-4 sm:px-8 ${
+            className={`px-2 sm:px-6 lg:px-8 ${
               idx === 0 ? 'lg:pl-0' : ''
-            } ${idx === STATS.length - 1 ? 'lg:pr-0' : ''} ${
-              idx > 1 ? 'pt-6 lg:pt-0' : ''
-            }`}
+            } ${idx === STATS.length - 1 ? 'lg:pr-0' : ''}`}
           >
-            <div className="font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-tight">
+            <div className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[-0.03em] leading-tight break-words">
               {counts[idx]}
               {stat.suffix}
             </div>
-            <div className="font-light text-xs tracking-[0.12em] uppercase text-white/65 mt-2">
+            <div className="font-light text-[11px] sm:text-xs tracking-[0.1em] sm:tracking-[0.12em] uppercase text-white/70 mt-2">
               {stat.label}
             </div>
           </div>
