@@ -212,11 +212,11 @@ export default function ConsumablesCatalogClient() {
         </div>
       )}
 
-      {/* Bulk Hospital / Clinic Quotation Action Bar */}
-      <div className="rounded-xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 p-6 sm:p-8 text-white border border-slate-800 shadow-sm">
+      {/* Bulk Hospital / Clinic Quotation Action Bar - Solid Clinical Navy (Zero Gradients) */}
+      <div className="rounded-xl bg-[#0F2942] p-6 sm:p-8 text-white border border-[#1E3A5F] shadow-xs">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-md bg-blue-900/70 px-2.5 py-1 text-xs font-bold text-blue-300 border border-blue-700/60">
+            <div className="inline-flex items-center gap-2 rounded-md bg-[#1E3A5F] px-2.5 py-1 text-xs font-bold text-slate-200 border border-[#2B4C74]">
               <FileSpreadsheet className="h-3.5 w-3.5" />
               <span>Hospital Procurement & Facility Supply</span>
             </div>

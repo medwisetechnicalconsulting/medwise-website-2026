@@ -15,30 +15,30 @@ export default function BlogPreviewSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-800 border border-blue-200">
-              <BookOpen className="h-4 w-4 text-red-600" />
+            <div className="inline-flex items-center gap-2 rounded-md bg-[#F8FAFC] px-3 py-1 text-xs font-bold text-[#0F2942] border border-slate-200 shadow-xs">
+              <BookOpen className="h-4 w-4 text-[#DC2626]" />
               <span>Technical Knowledge Hub</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Medical Equipment Insights & Guides
+              Medical Equipment Insights &amp; Maintenance Guides
             </h2>
-            <p className="text-sm text-slate-600 max-w-xl font-medium">
+            <p className="text-sm text-slate-600 max-w-xl font-medium leading-relaxed">
               Practical biomedical engineering advice, equipment selection guides, and calibration standards for healthcare managers in Kenya.
             </p>
           </div>
 
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900 transition-colors group"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#0F2942] hover:text-[#DC2626] transition-colors group py-2"
           >
-            <span>View All Insights</span>
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <span>View All Engineering Guides</span>
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform text-[#DC2626]" />
           </Link>
         </div>
 
-        {/* 3 Posts Animated Grid */}
+        {/* 3 Posts Grid */}
         <AnimatedBlogCards posts={posts} />
 
       </div>

@@ -11,10 +11,10 @@ export default function AnimatedBlogCards({ posts }: { posts: BlogPostMeta[] }) 
       {posts.map((post) => (
         <article
           key={post.slug}
-          className="flex flex-col justify-between rounded-xl bg-white border border-slate-200 overflow-hidden shadow-xs hover:border-slate-300 transition-colors"
+          className="flex flex-col justify-between rounded-xl bg-white border border-slate-200 overflow-hidden shadow-xs hover:border-[#0F2942] hover:shadow-md transition-all"
         >
           {/* Card Image Banner */}
-          <Link href={`/blog/${post.slug}`} className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 block border-b border-slate-100">
+          <Link href={`/blog/${post.slug}`} className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 block border-b border-slate-200">
             <Image
               src={post.image || '/images/blog-default.jpg'}
               alt={post.title}
@@ -23,7 +23,7 @@ export default function AnimatedBlogCards({ posts }: { posts: BlogPostMeta[] }) 
               className="object-cover object-center"
             />
             <div className="absolute top-2.5 left-2.5">
-              <span className="font-semibold text-slate-800 bg-white/95 px-2.5 py-1 rounded text-[11px] border border-slate-200 shadow-2xs">
+              <span className="font-bold text-slate-900 bg-white/95 px-2.5 py-1 rounded text-[11px] border border-slate-200 shadow-2xs">
                 {post.category}
               </span>
             </div>
@@ -31,12 +31,12 @@ export default function AnimatedBlogCards({ posts }: { posts: BlogPostMeta[] }) 
 
           <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div className="space-y-2">
-              <div className="flex items-center gap-1 text-xs text-slate-400 font-medium">
-                <Clock className="h-3.5 w-3.5" />
+              <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                <Clock className="h-3.5 w-3.5 text-slate-400" />
                 <span>{post.readTimeMinutes} min read</span>
               </div>
 
-              <h3 className="text-base font-bold text-slate-900 hover:text-blue-700 transition-colors line-clamp-2 leading-snug">
+              <h3 className="text-base font-bold text-slate-900 hover:text-[#0F2942] transition-colors line-clamp-2 leading-snug">
                 <Link href={`/blog/${post.slug}`}>
                   {post.title}
                 </Link>
@@ -48,15 +48,15 @@ export default function AnimatedBlogCards({ posts }: { posts: BlogPostMeta[] }) 
             </div>
 
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold mt-auto">
-              <div className="flex items-center gap-1.5 text-slate-400">
-                <Calendar className="h-3.5 w-3.5" />
+              <div className="flex items-center gap-1.5 text-slate-500 font-mono text-[11px]">
+                <Calendar className="h-3.5 w-3.5 text-slate-400" />
                 <span>{post.date}</span>
               </div>
               <Link
                 href={`/blog/${post.slug}`}
-                className="font-bold text-blue-700 hover:text-blue-900 flex items-center gap-1 transition-colors"
+                className="font-bold text-[#0F2942] hover:text-[#DC2626] flex items-center gap-1 transition-colors py-1"
               >
-                <span>Read Guide</span>
+                <span>Read Technical Guide</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
@@ -66,5 +66,3 @@ export default function AnimatedBlogCards({ posts }: { posts: BlogPostMeta[] }) 
     </div>
   );
 }
-
-

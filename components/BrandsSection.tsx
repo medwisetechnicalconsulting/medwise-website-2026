@@ -10,7 +10,7 @@ interface Brand {
   slug: string;
   image: string;
   url: string;
-  logoScale?: string; // Optically balances visual weight across wide/tall logos
+  logoScale?: string;
 }
 
 export default function BrandsSection() {
@@ -121,39 +121,29 @@ export default function BrandsSection() {
   const marqueeBrands = [...brands, ...brands];
 
   return (
-    <section className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200 overflow-hidden">
+    <section className="py-14 sm:py-20 bg-[#F8FAFC] border-b border-slate-200 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto space-y-3"
-        >
-          <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3.5 py-1 text-xs font-bold text-blue-900 border border-blue-200 shadow-2xs">
-            <Cpu className="h-4 w-4 text-blue-700" />
-            <span>Multi-Vendor Technical Support & Sourcing</span>
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 rounded-md bg-white px-3.5 py-1 text-xs font-bold text-[#0F2942] border border-slate-200 shadow-xs">
+            <Cpu className="h-4 w-4 text-[#0F2942]" />
+            <span>Multi-Vendor Technical Support &amp; Sourcing</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Equipment Brands & Platform Compatibility
+            Equipment Brands &amp; Platform Compatibility
           </h2>
           <p className="text-xs sm:text-base text-slate-600 font-medium">
-            Our biomedical engineers maintain technical repair, calibration, and sourcing expertise across leading global healthcare equipment manufacturers. Click any brand logo to visit their official site.
+            Our biomedical engineers maintain repair, routine calibration, and sourcing expertise across leading global healthcare equipment manufacturers.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Self-Sliding Infinite Ticker Carousel with Mobile-Friendly Edge Masks & Hover Pause */}
+        {/* Physical Marquee Frame (Zero Gradients) */}
         <div 
-          className="mt-8 sm:mt-12 relative overflow-hidden py-4 sm:py-6"
+          className="mt-8 sm:mt-12 relative overflow-hidden py-4 border-y border-slate-200 bg-white"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Desktop Only Seamless Fade Masks */}
-          <div className="hidden md:block absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-slate-50 via-slate-50/70 to-transparent z-10 pointer-events-none" />
-          <div className="hidden md:block absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-slate-50 via-slate-50/70 to-transparent z-10 pointer-events-none" />
-
           <motion.div
             className="flex gap-4 sm:gap-6 w-max"
             animate={{ x: isPaused ? undefined : ['0%', '-50%'] }}
@@ -170,14 +160,14 @@ export default function BrandsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={`Visit official ${brand.name} website (${brand.url})`}
-                className="group relative w-44 sm:w-56 shrink-0 rounded-xl border border-slate-200 bg-white p-4 sm:p-5 text-center shadow-2xs hover:border-slate-300 hover:shadow-xs transition-colors overflow-hidden flex flex-col items-center justify-center h-28 sm:h-32"
+                className="group relative w-44 sm:w-56 shrink-0 rounded-xl border border-slate-200 bg-white p-4 sm:p-5 text-center shadow-2xs hover:border-[#0F2942] hover:shadow-xs transition-colors overflow-hidden flex flex-col items-center justify-center h-28 sm:h-32"
               >
                 {/* External Link Indicator */}
-                <div className="absolute top-2.5 right-2.5 text-slate-300 group-hover:text-blue-700 transition-colors">
+                <div className="absolute top-2.5 right-2.5 text-slate-300 group-hover:text-[#0F2942] transition-colors">
                   <ExternalLink className="h-3.5 w-3.5" />
                 </div>
 
-                {/* Streamlined Brand Logo Container */}
+                {/* Brand Logo */}
                 <div className="relative h-14 sm:h-16 w-full flex items-center justify-center p-1">
                   <div className={`relative h-12 sm:h-14 w-full flex items-center justify-center ${brand.logoScale || ''}`}>
                     <Image
@@ -190,8 +180,8 @@ export default function BrandsSection() {
                   </div>
                 </div>
 
-                {/* Brand Name Subtitle */}
-                <span className="text-[11px] font-semibold text-slate-600 group-hover:text-blue-700 transition-colors mt-1 truncate max-w-full">
+                {/* Brand Name */}
+                <span className="text-[11px] font-semibold text-slate-600 group-hover:text-[#0F2942] transition-colors mt-1 truncate max-w-full">
                   {brand.name}
                 </span>
               </a>
@@ -200,18 +190,18 @@ export default function BrandsSection() {
         </div>
 
         {/* Independent Neutrality Statement */}
-        <div className="mt-8 rounded-xl border border-slate-200 bg-white p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-800">
+        <div className="mt-8 rounded-xl border border-slate-200 bg-white p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-800 shadow-xs">
           <div className="flex items-center gap-3">
-            <ShieldCheck className="h-5 w-5 text-blue-700 shrink-0" />
+            <ShieldCheck className="h-5 w-5 text-[#DC2626] shrink-0" />
             <div>
               <span className="font-bold text-sm block text-slate-900">Brand-Neutral Engineering Notice</span>
-              <p className="text-slate-600">
+              <p className="text-slate-600 leading-relaxed">
                 Medwise Technical Consulting is an independent advisory and maintenance firm. Mention of manufacturer brand names reflects repair compatibility, routine calibration capability, and multi-vendor sourcing.
               </p>
             </div>
           </div>
-          <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-slate-700 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 shrink-0">
-            <Award className="h-3.5 w-3.5 text-blue-700" />
+          <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#0F2942] bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 shrink-0">
+            <Award className="h-3.5 w-3.5 text-[#DC2626]" />
             <span>Independent Practice</span>
           </span>
         </div>
@@ -220,6 +210,3 @@ export default function BrandsSection() {
     </section>
   );
 }
-
-
-

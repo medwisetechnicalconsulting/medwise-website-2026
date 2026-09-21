@@ -5,6 +5,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import MobileActionBar from '@/components/MobileActionBar';
 import { SITE_CONFIG, getMedicalBusinessSchema } from '@/lib/seo/schema';
 
 const inter = Inter({
@@ -20,7 +21,7 @@ const outfit = Outfit({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#1d4ed8',
+  themeColor: '#0F2942',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -156,6 +157,7 @@ export default function RootLayout({
         <main className="flex-grow">{children}</main>
         <Footer />
         <FloatingWhatsApp />
+        <MobileActionBar />
       </body>
     </html>
   );

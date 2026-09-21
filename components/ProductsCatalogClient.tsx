@@ -13,7 +13,6 @@ import {
   LayoutGrid,
   X,
   MessageSquare,
-  Sparkles,
   ArrowRight,
 } from 'lucide-react';
 import {
@@ -143,20 +142,20 @@ export default function ProductsCatalogClient() {
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      {/* Consumables Gateway Banner */}
-      <div className="rounded-2xl border border-amber-200 bg-linear-to-r from-amber-50/90 via-orange-50/70 to-blue-50/80 p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xs">
+      {/* Consumables Gateway Banner - Solid Physical Design (Zero Gradients) */}
+      <div className="rounded-xl border border-amber-300 bg-amber-50/60 p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xs">
         <div className="flex items-start sm:items-center gap-3.5">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-600 text-white shadow-xs">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-amber-700 text-white shadow-xs">
             <PackageCheck className="h-6 w-6" />
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="inline-flex items-center rounded-md bg-amber-100 px-2 py-0.5 text-[11px] font-extrabold text-amber-800 uppercase tracking-wide">
+              <span className="inline-flex items-center rounded bg-amber-200 px-2 py-0.5 text-[11px] font-extrabold text-amber-950 uppercase tracking-wide">
                 Special Consumables Page
               </span>
-              <span className="text-xs font-semibold text-slate-500">38+ Clinical Items &bull; Bulk Procurement</span>
+              <span className="text-xs font-semibold text-slate-600">38+ Clinical Items &bull; Bulk Procurement</span>
             </div>
-            <h2 className="text-sm sm:text-base font-bold text-slate-900 mt-0.5">
+            <h2 className="text-sm sm:text-base font-bold text-slate-900 mt-1">
               Looking for Blood Tubes, Microscope Slides, Stains &amp; Rapid Test Kits?
             </h2>
             <p className="text-xs text-slate-600">
@@ -166,7 +165,7 @@ export default function ProductsCatalogClient() {
         </div>
         <Link
           href="/products/consumables"
-          className="shrink-0 inline-flex items-center justify-center gap-2 rounded-xl bg-amber-700 hover:bg-amber-800 text-white px-4 py-2.5 text-xs sm:text-sm font-bold shadow-xs transition-all hover:shadow-md"
+          className="shrink-0 inline-flex items-center justify-center gap-2 rounded-lg bg-amber-800 hover:bg-amber-900 text-white px-4 py-2.5 text-xs sm:text-sm font-bold shadow-xs transition-colors min-h-[44px]"
         >
           <span>Explore Consumables &amp; Reagents</span>
           <ArrowRight className="h-4 w-4" />

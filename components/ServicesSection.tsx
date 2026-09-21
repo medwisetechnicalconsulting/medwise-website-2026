@@ -31,13 +31,13 @@ const DEFAULT_SERVICES: ServiceItem[] = [
     id: 'consulting',
     category: 'consulting',
     image: '/images/services/pre-purchase-consulting.png',
-    alt: 'Biomedical engineer and healthcare administrator reviewing medical equipment blueprints and technical specifications',
+    alt: 'Biomedical engineer and healthcare administrator reviewing medical equipment blueprints and technical specifications in Kenya',
     title: 'Pre-Purchase Technical Consulting',
     subtitle: 'Needs Assessment & Specification Drafting',
     description:
       'Facility workload evaluation, technical specification drafting, and site readiness audits. We ensure clinical facilities invest in machinery matched to their clinical volumes and power infrastructure.',
     features: [
-      'Clinical workload & throughput modeling',
+      'Clinical workload & patient throughput modeling',
       'Technical specification drafting (RFP preparation)',
       'Facility power stability & site readiness review',
       'Total Cost of Ownership (TCO) financial modeling',
@@ -80,7 +80,7 @@ const DEFAULT_SERVICES: ServiceItem[] = [
     id: 'training',
     category: 'training',
     image: '/images/services/staff-training.png',
-    alt: 'Clinical specialist training laboratory technologists and healthcare operators on medical device workflows',
+    alt: 'Clinical specialist training laboratory technologists and healthcare operators on medical device workflows in Kenya',
     title: 'Staff Operational Training',
     subtitle: 'Hands-On Clinical Operator Training',
     description:
@@ -138,13 +138,13 @@ export default function ServicesSection() {
     : servicesList.filter(s => s.category === activeTab);
 
   return (
-    <section id="services" className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200 text-slate-900">
+    <section id="services" className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-slate-200 text-slate-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 rounded-md bg-blue-100/80 px-3 py-1 text-xs font-bold text-blue-900 border border-blue-200">
-            <ShieldCheck className="h-3.5 w-3.5 text-blue-700" />
+          <div className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-1 text-xs font-bold text-[#0F2942] border border-slate-200 shadow-xs">
+            <ShieldCheck className="h-3.5 w-3.5 text-[#DC2626]" />
             <span>Biomedical Engineering Capabilities</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
@@ -155,7 +155,7 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Category Filter Tabs */}
+        {/* Uiverse.io Inspired Segmented Controls */}
         <div className="mt-8 flex flex-wrap items-center gap-2 text-xs font-bold">
           {[
             { id: 'all', label: 'All Technical Services' },
@@ -167,10 +167,10 @@ export default function ServicesSection() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`rounded-lg px-3.5 py-2 transition-colors cursor-pointer border ${
+              className={`rounded-lg px-4 py-2.5 transition-all cursor-pointer border min-h-[40px] font-bold ${
                 activeTab === tab.id
-                  ? 'bg-blue-700 text-white border-blue-700 font-bold'
-                  : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:border-slate-300'
+                  ? 'bg-[#0F2942] text-white border-[#0F2942] shadow-xs'
+                  : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-slate-300'
               }`}
             >
               {tab.label}
@@ -185,11 +185,11 @@ export default function ServicesSection() {
             return (
               <div
                 key={service.id}
-                className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:border-slate-300 transition-colors"
+                className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:border-slate-400 transition-all"
               >
                 <div>
                   {/* Service Banner Image */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 border-b border-slate-100">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 border-b border-slate-200">
                     <Image
                       src={service.image}
                       alt={service.alt}
@@ -200,10 +200,10 @@ export default function ServicesSection() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="p-6 space-y-3">
+                  <div className="p-5 sm:p-6 space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-xs font-bold text-blue-700">
-                        <Icon className="h-4 w-4" />
+                      <div className="flex items-center gap-2 text-xs font-bold text-[#0F2942]">
+                        <Icon className="h-4 w-4 text-[#DC2626]" />
                         <span>{service.subtitle}</span>
                       </div>
                       <span className="text-xs font-mono font-semibold text-slate-400">
@@ -211,7 +211,7 @@ export default function ServicesSection() {
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-slate-900 leading-snug">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
                       {service.title}
                     </h3>
 
@@ -221,8 +221,8 @@ export default function ServicesSection() {
 
                     {/* Neutral Disclaimer Note on Sourcing */}
                     {service.neutralNotice && (
-                      <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50/90 p-3 text-xs text-blue-950 font-medium">
-                        <strong>Note:</strong> {service.neutralNotice}
+                      <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs text-slate-800 font-medium">
+                        <strong className="text-slate-900">Note:</strong> {service.neutralNotice}
                       </div>
                     )}
 
@@ -230,7 +230,7 @@ export default function ServicesSection() {
                     <ul className="mt-4 space-y-2 pt-3 border-t border-slate-100">
                       {service.features.map((feat, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-700">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-blue-700 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </li>
                       ))}
@@ -239,15 +239,15 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Card Footer */}
-                <div className="px-6 py-3.5 border-t border-slate-100 bg-slate-50/80 flex items-center justify-between mt-auto text-xs">
+                <div className="px-5 sm:px-6 py-3.5 border-t border-slate-100 bg-[#F8FAFC] flex items-center justify-between mt-auto text-xs">
                   <Link
                     href={`/services#${service.id}`}
-                    className="inline-flex items-center gap-1 font-bold text-blue-700 hover:text-blue-900 transition-colors"
+                    className="inline-flex items-center gap-1.5 font-bold text-[#0F2942] hover:text-[#DC2626] transition-colors py-1"
                   >
                     <span>Read Service Scope</span>
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
-                  <span className="text-[10px] font-mono font-bold text-slate-400 uppercase">
+                  <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wide">
                     Kisumu &amp; Nairobi
                   </span>
                 </div>
@@ -260,5 +260,3 @@ export default function ServicesSection() {
     </section>
   );
 }
-
-

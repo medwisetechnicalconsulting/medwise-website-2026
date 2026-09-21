@@ -1,6 +1,6 @@
 'use client';
 
-import { ClipboardCheck, SlidersHorizontal, Truck, Wrench } from 'lucide-react';
+import { ClipboardCheck, SlidersHorizontal, Truck, Wrench, ArrowRight } from 'lucide-react';
 
 export default function HowWeHelp() {
   const steps = [
@@ -9,7 +9,7 @@ export default function HowWeHelp() {
       icon: ClipboardCheck,
       title: 'Facility & Clinical Assessment',
       description:
-        'Our biomedical engineers visit your site to review daily test volumes, available square footage, power quality, and water filtration setups.',
+        'Our biomedical engineers visit your site to audit daily test volume, available square footage, electrical load, voltage stability, and water filtration setups.',
     },
     {
       number: '02',
@@ -30,7 +30,7 @@ export default function HowWeHelp() {
       icon: Wrench,
       title: 'Operator Training & Scheduled PM',
       description:
-        'We conduct hands-on training for laboratory technologists and nurses, providing scheduled preventive maintenance and rapid field support.',
+        'We conduct hands-on training for laboratory technologists and nurses, providing scheduled preventive maintenance and rapid field repair dispatch.',
     },
   ];
 
@@ -40,14 +40,14 @@ export default function HowWeHelp() {
         
         {/* Section Header */}
         <div className="max-w-3xl space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-800 bg-blue-50 px-3 py-1 rounded-md border border-blue-200">
-            Lifecycle Workflow
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0F2942] bg-slate-100 px-3 py-1 rounded-md border border-slate-200">
+            Biomedical Lifecycle Protocol
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
             Our 4-Step Medical Equipment Deployment Process
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            A methodical biomedical process that ensures healthcare facilities invest in dependable diagnostic systems with verified accuracy and local repair support.
+            A methodical engineering process that ensures Kenyan healthcare facilities invest in dependable diagnostic systems with verified accuracy and local repair support.
           </p>
         </div>
 
@@ -58,14 +58,14 @@ export default function HowWeHelp() {
             return (
               <div
                 key={index}
-                className="flex flex-col justify-between rounded-xl bg-slate-50 p-6 border border-slate-200 hover:border-blue-400/60 transition-colors"
+                className="flex flex-col justify-between rounded-xl bg-[#F8FAFC] p-6 border border-slate-200 hover:border-[#0F2942] transition-all shadow-xs"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-700 text-white font-bold text-sm shadow-xs">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#0F2942] text-white font-bold text-sm shadow-xs">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <span className="text-2xl font-bold text-slate-300 font-mono">
+                    <span className="text-2xl font-extrabold text-slate-300 font-mono">
                       {step.number}
                     </span>
                   </div>
@@ -79,9 +79,9 @@ export default function HowWeHelp() {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-500 font-semibold">
-                  <span>Phase {index + 1} of 4</span>
-                  <span className="text-blue-700 font-bold">Standardized Protocol</span>
+                <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-semibold">
+                  <span>Phase 0{index + 1} of 04</span>
+                  <span className="text-[#0F2942] font-bold">Verified SOP</span>
                 </div>
               </div>
             );
@@ -92,4 +92,3 @@ export default function HowWeHelp() {
     </section>
   );
 }
-

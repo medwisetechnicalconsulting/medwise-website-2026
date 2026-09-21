@@ -132,7 +132,7 @@ export default function ConsumablesPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-slate-800">
+    <div className="bg-white min-h-screen text-slate-800">
       {/* Structured SEO Schemas */}
       <script
         type="application/ld+json"
@@ -147,8 +147,8 @@ export default function ConsumablesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
       />
 
-      {/* Header & Breadcrumbs Section */}
-      <header className="bg-slate-900 text-white py-8 sm:py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+      {/* Header & Breadcrumbs Section - Solid Clinical Navy */}
+      <header className="bg-[#0A1B2D] text-white py-8 sm:py-12 px-4 sm:px-6 lg:px-8 border-b border-[#1E3A5F]">
         <div className="mx-auto max-w-7xl">
           {/* Breadcrumbs Navigation */}
           <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-xs text-slate-400">
@@ -165,7 +165,7 @@ export default function ConsumablesPage() {
 
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="max-w-3xl space-y-3">
-              <div className="inline-flex items-center gap-2 rounded-md bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-200 border border-slate-700">
+              <div className="inline-flex items-center gap-2 rounded-md bg-[#0F2942] px-3 py-1 text-xs font-semibold text-slate-200 border border-[#2B4C74]">
                 <PackageCheck className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                 <span>Standardized Clinical Laboratory Consumables &amp; Diagnostic Reagents Kenya</span>
               </div>
@@ -183,7 +183,7 @@ export default function ConsumablesPage() {
             <div className="shrink-0">
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/90 px-4 py-3 text-xs sm:text-sm font-bold text-slate-200 hover:bg-slate-700 hover:text-white transition-all shadow-xs"
+                className="inline-flex items-center gap-2 rounded-lg border border-[#2B4C74] bg-[#0F2942] px-4 py-3 text-xs sm:text-sm font-bold text-slate-200 hover:bg-[#1E3A5F] hover:text-white transition-colors shadow-xs min-h-[44px]"
               >
                 <Cpu className="h-4 w-4 text-blue-400 shrink-0" />
                 <span>View Machinery Catalog (Analyzers)</span>
@@ -192,22 +192,22 @@ export default function ConsumablesPage() {
           </div>
 
           {/* Trust Highlights Grid */}
-          <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800 text-xs sm:text-sm">
-            <div className="flex items-center gap-2.5 rounded-lg bg-slate-800/80 p-3 border border-slate-700/80">
+          <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-[#1E3A5F] text-xs sm:text-sm">
+            <div className="flex items-center gap-2.5 rounded-lg bg-[#0F2942] p-3 border border-[#1E3A5F]">
               <FileCheck2 className="h-4 w-4 text-emerald-400 shrink-0" />
               <span className="font-semibold text-slate-200 text-xs sm:text-sm">
                 ISO 6710 &amp; PPB Compliant Quality
               </span>
             </div>
 
-            <div className="flex items-center gap-2.5 rounded-lg bg-slate-800/80 p-3 border border-slate-700/80">
+            <div className="flex items-center gap-2.5 rounded-lg bg-[#0F2942] p-3 border border-[#1E3A5F]">
               <Truck className="h-4 w-4 text-blue-400 shrink-0" />
               <span className="font-semibold text-slate-200 text-xs sm:text-sm">
-                Cold-Chain Reagent Transport Across 47 Counties
+                Cold-Chain Transport Across 47 Counties
               </span>
             </div>
 
-            <div className="flex items-center gap-2.5 rounded-lg bg-slate-800/80 p-3 border border-slate-700/80">
+            <div className="flex items-center gap-2.5 rounded-lg bg-[#0F2942] p-3 border border-[#1E3A5F]">
               <CalendarCheck className="h-4 w-4 text-emerald-400 shrink-0" />
               <span className="font-semibold text-slate-200 text-xs sm:text-sm">
                 Scheduled Monthly Hospital Restocking
@@ -219,24 +219,23 @@ export default function ConsumablesPage() {
 
       {/* Main Content Area */}
       <section aria-label="Consumables Catalog" className="mx-auto max-w-7xl px-4 py-8 sm:py-10 sm:px-6 lg:px-8 space-y-8">
-
         {/* Interactive Consumables Catalog Client Component */}
         <ConsumablesCatalogClient />
       </section>
 
       {/* Equipment vs Consumables Gateway Callout */}
       <section className="border-t border-slate-200 bg-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl rounded-2xl bg-blue-50/70 border border-blue-200 p-6 sm:p-8">
+        <div className="mx-auto max-w-5xl rounded-xl bg-[#F8FAFC] border border-slate-300 p-6 sm:p-8 shadow-xs">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="space-y-1.5 text-center sm:text-left">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-3 py-0.5 text-xs font-bold text-blue-900">
-                <Cpu className="h-3.5 w-3.5 text-blue-700" />
+              <span className="inline-flex items-center gap-1.5 rounded bg-white px-2.5 py-0.5 text-xs font-bold text-[#0F2942] border border-slate-200">
+                <Cpu className="h-3.5 w-3.5 text-[#0F2942]" />
                 <span>Laboratory Equipment &amp; Machinery</span>
               </span>
-              <h3 className="text-lg sm:text-xl font-extrabold text-slate-900">
+              <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">
                 Looking for Automated Analyzers, Centrifuges, or Microscopes?
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
+              <p className="text-xs sm:text-sm text-slate-600 max-w-xl leading-relaxed">
                 Explore our full equipment catalog featuring 3-part &amp; 5-part hematology machines, clinical biochemistry platforms, Olympus microscopes, and incubators with 1-year warranty and calibration.
               </p>
             </div>
@@ -244,7 +243,7 @@ export default function ConsumablesPage() {
             <div className="shrink-0">
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-blue-800 transition-all text-center"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0F2942] hover:bg-[#1E3A5F] px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-xs transition-colors text-center min-h-[44px]"
               >
                 <span>Browse Machinery Catalog</span>
                 <ArrowLeft className="h-4 w-4 rotate-180" />
@@ -255,14 +254,14 @@ export default function ConsumablesPage() {
       </section>
 
       {/* Laboratory Consumables FAQ Section */}
-      <section className="border-t border-slate-200 bg-slate-100/60 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+      <section className="border-t border-slate-200 bg-[#F8FAFC] py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl space-y-8">
           <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700 border border-blue-100">
-              <HelpCircle className="h-3.5 w-3.5" />
+            <div className="inline-flex items-center gap-1.5 rounded-md bg-white px-3 py-1 text-xs font-bold text-[#0F2942] border border-slate-200 shadow-xs">
+              <HelpCircle className="h-3.5 w-3.5 text-[#DC2626]" />
               <span>Consumables Procurement FAQs</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
               Frequently Asked Questions on Lab Consumables &amp; Reagents in Kenya
             </h2>
             <p className="text-xs sm:text-sm text-slate-600">
@@ -274,15 +273,15 @@ export default function ConsumablesPage() {
             {consumablesFaqs.map((faq, index) => (
               <article
                 key={index}
-                className="rounded-xl border border-slate-200 bg-white p-5 hover:border-blue-200 transition-all shadow-2xs"
+                className="rounded-xl border border-slate-200 bg-white p-5 hover:border-[#0F2942] hover:shadow-xs transition-all"
               >
-                <h3 className="text-sm font-bold text-slate-900 flex items-start gap-2">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-700 text-[10px] font-bold text-white mt-0.5">
+                <h3 className="text-sm font-bold text-slate-900 flex items-start gap-2.5">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#0F2942] text-[10px] font-bold text-white mt-0.5">
                     Q
                   </span>
                   <span>{faq.question}</span>
                 </h3>
-                <p className="mt-2.5 text-xs text-slate-600 leading-relaxed pl-7">
+                <p className="mt-2.5 text-xs text-slate-600 leading-relaxed pl-7.5">
                   {faq.answer}
                 </p>
               </article>
