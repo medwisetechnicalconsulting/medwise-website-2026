@@ -30,6 +30,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   html, body {
     overflow-x: hidden;
     max-width: 100vw;
@@ -203,11 +207,14 @@
 }
 
 /* Mobile Responsive Table & Code Block Scroll Safety */
-.prose table {
-  display: block;
-  max-width: 100%;
+.prose .table-scroll-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .prose pre {

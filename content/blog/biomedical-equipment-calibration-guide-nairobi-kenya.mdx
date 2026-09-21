@@ -43,74 +43,72 @@ Operating uncalibrated medical machinery exposes healthcare facilities to severe
 
 To maintain peak equipment performance and prolong device lifespan, Medwise recommends a structured maintenance lifecycle:
 
-<div className="my-6 p-4.5 rounded-2xl bg-slate-50 border border-slate-200">
-  <div className="text-xs font-bold uppercase tracking-wider text-blue-900 mb-3">
+<div className="my-8 p-6 rounded-3xl bg-muted/40 border border-border">
+  <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3">
     Structured Preventive Maintenance &amp; Calibration Lifecycle
   </div>
-  <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 text-xs font-semibold text-slate-800">
-    <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
-      <span className="text-emerald-600 text-[10px] font-bold uppercase tracking-wider mb-0.5">Tier 1</span>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs font-semibold text-foreground">
+    <div className="bg-white border border-border rounded-2xl p-4 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-emerald-700 text-[10px] font-bold uppercase tracking-wider mb-1">Tier 1</span>
       Daily QC Checks &amp; Controls
     </div>
-    <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
-      <span className="text-blue-600 text-[10px] font-bold uppercase tracking-wider mb-0.5">Tier 2</span>
+    <div className="bg-white border border-border rounded-2xl p-4 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-primary text-[10px] font-bold uppercase tracking-wider mb-1">Tier 2</span>
       Monthly Cleaning &amp; Inspection
     </div>
-    <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
-      <span className="text-indigo-600 text-[10px] font-bold uppercase tracking-wider mb-0.5">Tier 3</span>
+    <div className="bg-white border border-border rounded-2xl p-4 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-primary text-[10px] font-bold uppercase tracking-wider mb-1">Tier 3</span>
       Semi-Annual NIST Calibration
     </div>
-    <div className="bg-blue-50/80 border border-blue-200 text-blue-900 rounded-xl p-3 text-center shadow-xs flex flex-col justify-center">
-      <span className="text-blue-700 text-[10px] font-bold uppercase tracking-wider mb-0.5">Tier 4</span>
+    <div className="bg-primary-light border border-primary/25 text-primary rounded-2xl p-4 text-center shadow-xs flex flex-col justify-center">
+      <span className="text-primary text-[10px] font-extrabold uppercase tracking-wider mb-1">Tier 4</span>
       Annual Comprehensive Overhaul
     </div>
   </div>
 </div>
 
-<div className="overflow-x-auto my-6">
-  <table className="min-w-full border border-slate-200 text-left text-xs text-slate-800 rounded-xl overflow-hidden shadow-xs">
-    <thead className="bg-slate-100 border-b border-slate-200 text-slate-900 font-bold uppercase tracking-wider">
-      <tr>
-        <th className="p-3.5 border-r border-slate-200">Equipment Category</th>
-        <th className="p-3.5 border-r border-slate-200">Critical Measurement Parameters</th>
-        <th className="p-3.5 border-r border-slate-200">Mandatory Calibration Interval</th>
-        <th className="p-3.5">Standard Reference Tool</th>
-      </tr>
-    </thead>
-    <tbody className="divide-y divide-slate-200">
-      <tr className="bg-white hover:bg-slate-50">
-        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">Patient Monitors &amp; BP Units</td>
-        <td className="p-3.5 border-r border-slate-200">NIBP pressure accuracy (±3 mmHg), SpO2 curve verification</td>
-        <td className="p-3.5 border-r border-slate-200 font-semibold text-emerald-700">Every 6 – 12 Months</td>
-        <td className="p-3.5">Calibrated Digital Pressure Meter &amp; SpO2 Optical Simulator</td>
-      </tr>
-      <tr className="bg-slate-50/50 hover:bg-slate-50">
-        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">Clinical Laboratory Centrifuges</td>
-        <td className="p-3.5 border-r border-slate-200">Rotational Speed (RPM/RCF), Timer accuracy, Electronic Lid Interlock</td>
-        <td className="p-3.5 border-r border-slate-200 font-semibold text-emerald-700">Annual (Every 12 Months)</td>
-        <td className="p-3.5">Non-Contact Optical Laser Tachometer</td>
-      </tr>
-      <tr className="bg-white hover:bg-slate-50">
-        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">Chemistry &amp; Hematology Analyzers</td>
-        <td className="p-3.5 border-r border-slate-200">Photometer optical absorbance, pipetting volume, incubator temperature (37.0°C ±0.1°C)</td>
-        <td className="p-3.5 border-r border-slate-200 font-semibold text-blue-700">Semi-Annual (Every 6 Months)</td>
-        <td className="p-3.5">NIST Traceable Holmium/Neutral Density Filters &amp; Precision Micro-balance</td>
-      </tr>
-      <tr className="bg-slate-50/50 hover:bg-slate-50">
-        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">Autoclaves &amp; Steam Sterilizers</td>
-        <td className="p-3.5 border-r border-slate-200">Chamber temperature (121°C/134°C), Pressure gauge, Overpressure relief valve</td>
-        <td className="p-3.5 border-r border-slate-200 font-semibold text-emerald-700">Every 6 – 12 Months</td>
-        <td className="p-3.5">Multi-channel Data Logger &amp; Standard Test Gauge</td>
-      </tr>
-      <tr className="bg-white hover:bg-slate-50">
-        <td className="p-3.5 font-bold border-r border-slate-200 text-blue-900">Infusion &amp; Syringe Pumps</td>
-        <td className="p-3.5 border-r border-slate-200">Volumetric flow rate (mL/h), Occlusion pressure alarm limit</td>
-        <td className="p-3.5 border-r border-slate-200 font-semibold text-emerald-700">Annual (Every 12 Months)</td>
-        <td className="p-3.5">Infusion Device Analyzer (IDA)</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Equipment Category</th>
+      <th>Critical Measurement Parameters</th>
+      <th>Mandatory Calibration Interval</th>
+      <th>Standard Reference Tool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="font-bold text-foreground">Patient Monitors &amp; BP Units</td>
+      <td>NIBP pressure accuracy (±3 mmHg), SpO2 curve verification</td>
+      <td className="font-semibold text-emerald-700">Every 6 – 12 Months</td>
+      <td>Calibrated Digital Pressure Meter &amp; SpO2 Optical Simulator</td>
+    </tr>
+    <tr>
+      <td className="font-bold text-foreground">Clinical Laboratory Centrifuges</td>
+      <td>Rotational Speed (RPM/RCF), Timer accuracy, Electronic Lid Interlock</td>
+      <td className="font-semibold text-emerald-700">Annual (Every 12 Months)</td>
+      <td>Non-Contact Optical Laser Tachometer</td>
+    </tr>
+    <tr>
+      <td className="font-bold text-foreground">Chemistry &amp; Hematology Analyzers</td>
+      <td>Photometer optical absorbance, pipetting volume, incubator temperature (37.0°C ±0.1°C)</td>
+      <td className="font-semibold text-primary">Semi-Annual (Every 6 Months)</td>
+      <td>NIST Traceable Holmium/Neutral Density Filters &amp; Precision Micro-balance</td>
+    </tr>
+    <tr>
+      <td className="font-bold text-foreground">Autoclaves &amp; Steam Sterilizers</td>
+      <td>Chamber temperature (121°C/134°C), Pressure gauge, Overpressure relief valve</td>
+      <td className="font-semibold text-emerald-700">Every 6 – 12 Months</td>
+      <td>Multi-channel Data Logger &amp; Standard Test Gauge</td>
+    </tr>
+    <tr>
+      <td className="font-bold text-foreground">Infusion &amp; Syringe Pumps</td>
+      <td>Volumetric flow rate (mL/h), Occlusion pressure alarm limit</td>
+      <td className="font-semibold text-emerald-700">Annual (Every 12 Months)</td>
+      <td>Infusion Device Analyzer (IDA)</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 

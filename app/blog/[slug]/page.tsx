@@ -4,9 +4,126 @@ import Link from 'next/link';
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
 import { getArticleSchema, getBreadcrumbSchema, SITE_CONFIG } from '@/lib/seo/schema';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { Calendar, Clock, ArrowLeft, Tag, MessageSquare, ShieldCheck } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, Tag, MessageSquare, ShieldCheck, ListOrdered } from 'lucide-react';
 import CtaBanner from '@/components/CtaBanner';
 import ExpandableImage from '@/components/ExpandableImage';
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/[\s_-]+/g, '-');
+}
+
+function getTextFromChildren(children: React.ReactNode): string {
+  if (typeof children === 'string') return children;
+  if (typeof children === 'number') return String(children);
+  if (Array.isArray(children)) return children.map(getTextFromChildren).join('');
+  if (children && typeof children === 'object' && 'props' in children && (children as any).props?.children) {
+    return getTextFromChildren((children as any).props.children);
+  }
+  return '';
+}
+
+const mdxComponents = {
+  h2: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
+    const text = getTextFromChildren(children);
+    const id = text ? slugify(text) : undefined;
+    return (
+      <h2
+        id={id}
+        className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-foreground tracking-tight mt-12 mb-5 pt-7 border-t border-border flex items-center gap-3 scroll-mt-24 first:mt-0 first:pt-0"
+        {...props}
+      >
+        <span className="w-1.5 h-6 rounded-full bg-primary shrink-0 hidden sm:inline-block" />
+        <span>{children}</span>
+      </h2>
+    );
+  },
+  h3: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3
+      className="text-lg sm:text-xl font-bold text-foreground tracking-tight mt-8 mb-3.5 scroll-mt-24"
+      {...props}
+    >
+      {children}
+    </h3>
+  ),
+  h4: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h4
+      className="text-base sm:text-lg font-bold text-foreground tracking-tight mt-6 mb-2"
+      {...props}
+    >
+      {children}
+    </h4>
+  ),
+  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
+    <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-5 font-normal" {...props} />
+  ),
+  ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
+    <ul className="my-5 space-y-2 list-disc list-inside text-sm sm:text-base text-slate-600 pl-1" {...props} />
+  ),
+  ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
+    <ol className="my-5 space-y-2 list-decimal list-inside text-sm sm:text-base text-slate-600 pl-1" {...props} />
+  ),
+  li: (props: React.LiHTMLAttributes<HTMLLIElement>) => (
+    <li className="leading-relaxed text-slate-600 font-normal pl-1" {...props} />
+  ),
+  blockquote: ({ children, ...props }: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
+    <blockquote
+      className="my-7 rounded-3xl bg-primary-light/40 border border-primary/25 p-5 sm:p-6 text-slate-800 not-italic shadow-xs relative overflow-hidden"
+      {...props}
+    >
+      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary mb-2">
+        <ShieldCheck className="w-4 h-4 text-primary shrink-0" />
+        <span>Biomedical Advisory &amp; Engineering Standard</span>
+      </div>
+      <div className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+        {children}
+      </div>
+    </blockquote>
+  ),
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <a
+      className="text-primary font-semibold underline underline-offset-4 decoration-primary/40 hover:text-accent hover:decoration-accent transition-colors"
+      {...props}
+    />
+  ),
+  hr: () => <hr className="my-10 border-t border-border" />,
+  strong: (props: React.HTMLAttributes<HTMLElement>) => (
+    <strong className="text-foreground font-bold" {...props} />
+  ),
+  table: ({ children, className = '', ...props }: React.TableHTMLAttributes<HTMLTableElement>) => {
+    const minWidthClass = className.includes('min-w-') ? '' : 'min-w-[640px]';
+    return (
+      <div className="my-8 w-full rounded-2xl border border-border bg-white shadow-xs overflow-hidden">
+        <div className="sm:hidden flex items-center justify-between px-4 py-2 bg-muted/50 border-b border-border text-[11px] text-slate-500 font-medium">
+          <span>← Scroll horizontally to view full matrix →</span>
+        </div>
+        <div className="table-scroll-wrapper overflow-x-auto">
+          <table className={`w-full text-left text-xs sm:text-sm border-collapse ${minWidthClass} ${className}`} {...props}>
+            {children}
+          </table>
+        </div>
+      </div>
+    );
+  },
+  thead: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
+    <thead className="bg-muted/70 border-b border-border text-foreground font-bold text-xs uppercase tracking-wider" {...props} />
+  ),
+  tbody: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
+    <tbody className="divide-y divide-border bg-white" {...props} />
+  ),
+  tr: (props: React.HTMLAttributes<HTMLTableRowElement>) => (
+    <tr className="hover:bg-primary-light/30 transition-colors even:bg-muted/20" {...props} />
+  ),
+  th: ({ className = '', ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) => (
+    <th className={`p-3.5 sm:p-4 font-extrabold text-foreground border-r border-border last:border-r-0 tracking-wider text-xs uppercase ${className}`} {...props} />
+  ),
+  td: ({ className = '', ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
+    <td className={`p-3.5 sm:p-4 text-slate-600 border-r border-border last:border-r-0 leading-normal align-top text-xs sm:text-sm ${className}`} {...props} />
+  ),
+};
 
 interface PageProps {
   params: Promise<{
@@ -93,6 +210,20 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
     { name: post.title, url: `/blog/${post.slug}` },
   ]);
 
+  // Extract H2 headings for Table of Contents
+  const toc = post.content
+    .split('\n')
+    .filter((line) => line.startsWith('## '))
+    .map((line) => {
+      const raw = line.replace(/^##\s+/, '').trim();
+      const clean = raw.replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim();
+      return {
+        title: clean,
+        id: slugify(clean),
+      };
+    })
+    .filter((item) => item.title.length > 0 && !item.title.toLowerCase().includes('partner with medwise'));
+
   return (
     <>
       <script
@@ -168,9 +299,42 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
             </div>
           )}
 
+          {/* Table of Contents & Quick Links */}
+          {toc.length >= 2 && (
+            <nav aria-label="Table of contents" className="rounded-3xl border border-border bg-muted/40 p-6 sm:p-8 shadow-xs">
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary shrink-0">
+                  <ListOrdered className="h-4 w-4" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-extrabold uppercase tracking-wider text-foreground">
+                    Table of Contents &amp; Quick Navigation
+                  </h3>
+                  <p className="text-xs text-slate-500 font-normal">
+                    Jump directly to key equipment comparison sections
+                  </p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium pt-3 border-t border-border/70">
+                {toc.map((item, i) => (
+                  <a
+                    key={i}
+                    href={`#${item.id}`}
+                    className="flex items-center gap-2.5 py-2 px-3 rounded-xl hover:bg-white hover:text-primary transition-all text-slate-600 hover:shadow-xs group"
+                  >
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-200/70 text-[10px] font-bold text-slate-600 group-hover:bg-primary-light group-hover:text-primary transition-colors">
+                      {i + 1}
+                    </span>
+                    <span className="truncate group-hover:underline underline-offset-2">{item.title}</span>
+                  </a>
+                ))}
+              </div>
+            </nav>
+          )}
+
           {/* MDX Rendered Body */}
           <div className="prose prose-slate max-w-none prose-headings:font-extrabold prose-headings:text-foreground prose-headings:tracking-tight prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600 prose-strong:text-foreground prose-table:text-sm">
-            <MDXRemote source={post.content} />
+            <MDXRemote source={post.content} components={mdxComponents} />
           </div>
 
           {/* Internal Linking CTA Box - Vivid Blue Banner */}
