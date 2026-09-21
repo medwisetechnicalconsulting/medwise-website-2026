@@ -28,7 +28,7 @@ export default function CtaBanner() {
             href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise,%20I%20would%20like%20to%20consult%20an%20engineer%20regarding%20medical%20equipment.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-5 py-3 text-sm font-bold text-white transition-colors shadow-xs min-h-[44px]"
+            className="med-btn-tactile med-btn-tactile-emerald w-full sm:w-auto"
           >
             <MessageSquare className="h-4.5 w-4.5 fill-white stroke-none shrink-0" />
             <span>WhatsApp Senior Engineer</span>
@@ -36,7 +36,7 @@ export default function CtaBanner() {
 
           <a
             href={`tel:${SITE_CONFIG.telephone}`}
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border border-[#2B4C74] bg-[#0F2942] hover:bg-[#1E3A5F] px-5 py-3 text-sm font-bold text-white transition-colors shadow-xs min-h-[44px]"
+            className="med-btn-tactile med-btn-tactile-secondary w-full sm:w-auto"
           >
             <Phone className="h-4 w-4 text-[#DC2626] shrink-0" />
             <span>Call Kisumu HQ ({SITE_CONFIG.telephone})</span>
@@ -44,9 +44,9 @@ export default function CtaBanner() {
 
           <Link
             href="/contact"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border border-slate-700 px-5 py-3 text-sm font-bold text-slate-300 hover:text-white hover:bg-slate-800 transition-colors min-h-[44px]"
+            className="med-btn-tactile med-btn-tactile-primary w-full sm:w-auto"
           >
-            <Calendar className="h-4 w-4 text-slate-400 shrink-0" />
+            <Calendar className="h-4 w-4 text-slate-300 shrink-0" />
             <span>Book Facility Consultation</span>
           </Link>
         </div>
