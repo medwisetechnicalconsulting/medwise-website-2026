@@ -170,18 +170,18 @@ export default function ProductSpecModal({ product, onClose }: ProductSpecModalP
               </h3>
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-border shadow-xs">
-              <table className="w-full text-left text-xs sm:text-sm">
+            <div className="table-scroll-wrapper overflow-x-auto rounded-2xl border border-border shadow-xs">
+              <table className="w-full min-w-[420px] text-left text-xs sm:text-sm border-collapse">
                 <tbody className="divide-y divide-border">
                   {product.specs.map((item, idx) => (
                     <tr
                       key={idx}
                       className={idx % 2 === 0 ? 'bg-white' : 'bg-muted/40'}
                     >
-                      <td className="w-1/3 py-3 px-4 sm:px-5 font-bold text-foreground border-r border-border align-top text-xs sm:text-sm break-words">
+                      <td className="py-3 px-4 sm:px-5 font-bold text-foreground border-r border-border align-top text-xs sm:text-sm min-w-[150px] whitespace-normal">
                         {item.label}
                       </td>
-                      <td className="w-2/3 py-3 px-4 sm:px-5 text-slate-600 leading-relaxed text-xs sm:text-sm break-words">
+                      <td className="py-3 px-4 sm:px-5 text-slate-600 leading-relaxed text-xs sm:text-sm min-w-[250px] whitespace-normal">
                         {item.value}
                       </td>
                     </tr>

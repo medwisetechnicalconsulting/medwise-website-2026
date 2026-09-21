@@ -93,35 +93,50 @@ const mdxComponents = {
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
     <strong className="text-foreground font-bold" {...props} />
   ),
-  table: ({ children, className = '', ...props }: React.TableHTMLAttributes<HTMLTableElement>) => {
-    const minWidthClass = className.includes('min-w-') ? '' : 'min-w-[640px]';
-    return (
-      <div className="my-8 w-full rounded-2xl border border-border bg-white shadow-xs overflow-hidden">
-        <div className="sm:hidden flex items-center justify-between px-4 py-2 bg-muted/50 border-b border-border text-[11px] text-slate-500 font-medium">
-          <span>← Scroll horizontally to view full matrix →</span>
+  table: ({ children, className = '', ...props }: React.TableHTMLAttributes<HTMLTableElement>) => (
+    <div className="my-8 w-full rounded-2xl border border-border bg-white shadow-xs overflow-hidden">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-muted/60 border-b border-border text-xs text-slate-600 font-medium select-none">
+        <div className="flex items-center gap-2">
+          <span className="flex h-2 w-2 rounded-full bg-primary" />
+          <span className="font-semibold text-foreground text-[11px] sm:text-xs">
+            Technical Specification Matrix
+          </span>
         </div>
-        <div className="table-scroll-wrapper overflow-x-auto">
-          <table className={`w-full text-left text-xs sm:text-sm border-collapse ${minWidthClass} ${className}`} {...props}>
-            {children}
-          </table>
-        </div>
+        <span className="text-[11px] text-primary font-semibold flex items-center gap-1.5">
+          <span>⇄</span>
+          <span>Scroll horizontally to view all columns</span>
+        </span>
       </div>
-    );
-  },
+      <div className="table-scroll-wrapper overflow-x-auto overscroll-x-contain touch-pan-x">
+        <table
+          className={`w-max min-w-full text-left text-xs sm:text-sm border-collapse ${className}`}
+          {...props}
+        >
+          {children}
+        </table>
+      </div>
+    </div>
+  ),
   thead: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
-    <thead className="bg-muted/70 border-b border-border text-foreground font-bold text-xs uppercase tracking-wider" {...props} />
+    <thead className="bg-muted/80 border-b border-border text-foreground font-bold text-xs uppercase tracking-wider" {...props} />
   ),
   tbody: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
     <tbody className="divide-y divide-border bg-white" {...props} />
   ),
   tr: (props: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr className="hover:bg-primary-light/30 transition-colors even:bg-muted/20" {...props} />
+    <tr className="hover:bg-primary-light/20 transition-colors even:bg-muted/15" {...props} />
   ),
   th: ({ className = '', ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) => (
-    <th className={`p-3.5 sm:p-4 font-extrabold text-foreground border-r border-border last:border-r-0 tracking-wider text-xs uppercase ${className}`} {...props} />
+    <th
+      className={`px-5 py-3.5 font-extrabold text-foreground border-r border-b border-border last:border-r-0 tracking-wider text-xs uppercase whitespace-nowrap min-w-[180px] bg-muted/80 ${className}`}
+      {...props}
+    />
   ),
   td: ({ className = '', ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
-    <td className={`p-3.5 sm:p-4 text-slate-600 border-r border-border last:border-r-0 leading-normal align-top text-xs sm:text-sm ${className}`} {...props} />
+    <td
+      className={`px-5 py-4 text-slate-600 border-r border-b border-border last:border-r-0 leading-relaxed align-top text-xs sm:text-sm min-w-[200px] break-normal ${className}`}
+      {...props}
+    />
   ),
 };
 

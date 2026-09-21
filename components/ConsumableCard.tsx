@@ -229,18 +229,18 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
               <span>Technical &amp; Regulatory Specifications</span>
             </div>
 
-            <div className="overflow-hidden rounded-xl border border-border bg-white shadow-xs">
-              <table className="w-full text-left text-xs">
+            <div className="table-scroll-wrapper overflow-x-auto rounded-xl border border-border bg-white shadow-xs">
+              <table className="w-full min-w-[280px] text-left text-xs border-collapse">
                 <tbody className="divide-y divide-border">
                   {item.specs.map((spec, sIdx) => (
                     <tr
                       key={sIdx}
                       className={sIdx % 2 === 0 ? 'bg-white' : 'bg-muted/40'}
                     >
-                      <td className="w-2/5 py-2.5 px-3 font-bold text-foreground border-r border-border align-top break-words">
+                      <td className="py-2.5 px-3 font-bold text-foreground border-r border-border align-top min-w-[110px] whitespace-normal">
                         {spec.label}
                       </td>
-                      <td className="w-3/5 py-2.5 px-3 text-slate-600 leading-relaxed break-words">
+                      <td className="py-2.5 px-3 text-slate-600 leading-relaxed min-w-[160px] whitespace-normal">
                         {spec.value}
                       </td>
                     </tr>

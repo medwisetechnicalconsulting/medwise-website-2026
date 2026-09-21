@@ -206,15 +206,71 @@
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
 }
 
-/* Mobile Responsive Table & Code Block Scroll Safety */
-.prose .table-scroll-wrapper {
-  overflow-x: auto;
+/* Table Scroll & Responsive Column Typography Safety */
+.table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto !important;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.45) hsl(var(--muted));
+  overscroll-behavior-x: contain;
 }
 
-.prose table {
-  width: 100%;
-  border-collapse: collapse;
+.table-scroll-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-scroll-wrapper::-webkit-scrollbar-track {
+  background: hsl(var(--muted) / 0.8);
+  border-radius: 9999px;
+  margin: 0 4px;
+}
+
+.table-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.4);
+  border-radius: 9999px;
+}
+
+.table-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+/* Force table to render at its natural max-content width so columns never crunch or overlap words */
+.prose .table-scroll-wrapper table,
+.table-scroll-wrapper table {
+  width: max-content !important;
+  min-width: 100% !important;
+  border-collapse: collapse !important;
+  table-layout: auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.prose .table-scroll-wrapper th,
+.table-scroll-wrapper th {
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+.prose .table-scroll-wrapper td,
+.table-scroll-wrapper td {
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  line-height: 1.625 !important;
+}
+
+.prose .table-scroll-wrapper td p,
+.table-scroll-wrapper td p {
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.625 !important;
+}
+
+.prose .table-scroll-wrapper td p:last-child,
+.table-scroll-wrapper td p:last-child {
+  margin-bottom: 0 !important;
 }
 
 .prose pre {
@@ -226,6 +282,11 @@
 .prose {
   word-break: break-word;
   overflow-wrap: break-word;
+}
+
+.prose .table-scroll-wrapper {
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 /* Backward compatibility classes for existing subpages */
