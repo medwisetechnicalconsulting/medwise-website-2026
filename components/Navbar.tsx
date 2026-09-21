@@ -137,7 +137,7 @@ export default function Navbar() {
             href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20inquire%20about%20your%20services.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="med-btn-tactile med-btn-tactile-emerald text-xs py-1.5 px-3 min-h-[38px]"
+            className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 px-3.5 py-2 text-xs font-bold text-white shadow-xs transition-colors min-h-[38px]"
           >
             <MessageSquare className="h-4 w-4 fill-white" />
             <span>Chat on WhatsApp</span>
@@ -145,7 +145,7 @@ export default function Navbar() {
 
           <a
             href={`tel:${SITE_CONFIG.telephone}`}
-            className="med-btn-tactile med-btn-tactile-secondary text-xs py-1.5 px-3 min-h-[38px]"
+            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 px-3.5 py-2 text-xs font-bold text-slate-800 shadow-xs transition-colors min-h-[38px]"
           >
             <Phone className="h-3.5 w-3.5 text-[#DC2626]" />
             <span>Call {SITE_CONFIG.telephone}</span>

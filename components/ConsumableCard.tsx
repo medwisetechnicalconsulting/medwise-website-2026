@@ -115,8 +115,8 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
           </span>
         </div>
 
-        {/* Consumable Visual Area with Reticle Frame */}
-        <div className="relative mb-4 flex h-44 w-full items-center justify-center overflow-hidden rounded-lg bg-[#F8FAFC] border border-slate-200 p-3 reticle-frame">
+        {/* Consumable Visual Area */}
+        <div className="relative mb-4 flex h-44 w-full items-center justify-center overflow-hidden rounded-lg bg-[#F8FAFC] border border-slate-200 p-3">
           {item.image && !imgError ? (
             <img
               src={item.image}
@@ -259,7 +259,11 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
             setIsExpanded((prev) => !prev);
           }}
           aria-expanded={isExpanded}
-          className="med-btn-tactile med-btn-tactile-secondary w-full mb-3 text-xs"
+          className={`w-full mb-3 flex items-center justify-center gap-1.5 rounded-lg py-2.5 px-3 text-xs font-bold transition-all cursor-pointer min-h-[42px] ${
+            isExpanded
+              ? 'bg-slate-100 text-slate-800 hover:bg-slate-200 border border-slate-300'
+              : 'bg-slate-50 text-[#0F2942] hover:bg-slate-100 border border-slate-300'
+          }`}
         >
           {isExpanded ? (
             <>
@@ -284,7 +288,7 @@ export default function ConsumableCard({ item, initialExpanded = false }: Consum
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
           aria-label={`Inquire or order ${item.name} via WhatsApp`}
-          className="med-btn-tactile med-btn-tactile-emerald w-full text-xs sm:text-sm"
+          className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs transition-colors min-h-[44px] cursor-pointer"
         >
           <MessageSquare className="h-4 w-4 shrink-0 fill-white" />
           <span>Inquire / Order via WhatsApp</span>
