@@ -96,19 +96,7 @@ const mdxComponents = {
   ),
   table: ({ children, className = '', ...props }: React.TableHTMLAttributes<HTMLTableElement>) => (
     <div className="my-8 w-full rounded-2xl border border-border bg-white shadow-xs overflow-hidden not-prose">
-      <div className="flex items-center justify-between px-4 py-2.5 bg-muted/60 border-b border-border text-xs text-slate-600 font-medium select-none">
-        <div className="flex items-center gap-2">
-          <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
-          <span className="font-semibold text-foreground text-[11px] sm:text-xs">
-            Technical Specification Matrix
-          </span>
-        </div>
-        <span className="text-[11px] text-primary font-semibold flex items-center gap-1.5">
-          <span>⇄</span>
-          <span>Scroll horizontally to view all columns</span>
-        </span>
-      </div>
-      <div className="table-scroll-wrapper overflow-x-auto overscroll-x-contain touch-pan-x">
+      <div className="table-scroll-wrapper overflow-x-auto overscroll-x-contain touch-pan-x p-0">
         <table
           className={`w-max min-w-full text-left text-xs sm:text-sm border-collapse ${className}`}
           {...props}
@@ -209,13 +197,6 @@ function prepareContent(content: string): string {
     (match, tableGroup) => {
       if (!tableGroup) return match;
       return `<div className="my-8 rounded-2xl border border-border bg-white shadow-xs overflow-hidden not-prose">
-  <div className="flex items-center justify-between px-4 py-2.5 bg-muted/60 border-b border-border text-xs text-slate-600 font-medium select-none">
-    <div className="flex items-center gap-2">
-      <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
-      <span className="font-semibold text-foreground text-[11px] sm:text-xs">Technical Comparison Matrix</span>
-    </div>
-    <span className="text-[11px] text-primary font-semibold flex items-center gap-1.5">⇄ Scroll horizontally to view all columns</span>
-  </div>
   <div className="table-scroll-wrapper overflow-x-auto overscroll-x-contain touch-pan-x p-0">
     ${tableGroup}
   </div>
