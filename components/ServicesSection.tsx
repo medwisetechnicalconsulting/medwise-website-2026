@@ -65,8 +65,8 @@ const SERVICES: ServiceItem[] = [
     badge: '24/7 RAPID DISPATCH',
     title: 'Urgent Breakdown & Board Repair',
     description: 'Motor PCB board repairs, hydraulic pump troubleshooting, and rapid engineer dispatch across Kenya.',
-    image: '/images/gallery/zybio-board-repair.png',
-    alt: 'Biomedical technician repairing motor PCB drive board',
+    image: '/images/gallery/lukanji-2.jpeg',
+    alt: 'Biomedical technician repairing clinical analyzer internal valves and motor drive mechanism',
     gradientBg: 'from-slate-100 to-slate-200/50',
   },
 ];

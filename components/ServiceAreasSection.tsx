@@ -58,8 +58,8 @@ export default function ServiceAreasSection() {
         {/* RIGHT: Photo */}
         <div className="relative rounded-2xl overflow-hidden aspect-[4/3] w-full border border-[hsl(var(--border))] shadow-[0_12px_40px_rgba(0,0,0,0.06)] bg-slate-100">
           <Image
-            src="/images/gallery/operating-theatre-setup.png"
-            alt="Healthcare surgical theatre setup and clinical installation by Medwise engineers in Kenya"
+            src="/images/gallery/narok-1.jpeg"
+            alt="Urit CA-200 automated biochemistry and laboratory equipment installed by Medwise engineers in Kenya"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover object-center"

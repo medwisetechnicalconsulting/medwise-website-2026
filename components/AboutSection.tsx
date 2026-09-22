@@ -57,8 +57,8 @@ export default function AboutSection() {
           {/* Small Inset Photo */}
           <div className="absolute -top-5 -left-4 sm:-left-6 w-28 h-28 rounded-xl overflow-hidden shadow-lg border-4 border-white hidden lg:block z-10 bg-slate-200">
             <Image
-              src="/images/gallery/dr-xray-room.png"
-              alt="Clinical diagnostic equipment inspection"
+              src="/images/gallery/narok-2.jpeg"
+              alt="Clinical laboratory technologist training on biochemistry analyzer"
               fill
               className="object-cover"
             />
