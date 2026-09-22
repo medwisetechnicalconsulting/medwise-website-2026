@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
 import { getArticleSchema, getBreadcrumbSchema, SITE_CONFIG } from '@/lib/seo/schema';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { Calendar, Clock, ArrowLeft, Tag, MessageSquare, ShieldCheck, ListOrdered } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, MessageSquare, ShieldCheck, ListOrdered } from 'lucide-react';
 import CtaBanner from '@/components/CtaBanner';
 import ExpandableImage from '@/components/ExpandableImage';
 
@@ -308,16 +308,6 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Target Keyword Banner */}
-          {post.targetKeyword && (
-            <div className="rounded-2xl bg-muted/50 border border-border p-4 flex items-center justify-between text-xs text-slate-700 font-medium">
-              <div className="flex items-center gap-2">
-                <Tag className="h-4 w-4 text-primary" />
-                <span>Focus SEO Keyword: <strong className="text-foreground font-semibold">{post.targetKeyword}</strong></span>
-              </div>
-              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wide">Index Verified</span>
-            </div>
-          )}
 
           {/* Table of Contents & Quick Links */}
           {toc.length >= 2 && (

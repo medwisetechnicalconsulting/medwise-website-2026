@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/mdx';
-import { Calendar, Clock, ArrowRight, BookOpen, Tag } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
 import { getBreadcrumbSchema, SITE_CONFIG } from '@/lib/seo/schema';
 import CtaBanner from '@/components/CtaBanner';
 
@@ -122,13 +122,6 @@ export default function BlogIndexPage() {
                       {post.metaDescription}
                     </p>
 
-                    {/* Target SEO Keyword Badge */}
-                    {post.targetKeyword && (
-                      <div className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 bg-muted/60 px-3 py-1 rounded-full border border-border">
-                        <Tag className="h-3 w-3 text-primary" />
-                        <span>Keyword: {post.targetKeyword}</span>
-                      </div>
-                    )}
                   </div>
 
                   <div className="pt-4 border-t border-border flex items-center justify-between text-xs font-semibold mt-auto">
