@@ -12,21 +12,6 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white border-b border-[hsl(var(--border))] transition-all">
-      {/* 1. Emergency Strip */}
-      <div className="bg-[#FFF7ED] border-b border-[#FED7AA] py-2 px-4 sm:px-8 md:px-[72px]">
-        <div className="max-w-[1200px] mx-auto flex justify-center items-center gap-2.5 text-center flex-wrap">
-          <span className="w-2 h-2 bg-[hsl(var(--accent))] rounded-full animate-pulse shrink-0" />
-          <span className="font-medium text-xs text-[#C2410C] tracking-normal">
-            ⚡ 24/7 Rapid Biomedical Emergency &amp; Breakdown Support &middot; Kisumu &amp; Nairobi Field Dispatch &middot;{' '}
-            <a
-              href={`tel:${SITE_CONFIG.telephone}`}
-              className="font-bold underline decoration-[#FED7AA] hover:text-[#9A3412] transition-colors ml-0.5 whitespace-nowrap"
-            >
-              {SITE_CONFIG.telephone}
-            </a>
-          </span>
-        </div>
-      </div>
 
       {/* 2. Main Centered Navbar */}
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 md:px-[72px] py-4 md:py-5 flex justify-between items-center">
