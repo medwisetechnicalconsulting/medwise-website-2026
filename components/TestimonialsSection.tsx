@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Star, MapPin, Wrench } from 'lucide-react';
+import { Star, MapPin } from 'lucide-react';
 
 interface TestimonialReview {
   quote: string;
@@ -9,7 +9,6 @@ interface TestimonialReview {
   role: string;
   facility: string;
   location: string;
-  scope: string;
   equipment: string;
   rating: number;
   initials: string;
@@ -26,7 +25,6 @@ export default function TestimonialsSection() {
       role: 'Chief Medical Superintendent',
       facility: 'Narok County Referral Hospital',
       location: 'Narok, Kenya',
-      scope: 'Installation & Training',
       equipment: 'Biochemistry (Urit CA 200) & Electrolyte Analyzer',
       rating: 4.9,
       initials: 'DM',
@@ -39,7 +37,6 @@ export default function TestimonialsSection() {
       role: 'Laboratory In-Charge',
       facility: 'Lukanji Medical Centre',
       location: 'Kakamega, Kenya',
-      scope: 'Routine Maintenance, Calibration & QC',
       equipment: 'Excbio Hematology Analyzer',
       rating: 4.8,
       initials: 'MK',
@@ -52,7 +49,6 @@ export default function TestimonialsSection() {
       role: 'Senior Laboratory Technologist',
       facility: 'Unam Medical Centre',
       location: 'Kisumu, Kenya',
-      scope: 'Routine Maintenance, Calibration & QC',
       equipment: 'Hematology & Chemistry Analyzers',
       rating: 5.0,
       initials: 'GO',
@@ -65,7 +61,6 @@ export default function TestimonialsSection() {
       role: 'Clinical Operations Director',
       facility: 'Kabera Medical Centre',
       location: 'Kenya',
-      scope: 'Fresh Installation',
       equipment: 'Bioelab EC 30 Hematology Analyzer',
       rating: 4.7,
       initials: 'FN',
@@ -162,8 +157,8 @@ export default function TestimonialsSection() {
               className="bg-[hsl(var(--muted))] rounded-3xl p-7 sm:p-8 border border-[hsl(var(--border))] flex flex-col justify-between hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300"
             >
               <div>
-                {/* Top Row: Google Rating + Scope Badge */}
-                <div className="flex flex-wrap items-center justify-between gap-2.5 mb-4">
+                {/* Top Row: Google Rating */}
+                <div className="flex items-center mb-5">
                   {/* Google Rating Badge */}
                   <div className="inline-flex items-center gap-2 bg-white/90 border border-[hsl(var(--border))] rounded-full px-3 py-1 shadow-2xs">
                     <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -179,12 +174,6 @@ export default function TestimonialsSection() {
                     </div>
                     <span className="font-bold text-xs text-[hsl(var(--foreground))]">{rev.rating.toFixed(1)}</span>
                   </div>
-
-                  {/* Scope Pill */}
-                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[hsl(var(--primary))] bg-[hsl(var(--primary-light))] px-3 py-1 rounded-full">
-                    <Wrench className="w-3 h-3 shrink-0" />
-                    <span>{rev.scope}</span>
-                  </span>
                 </div>
 
                 {/* Quote */}
