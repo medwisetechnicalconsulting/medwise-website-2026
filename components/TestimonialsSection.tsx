@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 export default function TestimonialsSection() {
   const reviews = [
     {
@@ -36,16 +38,47 @@ export default function TestimonialsSection() {
       <div className="max-w-[1200px] mx-auto">
         
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-14 flex flex-col items-center">
           <span className="font-semibold text-xs tracking-[0.2em] uppercase text-[hsl(var(--primary))] block mb-3">
-            CUSTOMER REVIEWS
+            CUSTOMER REVIEWS &amp; VERIFIED FEEDBACK
           </span>
           <h2 className="font-extrabold text-[clamp(2rem,3.2vw,2.8rem)] tracking-[-0.025em] text-[hsl(var(--foreground))]">
             Don&apos;t take our word for it.
           </h2>
-          <p className="font-semibold text-base text-[hsl(var(--primary))] mt-2">
-            ★★★★★ &nbsp;4.9 from 150+ verified reviews
-          </p>
+
+          {/* Social Proof Row with Doctor, Technologist & MD Avatars */}
+          <div className="inline-flex items-center mt-5 bg-[hsl(var(--muted))] border border-[hsl(var(--border))] rounded-full px-4 py-2 shadow-xs">
+            <div className="flex items-center shrink-0">
+              <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden relative shadow-xs">
+                <Image
+                  src="/images/services/staff-training.png"
+                  alt="Kenyan healthcare doctor"
+                  width={32}
+                  height={32}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-300 overflow-hidden relative -ml-2.5 shadow-xs">
+                <Image
+                  src="/images/services/pre-purchase-consulting.png"
+                  alt="Laboratory technologist"
+                  width={32}
+                  height={32}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-100 overflow-hidden relative -ml-2.5 shadow-xs flex items-center justify-center text-[10px] font-bold text-[hsl(var(--primary))]">
+                <span>MD</span>
+              </div>
+            </div>
+
+            <div className="flex items-center ml-3 gap-1.5 flex-wrap text-left">
+              <span className="font-bold text-sm text-[hsl(var(--foreground))]">★ 4.9</span>
+              <span className="font-normal text-xs sm:text-sm text-[hsl(var(--muted-foreground))]">
+                from 150+ hospital &amp; clinic reviews
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* 3 Review Cards Grid */}

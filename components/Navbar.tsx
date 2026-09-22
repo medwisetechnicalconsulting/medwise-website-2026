@@ -8,7 +8,7 @@ import MedwiseLogo from './MedwiseLogo';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [equipmentDropdown, setEquipmentDropdown] = useState(false);
+  const [productsDropdown, setProductsDropdown] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white border-b border-[hsl(var(--border))] transition-all">
@@ -50,50 +50,53 @@ export default function Navbar() {
             Services
           </Link>
 
-          {/* Equipment Dropdown */}
+          {/* Products Dropdown */}
           <div
             className="relative py-1"
-            onMouseEnter={() => setEquipmentDropdown(true)}
-            onMouseLeave={() => setEquipmentDropdown(false)}
+            onMouseEnter={() => setProductsDropdown(true)}
+            onMouseLeave={() => setProductsDropdown(false)}
           >
             <Link
               href="/products"
               className="hover:text-[hsl(var(--foreground))] transition-colors font-medium inline-flex items-center gap-1.5"
             >
-              <span>Equipment</span>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${equipmentDropdown ? 'rotate-180' : ''}`} />
+              <span>Products</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${productsDropdown ? 'rotate-180' : ''}`} />
             </Link>
 
-            {equipmentDropdown && (
+            {productsDropdown && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 rounded-2xl border border-[hsl(var(--border))] bg-white p-2.5 shadow-[0_16px_48px_rgba(0,0,0,0.08)] z-50">
                 <Link
                   href="/products"
                   className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors"
-                  onClick={() => setEquipmentDropdown(false)}
+                  onClick={() => setProductsDropdown(false)}
                 >
                   <div className="w-9 h-9 rounded-full bg-[hsl(var(--primary-light))] text-[hsl(var(--primary))] flex items-center justify-center shrink-0 mt-0.5">
                     <Cpu className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-[hsl(var(--foreground))]">Diagnostic Machinery</div>
-                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">Hematology, Biochemistry &amp; POCT</div>
+                    <div className="text-xs font-bold text-[hsl(var(--foreground))] flex items-center gap-1.5">
+                      <span>1. Equipments</span>
+                      <span className="rounded-full bg-blue-100 text-blue-900 px-2 py-0.5 text-[9px] font-bold">26 Models</span>
+                    </div>
+                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">Diagnostic Machinery, Hematology &amp; Chemistry</div>
                   </div>
                 </Link>
 
                 <Link
                   href="/products/consumables"
                   className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors mt-1"
-                  onClick={() => setEquipmentDropdown(false)}
+                  onClick={() => setProductsDropdown(false)}
                 >
                   <div className="w-9 h-9 rounded-full bg-amber-50 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
                     <PackageCheck className="w-4 h-4" />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-[hsl(var(--foreground))] flex items-center gap-1.5">
-                      <span>Consumables &amp; Reagents</span>
+                      <span>2. Consumables and reagents</span>
                       <span className="rounded-full bg-amber-100 text-amber-900 px-2 py-0.5 text-[9px] font-bold">38+</span>
                     </div>
-                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">Vacutainers, Test Kits &amp; Stains</div>
+                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">Vacutainers, Rapid Test Kits &amp; Stains</div>
                   </div>
                 </Link>
               </div>
@@ -168,26 +171,34 @@ export default function Navbar() {
             >
               Services
             </Link>
-            <Link
-              href="/products"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between"
-            >
-              <span>Diagnostic Machinery</span>
-              <span className="text-xs bg-[hsl(var(--primary-light))] text-[hsl(var(--primary))] px-2.5 py-0.5 rounded-full font-bold">
-                26 Models
-              </span>
-            </Link>
-            <Link
-              href="/products/consumables"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between"
-            >
-              <span>Consumables &amp; Reagents</span>
-              <span className="text-xs bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full font-bold">
-                38+ Items
-              </span>
-            </Link>
+            {/* Products Group */}
+            <div className="py-1">
+              <div className="text-xs font-bold uppercase tracking-wider text-[hsl(var(--muted-foreground))] py-1">
+                Products
+              </div>
+              <div className="pl-3 border-l-2 border-[hsl(var(--border))] space-y-1 mt-1">
+                <Link
+                  href="/products"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-1.5 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between text-sm"
+                >
+                  <span className="font-semibold text-[hsl(var(--foreground))]">1. Equipments</span>
+                  <span className="text-[10px] bg-[hsl(var(--primary-light))] text-[hsl(var(--primary))] px-2 py-0.5 rounded-full font-bold">
+                    26 Models
+                  </span>
+                </Link>
+                <Link
+                  href="/products/consumables"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-1.5 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between text-sm"
+                >
+                  <span className="font-semibold text-[hsl(var(--foreground))]">2. Consumables and reagents</span>
+                  <span className="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-bold">
+                    38+ Items
+                  </span>
+                </Link>
+              </div>
+            </div>
             <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}

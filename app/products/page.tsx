@@ -134,7 +134,11 @@ export default function ProductsPage() {
               Home
             </Link>
             <span>/</span>
-            <span className="text-[hsl(var(--foreground))] font-semibold">Equipment Catalog</span>
+            <Link href="/products" className="hover:text-[hsl(var(--foreground))] transition-colors">
+              Products
+            </Link>
+            <span>/</span>
+            <span className="text-[hsl(var(--foreground))] font-semibold">Equipments</span>
           </nav>
 
           <div className="max-w-3xl">

@@ -17,37 +17,6 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="flex flex-col justify-center"
         >
-          {/* Social Proof Row */}
-          <div className="flex items-center mb-8">
-            <div className="flex items-center shrink-0">
-              <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden relative shadow-xs">
-                <Image
-                  src="/images/services/staff-training.png"
-                  alt="Kenyan healthcare doctor"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-300 overflow-hidden relative -ml-2.5 shadow-xs">
-                <Image
-                  src="/images/services/pre-purchase-consulting.png"
-                  alt="Laboratory technologist"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-100 overflow-hidden relative -ml-2.5 shadow-xs flex items-center justify-center text-[10px] font-bold text-[hsl(var(--primary))]">
-                <span>MD</span>
-              </div>
-            </div>
-
-            <div className="flex items-center ml-3.5 gap-1.5 flex-wrap">
-              <span className="font-semibold text-sm text-[hsl(var(--foreground))]">★ 4.9</span>
-              <span className="font-light text-sm text-[hsl(var(--muted-foreground))]">
-                from 150+ hospital &amp; clinic reviews
-              </span>
-            </div>
-          </div>
 
           {/* H1 Headline */}
           <h1 className="font-extrabold text-[clamp(2.8rem,5.2vw,5.4rem)] tracking-[-0.04em] leading-[0.96] text-[hsl(var(--foreground))]">
