@@ -1,194 +1,309 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
-import { CheckCircle2, Wrench, MapPin, Calendar, X } from 'lucide-react';
+import { 
+  CheckCircle2, 
+  Wrench, 
+  MapPin, 
+  Calendar, 
+  X, 
+  ChevronLeft, 
+  ChevronRight, 
+  Play, 
+  Pause, 
+  Layers, 
+  ArrowRight,
+  ExternalLink
+} from 'lucide-react';
+import { SITE_CONFIG } from '@/lib/seo/schema';
+
+export interface GalleryPhoto {
+  id: string;
+  image: string;
+  title: string;
+  caption: string;
+  alt: string;
+}
+
+export interface FacilityProject {
+  id: string;
+  facility: string;
+  location: string;
+  equipment: string;
+  service: string;
+  category: 'installation' | 'maintenance' | 'calibration' | 'training';
+  dateRange: string;
+  description: string;
+  photos: GalleryPhoto[];
+}
 
 export default function GallerySection() {
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [selectedFacility, setSelectedFacility] = useState<FacilityProject | null>(null);
+  const [activePhotoIndex, setActivePhotoIndex] = useState<number>(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
 
-  const galleryItems = [
-    // 1. Lukanji Medical Centre - Kakamega
+  // Touch tracking for swipe gestures
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  const facilityProjects: FacilityProject[] = [
+    // 1. Narok County Referral Hospital
     {
-      id: 1,
-      title: 'Excbio EHB300 Hematology Analyzer Startup & QC Validation',
-      facility: 'Lukanji Medical Centre',
-      location: 'Kakamega, Kenya',
-      category: 'maintenance',
-      date: '2026-05-14',
-      service: 'Routine Maintenance, Calibration & QC',
-      description: 'Comprehensive routine maintenance and system startup diagnostics on an Excbio EHB300 3-part hematology analyzer, verifying reagent blank parameters and leukocyte counting precision.',
-      image: '/images/gallery/lukanji-1.jpeg',
-      alt: 'Medwise biomedical engineer performing routine maintenance and QC calibration on Excbio EHB300 hematology analyzer at Lukanji Medical Centre in Kakamega, Kenya',
+      id: 'narok',
+      facility: 'Narok County Referral Hospital',
+      location: 'Narok County, Kenya',
+      equipment: 'Biochemistry (Urit CA-200) & Electrolyte Analyzer',
+      service: 'Fresh Installation, Calibration & Technologist Training',
+      category: 'training',
+      dateRange: 'August 2026',
+      description:
+        'Complete clinical laboratory installation of a Urit CA-200 fully automated biochemistry analyzer and dedicated electrolyte workstation, featuring cuvette optical photometer calibration and comprehensive hands-on operational training for hospital technologists.',
+      photos: [
+        {
+          id: 'narok-1',
+          image: '/images/gallery/narok-1.jpeg',
+          title: 'Urit CA-200 Automated Biochemistry & Electrolyte Workstation Setup',
+          caption:
+            'Turnkey clinical setup showing the automated Urit CA-200 biochemistry analyzer and electrolyte unit with pure water wash lines and dedicated waste management.',
+          alt: 'Urit CA-200 automated clinical biochemistry analyzer and electrolyte machine at Narok County Referral Hospital',
+        },
+        {
+          id: 'narok-2',
+          image: '/images/gallery/narok-2.jpeg',
+          title: 'Hands-On Clinical Operational Training for Laboratory Technologists',
+          caption:
+            'Biomedical specialist conducting interactive hands-on training with Kenyan hospital laboratory technologists covering calibration curves, sample batch scheduling, and daily startup protocols.',
+          alt: 'Hospital laboratory technologists receiving hands-on operational training on Urit CA-200 biochemistry analyzer at Narok County Referral Hospital',
+        },
+        {
+          id: 'narok-3',
+          image: '/images/gallery/narok-3.jpeg',
+          title: 'Optical Photometer & Sample Carousel Calibration Terminal',
+          caption:
+            'Dedicated control workstation interface, reagent carousel, and reaction disk calibration ensuring Westgard multi-rule Quality Control adherence.',
+          alt: 'Sample carousel, reagent disk, and computerized interface calibration on Urit CA-200 clinical chemistry machine in Narok County',
+        },
+        {
+          id: 'narok-4',
+          image: '/images/gallery/narok-4.jpeg',
+          title: 'Clinical Reagent Management & Quality Control Briefing',
+          caption:
+            'Briefing laboratory staff on cold-chain reagent handling, barcode sample identification, emergency STAT sample interrupts, and preventive maintenance routines.',
+          alt: 'Biomedical trainer instructing laboratory staff on reagent management and QC protocols at Narok County Referral Hospital',
+        },
+      ],
     },
+
+    // 2. Lukanji Medical Centre
     {
-      id: 2,
-      title: 'Internal Microfluidic Lines & Syringe Pump Overhaul',
+      id: 'lukanji',
       facility: 'Lukanji Medical Centre',
       location: 'Kakamega, Kenya',
+      equipment: 'Excbio EHB300 Hematology Analyzer',
+      service: 'Routine Maintenance, Calibration & Quality Control',
       category: 'maintenance',
-      date: '2026-05-14',
-      service: 'Microfluidic Servicing & Valve Calibration',
-      description: 'Chamber de-clotting, solenoid valve inspection, motorized syringe pump recalibration, and micro-tubing fluidic checks to eliminate aspiration drift and background noise.',
-      image: '/images/gallery/lukanji-2.jpeg',
-      alt: 'Internal microfluidic valves, counting chambers, and syringe drive pump servicing on hematology analyzer at Lukanji Medical Centre Kakamega',
+      dateRange: 'May 2026',
+      description:
+        'Scheduled preventive maintenance, internal microfluidic lines and motorized syringe pump overhaul, and photometric sensor calibration on an Excbio EHB300 3-part automated hematology analyzer.',
+      photos: [
+        {
+          id: 'lukanji-1',
+          image: '/images/gallery/lukanji-1.jpeg',
+          title: 'Excbio EHB300 Startup Diagnostics & Background Count Validation',
+          caption:
+            'Power-on automated maintenance routine and background blank parameter verification on the Excbio EHB300 hematology analyzer.',
+          alt: 'Medwise biomedical engineer performing routine maintenance and QC calibration on Excbio EHB300 hematology analyzer at Lukanji Medical Centre in Kakamega, Kenya',
+        },
+        {
+          id: 'lukanji-2',
+          image: '/images/gallery/lukanji-2.jpeg',
+          title: 'Internal Microfluidic Solenoid Valves & Syringe Pump Overhaul',
+          caption:
+            'Detailed internal chassis servicing: chamber de-clotting, motorized syringe pump recalibration, and solenoid valve leak testing for reliable sample aspiration volume.',
+          alt: 'Internal microfluidic valves, counting chambers, and syringe drive pump servicing on hematology analyzer at Lukanji Medical Centre Kakamega',
+        },
+        {
+          id: 'lukanji-3',
+          image: '/images/gallery/lukanji-3.jpeg',
+          title: 'Optical Chamber Sensor Alignment & QC Functional Check',
+          caption:
+            'Laser optical aperture calibration, detector sensor alignment, and hemolyzing bath illumination checks ensuring coefficient of variation (CV) < 2.0%.',
+          alt: 'Photometric optical sensor alignment and chamber testing on Excbio hematology system at Lukanji Medical Centre Kakamega',
+        },
+      ],
     },
+
+    // 3. Unam Medical Centre
     {
-      id: 3,
-      title: 'Optical Chamber Sensor Alignment & QC Functional Check',
-      facility: 'Lukanji Medical Centre',
-      location: 'Kakamega, Kenya',
+      id: 'unam',
+      facility: 'Unam Medical Centre',
+      location: 'Kisumu, Kenya',
+      equipment: 'Hematology & Chemistry Suite (Dymind DH36)',
+      service: 'Internal Chassis Overhaul, Fluidics & Suite Calibration',
       category: 'calibration',
-      date: '2026-05-15',
-      service: 'Photometric Optical Calibration & Sensor Verification',
-      description: 'Laser optical aperture calibration, detector sensor alignment, and hemolyzing bath illumination checks ensuring coefficient of variation (CV) < 2.0%.',
-      image: '/images/gallery/lukanji-3.jpeg',
-      alt: 'Photometric optical sensor alignment and chamber testing on Excbio hematology system at Lukanji Medical Centre Kakamega',
+      dateRange: 'July 2026',
+      description:
+        'Deep chassis diagnostic teardown, stepper motor drive board testing, reagent hydraulic delivery line servicing, and holistic multi-analyzer QC calibration across the entire diagnostic suite.',
+      photos: [
+        {
+          id: 'unam-1',
+          image: '/images/gallery/unam-1.jpeg',
+          title: 'Chassis Teardown & Stepper Motor Drive Board Diagnostics',
+          caption:
+            'Internal diagnostic teardown showing motherboard, stepper motor drive boards, ribbon cable checks, and electronic circuitry testing for maximum clinical uptime.',
+          alt: 'Internal chassis and PCB motor drive board overhaul by Medwise biomedical engineers at Unam Medical Centre Kisumu',
+        },
+        {
+          id: 'unam-2',
+          image: '/images/gallery/unam-2.jpeg',
+          title: 'Hydraulic Reagent Delivery System & Lyse Line Servicing',
+          caption:
+            'Fluid line de-proteinization, lyse reagent bottle pickup calibration, manifold valve sealing check, and pressure sensor verification.',
+          alt: 'Reagent hydraulic pump and solenoid manifold maintenance on clinical lab analyzer at Unam Medical Centre in Kisumu',
+        },
+        {
+          id: 'unam-3',
+          image: '/images/gallery/unam-3.jpeg',
+          title: 'Integrated Clinical Laboratory Multi-Analyzer Suite',
+          caption:
+            'Holistic laboratory bench setup: Dymind DH36 hematology system, clinical chemistry analyzer, laboratory centrifuge RPM tachometer test, and microscope optical alignment.',
+          alt: 'Full clinical laboratory bench with Dymind hematology analyzer, centrifuge, microscope, and reagent station at Unam Medical Centre Kisumu',
+        },
+      ],
     },
 
-    // 2. Kabera Medical Centre
+    // 4. Kabera Medical Centre
     {
-      id: 4,
-      title: 'Bioelab EC 30 Hematology Analyzer Fresh Installation',
+      id: 'kabera',
       facility: 'Kabera Medical Centre',
       location: 'Kenya',
+      equipment: 'Bioelab EC 30 Hematology Analyzer',
+      service: 'Fresh Equipment Installation & Diagnostic Commissioning',
       category: 'installation',
-      date: '2026-06-22',
-      service: 'New Equipment Installation & Commissioning',
-      description: 'Fresh unboxing, laboratory bench placement, electrical grounding verification, diluent line priming, and factory baseline test running for a Bioelab EC 30 analyzer.',
-      image: '/images/gallery/kabera-1.jpeg',
-      alt: 'Fresh installation of Bioelab EC 30 automated hematology analyzer on laboratory bench at Kabera Medical Centre, Kenya',
-    },
-    {
-      id: 5,
-      title: 'Bioelab EC 30 Diagnostic Screen Verification & Baseline Run',
-      facility: 'Kabera Medical Centre',
-      location: 'Kenya',
-      category: 'installation',
-      date: '2026-06-22',
-      service: 'Commissioning & Diagnostic Benchmark Testing',
-      description: 'Tri-angle scattergram evaluation, parameter threshold configuration (WBC, RBC, PLT), and whole blood test verification to establish operational readiness.',
-      image: '/images/gallery/kabera-2.jpeg',
-      alt: 'Diagnostic interface and parameter configuration on Bioelab EC 30 hematology machine at Kabera Medical Centre, Kenya',
-    },
-
-    // 3. Unam Medical Centre - Kisumu
-    {
-      id: 6,
-      title: 'Complete Internal Overhaul & Stepper Motor Diagnostics',
-      facility: 'Unam Medical Centre',
-      location: 'Kisumu, Kenya',
-      category: 'maintenance',
-      date: '2026-07-16',
-      service: 'Internal Chassis Service & PCB Drive Inspection',
-      description: 'Deep diagnostic teardown, stepper motor drive board testing, ribbon cable integrity checks, and micro-switch recalibration for continuous clinical uptime.',
-      image: '/images/gallery/unam-1.jpeg',
-      alt: 'Internal chassis and PCB motor drive board overhaul by Medwise biomedical engineers at Unam Medical Centre Kisumu',
-    },
-    {
-      id: 7,
-      title: 'Reagent Delivery System & Solenoid Valve Maintenance',
-      facility: 'Unam Medical Centre',
-      location: 'Kisumu, Kenya',
-      category: 'maintenance',
-      date: '2026-07-16',
-      service: 'Fluidic Hydraulics & Lyse Reagent Line Servicing',
-      description: 'Fluid line de-proteinization, lyse reagent bottle pickup calibration, manifold valve sealing check, and pressure sensor verification.',
-      image: '/images/gallery/unam-2.jpeg',
-      alt: 'Reagent hydraulic pump and solenoid manifold maintenance on clinical lab analyzer at Unam Medical Centre in Kisumu',
-    },
-    {
-      id: 8,
-      title: 'Integrated Hematology, Chemistry & Centrifuge Suite Calibration',
-      facility: 'Unam Medical Centre',
-      location: 'Kisumu, Kenya',
-      category: 'calibration',
-      date: '2026-07-17',
-      service: 'Laboratory Suite Multi-Analyzer QC & Calibration',
-      description: 'Holistic bench inspection: Dymind DH36 hematology system, clinical chemistry analyzer, laboratory centrifuge RPM tachometer test, and microscope optical alignment.',
-      image: '/images/gallery/unam-3.jpeg',
-      alt: 'Full clinical laboratory bench with Dymind hematology analyzer, centrifuge, microscope, and reagent station at Unam Medical Centre Kisumu',
-    },
-
-    // 4. Narok County Referral Hospital - Narok County
-    {
-      id: 9,
-      title: 'Urit CA-200 Automated Biochemistry & Electrolyte Setup',
-      facility: 'Narok County Referral Hospital',
-      location: 'Narok County, Kenya',
-      category: 'installation',
-      date: '2026-08-25',
-      service: 'Automated Biochemistry & Electrolyte Installation',
-      description: 'Turnkey clinical laboratory installation of a Urit CA-200 fully automated biochemistry analyzer alongside an electrolyte analyzer workstation with pure water wash integration.',
-      image: '/images/gallery/narok-1.jpeg',
-      alt: 'Urit CA-200 automated clinical chemistry analyzer and electrolyte machine installed at Narok County Referral Hospital',
-    },
-    {
-      id: 10,
-      title: 'Laboratory Technologist Clinical Operational Training',
-      facility: 'Narok County Referral Hospital',
-      location: 'Narok County, Kenya',
-      category: 'training',
-      date: '2026-08-26',
-      service: 'Hands-On Technologist Operation & Workflow Training',
-      description: 'Comprehensive hands-on training for Kenyan hospital laboratory technologists covering calibration curves, sample batch scheduling, daily startup protocols, and frontline troubleshooting.',
-      image: '/images/gallery/narok-2.jpeg',
-      alt: 'Hospital laboratory technologists receiving hands-on operational training on Urit CA-200 biochemistry analyzer at Narok County Referral Hospital',
-    },
-    {
-      id: 11,
-      title: 'Urit CA-200 Optical Photometer & Sample Carousel Calibration',
-      facility: 'Narok County Referral Hospital',
-      location: 'Narok County, Kenya',
-      category: 'calibration',
-      date: '2026-08-26',
-      service: 'Precision Optical Calibration & QC Multi-Rule Setup',
-      description: 'Reaction cuvette wash cycle validation, multi-wavelength absorbance calibration (340nm–700nm), and Westgard QC multirule integration on control PC terminal.',
-      image: '/images/gallery/narok-3.jpeg',
-      alt: 'Sample carousel, reagent disk, and computerized interface calibration on Urit CA-200 clinical chemistry machine in Narok County',
-    },
-    {
-      id: 12,
-      title: 'Clinical Staff Reagent Handling & Protocol Briefing',
-      facility: 'Narok County Referral Hospital',
-      location: 'Narok County, Kenya',
-      category: 'training',
-      date: '2026-08-27',
-      service: 'Cold-Chain Reagent Handling & Quality Control Certification',
-      description: 'Demonstrating temperature-controlled reagent onboard storage, barcode sample reading, emergency STAT sample interrupts, and preventive cleaning routines to the clinical team.',
-      image: '/images/gallery/narok-4.jpeg',
-      alt: 'Biomedical trainer instructing laboratory staff on reagent management and QC protocols at Narok County Referral Hospital',
+      dateRange: 'June 2026',
+      description:
+        'Fresh unboxing, laboratory bench installation, power conditioning verification, diluent line priming, and factory baseline whole blood diagnostic test runs on a Bioelab EC 30 analyzer.',
+      photos: [
+        {
+          id: 'kabera-1',
+          image: '/images/gallery/kabera-1.jpeg',
+          title: 'Bioelab EC 30 Automated Hematology Analyzer Installation',
+          caption:
+            'Laboratory bench placement, electrical grounding checks, and fluidic reagent line connections for a brand new Bioelab EC 30 hematology analyzer.',
+          alt: 'Fresh installation of Bioelab EC 30 automated hematology analyzer on laboratory bench at Kabera Medical Centre, Kenya',
+        },
+        {
+          id: 'kabera-2',
+          image: '/images/gallery/kabera-2.jpeg',
+          title: 'Diagnostic Screen Parameter Configuration & Baseline Run',
+          caption:
+            'Tri-angle scattergram evaluation, parameter threshold configuration (WBC, RBC, PLT), and whole blood test verification to establish clinical operational readiness.',
+          alt: 'Diagnostic interface and parameter configuration on Bioelab EC 30 hematology machine at Kabera Medical Centre, Kenya',
+        },
+      ],
     },
   ];
 
   const categories = [
-    { id: 'all', label: 'All Projects (12)' },
+    { id: 'all', label: 'All Facilities (4)' },
     { id: 'installation', label: 'Fresh Installation' },
     { id: 'maintenance', label: 'Maintenance & Service' },
     { id: 'calibration', label: 'Calibration & QC' },
     { id: 'training', label: 'Technologist Training' },
   ];
 
-  const filteredItems = activeCategory === 'all' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === activeCategory);
+  const filteredFacilities = activeCategory === 'all'
+    ? facilityProjects
+    : facilityProjects.filter(p => p.category === activeCategory || activeCategory === 'all');
 
+  // Next / Previous Photo Handlers
+  const handleNextPhoto = useCallback(() => {
+    if (!selectedFacility) return;
+    setActivePhotoIndex((prev) => (prev + 1) % selectedFacility.photos.length);
+  }, [selectedFacility]);
+
+  const handlePrevPhoto = useCallback(() => {
+    if (!selectedFacility) return;
+    setActivePhotoIndex((prev) => (prev - 1 + selectedFacility.photos.length) % selectedFacility.photos.length);
+  }, [selectedFacility]);
+
+  // Open Modal Handler
+  const openFacilityModal = (facility: FacilityProject, startIndex = 0) => {
+    setSelectedFacility(facility);
+    setActivePhotoIndex(startIndex);
+    setIsAutoPlaying(true);
+  };
+
+  // Close Modal Handler
+  const closeFacilityModal = () => {
+    setSelectedFacility(null);
+    setActivePhotoIndex(0);
+  };
+
+  // Automatic slideshow timer
+  useEffect(() => {
+    if (!selectedFacility || !isAutoPlaying) return;
+    const timer = setInterval(() => {
+      handleNextPhoto();
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [selectedFacility, isAutoPlaying, handleNextPhoto]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedFacility) return;
+      if (e.key === 'Escape') closeFacilityModal();
+      if (e.key === 'ArrowRight') handleNextPhoto();
+      if (e.key === 'ArrowLeft') handlePrevPhoto();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedFacility, handleNextPhoto, handlePrevPhoto]);
+
+  // Touch Swipe Handlers for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current || !selectedFacility) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (diff > 45) {
+      // Swiped Left -> Next Photo
+      handleNextPhoto();
+    } else if (diff < -45) {
+      // Swiped Right -> Previous Photo
+      handlePrevPhoto();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  // Structured Schema for Google SEO
   const gallerySchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Medwise Technical Consulting: Previous Biomedical Works & Field Projects',
-    itemListElement: galleryItems.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': 'ImageObject',
-        name: item.title,
-        caption: `${item.title} at ${item.facility}, ${item.location}`,
-        contentUrl: `https://medwisetechnicalconsulting.co.ke${item.image}`,
-        description: item.description,
-      },
-    })),
+    name: 'Medwise Technical Consulting: Previous Biomedical Works & Field Projects in Kenya',
+    itemListElement: facilityProjects.flatMap((facility, fIndex) =>
+      facility.photos.map((photo, pIndex) => ({
+        '@type': 'ListItem',
+        position: fIndex * 10 + pIndex + 1,
+        item: {
+          '@type': 'ImageObject',
+          name: photo.title,
+          caption: `${photo.title} at ${facility.facility}, ${facility.location}`,
+          contentUrl: `https://medwisetechnicalconsulting.co.ke${photo.image}`,
+          description: photo.caption,
+        },
+      }))
+    ),
   };
 
   return (
@@ -209,7 +324,7 @@ export default function GallerySection() {
             Engineering fieldwork &amp; project gallery.
           </h2>
           <p className="font-light text-base text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed">
-            Verified field photographs of automated biochemistry installations, clinical hematology routine maintenance, QC calibrations, and staff operational training across Kenyan hospitals.
+            Real hospital project photographs grouped by facility. Click any healthcare facility to view its verified field photo stream with touch swipe, auto-scroll, and clinical details.
           </p>
         </div>
 
@@ -230,133 +345,275 @@ export default function GallerySection() {
           ))}
         </div>
 
-        {/* Gallery Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item) => (
-            <figure
-              key={item.id}
-              onClick={() => setSelectedImage(item)}
-              className="flex flex-col justify-between rounded-2xl border border-[hsl(var(--border))] bg-white overflow-hidden shadow-2xs hover:shadow-[0_16px_48px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-200 cursor-pointer group"
+        {/* Facility Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {filteredFacilities.map((facility) => (
+            <div
+              key={facility.id}
+              onClick={() => openFacilityModal(facility, 0)}
+              className="flex flex-col justify-between rounded-3xl border border-[hsl(var(--border))] bg-white overflow-hidden shadow-2xs hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
             >
-              {/* Image Container */}
-              <div className="relative aspect-[16/10] w-full bg-slate-100 overflow-hidden border-b border-[hsl(var(--border))]">
+              {/* Cover Photo Container */}
+              <div className="relative aspect-[16/10] w-full bg-slate-900 overflow-hidden border-b border-[hsl(var(--border))]">
                 <Image
-                  src={item.image}
-                  alt={item.alt}
+                  src={facility.photos[0].image}
+                  alt={facility.photos[0].alt}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 
-                {/* Facility Tag */}
-                <span className="absolute top-3 left-3 chip-label bg-white/95 text-[hsl(var(--foreground))] shadow-xs font-semibold">
-                  {item.facility}
-                </span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
 
-                {/* Location Overlay */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white bg-black/60 backdrop-blur-xs px-3 py-1.5 rounded-full">
-                  <div className="flex items-center gap-1.5 font-normal truncate">
-                    <MapPin className="w-3 h-3 text-red-400 shrink-0" />
-                    <span className="truncate">{item.location}</span>
+                {/* Top Chips: Facility & Photo Count */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+                  <span className="chip-label bg-white/95 text-[hsl(var(--foreground))] shadow-xs font-bold text-xs">
+                    {facility.facility}
+                  </span>
+
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white shadow-xs border border-white/20">
+                    <Layers className="w-3.5 h-3.5 text-[hsl(var(--primary-light))]" />
+                    <span>{facility.photos.length} Photos</span>
+                  </span>
+                </div>
+
+                {/* Bottom Overlay: Location & Date */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white">
+                  <div className="flex items-center gap-1.5 font-medium drop-shadow-xs">
+                    <MapPin className="w-3.5 h-3.5 text-red-400 shrink-0" />
+                    <span>{facility.location}</span>
                   </div>
-                  <div className="flex items-center gap-1 font-mono text-[11px] text-white/80 shrink-0">
-                    <Calendar className="w-3 h-3 text-[hsl(var(--primary-light))]" />
-                    <span>{item.date}</span>
+                  <div className="flex items-center gap-1 font-mono text-[11px] text-white/90 drop-shadow-xs">
+                    <Calendar className="w-3.5 h-3.5 text-[hsl(var(--primary-light))]" />
+                    <span>{facility.dateRange}</span>
                   </div>
+                </div>
+
+                {/* Slide Indicators on Card */}
+                <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+                  {facility.photos.map((_, idx) => (
+                    <span
+                      key={idx}
+                      className={`h-1.5 rounded-full transition-all ${
+                        idx === 0 ? 'w-5 bg-white' : 'w-1.5 bg-white/50'
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
 
-              {/* Content Box */}
-              <figcaption className="p-6 flex-grow flex flex-col justify-between">
+              {/* Content Card Body */}
+              <div className="p-6 sm:p-7 flex-grow flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-[hsl(var(--primary))] mb-2">
+                  {/* Service Badge */}
+                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[hsl(var(--primary))] bg-[hsl(var(--primary-light))] px-3 py-1 rounded-full mb-3">
                     <Wrench className="w-3.5 h-3.5 shrink-0" />
-                    <span>{item.service}</span>
+                    <span>{facility.service}</span>
                   </div>
-                  <h3 className="font-bold text-base text-[hsl(var(--foreground))] group-hover:text-[hsl(var(--primary))] transition-colors leading-snug">
-                    {item.title}
+
+                  {/* Equipment Heading */}
+                  <h3 className="font-extrabold text-lg sm:text-xl text-[hsl(var(--foreground))] group-hover:text-[hsl(var(--primary))] transition-colors leading-snug">
+                    {facility.equipment}
                   </h3>
-                  <p className="font-light text-xs sm:text-sm text-[hsl(var(--muted-foreground))] line-clamp-2 leading-relaxed mt-2">
-                    {item.description}
+
+                  {/* Summary Description */}
+                  <p className="font-light text-xs sm:text-sm text-[hsl(var(--muted-foreground))] leading-relaxed mt-2.5">
+                    {facility.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[hsl(var(--border))] flex items-center justify-between text-xs font-semibold mt-4">
-                  <span className="flex items-center gap-1 text-emerald-600">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>Field Verified</span>
+                {/* Bottom Action Footer */}
+                <div className="pt-5 border-t border-[hsl(var(--border))] flex items-center justify-between text-xs font-semibold mt-6">
+                  <span className="flex items-center gap-1.5 text-emerald-600">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Verified Hospital Work</span>
                   </span>
-                  <span className="text-[hsl(var(--primary))] group-hover:underline">
-                    View Details &rarr;
+
+                  <span className="text-[hsl(var(--primary))] inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform font-bold">
+                    <span>View {facility.photos.length} Photos</span>
+                    <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>
-              </figcaption>
-            </figure>
+              </div>
+            </div>
           ))}
         </div>
 
       </div>
 
-      {/* Lightbox Modal */}
-      {selectedImage && (
+      {/* Interactive Facility Modal with Auto-Scroll, Touch Swipe & Thumbnails */}
+      {selectedFacility && (
         <div
-          onClick={() => setSelectedImage(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-xs"
+          onClick={closeFacilityModal}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-3 sm:p-6 backdrop-blur-md animate-in fade-in duration-200"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl border border-[hsl(var(--border))]"
+            className="relative max-w-4xl w-full max-h-[92vh] overflow-hidden rounded-3xl bg-white shadow-2xl border border-[hsl(var(--border))] flex flex-col"
           >
-            <button
-              onClick={() => setSelectedImage(null)}
-              aria-label="Close"
-              className="absolute top-4 right-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[hsl(var(--foreground))] hover:bg-white transition-colors cursor-pointer shadow-md"
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            <div className="relative aspect-video w-full bg-slate-900">
-              <Image
-                src={selectedImage.image}
-                alt={selectedImage.alt}
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <div className="p-6 sm:p-7 space-y-3.5">
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[hsl(var(--border))] pb-3">
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[hsl(var(--foreground))] bg-[hsl(var(--muted))] px-3 py-1 rounded-full">
-                  <MapPin className="w-3.5 h-3.5 text-red-500" />
-                  <span>{selectedImage.facility} &middot; {selectedImage.location}</span>
-                </span>
-                <span className="text-xs font-mono text-[hsl(var(--muted-foreground))]">
-                  {selectedImage.date}
-                </span>
+            {/* Modal Header Bar */}
+            <div className="flex items-center justify-between px-5 sm:px-7 py-4 border-b border-[hsl(var(--border))] bg-slate-50/90 shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[hsl(var(--primary-light))] text-[hsl(var(--primary))] flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-[hsl(var(--primary))]" />
+                </div>
+                <div>
+                  <h3 className="font-extrabold text-base sm:text-lg text-[hsl(var(--foreground))] leading-tight">
+                    {selectedFacility.facility}
+                  </h3>
+                  <p className="text-xs text-[hsl(var(--muted-foreground))]">
+                    {selectedFacility.location} &middot; {selectedFacility.equipment}
+                  </p>
+                </div>
               </div>
 
-              <h3 className="font-bold text-lg text-[hsl(var(--foreground))]">
-                {selectedImage.title}
-              </h3>
+              <button
+                onClick={closeFacilityModal}
+                aria-label="Close modal"
+                className="w-9 h-9 rounded-full bg-white border border-[hsl(var(--border))] flex items-center justify-center text-slate-600 hover:text-[hsl(var(--foreground))] hover:bg-slate-100 transition-colors cursor-pointer shadow-xs"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
 
-              <p className="font-light text-sm text-[hsl(var(--muted-foreground))] leading-relaxed">
-                {selectedImage.description}
-              </p>
+            {/* Modal Scrollable Body */}
+            <div className="overflow-y-auto flex-grow flex flex-col">
+              
+              {/* Main Photo Slide with Touch Swipe & Next/Prev Controls */}
+              <div 
+                className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-slate-950 select-none shrink-0"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                <Image
+                  src={selectedFacility.photos[activePhotoIndex].image}
+                  alt={selectedFacility.photos[activePhotoIndex].alt}
+                  fill
+                  priority
+                  className="object-contain"
+                />
 
-              <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-                <span className="font-light text-[hsl(var(--muted-foreground))]">
-                  Scope: <strong className="font-semibold text-[hsl(var(--foreground))]">{selectedImage.service}</strong>
-                </span>
-                <a
-                  href={`https://wa.me/254117233522?text=Inquiry%20regarding%20${encodeURIComponent(selectedImage.title)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-pill-primary text-xs h-10 px-5"
+                {/* Left Arrow Button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrevPhoto();
+                  }}
+                  aria-label="Previous photo"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center backdrop-blur-xs transition-colors cursor-pointer border border-white/20 shadow-lg"
                 >
-                  <span>Request Similar Service</span>
-                </a>
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                {/* Right Arrow Button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNextPhoto();
+                  }}
+                  aria-label="Next photo"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center backdrop-blur-xs transition-colors cursor-pointer border border-white/20 shadow-lg"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+
+                {/* Slide Status: Photo Counter & Play/Pause Controls */}
+                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-white">
+                  <span className="rounded-full bg-black/70 backdrop-blur-md px-3 py-1 font-mono text-[11px] border border-white/20">
+                    Photo {activePhotoIndex + 1} of {selectedFacility.photos.length}
+                  </span>
+
+                  <button
+                    onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md px-3 py-1 text-[11px] font-medium border border-white/20 hover:bg-black/90 transition-colors cursor-pointer"
+                  >
+                    {isAutoPlaying ? (
+                      <>
+                        <Pause className="w-3 h-3 text-amber-400" />
+                        <span>Auto-scroll On</span>
+                      </>
+                    ) : (
+                      <>
+                        <Play className="w-3 h-3 text-emerald-400" />
+                        <span>Paused</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
+
+              {/* Thumbnail Strip (Click to Jump to Any Photo) */}
+              <div className="bg-slate-100 p-3 sm:p-4 border-y border-[hsl(var(--border))] flex items-center gap-3 overflow-x-auto overscroll-x-contain touch-pan-x shrink-0">
+                {selectedFacility.photos.map((photo, idx) => (
+                  <button
+                    key={photo.id}
+                    onClick={() => {
+                      setActivePhotoIndex(idx);
+                      setIsAutoPlaying(false);
+                    }}
+                    className={`relative w-20 sm:w-24 aspect-[4/3] rounded-xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
+                      activePhotoIndex === idx
+                        ? 'border-[hsl(var(--primary))] shadow-md scale-105'
+                        : 'border-transparent opacity-60 hover:opacity-100'
+                    }`}
+                  >
+                    <Image
+                      src={photo.image}
+                      alt={photo.alt}
+                      fill
+                      className="object-cover"
+                    />
+                    <span className="absolute bottom-0.5 right-0.5 bg-black/75 text-white font-mono text-[9px] px-1 rounded">
+                      {idx + 1}
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Active Photo Caption & Technical Project Brief */}
+              <div className="p-5 sm:p-7 space-y-4">
+                <div>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[hsl(var(--primary))] mb-1.5">
+                    <Wrench className="w-3.5 h-3.5" />
+                    <span>Photo {activePhotoIndex + 1}: {selectedFacility.service}</span>
+                  </span>
+                  <h4 className="font-extrabold text-base sm:text-lg text-[hsl(var(--foreground))]">
+                    {selectedFacility.photos[activePhotoIndex].title}
+                  </h4>
+                  <p className="font-light text-xs sm:text-sm text-[hsl(var(--muted-foreground))] leading-relaxed mt-2">
+                    {selectedFacility.photos[activePhotoIndex].caption}
+                  </p>
+                </div>
+
+                {/* Facility Scope & WhatsApp Inquiry Row */}
+                <div className="pt-4 border-t border-[hsl(var(--border))] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="text-xs text-[hsl(var(--muted-foreground))] space-y-0.5">
+                    <div>
+                      <strong className="text-[hsl(var(--foreground))] font-semibold">Facility:</strong>{' '}
+                      {selectedFacility.facility} ({selectedFacility.location})
+                    </div>
+                    <div>
+                      <strong className="text-[hsl(var(--foreground))] font-semibold">System:</strong>{' '}
+                      {selectedFacility.equipment}
+                    </div>
+                  </div>
+
+                  <a
+                    href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(
+                      `Hello Medwise, I saw your fieldwork project at ${selectedFacility.facility} with the ${selectedFacility.equipment}. I would like to inquire about similar services for our healthcare facility.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-pill-primary h-11 px-7 text-xs font-semibold inline-flex items-center justify-center gap-2 shrink-0 shadow-xs"
+                  >
+                    <span>Inquire About This Service &rarr;</span>
+                  </a>
+                </div>
+              </div>
+
             </div>
+
           </div>
         </div>
       )}
