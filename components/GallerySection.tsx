@@ -10,11 +10,8 @@ import {
   X, 
   ChevronLeft, 
   ChevronRight, 
-  Play, 
-  Pause, 
   Layers, 
   ArrowRight,
-  ExternalLink
 } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 
@@ -324,7 +321,7 @@ export default function GallerySection() {
             Engineering fieldwork &amp; project gallery.
           </h2>
           <p className="font-light text-base text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed">
-            Real hospital project photographs grouped by facility. Click any healthcare facility to view its verified field photo stream with touch swipe, auto-scroll, and clinical details.
+            Real hospital project photographs grouped by facility. Click any healthcare facility to view verified field photos and technical project scope.
           </p>
         </div>
 
@@ -485,6 +482,8 @@ export default function GallerySection() {
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
+                onMouseEnter={() => setIsAutoPlaying(false)}
+                onMouseLeave={() => setIsAutoPlaying(true)}
               >
                 <Image
                   src={selectedFacility.photos[activePhotoIndex].image}
@@ -518,28 +517,11 @@ export default function GallerySection() {
                   <ChevronRight className="w-5 h-5" />
                 </button>
 
-                {/* Slide Status: Photo Counter & Play/Pause Controls */}
-                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-white">
+                {/* Slide Status: Photo Counter */}
+                <div className="absolute bottom-3 left-4 flex items-center text-xs text-white pointer-events-none">
                   <span className="rounded-full bg-black/70 backdrop-blur-md px-3 py-1 font-mono text-[11px] border border-white/20">
                     Photo {activePhotoIndex + 1} of {selectedFacility.photos.length}
                   </span>
-
-                  <button
-                    onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md px-3 py-1 text-[11px] font-medium border border-white/20 hover:bg-black/90 transition-colors cursor-pointer"
-                  >
-                    {isAutoPlaying ? (
-                      <>
-                        <Pause className="w-3 h-3 text-amber-400" />
-                        <span>Auto-scroll On</span>
-                      </>
-                    ) : (
-                      <>
-                        <Play className="w-3 h-3 text-emerald-400" />
-                        <span>Paused</span>
-                      </>
-                    )}
-                  </button>
                 </div>
               </div>
 
@@ -550,7 +532,6 @@ export default function GallerySection() {
                     key={photo.id}
                     onClick={() => {
                       setActivePhotoIndex(idx);
-                      setIsAutoPlaying(false);
                     }}
                     className={`relative w-20 sm:w-24 aspect-[4/3] rounded-xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
                       activePhotoIndex === idx
