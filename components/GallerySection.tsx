@@ -32,7 +32,7 @@ export interface FacilityProject {
   location: string;
   equipment: string;
   service: string;
-  category: 'installation' | 'maintenance' | 'calibration' | 'training';
+  category: string;
   dateRange: string;
   description: string;
   photos: GalleryPhoto[];
@@ -53,45 +53,45 @@ export default function GallerySection() {
     {
       id: 'narok',
       facility: 'Narok County Referral Hospital',
-      location: 'Narok County, Kenya',
-      equipment: 'Biochemistry (Urit CA-200) & Electrolyte Analyzer',
-      service: 'Fresh Installation, Calibration & Technologist Training',
-      category: 'training',
-      dateRange: 'August 2026',
+      location: 'Narok, Kenya',
+      equipment: 'Biochemistry (Urit CA 200) & Electrolyte Analyzer',
+      service: 'Installation & Training',
+      category: 'installation training',
+      dateRange: '14 August 2026',
       description:
-        'Complete clinical laboratory installation of a Urit CA-200 fully automated biochemistry analyzer and dedicated electrolyte workstation, featuring cuvette optical photometer calibration and comprehensive hands-on operational training for hospital technologists.',
+        'Fresh installation and hands-on staff training on the Urit CA 200 Biochemistry and Electrolyte Analyzer.',
       photos: [
         {
           id: 'narok-1',
           image: '/images/gallery/narok-1.jpeg',
-          title: 'Urit CA-200 Automated Biochemistry & Electrolyte Workstation Setup',
+          title: 'Biochemistry & Electrolyte Analyzer Setup',
           caption:
-            'Turnkey clinical setup showing the automated Urit CA-200 biochemistry analyzer and electrolyte unit with pure water wash lines and dedicated waste management.',
-          alt: 'Urit CA-200 automated clinical biochemistry analyzer and electrolyte machine at Narok County Referral Hospital',
+            'Installation and setup of the Urit CA 200 Biochemistry and Electrolyte Analyzer.',
+          alt: 'Urit CA 200 Biochemistry and Electrolyte Analyzer installation at Narok County Referral Hospital',
         },
         {
           id: 'narok-2',
           image: '/images/gallery/narok-2.jpeg',
-          title: 'Hands-On Clinical Operational Training for Laboratory Technologists',
+          title: 'Laboratory Staff Training',
           caption:
-            'Biomedical specialist conducting interactive hands-on training with Kenyan hospital laboratory technologists covering calibration curves, sample batch scheduling, and daily startup protocols.',
-          alt: 'Hospital laboratory technologists receiving hands-on operational training on Urit CA-200 biochemistry analyzer at Narok County Referral Hospital',
+            'Hands-on operational training for laboratory staff on the new equipment.',
+          alt: 'Laboratory staff training on Urit CA 200 at Narok County Referral Hospital',
         },
         {
           id: 'narok-3',
           image: '/images/gallery/narok-3.jpeg',
-          title: 'Optical Photometer & Sample Carousel Calibration Terminal',
+          title: 'System Setup & Calibration',
           caption:
-            'Dedicated control workstation interface, reagent carousel, and reaction disk calibration ensuring Westgard multi-rule Quality Control adherence.',
-          alt: 'Sample carousel, reagent disk, and computerized interface calibration on Urit CA-200 clinical chemistry machine in Narok County',
+            'System setup and calibration checks during the installation process.',
+          alt: 'System calibration check on Urit CA 200 at Narok County Referral Hospital',
         },
         {
           id: 'narok-4',
           image: '/images/gallery/narok-4.jpeg',
-          title: 'Clinical Reagent Management & Quality Control Briefing',
+          title: 'Operational Training & Review',
           caption:
-            'Briefing laboratory staff on cold-chain reagent handling, barcode sample identification, emergency STAT sample interrupts, and preventive maintenance routines.',
-          alt: 'Biomedical trainer instructing laboratory staff on reagent management and QC protocols at Narok County Referral Hospital',
+            'Walkthrough of daily operational workflows and system handling with the team.',
+          alt: 'Staff operational review and training at Narok County Referral Hospital',
         },
       ],
     },
@@ -101,36 +101,36 @@ export default function GallerySection() {
       id: 'lukanji',
       facility: 'Lukanji Medical Centre',
       location: 'Kakamega, Kenya',
-      equipment: 'Excbio EHB300 Hematology Analyzer',
-      service: 'Routine Maintenance, Calibration & Quality Control',
-      category: 'maintenance',
-      dateRange: 'May 2026',
+      equipment: 'Excbio Hematology Analyzer',
+      service: 'Routine Maintenance, Calibration & QC',
+      category: 'maintenance calibration',
+      dateRange: '18 May 2026',
       description:
-        'Scheduled preventive maintenance, internal microfluidic lines and motorized syringe pump overhaul, and photometric sensor calibration on an Excbio EHB300 3-part automated hematology analyzer.',
+        'Routine maintenance services, calibration, and quality control (QC) on the Excbio Hematology Analyzer.',
       photos: [
         {
           id: 'lukanji-1',
           image: '/images/gallery/lukanji-1.jpeg',
-          title: 'Excbio EHB300 Startup Diagnostics & Background Count Validation',
+          title: 'System Check & Quality Control',
           caption:
-            'Power-on automated maintenance routine and background blank parameter verification on the Excbio EHB300 hematology analyzer.',
-          alt: 'Medwise biomedical engineer performing routine maintenance and QC calibration on Excbio EHB300 hematology analyzer at Lukanji Medical Centre in Kakamega, Kenya',
+            'Initial diagnostic checks and quality control (QC) assessment.',
+          alt: 'Excbio Hematology Analyzer routine maintenance check at Lukanji Medical Centre Kakamega',
         },
         {
           id: 'lukanji-2',
           image: '/images/gallery/lukanji-2.jpeg',
-          title: 'Internal Microfluidic Solenoid Valves & Syringe Pump Overhaul',
+          title: 'Routine Maintenance & Servicing',
           caption:
-            'Detailed internal chassis servicing: chamber de-clotting, motorized syringe pump recalibration, and solenoid valve leak testing for reliable sample aspiration volume.',
-          alt: 'Internal microfluidic valves, counting chambers, and syringe drive pump servicing on hematology analyzer at Lukanji Medical Centre Kakamega',
+            'Internal inspection and routine maintenance of analyzer components.',
+          alt: 'Routine servicing of Excbio Hematology Analyzer at Lukanji Medical Centre Kakamega',
         },
         {
           id: 'lukanji-3',
           image: '/images/gallery/lukanji-3.jpeg',
-          title: 'Optical Chamber Sensor Alignment & QC Functional Check',
+          title: 'Calibration & Final QC',
           caption:
-            'Laser optical aperture calibration, detector sensor alignment, and hemolyzing bath illumination checks ensuring coefficient of variation (CV) < 2.0%.',
-          alt: 'Photometric optical sensor alignment and chamber testing on Excbio hematology system at Lukanji Medical Centre Kakamega',
+            'System calibration and final verification to ensure accurate results.',
+          alt: 'Calibration and final QC verification at Lukanji Medical Centre Kakamega',
         },
       ],
     },
@@ -140,36 +140,36 @@ export default function GallerySection() {
       id: 'unam',
       facility: 'Unam Medical Centre',
       location: 'Kisumu, Kenya',
-      equipment: 'Hematology & Chemistry Suite (Dymind DH36)',
-      service: 'Internal Chassis Overhaul, Fluidics & Suite Calibration',
-      category: 'calibration',
-      dateRange: 'July 2026',
+      equipment: 'Hematology & Chemistry Analyzers',
+      service: 'Routine Maintenance, Calibration & QC',
+      category: 'maintenance calibration',
+      dateRange: '9 July 2026',
       description:
-        'Deep chassis diagnostic teardown, stepper motor drive board testing, reagent hydraulic delivery line servicing, and holistic multi-analyzer QC calibration across the entire diagnostic suite.',
+        'Routine maintenance, servicing, calibration, and quality control for laboratory hematology and chemistry analyzers.',
       photos: [
         {
           id: 'unam-1',
           image: '/images/gallery/unam-1.jpeg',
-          title: 'Chassis Teardown & Stepper Motor Drive Board Diagnostics',
+          title: 'Chassis Inspection & Servicing',
           caption:
-            'Internal diagnostic teardown showing motherboard, stepper motor drive boards, ribbon cable checks, and electronic circuitry testing for maximum clinical uptime.',
-          alt: 'Internal chassis and PCB motor drive board overhaul by Medwise biomedical engineers at Unam Medical Centre Kisumu',
+            'Chassis inspection and routine maintenance on the analyzer.',
+          alt: 'Routine maintenance and chassis inspection at Unam Medical Centre Kisumu',
         },
         {
           id: 'unam-2',
           image: '/images/gallery/unam-2.jpeg',
-          title: 'Hydraulic Reagent Delivery System & Lyse Line Servicing',
+          title: 'Fluidics & Reagent Line Service',
           caption:
-            'Fluid line de-proteinization, lyse reagent bottle pickup calibration, manifold valve sealing check, and pressure sensor verification.',
-          alt: 'Reagent hydraulic pump and solenoid manifold maintenance on clinical lab analyzer at Unam Medical Centre in Kisumu',
+            'Routine servicing and maintenance of fluidic and reagent lines.',
+          alt: 'Reagent and fluidics line maintenance at Unam Medical Centre Kisumu',
         },
         {
           id: 'unam-3',
           image: '/images/gallery/unam-3.jpeg',
-          title: 'Integrated Clinical Laboratory Multi-Analyzer Suite',
+          title: 'Calibration & Quality Control',
           caption:
-            'Holistic laboratory bench setup: Dymind DH36 hematology system, clinical chemistry analyzer, laboratory centrifuge RPM tachometer test, and microscope optical alignment.',
-          alt: 'Full clinical laboratory bench with Dymind hematology analyzer, centrifuge, microscope, and reagent station at Unam Medical Centre Kisumu',
+            'Calibration and quality control verification across laboratory analyzers.',
+          alt: 'Laboratory analyzer calibration and QC at Unam Medical Centre Kisumu',
         },
       ],
     },
@@ -180,27 +180,27 @@ export default function GallerySection() {
       facility: 'Kabera Medical Centre',
       location: 'Kenya',
       equipment: 'Bioelab EC 30 Hematology Analyzer',
-      service: 'Fresh Equipment Installation & Diagnostic Commissioning',
+      service: 'Fresh Installation',
       category: 'installation',
-      dateRange: 'June 2026',
+      dateRange: '22 June 2026',
       description:
-        'Fresh unboxing, laboratory bench installation, power conditioning verification, diluent line priming, and factory baseline whole blood diagnostic test runs on a Bioelab EC 30 analyzer.',
+        'Fresh installation and commissioning of the Bioelab EC 30 Hematology Analyzer.',
       photos: [
         {
           id: 'kabera-1',
           image: '/images/gallery/kabera-1.jpeg',
-          title: 'Bioelab EC 30 Automated Hematology Analyzer Installation',
+          title: 'Fresh Installation & Setup',
           caption:
-            'Laboratory bench placement, electrical grounding checks, and fluidic reagent line connections for a brand new Bioelab EC 30 hematology analyzer.',
-          alt: 'Fresh installation of Bioelab EC 30 automated hematology analyzer on laboratory bench at Kabera Medical Centre, Kenya',
+            'Unboxing and initial setup of the Bioelab EC 30 Hematology Analyzer.',
+          alt: 'Fresh installation of Bioelab EC 30 Hematology Analyzer at Kabera Medical Centre',
         },
         {
           id: 'kabera-2',
           image: '/images/gallery/kabera-2.jpeg',
-          title: 'Diagnostic Screen Parameter Configuration & Baseline Run',
+          title: 'System Setup & Commissioning',
           caption:
-            'Tri-angle scattergram evaluation, parameter threshold configuration (WBC, RBC, PLT), and whole blood test verification to establish clinical operational readiness.',
-          alt: 'Diagnostic interface and parameter configuration on Bioelab EC 30 hematology machine at Kabera Medical Centre, Kenya',
+            'System startup, initial parameters check, and commissioning.',
+          alt: 'System setup and parameter verification at Kabera Medical Centre',
         },
       ],
     },
@@ -208,15 +208,15 @@ export default function GallerySection() {
 
   const categories = [
     { id: 'all', label: 'All Facilities (4)' },
-    { id: 'installation', label: 'Fresh Installation' },
+    { id: 'installation', label: 'Installation' },
     { id: 'maintenance', label: 'Maintenance & Service' },
     { id: 'calibration', label: 'Calibration & QC' },
-    { id: 'training', label: 'Technologist Training' },
+    { id: 'training', label: 'Training' },
   ];
 
   const filteredFacilities = activeCategory === 'all'
     ? facilityProjects
-    : facilityProjects.filter(p => p.category === activeCategory || activeCategory === 'all');
+    : facilityProjects.filter(p => p.category.includes(activeCategory));
 
   // Next / Previous Photo Handlers
   const handleNextPhoto = useCallback(() => {
