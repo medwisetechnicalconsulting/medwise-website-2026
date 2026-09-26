@@ -3,6 +3,7 @@ import { getAllPosts } from '@/lib/mdx';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 import { CATEGORIES_CONFIG, PRODUCTS_CATALOG } from '@/lib/products';
 import { CONSUMABLES_CATEGORIES, CONSUMABLES_CATALOG } from '@/lib/consumables';
+import { OTHER_PRODUCTS_CATALOG } from '@/lib/otherProducts';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_CONFIG.url.replace(/\/$/, '');
@@ -16,6 +17,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // All valid consumables product image URLs
   const allConsumablesImages = CONSUMABLES_CATALOG.filter((c) => c.image).map(
     (c) => `${baseUrl}${c.image}`
+  );
+
+  // All valid department suites image URLs
+  const allOtherImages = OTHER_PRODUCTS_CATALOG.filter((o) => o.image).map(
+    (o) => `${baseUrl}${o.image}`
   );
 
   // Core Static SEO Pages
@@ -46,7 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.95,
-      images: [`${baseUrl}/images/medwise-og.jpg`],
+      images: [`${baseUrl}/images/medwise-og.jpg`, ...allOtherImages],
     },
     {
       url: `${baseUrl}/services`,
@@ -116,13 +122,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'theatre',
     'maternity',
     'icu',
-  ].map((dept) => ({
-    url: `${baseUrl}/products/others?category=${dept}`,
-    lastModified: currentDate,
-    changeFrequency: 'daily',
-    priority: 0.9,
-    images: [`${baseUrl}/images/medwise-og.jpg`],
-  }));
+  ].map((dept) => {
+    const deptImage = OTHER_PRODUCTS_CATALOG.find((o) => o.category === dept)?.image;
+    const images = [`${baseUrl}/images/medwise-og.jpg`];
+    if (deptImage) images.push(`${baseUrl}${deptImage}`);
+
+    return {
+      url: `${baseUrl}/products/others?category=${dept}`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.9,
+      images,
+    };
+  });
 
   // Dynamic Blog & Clinical Insight Articles
   const posts = getAllPosts();

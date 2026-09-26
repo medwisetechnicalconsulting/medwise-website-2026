@@ -128,14 +128,14 @@ export default function OtherProductSpecModal({
         {/* Scrollable Content Body */}
         <div className="overflow-y-auto p-5 sm:p-7 space-y-6 flex-grow">
           {/* Top Banner: Image & Quick Overview */}
-          <div className="flex flex-col md:flex-row gap-6 items-center rounded-2xl bg-muted/50 border border-border p-5">
-            <div className="relative aspect-[4/3] w-full md:w-72 rounded-2xl overflow-hidden border border-border bg-white flex items-center justify-center shrink-0">
+          <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start rounded-2xl bg-muted/50 border border-border p-5">
+            <div className="relative aspect-square w-44 sm:w-56 h-44 sm:h-56 rounded-2xl overflow-hidden border border-border bg-white flex items-center justify-center p-3 shrink-0">
               {product.image && !imgError ? (
                 <img
                   src={product.image}
                   alt={product.name}
                   onError={() => setImgError(true)}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               ) : (
                 <div className="flex flex-col items-center justify-center text-center p-6">

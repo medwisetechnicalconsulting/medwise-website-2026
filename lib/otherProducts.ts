@@ -26,7 +26,7 @@ export const OTHER_PRODUCTS_CATALOG: OtherDepartmentProduct[] = [
     tagline: 'Complete hospital and clinic dental operatory: ergonomic dental chairs, silent compressors, digital imaging, and endodontic tools.',
     badge: 'Complete Operatory Suite',
     category: 'dental',
-    image: '/images/products/others/dental.jpg',
+    image: '/images/products/others/dental.webp',
     description:
       'Turnkey clinical dental operatory and oral surgery equipment package engineered for Kenyan county referral hospitals, private dental clinics, and specialized dental practices. Medwise provides brand-neutral procurement, medical oil-free compressor installation, radiation safety testing, and comprehensive biomedical engineering maintenance.',
     constituents: [
@@ -74,7 +74,7 @@ export const OTHER_PRODUCTS_CATALOG: OtherDepartmentProduct[] = [
     tagline: 'Turnkey surgical suite: anaesthesia workstations, 5 & 7 param monitors, surgical tables, theatre lights, and suction machines.',
     badge: 'Surgical Critical Suite',
     category: 'theatre',
-    image: '/images/products/others/theatre.jpg',
+    image: '/images/products/others/theatre.webp',
     description:
       'Comprehensive operating theatre equipment package engineered for minor and major surgical procedures in Kenyan public and private healthcare facilities. Includes advanced anaesthesia workstations with integrated mechanical ventilation, multi-parameter patient monitoring, multi-position operating tables, shadowless surgical LED dome lights, and high-vacuum suction machines.',
     constituents: [
@@ -121,7 +121,7 @@ export const OTHER_PRODUCTS_CATALOG: OtherDepartmentProduct[] = [
     tagline: 'Essential neonatal and maternal care: infant radiant baby warmers, baby incubators, resuscitaires, and phototherapy.',
     badge: 'Neonatal & Maternal Suite',
     category: 'maternity',
-    image: '/images/products/others/maternity.jpg',
+    image: '/images/products/others/maternity.webp',
     description:
       'Standardized maternal and neonatal intensive care equipment suite designed to empower maternity hospitals, Level 4/5 facilities, and specialized maternity wings across Kenya. Features microprocessor-controlled infant radiant warmers, double-wall baby incubators, complete resuscitation stations, and ergonomic obstetric delivery beds.',
     constituents: [
@@ -168,7 +168,7 @@ export const OTHER_PRODUCTS_CATALOG: OtherDepartmentProduct[] = [
     tagline: 'Advanced critical life support: ICU mechanical ventilators, modular patient monitors, infusion pumps, and electric beds.',
     badge: 'Critical Life Support Suite',
     category: 'icu',
-    image: '/images/products/others/icu.jpg',
+    image: '/images/products/others/icu.webp',
     description:
       'High-acuity intensive care unit (ICU) and High Dependency Unit (HDU) equipment suite designed for critical adult, pediatric, and neonatal patient management in Kenyan private and county referral hospitals. Encompasses invasive/non-invasive mechanical ventilation, multi-channel infusion therapy, hemodynamics, and 5-function ICU beds.',
     constituents: [

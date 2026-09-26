@@ -88,13 +88,13 @@ export default function OtherProductCard({ product, onOpenSpecs }: OtherProductC
         </div>
 
         {/* Product Visual Area */}
-        <div className="relative mb-4 flex h-48 sm:h-52 w-full items-center justify-center overflow-hidden rounded-2xl bg-muted/40 border border-border">
+        <div className="relative mb-4 flex h-48 sm:h-52 w-full items-center justify-center overflow-hidden rounded-2xl bg-white border border-border p-3">
           {product.image && !imgError ? (
             <img
               src={product.image}
               alt={product.name}
               onError={() => setImgError(true)}
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
             />
           ) : (
