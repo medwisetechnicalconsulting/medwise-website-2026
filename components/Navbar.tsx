@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Phone, MessageSquare, Menu, X, ChevronDown, Cpu, PackageCheck } from 'lucide-react';
+import { Phone, MessageSquare, Menu, X, ChevronDown, Cpu, PackageCheck, LayoutGrid } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 import MedwiseLogo from './MedwiseLogo';
 
@@ -50,7 +50,7 @@ export default function Navbar() {
             </Link>
 
             {productsDropdown && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 rounded-2xl border border-[hsl(var(--border))] bg-white p-2.5 shadow-[0_16px_48px_rgba(0,0,0,0.08)] z-50">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 rounded-2xl border border-[hsl(var(--border))] bg-white p-2.5 shadow-[0_16px_48px_rgba(0,0,0,0.08)] z-50">
                 <Link
                   href="/products"
                   className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors"
@@ -84,6 +84,33 @@ export default function Navbar() {
                     <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">Vacutainers, Rapid Test Kits &amp; Stains</div>
                   </div>
                 </Link>
+
+                <div className="border-t border-[hsl(var(--border))] my-1.5 pt-1.5">
+                  <Link
+                    href="/products/others"
+                    className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors"
+                    onClick={() => setProductsDropdown(false)}
+                  >
+                    <div className="w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <LayoutGrid className="w-4 h-4" />
+                    </div>
+                    <div className="w-full">
+                      <div className="text-xs font-bold text-[hsl(var(--foreground))] flex items-center justify-between">
+                        <span>3. Others</span>
+                        <span className="rounded-full bg-emerald-100 text-emerald-900 px-2 py-0.5 text-[9px] font-bold">4 Suites</span>
+                      </div>
+                      <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug mt-0.5">
+                        Dental, Theatre, Maternity (NBU) &amp; ICU
+                      </div>
+                      <div className="grid grid-cols-2 gap-1 mt-2 text-[10px] text-slate-700">
+                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Dental</span>
+                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Theatre</span>
+                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Maternity (NBU)</span>
+                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; ICU</span>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               </div>
             )}
           </div>
@@ -180,6 +207,21 @@ export default function Navbar() {
                   <span className="font-semibold text-[hsl(var(--foreground))]">2. Consumables and reagents</span>
                   <span className="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-bold">
                     38+ Items
+                  </span>
+                </Link>
+                <Link
+                  href="/products/others"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-1.5 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between text-sm"
+                >
+                  <div>
+                    <span className="font-semibold text-[hsl(var(--foreground))] block">3. Others</span>
+                    <span className="text-[11px] text-[hsl(var(--muted-foreground))] font-normal">
+                      Dental &middot; Theatre &middot; Maternity (NBU) &middot; ICU
+                    </span>
+                  </div>
+                  <span className="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full font-bold shrink-0">
+                    4 Suites
                   </span>
                 </Link>
               </div>

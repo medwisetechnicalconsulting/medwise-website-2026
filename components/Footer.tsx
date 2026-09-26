@@ -122,6 +122,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/products/others" className="hover:text-[hsl(var(--primary))] transition-colors font-medium">
+                  3. Others (Dental, Theatre, Maternity, ICU)
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="hover:text-[hsl(var(--primary))] transition-colors">
                   About Medwise
                 </Link>
