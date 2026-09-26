@@ -42,6 +42,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       images: [`${baseUrl}/images/medwise-og.jpg`, ...allConsumablesImages],
     },
     {
+      url: `${baseUrl}/products/others`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+      images: [`${baseUrl}/images/medwise-og.jpg`],
+    },
+    {
       url: `${baseUrl}/services`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
@@ -103,6 +110,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
+  // Specialized Department Suites (Others) SEO Pages
+  const otherDepartmentPages: MetadataRoute.Sitemap = [
+    'dental',
+    'theatre',
+    'maternity',
+    'icu',
+  ].map((dept) => ({
+    url: `${baseUrl}/products/others?category=${dept}`,
+    lastModified: currentDate,
+    changeFrequency: 'daily',
+    priority: 0.9,
+    images: [`${baseUrl}/images/medwise-og.jpg`],
+  }));
+
   // Dynamic Blog & Clinical Insight Articles
   const posts = getAllPosts();
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => {
@@ -125,6 +146,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPages,
     ...machineryCategoryPages,
     ...consumablesCategoryPages,
+    ...otherDepartmentPages,
     ...blogPages,
   ];
 }

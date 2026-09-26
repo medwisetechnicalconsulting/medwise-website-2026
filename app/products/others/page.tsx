@@ -5,15 +5,11 @@ import {
   Truck,
   Phone,
   MessageSquare,
-  HelpCircle,
   Wrench,
   Cpu,
   PackageCheck,
   Layers,
-  Sparkles,
-  Stethoscope,
-  Baby,
-  HeartPulse,
+  HelpCircle,
 } from 'lucide-react';
 import OtherProductsCatalogClient from '@/components/OtherProductsCatalogClient';
 import { SITE_CONFIG, getBreadcrumbSchema, getFaqSchema } from '@/lib/seo/schema';
@@ -147,7 +143,7 @@ export default function OthersProductsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
       />
 
-      {/* Header & Breadcrumbs Section */}
+      {/* Header & Breadcrumbs Section - Exactly matches consumables & equipment design */}
       <header className="bg-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b border-border">
         <div className="mx-auto max-w-[1200px]">
           {/* Breadcrumbs Navigation */}
@@ -167,7 +163,7 @@ export default function OthersProductsPage() {
             <div className="max-w-3xl space-y-4">
               <div className="chip-label inline-flex items-center gap-2">
                 <Layers className="h-3.5 w-3.5 text-primary shrink-0" />
-                <span>Hospital Clinical Department Suites Kenya</span>
+                <span>Specialized Hospital Department Suites Kenya</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.15]">
@@ -179,8 +175,8 @@ export default function OthersProductsPage() {
               </p>
             </div>
 
-            {/* Quick Navigation Between Product Catalogs */}
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            {/* Cross-catalog Navigation Links */}
+            <div className="flex flex-wrap gap-2.5 shrink-0">
               <Link
                 href="/products"
                 className="btn-pill-secondary inline-flex items-center gap-2 shadow-xs text-xs font-semibold"
@@ -199,157 +195,118 @@ export default function OthersProductsPage() {
             </div>
           </div>
 
-          {/* Department Quick Jump Cards */}
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-border">
-            <a
-              href="#dental"
-              className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 border border-border hover:border-blue-500 hover:bg-blue-50/50 transition-all group"
-            >
-              <div className="w-9 h-9 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
-                <Sparkles className="h-4 w-4" />
+          {/* Trust Highlights Grid - Exactly matches consumables & equipments */}
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-border">
+            <div className="flex items-center gap-3 rounded-2xl bg-muted/60 p-4 border border-border">
+              <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                <ShieldCheck className="h-5 w-5" />
               </div>
-              <div>
-                <span className="font-bold text-xs sm:text-sm text-foreground block group-hover:text-blue-700">
-                  Dental Suite
-                </span>
-                <span className="text-[10px] text-muted-foreground">Chairs, X-Ray, Lightcure</span>
-              </div>
-            </a>
+              <span className="font-semibold text-foreground text-sm">
+                1-Year Full Warranty &amp; Certified Calibration
+              </span>
+            </div>
 
-            <a
-              href="#theatre"
-              className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 border border-border hover:border-indigo-500 hover:bg-indigo-50/50 transition-all group"
-            >
-              <div className="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
-                <Stethoscope className="h-4 w-4" />
+            <div className="flex items-center gap-3 rounded-2xl bg-muted/60 p-4 border border-border">
+              <div className="w-10 h-10 rounded-full bg-primary-light text-primary flex items-center justify-center shrink-0">
+                <Truck className="h-5 w-5" />
               </div>
-              <div>
-                <span className="font-bold text-xs sm:text-sm text-foreground block group-hover:text-indigo-700">
-                  Theatre Suite
-                </span>
-                <span className="text-[10px] text-muted-foreground">Anaesthesia, Tables, Lights</span>
-              </div>
-            </a>
+              <span className="font-semibold text-foreground text-sm">
+                Rapid Dispatch Across All 47 Counties
+              </span>
+            </div>
 
-            <a
-              href="#maternity"
-              className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 border border-border hover:border-pink-500 hover:bg-pink-50/50 transition-all group"
-            >
-              <div className="w-9 h-9 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center shrink-0">
-                <Baby className="h-4 w-4" />
+            <div className="flex items-center gap-3 rounded-2xl bg-muted/60 p-4 border border-border">
+              <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                <Wrench className="h-5 w-5" />
               </div>
-              <div>
-                <span className="font-bold text-xs sm:text-sm text-foreground block group-hover:text-pink-700">
-                  Maternity &amp; NBU
-                </span>
-                <span className="text-[10px] text-muted-foreground">Warmers, Incubators, Resuscitaire</span>
-              </div>
-            </a>
-
-            <a
-              href="#icu"
-              className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 border border-border hover:border-red-500 hover:bg-red-50/50 transition-all group"
-            >
-              <div className="w-9 h-9 rounded-full bg-red-100 text-red-700 flex items-center justify-center shrink-0">
-                <HeartPulse className="h-4 w-4" />
-              </div>
-              <div>
-                <span className="font-bold text-xs sm:text-sm text-foreground block group-hover:text-red-700">
-                  ICU Suite
-                </span>
-                <span className="text-[10px] text-muted-foreground">Ventilators, Monitors, Beds</span>
-              </div>
-            </a>
+              <span className="font-semibold text-foreground text-sm">
+                Onsite Biomedical Installation &amp; Staff Training
+              </span>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Main Interactive Catalog Section */}
-      <main className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-[1200px]">
-          <OtherProductsCatalogClient />
-        </div>
-      </main>
+      {/* Main Catalog Section */}
+      <section aria-label="Department Suites Catalog" className="mx-auto max-w-[1200px] px-4 py-10 sm:py-14 sm:px-6 lg:px-8 space-y-10">
+        <OtherProductsCatalogClient />
+      </section>
 
-      {/* Trust & Guarantee Banner */}
-      <section className="bg-white border-y border-border py-12 px-4 sm:px-6 lg:px-8">
+      {/* Equipment vs Department Gateway Callout (Matches Consumables Design) */}
+      <section className="border-t border-border bg-muted/40 py-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-[1200px]">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[hsl(var(--primary))] flex items-center justify-center shrink-0 border border-blue-100">
-                <ShieldCheck className="w-6 h-6" />
+          <div className="rounded-3xl bg-white border border-border p-8 sm:p-10 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-3 text-center md:text-left max-w-2xl">
+              <div className="chip-label inline-flex items-center gap-1.5">
+                <Cpu className="h-3.5 w-3.5 text-primary" />
+                <span>Diagnostic Equipment &amp; Machinery</span>
               </div>
-              <div>
-                <h4 className="font-bold text-base text-foreground">1-Year Warranty &amp; Calibration</h4>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  Every machine includes 12 months full warranty, electrical safety verification, and certified metrological calibration certificates.
-                </p>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-foreground">
+                Looking for Laboratory Diagnostic Machinery or Reagents?
+              </h3>
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                Explore our full diagnostic machinery catalog featuring 3-part &amp; 5-part hematology machines, clinical chemistry platforms, Olympus microscopes, or browse 38+ laboratory consumables and rapid test kits.
+              </p>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
-                <Wrench className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-base text-foreground">Biomedical Installation &amp; Training</h4>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  Our certified in-house biomedical engineers deliver, assemble, calibrate, and train your clinical team on equipment operation and maintenance.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 border border-purple-100">
-                <Truck className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-base text-foreground">Nationwide Field Dispatch</h4>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  Rapid transport from our Kisumu Kakamega Road HQ and Nairobi Field Hub directly to your hospital or clinic across all 47 Kenyan counties.
-                </p>
-              </div>
+            <div className="flex flex-wrap gap-3 shrink-0">
+              <Link
+                href="/products"
+                className="btn-pill-primary inline-flex items-center gap-2 shadow-xs text-xs font-semibold px-5 py-3"
+              >
+                <Cpu className="h-4 w-4" />
+                <span>Machinery Catalog</span>
+              </Link>
+              <Link
+                href="/products/consumables"
+                className="btn-pill-secondary inline-flex items-center gap-2 shadow-xs text-xs font-semibold px-5 py-3"
+              >
+                <PackageCheck className="h-4 w-4 text-amber-600" />
+                <span>Consumables &amp; Reagents</span>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Frequently Asked Questions Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50">
-        <div className="mx-auto max-w-4xl">
-          <div className="text-center mb-12">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 border-t border-border">
+        <div className="mx-auto max-w-4xl space-y-10">
+          <div className="text-center space-y-2">
             <span className="font-semibold text-xs tracking-[0.2em] uppercase text-primary block mb-2">
               EQUIPMENT SOURCING FAQS
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">
               Frequently Asked Questions on Department Suites
             </h2>
-            <p className="text-sm text-muted-foreground mt-2 max-w-xl mx-auto">
+            <p className="text-sm text-slate-500 max-w-xl mx-auto">
               Clear answers regarding clinical equipment sourcing, facility bill of quantities (BOQ), warranties, and engineering installation in Kenya.
             </p>
           </div>
 
           <div className="space-y-4">
             {othersFaqs.map((faq, idx) => (
-              <div
+              <article
                 key={idx}
                 className="rounded-2xl border border-border bg-white p-6 shadow-2xs hover:shadow-xs transition-shadow"
               >
                 <div className="flex items-start gap-3">
-                  <HelpCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span className="w-6 h-6 rounded-full bg-primary-light text-primary text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                    Q
+                  </span>
                   <div>
                     <h3 className="font-bold text-base text-foreground">{faq.question}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed font-normal">
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed font-normal">
                       {faq.answer}
                     </p>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 
-          {/* Inquire CTA Box */}
-          <div className="mt-12 rounded-3xl bg-[hsl(var(--primary))] text-white p-8 text-center space-y-4 shadow-xl">
+          {/* Inquire CTA Box - Matching Medwise Banner */}
+          <div className="rounded-3xl bg-primary text-white p-8 sm:p-10 text-center space-y-4 shadow-xl">
             <h3 className="text-xl sm:text-2xl font-bold">
               Setting Up or Upgrading a Clinical Department in Kenya?
             </h3>
@@ -361,7 +318,7 @@ export default function OthersProductsPage() {
                 href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20request%20a%20quotation%20for%20hospital%20department%20equipment.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-11 px-6 rounded-full bg-white text-[hsl(var(--primary))] font-bold text-xs inline-flex items-center gap-2 hover:bg-blue-50 transition-colors shadow-xs"
+                className="h-11 px-6 rounded-full bg-white text-primary font-bold text-xs inline-flex items-center gap-2 hover:bg-blue-50 transition-colors shadow-xs"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-600" />
                 <span>Chat with Biomedical Engineer via WhatsApp</span>

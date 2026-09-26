@@ -1,96 +1,175 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { Search, X, Sparkles, Stethoscope, Baby, HeartPulse, Layers } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import {
+  Search,
+  X,
+  Stethoscope,
+  Baby,
+  HeartPulse,
+  Activity,
+  Layers,
+} from 'lucide-react';
 import { OtherDepartmentProduct, OTHER_PRODUCTS_CATALOG } from '@/lib/otherProducts';
 import OtherProductCard from './OtherProductCard';
 import OtherProductSpecModal from './OtherProductSpecModal';
 
 export default function OtherProductsCatalogClient() {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<OtherDepartmentProduct | null>(null);
 
+  // Synchronize hash anchor on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const id = window.location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          element.classList.add('ring-2', 'ring-primary');
+          setTimeout(() => {
+            element.classList.remove('ring-2', 'ring-primary');
+          }, 2500);
+        }, 400);
+      }
+    }
+  }, []);
+
   const categories = [
-    { id: 'all', label: 'All Departments (4)', icon: Layers },
-    { id: 'dental', label: 'Dental', icon: Sparkles },
-    { id: 'theatre', label: 'Theatre', icon: Stethoscope },
-    { id: 'maternity', label: 'Maternity (Newborn Unit)', icon: Baby },
-    { id: 'icu', label: 'ICU', icon: HeartPulse },
+    { id: 'all', label: 'All Suites', count: 4, icon: Layers },
+    { id: 'dental', label: 'Dental', count: 1, icon: Activity },
+    { id: 'theatre', label: 'Theatre (OT)', count: 1, icon: Stethoscope },
+    { id: 'maternity', label: 'Maternity & NBU', count: 1, icon: Baby },
+    { id: 'icu', label: 'ICU Critical Care', count: 1, icon: HeartPulse },
   ];
 
   const filteredProducts = useMemo(() => {
     return OTHER_PRODUCTS_CATALOG.filter((item) => {
       // Category filter
-      const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
+      if (selectedCategory !== 'all' && item.category !== selectedCategory) {
+        return false;
+      }
 
       // Search filter across name, department, tagline, description, and constituents
-      const query = searchQuery.toLowerCase().trim();
-      if (!query) return matchesCategory;
+      if (searchQuery.trim() !== '') {
+        const query = searchQuery.toLowerCase().trim();
+        const matchName = item.name.toLowerCase().includes(query);
+        const matchDept = item.department.toLowerCase().includes(query);
+        const matchTagline = item.tagline.toLowerCase().includes(query);
+        const matchDesc = item.description.toLowerCase().includes(query);
+        const matchConstituent = item.constituents.some((c) =>
+          c.toLowerCase().includes(query)
+        );
+        const matchHighlight = item.highlights.some((h) =>
+          h.toLowerCase().includes(query)
+        );
+        const matchSpec = item.keySpecs.some(
+          (s) =>
+            s.label.toLowerCase().includes(query) ||
+            s.value.toLowerCase().includes(query)
+        );
 
-      const matchesQuery =
-        item.name.toLowerCase().includes(query) ||
-        item.department.toLowerCase().includes(query) ||
-        item.tagline.toLowerCase().includes(query) ||
-        item.description.toLowerCase().includes(query) ||
-        item.constituents.some((c) => c.toLowerCase().includes(query)) ||
-        item.highlights.some((h) => h.toLowerCase().includes(query));
+        if (
+          !matchName &&
+          !matchDept &&
+          !matchTagline &&
+          !matchDesc &&
+          !matchConstituent &&
+          !matchHighlight &&
+          !matchSpec
+        ) {
+          return false;
+        }
+      }
 
-      return matchesCategory && matchesQuery;
+      return true;
     });
-  }, [activeCategory, searchQuery]);
+  }, [selectedCategory, searchQuery]);
+
+  const isFiltering = selectedCategory !== 'all' || searchQuery.trim() !== '';
+
+  const resetAllFilters = () => {
+    setSelectedCategory('all');
+    setSearchQuery('');
+  };
 
   return (
-    <div>
-      {/* Search and Category Filter Navigation */}
-      <div className="mb-10 space-y-6">
-        {/* Search Input Bar */}
-        <div className="relative max-w-xl mx-auto">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[hsl(var(--muted-foreground))]" />
+    <div className="space-y-8">
+      {/* Search Bar & Counter Header (Matches Consumables & Equipment Pattern) */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-2xl bg-white p-4 sm:p-5 border border-border shadow-xs">
+        {/* Search Input */}
+        <div className="relative flex-1 max-w-xl">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search equipment (e.g., dental chair, anaesthesia, baby incubator, ICU ventilator, suction)..."
-            className="w-full h-12 pl-11 pr-10 rounded-full border border-[hsl(var(--border))] bg-white text-sm text-[hsl(var(--foreground))] placeholder:text-[hsl(var(--muted-foreground))] focus:outline-hidden focus:ring-2 focus:ring-[hsl(var(--primary))] shadow-2xs transition-all"
+            placeholder="Search equipment (e.g. dental chair, anaesthesia, baby incubator, ICU ventilator, suction)..."
+            className="w-full rounded-full border border-border bg-muted/40 py-3 pl-11 pr-10 text-sm text-foreground placeholder:text-slate-400 focus:border-primary focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-primary-light transition-all"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              aria-label="Clear search query"
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] rounded-full hover:bg-[hsl(var(--muted))] transition-colors"
+              aria-label="Clear search"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-foreground"
             >
-              <X className="w-4 h-4" />
+              <X className="h-4 w-4" />
             </button>
           )}
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          {categories.map((cat) => {
-            const Icon = cat.icon;
-            const isActive = activeCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold transition-all cursor-pointer ${
-                  isActive
-                    ? 'bg-[hsl(var(--primary))] text-white shadow-xs'
-                    : 'bg-white text-[hsl(var(--muted-foreground))] border border-[hsl(var(--border))] hover:border-[hsl(var(--foreground))] hover:text-[hsl(var(--foreground))]'
+        {/* Counter & Reset Filter */}
+        <div className="flex items-center justify-between md:justify-end gap-3 text-xs">
+          <span className="font-semibold text-slate-500">
+            Showing <strong className="text-foreground font-extrabold">{filteredProducts.length}</strong> of{' '}
+            {OTHER_PRODUCTS_CATALOG.length} department suites
+          </span>
+
+          {isFiltering && (
+            <button
+              onClick={resetAllFilters}
+              className="font-bold text-primary hover:text-primary-hover hover:underline inline-flex items-center gap-1 cursor-pointer"
+            >
+              <X className="h-3 w-3" />
+              <span>Reset Filters</span>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Category Filter Tabs */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        {categories.map((cat) => {
+          const Icon = cat.icon;
+          const isActive = selectedCategory === cat.id;
+          return (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-xs font-semibold transition-all inline-flex items-center gap-2 border cursor-pointer ${
+                isActive
+                  ? 'bg-primary text-white border-primary shadow-xs'
+                  : 'bg-white text-slate-700 border-border hover:bg-slate-50'
+              }`}
+            >
+              <Icon className="h-4 w-4" />
+              <span>{cat.label}</span>
+              <span
+                className={`rounded-full px-1.5 py-0.5 text-[10px] ${
+                  isActive ? 'bg-white/20 text-white' : 'bg-muted text-slate-500'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-slate-500'}`} />
-                <span>{cat.label}</span>
-              </button>
-            );
-          })}
-        </div>
+                {cat.count}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Product Cards Grid */}
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredProducts.map((product) => (
             <OtherProductCard
               key={product.id}
@@ -100,19 +179,16 @@ export default function OtherProductsCatalogClient() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 px-4 rounded-3xl border border-dashed border-[hsl(var(--border))] bg-slate-50/50">
-          <p className="text-base font-semibold text-[hsl(var(--foreground))]">
+        <div className="text-center py-16 px-4 rounded-3xl border border-dashed border-border bg-muted/30">
+          <p className="text-base font-semibold text-foreground">
             No equipment suites match your search &ldquo;{searchQuery}&rdquo;.
           </p>
-          <p className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Try searching for another piece of equipment or reset your filter.
           </p>
           <button
-            onClick={() => {
-              setSearchQuery('');
-              setActiveCategory('all');
-            }}
-            className="mt-4 btn-pill-secondary h-9 px-4 text-xs font-semibold"
+            onClick={resetAllFilters}
+            className="mt-4 btn-pill-secondary h-9 px-4 text-xs font-semibold cursor-pointer"
           >
             Reset Filters
           </button>
