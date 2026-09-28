@@ -7,6 +7,7 @@ const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 export interface BlogPostMeta {
   slug: string;
   title: string;
+  seoTitle?: string;
   metaDescription: string;
   targetKeyword: string;
   date: string;
@@ -41,6 +42,7 @@ export function getAllPosts(): BlogPostMeta[] {
       return {
         slug,
         title: data.title || slug,
+        seoTitle: data.seoTitle,
         metaDescription: data.metaDescription || data.description || '',
         targetKeyword: data.targetKeyword || '',
         date: data.date ? new Date(data.date).toISOString().split('T')[0] : '2026-01-01',
@@ -73,6 +75,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     return {
       slug,
       title: data.title || slug,
+      seoTitle: data.seoTitle,
       metaDescription: data.metaDescription || data.description || '',
       targetKeyword: data.targetKeyword || '',
       date: data.date ? new Date(data.date).toISOString().split('T')[0] : '2026-01-01',

@@ -158,8 +158,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       : `${SITE_CONFIG.url}${post.image}`
     : `${SITE_CONFIG.url}${SITE_CONFIG.ogImage}`;
 
+  const pageTitle = post.seoTitle || post.title;
+
   return {
-    title: post.title,
+    title: pageTitle,
     description: post.metaDescription,
     keywords: [post.targetKeyword, 'medical equipment Kenya', 'Medwise Technical Consulting'],
     authors: [{ name: post.author || SITE_CONFIG.name }],
@@ -167,7 +169,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical: `/blog/${post.slug}`,
     },
     openGraph: {
-      title: post.title,
+      title: pageTitle,
       description: post.metaDescription,
       type: 'article',
       url: `${SITE_CONFIG.url}/blog/${post.slug}`,
@@ -184,7 +186,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: pageTitle,
       description: post.metaDescription,
       images: [imageUrl],
     },
