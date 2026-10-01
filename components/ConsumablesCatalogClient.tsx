@@ -27,22 +27,52 @@ export default function ConsumablesCatalogClient() {
   const [selectedCategory, setSelectedCategory] = useState<ConsumableCategory | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Synchronize hash anchor on mount
+  // Synchronize URL parameters and hash anchor on mount
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.location.hash) {
-      const id = window.location.hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          element.classList.add('ring-2', 'ring-blue-500');
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const catParam = params.get('category');
+      if (
+        catParam &&
+        ['diagnostic-kits', 'collection-phlebotomy', 'microscopy-staining', 'plasticware-general', 'safety-waste'].includes(
+          catParam
+        )
+      ) {
+        setSelectedCategory(catParam as ConsumableCategory);
+      }
+      const qParam = params.get('q');
+      if (qParam) {
+        setSearchQuery(qParam);
+      }
+
+      if (window.location.hash) {
+        const id = window.location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
           setTimeout(() => {
-            element.classList.remove('ring-2', 'ring-blue-500');
-          }, 2500);
-        }, 400);
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            element.classList.add('ring-2', 'ring-blue-500');
+            setTimeout(() => {
+              element.classList.remove('ring-2', 'ring-blue-500');
+            }, 2500);
+          }, 400);
+        }
       }
     }
   }, []);
+
+  const handleCategoryChange = (cat: ConsumableCategory | 'all') => {
+    setSelectedCategory(cat);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      if (cat === 'all') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', cat);
+      }
+      window.history.replaceState({}, '', url.toString());
+    }
+  };
 
   const filteredItems = useMemo(() => {
     return CONSUMABLES_CATALOG.filter((item) => {
@@ -77,6 +107,12 @@ export default function ConsumablesCatalogClient() {
   const resetAllFilters = () => {
     setSelectedCategory('all');
     setSearchQuery('');
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('category');
+      url.searchParams.delete('q');
+      window.history.replaceState({}, '', url.toString());
+    }
   };
 
   const getCategoryIcon = (catId: ConsumableCategory | 'all') => {
@@ -152,7 +188,7 @@ export default function ConsumablesCatalogClient() {
             return (
               <button
                 key={cat.id}
-                onClick={() => setSelectedCategory(cat.id as ConsumableCategory | 'all')}
+                onClick={() => handleCategoryChange(cat.id as ConsumableCategory | 'all')}
                 className={`shrink-0 min-h-[44px] inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-150 cursor-pointer ${
                   isSelected
                     ? 'bg-primary text-white shadow-xs'

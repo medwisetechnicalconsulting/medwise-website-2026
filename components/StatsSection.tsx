@@ -19,15 +19,24 @@ const STATS: StatItem[] = [
 export default function StatsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
-  const [counts, setCounts] = useState<number[]>(STATS.map(() => 0));
+  // Default to target values so server-rendered HTML, crawlers, and non-animated states never display zero
+  const [counts, setCounts] = useState<number[]>(STATS.map((s) => s.target));
 
   useEffect(() => {
+    if (hasAnimated) return;
+
+    // Honor prefers-reduced-motion
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setHasAnimated(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
 
-          const duration = 1600; // 1600ms as specified
+          const duration = 1600; // 1600ms count-up
           const startTime = performance.now();
 
           const animate = (currentTime: number) => {
@@ -48,7 +57,7 @@ export default function StatsSection() {
           requestAnimationFrame(animate);
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0.1, rootMargin: '50px' }
     );
 
     if (sectionRef.current) {

@@ -200,10 +200,65 @@ export default function GallerySection() {
         },
       ],
     },
+
+    // 5. Polani Medical Centre
+    {
+      id: 'polani',
+      facility: 'Polani Medical Centre',
+      location: 'Kaloleni, Kilifi County, Kenya',
+      equipment: 'Dymind DF 52 5-Part Hematology, Seamaty SD1 & Olympus CX23 Microscope',
+      service: 'Installation & User Training',
+      category: 'installation training',
+      dateRange: '24 September 2026',
+      description:
+        'Installation and user training at Polani Medical Centre in Kaloleni, Kilifi County, covering 5-part hematology analyzer, dry clinical chemistry, and laboratory microscopy.',
+      photos: [
+        {
+          id: 'polani-1',
+          image: '/images/gallery/polani-1.jpeg',
+          title: 'Polani Medical Centre Entrance & Facility',
+          caption:
+            'Exterior facility entrance and SHA-accredited medical center in Kaloleni, Kilifi County.',
+          alt: 'Polani Medical Centre facility entrance in Kaloleni Kilifi County',
+        },
+        {
+          id: 'polani-2',
+          image: '/images/gallery/polani-2.jpeg',
+          title: 'Complete Laboratory Analyzer Bench Installation',
+          caption:
+            'Full diagnostic setup including Dymind DF 52 5-part hematology analyzer, Seamaty SD1 dry chemistry analyzer, and clinical centrifuge.',
+          alt: 'Dymind DF 52 and Seamaty SD1 laboratory installation at Polani Medical Centre Kaloleni Kilifi',
+        },
+        {
+          id: 'polani-3',
+          image: '/images/gallery/polani-3.jpeg',
+          title: 'Diagnostic Laboratory Suite & Microscopy Setup',
+          caption:
+            'Diagnostic testing suite workbench featuring Olympus CX23 clinical microscope, Dymind DF 52, and Seamaty SD1.',
+          alt: 'Laboratory diagnostic workbench with Olympus CX23 microscope at Polani Medical Centre',
+        },
+        {
+          id: 'polani-4',
+          image: '/images/gallery/polani-4.jpeg',
+          title: 'Clinical Facility Consultation & Outpatient Unit',
+          caption:
+            'Polani Medical Centre outpatient building and clinic reception in Kaloleni, Kilifi County.',
+          alt: 'Polani Medical Centre outpatient clinic building in Kaloleni Kilifi County',
+        },
+        {
+          id: 'polani-5',
+          image: '/images/gallery/polani-5.jpeg',
+          title: 'Analyzer Calibration & Staff Training Workflow',
+          caption:
+            'Dymind DF 52 5-part hematology analyzer parameter verification, quality control, and clinical staff training.',
+          alt: 'Dymind DF 52 hematology analyzer calibration and staff training at Polani Medical Centre Kilifi',
+        },
+      ],
+    },
   ];
 
   const categories = [
-    { id: 'all', label: 'All Facilities (4)' },
+    { id: 'all', label: `All Facilities (${facilityProjects.length})` },
     { id: 'installation', label: 'Installation' },
     { id: 'maintenance', label: 'Maintenance & Service' },
     { id: 'calibration', label: 'Calibration & QC' },
