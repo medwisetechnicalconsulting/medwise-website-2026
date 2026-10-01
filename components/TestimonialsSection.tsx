@@ -66,6 +66,18 @@ export default function TestimonialsSection() {
       initials: 'FN',
       bgGradient: 'from-purple-600 to-indigo-600',
     },
+    {
+      quote:
+        'Medwise executed the seamless installation and comprehensive user training for our Dymind DF 52 5-part hematology analyzer, Seamaty SD1 dry chemistry analyzer, and Olympus CX23 microscope at Polani Medical Centre in Kaloleni. Their engineers took our lab staff step-by-step through daily QC calibration and system handling. Our diagnostic services are running with complete accuracy.',
+      name: 'Dr. Juma M.',
+      role: 'Medical Director',
+      facility: 'Polani Medical Centre',
+      location: 'Kaloleni, Kilifi County, Kenya',
+      equipment: 'Dymind DF 52 5-Part Hematology, Seamaty SD1 & Olympus CX23',
+      rating: 5.0,
+      initials: 'JM',
+      bgGradient: 'from-teal-600 to-cyan-600',
+    },
   ];
 
   const reviewsSchema = {
@@ -149,12 +161,14 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* 4 Synchronized Fieldwork Review Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Synchronized Fieldwork Review Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.map((rev, idx) => (
             <div
               key={idx}
-              className="bg-[hsl(var(--muted))] rounded-3xl p-7 sm:p-8 border border-[hsl(var(--border))] flex flex-col justify-between hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300"
+              className={`bg-[hsl(var(--muted))] rounded-3xl p-7 sm:p-8 border border-[hsl(var(--border))] flex flex-col justify-between hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300 ${
+                idx === reviews.length - 1 && reviews.length % 2 !== 0 ? 'md:col-span-2 lg:col-span-1' : ''
+              }`}
             >
               <div>
                 {/* Top Row: Google Rating */}
