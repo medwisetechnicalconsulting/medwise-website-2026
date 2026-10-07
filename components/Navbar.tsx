@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Phone, MessageSquare, Menu, X, ChevronDown, Cpu, PackageCheck, LayoutGrid } from 'lucide-react';
+import { Phone, MessageSquare, Menu, X, ChevronDown, Cpu, PackageCheck, LayoutGrid, Wrench } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/seo/schema';
 import MedwiseLogo from './MedwiseLogo';
 
@@ -85,7 +85,7 @@ export default function Navbar() {
                   </div>
                 </Link>
 
-                <div className="border-t border-[hsl(var(--border))] my-1.5 pt-1.5">
+                <div className="border-t border-[hsl(var(--border))] my-1.5 pt-1.5 space-y-1">
                   <Link
                     href="/products/others"
                     className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors"
@@ -107,6 +107,25 @@ export default function Navbar() {
                         <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Theatre</span>
                         <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Maternity (NBU)</span>
                         <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; ICU</span>
+                      </div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/products/spare-parts"
+                    className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors"
+                    onClick={() => setProductsDropdown(false)}
+                  >
+                    <div className="w-9 h-9 rounded-full bg-indigo-50 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <Wrench className="w-4 h-4" />
+                    </div>
+                    <div className="w-full">
+                      <div className="text-xs font-bold text-[hsl(var(--foreground))] flex items-center justify-between">
+                        <span>4. Spare Parts &amp; Accessories</span>
+                        <span className="rounded-full bg-indigo-100 text-indigo-900 px-2 py-0.5 text-[9px] font-bold">New</span>
+                      </div>
+                      <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug mt-0.5">
+                        Valves, Pumps, Probes, Gaskets &amp; Stands
                       </div>
                     </div>
                   </Link>
@@ -222,6 +241,21 @@ export default function Navbar() {
                   </div>
                   <span className="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full font-bold shrink-0">
                     4 Suites
+                  </span>
+                </Link>
+                <Link
+                  href="/products/spare-parts"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-1.5 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between text-sm"
+                >
+                  <div>
+                    <span className="font-semibold text-[hsl(var(--foreground))] block">4. Spare Parts &amp; Accessories</span>
+                    <span className="text-[11px] text-[hsl(var(--muted-foreground))] font-normal">
+                      Valves &middot; Pumps &middot; Probes &middot; Gaskets
+                    </span>
+                  </div>
+                  <span className="text-[10px] bg-indigo-100 text-indigo-900 px-2 py-0.5 rounded-full font-bold shrink-0">
+                    New
                   </span>
                 </Link>
               </div>
