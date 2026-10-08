@@ -26,7 +26,7 @@ export const SERVICES_DATA: Record<string, ServiceItem> = {
     seoTitle: 'Medical Equipment Installation & User Training in Kenya | Medwise Technical Consulting',
     metaDescription: 'Professional medical equipment installation, site assessment, commissioning, user training and SOP support for healthcare facilities in Kenya.',
     shortDescription: 'From site assessment and preparation to equipment installation, commissioning and user training, Medwise Technical Consulting helps healthcare facilities ensure their equipment is correctly installed, safe, functional and ready for use.',
-    image: '/images/products/patient-monitor-probes-stands.jpg',
+    image: '/images/services/installation-user-training.jpg',
     imageAlt: 'Biomedical engineer conducting medical equipment installation and functional checks in a Kenyan clinic',
     iconName: 'Wrench',
     intro: 'Medwise Technical Consulting provides professional installation and commissioning support for medical and healthcare equipment across Kenya. We assess the installation environment, help ensure site readiness, install and set up equipment, conduct functional checks, and train operational teams on correct use and care.',
