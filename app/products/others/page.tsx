@@ -1,340 +1,230 @@
-import type { Metadata } from 'next';
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
-import {
-  ShieldCheck,
-  Truck,
-  Phone,
-  MessageSquare,
-  Wrench,
-  Cpu,
-  PackageCheck,
-  Layers,
-  HelpCircle,
-} from 'lucide-react';
-import OtherProductsCatalogClient from '@/components/OtherProductsCatalogClient';
-import { SITE_CONFIG, getBreadcrumbSchema, getFaqSchema } from '@/lib/seo/schema';
-import { OTHER_PRODUCTS_CATALOG } from '@/lib/otherProducts';
+import { Search, X, ChevronRight, ArrowRight } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Specialized Hospital Equipment: Dental, Theatre, Maternity & ICU Kenya | Medwise',
-  description:
-    'Turnkey clinical department equipment in Kenya: Dental chairs & compressors, Operating Theatre anaesthesia machines, surgical tables & lights, Maternity baby warmers & incubators, and ICU ventilators & multi-parameter monitors with certified installation, calibration, and warranty.',
-  keywords: [
-    'dental equipment Kenya',
-    'dental chairs with compressors price Kenya',
-    'light cure machine Kenya',
-    'dental X-ray machine Kenya',
-    'operating theatre equipment Kenya',
-    'anaesthesia machine price Kenya',
-    'surgical theatre lights Kenya',
-    'operating table hydraulic electric Kenya',
-    'suction machine double bottle Kenya',
-    'infant radiant baby warmer price Kenya',
-    'baby incubator price Kenya',
-    'neonatal resuscitaire Kenya',
-    'ICU mechanical ventilator price Kenya',
-    'patient monitor 5 and 7 parameter Kenya',
-    'medical equipment supplier Kisumu Nairobi',
-    'hospital department setup Kenya',
-  ],
-  alternates: {
-    canonical: '/products/others',
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_KE',
-    url: `${SITE_CONFIG.url}/products/others`,
-    title: 'Specialized Hospital Equipment: Dental, Theatre, Maternity & ICU Kenya | Medwise',
-    description:
-      'Verified clinical equipment suites for Dental, Operating Theatre, Maternity (Newborn Unit), and Intensive Care Unit (ICU) with warranty and technical engineering support.',
-    siteName: SITE_CONFIG.name,
-    images: [
-      {
-        url: SITE_CONFIG.ogImage,
-        width: 1200,
-        height: 630,
-        alt: 'Medwise Specialized Hospital Department Equipment Kenya',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Specialized Hospital Department Equipment Kenya | Medwise',
-    description:
-      'Turnkey equipment suites for Dental, Operating Theatre, Maternity (NBU), and ICU with transparent quotations and WhatsApp consultation.',
-    images: [SITE_CONFIG.ogImage],
-  },
-};
+interface DepartmentCard {
+  id: string;
+  name: string;
+  department: string;
+  description: string;
+  estimatedPrice: string;
+  slug: string;
+  constituents: string[];
+}
 
-const othersFaqs = [
+const DEPARTMENTS: DepartmentCard[] = [
   {
-    question: 'What equipment is included in your Dental department package?',
-    answer:
-      'Our complete dental operatory package includes ergonomic motorized dental chairs with integrated silent oil-free medical air compressors, cordless LED light cure units, high-frequency digital dental X-ray machines, ultrasonic piezoelectric scalers, Class B vacuum autoclaves, high and low-speed handpiece sets, and surgical oral evacuation suction units.',
+    id: "triage",
+    name: "Triage Area Suite",
+    department: "Triage",
+    description: "Complete vital signs monitoring and initial patient assessment setup for clinics and health centers.",
+    estimatedPrice: "KES 180,000 - 320,000",
+    slug: "/blog/triage-equipment-list-requirements-kenya",
+    constituents: ["Digital Patient Monitor", "Infrared & Digital Thermometers", "Weighing Scale with Stadiometer", "Pulse Oximeters & BP Sets"]
   },
   {
-    question: 'What equipment is required for an Operating Theatre (OT) in Kenya?',
-    answer:
-      'Standard operating theatre requirements include an anaesthesia workstation with integrated ventilator and dual vaporizers, multi-parameter patient monitors (5 and 7 parameter with mobile roll stands or wall mounts), electro-hydraulic or hydraulic operating tables, shadowless single or double-arm LED theatre lights, heavy-duty single and double bottle suction pumps, and surgical instrument packs (Major D&C, Caesarean section, Laparotomy, and fine suturing).',
+    id: "emergency",
+    name: "Emergency & Dressing Room Suite",
+    department: "Emergency",
+    description: "Emergency resuscitation readiness and minor surgical dressing setup.",
+    estimatedPrice: "KES 450,000 - 750,000",
+    slug: "/blog/emergency-room-equipment-list-kenya",
+    constituents: ["Emergency Crash Cart", "Double Bottle Suction Machine", "AED Defibrillator Unit", "Minor Surgical Dressing Set"]
   },
   {
-    question: 'What essential neonatal equipment is provided for Maternity & Newborn Units (NBU)?',
-    answer:
-      'To prevent neonatal hypothermia and birth asphyxia, our maternity and newborn unit suites feature microprocessor servo-controlled infant radiant baby warmers, neonatal baby incubators, complete Resuscitaire units with T-piece resuscitators and oxygen blenders, intense LED neonatal jaundice phototherapy lamps, dedicated neonatal pulse oximeters, CTG fetal monitors, and multi-function obstetric delivery beds.',
+    id: "procedure",
+    name: "Procedure Room Suite",
+    department: "Procedure Room",
+    description: "Sterile procedure setup with shadowless lighting and multi-position examination couches.",
+    estimatedPrice: "KES 350,000 - 600,000",
+    slug: "/blog/procedure-room-equipment-list-kenya",
+    constituents: ["LED Minor Procedure Light", "Hydraulic Procedure Couch", "24L Benchtop Autoclave", "Stainless Steel Mayo Trolley"]
   },
   {
-    question: 'What critical care machinery is provided for Intensive Care Units (ICU)?',
-    answer:
-      'Our ICU and HDU critical care suites encompass invasive and non-invasive ICU mechanical ventilators (with High-Flow Nasal Cannula therapy), modular multi-parameter patient monitors (with IBP and EtCO2), stackable syringe and volumetric infusion pumps, biphasic defibrillators with pacing, 5-function electric motorized ICU beds with CPR release and anti-decubitus air mattresses, and point-of-care Arterial Blood Gas (ABG) analyzers.',
+    id: "consultation",
+    name: "Consultation Room Suite",
+    department: "Consultation Room",
+    description: "Standard clinical officer and doctor consultation office diagnostic tools.",
+    estimatedPrice: "KES 120,000 - 220,000",
+    slug: "/blog/consultation-room-equipment-list-kenya",
+    constituents: ["Diagnostic Wall / Desk Set", "Padded Examination Couch", "Doctor Stethoscope & BP Monitor", "LED X-Ray Film Viewer"]
   },
   {
-    question: 'Do you offer biomedical installation, medical gas pipeline connection, and staff training?',
-    answer:
-      'Yes. Medwise biomedical engineers oversee complete mechanical and electrical unboxing, installation, medical gas piping/manifold connection checks, electrical safety leakage testing, and hands-on operational training for your hospital doctors, nurses, and clinical technologists across all 47 counties in Kenya.',
+    id: "maternity",
+    name: "Maternity Ward Suite",
+    department: "Maternity Ward",
+    description: "Maternal monitoring systems, CTG fetal monitors, and recovery beds.",
+    estimatedPrice: "KES 650,000 - 1,100,000",
+    slug: "/blog/maternity-ward-equipment-list-kenya",
+    constituents: ["CTG Fetal Monitor", "Portable Fetal Doppler", "Infant Radiant Warmer", "Maternity Recovery Bed"]
   },
+  {
+    id: "nursery",
+    name: "Newborn Nursery (NBU) Suite",
+    department: "Nursery",
+    description: "Controlled thermal management, jaundice phototherapy, and neonatal resuscitation setup.",
+    estimatedPrice: "KES 850,000 - 1,500,000",
+    slug: "/blog/nursery-equipment-list-kenya",
+    constituents: ["Neonatal Incubator", "LED Phototherapy Unit", "Neonatal Resuscitation Table", "Infant Stainless Steel Bassinet"]
+  },
+  {
+    id: "delivery",
+    name: "Delivery Room Suite",
+    department: "Delivery Room",
+    description: "Obstetric delivery couches, shadowless lamps, and newborn resuscitation stations.",
+    estimatedPrice: "KES 550,000 - 950,000",
+    slug: "/blog/delivery-room-equipment-list-kenya",
+    constituents: ["Hydraulic Obstetric Delivery Table", "Shadowless Mobile LED Light", "Delivery Instrument Kit", "Obstetric Vacuum Extractor"]
+  },
+  {
+    id: "medical-ward",
+    name: "Inpatient Medical Ward Suite",
+    department: "Medical Ward",
+    description: "Inpatient ward furniture, bed monitoring, and nursing administration trolleys.",
+    estimatedPrice: "KES 750,000 - 1,400,000",
+    slug: "/blog/medical-ward-equipment-list-kenya",
+    constituents: ["Two-Crank Bed with Mattress", "ABS Bedside Lockers", "IV Drip Stands", "Nursing Medication Trolley"]
+  },
+  {
+    id: "theatre",
+    name: "Operating Theatre (OT) Suite",
+    department: "Operating Theatre",
+    description: "Surgical OT setup including anesthesia workstations, electro-hydraulic tables, and surgical LED lights.",
+    estimatedPrice: "KES 2,800,000 - 5,500,000",
+    slug: "/blog/theatre-equipment-list-requirements-kenya",
+    constituents: ["Electro-Hydraulic Operating Table", "Anesthesia Workstation with Ventilator", "Double Dome LED Surgical Light", "Electrosurgical Diathermy Unit"]
+  },
+  {
+    id: "dental",
+    name: "Dental Operatory Suite",
+    department: "Dental Unit",
+    description: "Electric dental chairs, silent medical air compressors, digital X-rays, and scalers.",
+    estimatedPrice: "KES 1,200,000 - 2,200,000",
+    slug: "/blog/dental-equipment-list-kenya",
+    constituents: ["Fully Electric Dental Chair Unit", "Oil-Free Silent Compressor", "Intraoral Dental X-Ray Unit", "Ultrasonic Dental Scaler"]
+  },
+  {
+    id: "optical",
+    name: "Optical & Ophthalmic Suite",
+    department: "Optical Unit",
+    description: "Eye clinic refraction instrumentation, slit lamps, auto refractometers, and trial lens sets.",
+    estimatedPrice: "KES 1,100,000 - 2,100,000",
+    slug: "/blog/optical-equipment-list-kenya",
+    constituents: ["Digital Auto Refractometer", "Ophthalmic Slit Lamp Microscope", "Manual Phoropter Refractor", "Trial Lens Set with Frame"]
+  }
 ];
 
 export default function OthersProductsPage() {
-  const breadcrumbLd = getBreadcrumbSchema([
-    { name: 'Home', url: '/' },
-    { name: 'Products', url: '/products' },
-    { name: 'Others (Dental, Theatre, Maternity, ICU)', url: '/products/others' },
-  ]);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const faqLd = getFaqSchema(othersFaqs);
-
-  // Structured ItemList schema for SEO rich snippet
-  const othersListLd = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'Specialized Clinical Department Equipment Suites Kenya (Dental, Theatre, Maternity, ICU)',
-    itemListElement: OTHER_PRODUCTS_CATALOG.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': 'Product',
-        name: item.name,
-        description: item.description,
-        category: item.department,
-        url: `${SITE_CONFIG.url}/products/others#${item.id}`,
-        offers: {
-          '@type': 'AggregateOffer',
-          priceCurrency: 'KES',
-          lowPrice: '50000',
-          offerCount: item.constituents.length.toString(),
-        },
-      },
-    })),
-  };
+  const filtered = DEPARTMENTS.filter(
+    (dept) =>
+      dept.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      dept.department.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      dept.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      dept.constituents.some((c) => c.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
 
   return (
-    <div className="bg-background min-h-screen text-foreground">
-      {/* Structured SEO Schemas */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(othersListLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
-      />
-
-      {/* Header & Breadcrumbs Section - Exactly matches consumables & equipment design */}
-      <header className="bg-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b border-border">
-        <div className="mx-auto max-w-[1200px]">
-          {/* Breadcrumbs Navigation */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-slate-500 font-medium">
-            <Link href="/" className="hover:text-primary transition-colors">
-              Home
-            </Link>
-            <span className="text-slate-300">/</span>
-            <Link href="/products" className="hover:text-primary transition-colors">
-              Products
-            </Link>
-            <span className="text-slate-300">/</span>
-            <span className="text-foreground font-semibold">Others (Dental, Theatre, Maternity, ICU)</span>
-          </nav>
-
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-            <div className="max-w-3xl space-y-4">
-              <div className="chip-label inline-flex items-center gap-2">
-                <Layers className="h-3.5 w-3.5 text-primary shrink-0" />
-                <span>Specialized Hospital Department Suites Kenya</span>
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.15]">
-                Specialized Department Equipment
-              </h1>
-
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
-                Turnkey equipment solutions for Dental operatory, Operating Theatre (OT), Maternity &amp; Newborn Unit (NBU), and Intensive Care Units (ICU). Sourced with manufacturer warranty, onsite biomedical installation, and clinical operator training.
-              </p>
-            </div>
-
-            {/* Cross-catalog Navigation Links */}
-            <div className="flex flex-wrap gap-2.5 shrink-0">
-              <Link
-                href="/products"
-                className="btn-pill-secondary inline-flex items-center gap-2 shadow-xs text-xs font-semibold"
-              >
-                <Cpu className="h-4 w-4 text-primary shrink-0" />
-                <span>1. Machinery Catalog</span>
-              </Link>
-
-              <Link
-                href="/products/consumables"
-                className="btn-pill-secondary inline-flex items-center gap-2 shadow-xs text-xs font-semibold"
-              >
-                <PackageCheck className="h-4 w-4 text-amber-600 shrink-0" />
-                <span>2. Consumables &amp; Reagents</span>
-              </Link>
-            </div>
+    <main className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto space-y-8">
+        {/* Header Section */}
+        <div className="text-center space-y-4 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">
+            <span>Hospital Department Setup Guides</span>
+            <span>•</span>
+            <span>11 Clinical Departments</span>
           </div>
-
-          {/* Trust Highlights Grid - Exactly matches consumables & equipments */}
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-border">
-            <div className="flex items-center gap-3 rounded-2xl bg-muted/60 p-4 border border-border">
-              <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                <ShieldCheck className="h-5 w-5" />
-              </div>
-              <span className="font-semibold text-foreground text-sm">
-                1-Year Full Warranty &amp; Certified Calibration
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-2xl bg-muted/60 p-4 border border-border">
-              <div className="w-10 h-10 rounded-full bg-primary-light text-primary flex items-center justify-center shrink-0">
-                <Truck className="h-5 w-5" />
-              </div>
-              <span className="font-semibold text-foreground text-sm">
-                Rapid Dispatch Across All 47 Counties
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-2xl bg-muted/60 p-4 border border-border">
-              <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                <Wrench className="h-5 w-5" />
-              </div>
-              <span className="font-semibold text-foreground text-sm">
-                Onsite Biomedical Installation &amp; Staff Training
-              </span>
-            </div>
-          </div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Hospital & Clinic Department Equipment Packages
+          </h1>
+          <p className="text-sm sm:text-base text-slate-600">
+            Standard medical equipment requirements, estimated budget ranges, and MOH compliance guides for opening or upgrading clinical departments in Kenya.
+          </p>
         </div>
-      </header>
 
-      {/* Main Catalog Section */}
-      <section aria-label="Department Suites Catalog" className="mx-auto max-w-[1200px] px-4 py-10 sm:py-14 sm:px-6 lg:px-8 space-y-10">
-        <OtherProductsCatalogClient />
-      </section>
-
-      {/* Equipment vs Department Gateway Callout (Matches Consumables Design) */}
-      <section className="border-t border-border bg-muted/40 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="rounded-3xl bg-white border border-border p-8 sm:p-10 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="space-y-3 text-center md:text-left max-w-2xl">
-              <div className="chip-label inline-flex items-center gap-1.5">
-                <Cpu className="h-3.5 w-3.5 text-primary" />
-                <span>Diagnostic Equipment &amp; Machinery</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-foreground">
-                Looking for Laboratory Diagnostic Machinery or Reagents?
-              </h3>
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-                Explore our full diagnostic machinery catalog featuring 3-part &amp; 5-part hematology machines, clinical chemistry platforms, Olympus microscopes, or browse 38+ laboratory consumables and rapid test kits.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-3 shrink-0">
-              <Link
-                href="/products"
-                className="btn-pill-primary inline-flex items-center gap-2 shadow-xs text-xs font-semibold px-5 py-3"
-              >
-                <Cpu className="h-4 w-4" />
-                <span>Machinery Catalog</span>
-              </Link>
-              <Link
-                href="/products/consumables"
-                className="btn-pill-secondary inline-flex items-center gap-2 shadow-xs text-xs font-semibold px-5 py-3"
-              >
-                <PackageCheck className="h-4 w-4 text-amber-600" />
-                <span>Consumables &amp; Reagents</span>
-              </Link>
-            </div>
-          </div>
+        {/* Search Bar */}
+        <div className="max-w-md mx-auto relative">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <input
+            type="text"
+            placeholder="Search department or equipment name..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-10 pr-9 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 shadow-sm"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
         </div>
-      </section>
 
-      {/* Frequently Asked Questions Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 border-t border-border">
-        <div className="mx-auto max-w-4xl space-y-10">
-          <div className="text-center space-y-2">
-            <span className="font-semibold text-xs tracking-[0.2em] uppercase text-primary block mb-2">
-              EQUIPMENT SOURCING FAQS
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">
-              Frequently Asked Questions on Department Suites
-            </h2>
-            <p className="text-sm text-slate-500 max-w-xl mx-auto">
-              Clear answers regarding clinical equipment sourcing, facility bill of quantities (BOQ), warranties, and engineering installation in Kenya.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {othersFaqs.map((faq, idx) => (
-              <article
-                key={idx}
-                className="rounded-2xl border border-border bg-white p-6 shadow-2xs hover:shadow-xs transition-shadow"
-              >
-                <div className="flex items-start gap-3">
-                  <span className="w-6 h-6 rounded-full bg-primary-light text-primary text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-                    Q
+        {/* 11 Department Grid Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((dept) => (
+            <div
+              key={dept.id}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
+                    {dept.department}
                   </span>
-                  <div>
-                    <h3 className="font-bold text-base text-foreground">{faq.question}</h3>
-                    <p className="mt-2 text-sm text-slate-600 leading-relaxed font-normal">
-                      {faq.answer}
-                    </p>
-                  </div>
+                  <span className="text-[11px] font-mono font-semibold text-emerald-700">
+                    {dept.estimatedPrice}
+                  </span>
                 </div>
-              </article>
-            ))}
-          </div>
 
-          {/* Inquire CTA Box - Matching Medwise Banner */}
-          <div className="rounded-3xl bg-primary text-white p-8 sm:p-10 text-center space-y-4 shadow-xl">
-            <h3 className="text-xl sm:text-2xl font-bold">
-              Setting Up or Upgrading a Clinical Department in Kenya?
-            </h3>
-            <p className="text-sm text-blue-100 max-w-xl mx-auto font-normal leading-relaxed">
-              Consult with our independent biomedical engineers to receive a brand-neutral equipment bill of quantities (BOQ) tailored to your clinical throughput and facility budget.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-              <a
-                href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting,%20I%20would%20like%20to%20request%20a%20quotation%20for%20hospital%20department%20equipment.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-11 px-6 rounded-full bg-white text-primary font-bold text-xs inline-flex items-center gap-2 hover:bg-blue-50 transition-colors shadow-xs"
-              >
-                <MessageSquare className="w-4 h-4 text-emerald-600" />
-                <span>Chat with Biomedical Engineer via WhatsApp</span>
-              </a>
+                <h2 className="text-xl font-bold text-slate-900 mb-2">
+                  {dept.name}
+                </h2>
 
-              <a
-                href={`tel:${SITE_CONFIG.telephone}`}
-                className="h-11 px-6 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs inline-flex items-center gap-2 transition-colors border border-white/20"
-              >
-                <Phone className="w-4 h-4" />
-                <span>Call {SITE_CONFIG.telephone}</span>
-              </a>
+                <p className="text-xs text-slate-600 mb-4 leading-relaxed">
+                  {dept.description}
+                </p>
+
+                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                  Key Standard Equipment Included:
+                </div>
+                <ul className="text-xs text-slate-700 space-y-1.5 mb-6">
+                  {dept.constituents.map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase font-bold block">
+                    Est. Setup Budget
+                  </span>
+                  <span className="text-xs font-mono font-bold text-slate-800">
+                    {dept.estimatedPrice}
+                  </span>
+                </div>
+
+                <Link
+                  href={dept.slug}
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow-sm hover:shadow inline-flex items-center gap-1"
+                >
+                  <span>Learn More</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
-    </div>
+      </div>
+    </main>
   );
 }
