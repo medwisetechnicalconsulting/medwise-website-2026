@@ -164,3 +164,4 @@ export const OTHER_PRODUCTS_CATALOG: OtherDepartmentProduct[] = [
     ]
   }
 ];
+
