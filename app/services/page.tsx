@@ -1,288 +1,153 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
-  FileSearch, 
-  ShoppingCart, 
-  Settings, 
-  GraduationCap, 
-  Activity, 
-  CheckCircle2, 
+  Wrench, 
+  Phone, 
   MessageSquare, 
-  ShieldCheck 
+  ShieldCheck, 
+  CheckCircle2, 
+  ArrowRight 
 } from 'lucide-react';
-import { SITE_CONFIG, getBreadcrumbSchema } from '@/lib/seo/schema';
-import CtaBanner from '@/components/CtaBanner';
+import { SITE_CONFIG } from '@/lib/seo/schema';
+import { SERVICES_DATA } from '@/lib/services-data';
+import ServiceCard from '@/components/ServiceCard';
 
 export const metadata: Metadata = {
-  title: 'Medical Equipment Consulting & Technical Services in Kenya',
-  description:
-    'Independent pre-purchase advice, equipment sourcing, precision calibration, installation, staff training, and preventive biomedical maintenance across Kisumu, Nairobi, and Kenya.',
+  title: 'Medical Equipment Consulting & Technical Services in Kenya | Medwise Technical Consulting',
+  description: 'Independent medical equipment technical consulting, installation, preventive maintenance, repair, calibration, and procurement guidance for healthcare facilities across Kenya.',
   alternates: {
-    canonical: '/services',
+    canonical: 'https://www.medwisetechnicalconsulting.co.ke/services',
   },
   openGraph: {
-    title: 'Medical Equipment Technical Services & Calibration Kenya | Medwise',
-    description:
-      'Pre-purchase medical device consulting, equipment sourcing, certified metrological calibration, and biomedical preventive maintenance.',
-    url: `${SITE_CONFIG.url}/services`,
-    siteName: SITE_CONFIG.name,
-    images: [
-      {
-        url: SITE_CONFIG.ogImage,
-        width: 1200,
-        height: 630,
-        alt: `${SITE_CONFIG.name}: Technical Services & Medical Calibration`,
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Medical Equipment Technical Services & Calibration Kenya | Medwise',
-    description:
-      'Pre-purchase medical device consulting, equipment sourcing, certified metrological calibration, and biomedical preventive maintenance.',
+    title: 'Medical Equipment Consulting & Technical Services in Kenya',
+    description: 'Comprehensive biomedical engineering field support from pre-purchase guidance to maintenance and calibration across Kenya.',
+    url: 'https://www.medwisetechnicalconsulting.co.ke/services',
+    siteName: 'Medwise Technical Consulting',
+    locale: 'en_KE',
+    type: 'website',
   },
 };
 
 export default function ServicesPage() {
-  const breadcrumbLd = getBreadcrumbSchema([
-    { name: 'Home', url: '/' },
-    { name: 'Services', url: '/services' },
-  ]);
+  const servicesList = Object.values(SERVICES_DATA);
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-      />
+    <div className="bg-[hsl(var(--background))] py-12 sm:py-16">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-8 md:px-[72px] space-y-12 sm:space-y-16">
+        
+        {/* Hero Section */}
+        <div className="text-center space-y-6 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[hsl(var(--primary-light))] text-[hsl(var(--primary))] text-xs font-semibold uppercase tracking-wider">
+            <Wrench className="h-3.5 w-3.5" />
+            <span>Biomedical Engineering Services • Kenya</span>
+          </div>
+          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[hsl(var(--foreground))] tracking-tight leading-tight">
+            Technical Solutions for Medical Equipment Throughout Its Lifecycle
+          </h1>
+          
+          <p className="text-base sm:text-lg text-[hsl(var(--muted-foreground))] leading-relaxed">
+            Medwise Technical Consulting supports healthcare facilities from planning and equipment selection through procurement, installation, operator training, preventive maintenance, repair, calibration, and long-term technical support.
+          </p>
 
-      {/* Services Hero Header - Clean Editorial White Design */}
-      <section className="bg-white text-foreground py-14 lg:py-20 border-b border-border">
-        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumbs Navigation */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-slate-500 font-medium">
-            <Link href="/" className="hover:text-primary transition-colors">
-              Home
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <a
+              href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent('Hello Medwise, I am requesting a technical consultation for my healthcare facility.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm transition-colors inline-flex items-center gap-2 shadow-sm"
+            >
+              <MessageSquare className="h-4 w-4" />
+              <span>Talk to a Technical Consultant</span>
+            </a>
+
+            <Link
+              href="/contact"
+              className="px-6 py-3.5 rounded-full bg-[hsl(var(--primary))] hover:bg-blue-800 text-white font-bold text-sm transition-colors inline-flex items-center gap-2 shadow-sm"
+            >
+              <span>Request a Consultation &rarr;</span>
             </Link>
-            <span className="text-slate-300">/</span>
-            <span className="text-foreground font-semibold">Services</span>
-          </nav>
-
-          <div className="max-w-3xl space-y-4">
-            <div className="chip-label inline-flex items-center gap-2">
-              <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-              <span>Biomedical Engineering Field Services • Kisumu &amp; Nairobi</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.15]">
-              Technical Services &amp; Medical Equipment Support
-            </h1>
-
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Medwise Technical Consulting provides structured biomedical engineering support across the medical device lifecycle. From pre-purchase clinical workflow feasibility to scheduled metrology calibration, we protect your capital equipment investments.
-            </p>
           </div>
         </div>
-      </section>
 
-      {/* Detailed Services Sections */}
-      <section className="py-16 sm:py-24 bg-muted/30 space-y-12">
-        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 space-y-10">
-
-          {/* Service 1: Pre-Purchase Consulting */}
-          <div id="consulting" className="rounded-3xl bg-white p-8 sm:p-12 border border-border shadow-xs space-y-6 scroll-mt-28">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border pb-8">
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-light text-primary shrink-0">
-                  <FileSearch className="h-7 w-7 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-foreground">Pre-Purchase Consulting &amp; Technical Audits</h2>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider mt-0.5">Independent Advisory &amp; Specification Drafting</p>
-                </div>
-              </div>
-              <a
-                href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Inquiry%20regarding%20Pre-Purchase%20Consulting`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-5 py-3 text-sm font-semibold text-white transition-colors shadow-xs min-h-[44px] shrink-0"
-              >
-                <MessageSquare className="h-4 w-4 fill-white shrink-0" />
-                <span>Consult an Engineer</span>
-              </a>
-            </div>
-
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base font-normal">
-              Selecting medical equipment requires evaluating clinical workflow, expected patient volume, space constraints, power stability, and total cost of ownership. Our biomedical engineering team conducts thorough site readiness audits, creates technical RFP specifications, and evaluates vendor quotes neutrally.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
-              {[
-                'Workload & throughput modeling',
-                'Power & electrical safety evaluation',
-                'Multi-vendor specification comparison',
-                'Consumable cost & total cost of ownership',
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 rounded-2xl bg-muted/50 p-4 border border-border text-xs sm:text-sm font-medium text-foreground">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>{item}</span>
-                </div>
-              ))}
+        {/* Value Proposition Badges */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-y border-[hsl(var(--border))] py-8">
+          <div className="flex items-start gap-3 p-2">
+            <CheckCircle2 className="w-5 h-5 text-[hsl(var(--primary))] shrink-0 mt-0.5" />
+            <div>
+              <div className="text-sm font-bold text-[hsl(var(--foreground))]">Brand-Neutral Guidance</div>
+              <div className="text-xs text-[hsl(var(--muted-foreground))]">Independent technical advice prioritized over single-brand quotas.</div>
             </div>
           </div>
 
-          {/* Service 2: Equipment Sourcing & Supply */}
-          <div id="sourcing" className="rounded-3xl bg-white p-8 sm:p-12 border border-border shadow-xs space-y-6 scroll-mt-28">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border pb-8">
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-light text-primary shrink-0">
-                  <ShoppingCart className="h-7 w-7 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-foreground">Medical Device Procurement &amp; Sourcing</h2>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider mt-0.5">Direct Delivery Across Kenya with Warranty</p>
-                </div>
-              </div>
-              <a
-                href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Inquiry%20regarding%20Equipment%20Sourcing`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-5 py-3 text-sm font-semibold text-white transition-colors shadow-xs min-h-[44px] shrink-0"
-              >
-                <MessageSquare className="h-4 w-4 fill-white shrink-0" />
-                <span>Request Equipment Quote</span>
-              </a>
-            </div>
-
-            {/* Prominent Neutrality Disclaimer */}
-            <div className="rounded-2xl border border-primary/20 bg-primary-light/40 p-5 text-sm text-foreground font-medium">
-              <strong className="text-primary font-bold">Neutral Advisory Commitment:</strong> We supply equipment, but our primary duty is objective guidance. We do not push locked, single-brand distributorships over your laboratory’s clinical reality.
-            </div>
-
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base font-normal">
-              We leverage direct supply channels to provide verified clinical instruments with manufacturer warranty and local spare parts availability:
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-              <div className="rounded-2xl bg-muted/40 p-6 border border-border space-y-2.5">
-                <h3 className="font-bold text-foreground text-base">Imaging &amp; Radiology</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">Digital DR X-Ray generators, Flat Panel Detectors, Ultrasound systems, Mammography, and CR readers.</p>
-              </div>
-
-              <div className="rounded-2xl bg-muted/40 p-6 border border-border space-y-2.5">
-                <h3 className="font-bold text-foreground text-base">Laboratory &amp; Diagnostics</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">Automated 3-part and 5-part Hematology analyzers, Clinical Chemistry analyzers, Centrifuges, and LED Microscopes.</p>
-              </div>
-
-              <div className="rounded-2xl bg-muted/40 p-6 border border-border space-y-2.5">
-                <h3 className="font-bold text-foreground text-base">ICU, Theatre &amp; Maternity</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">Multiparameter patient monitors, Defibrillators, Surgical suction machines, Fetal Dopplers, and Infant Warmers.</p>
-              </div>
+          <div className="flex items-start gap-3 p-2">
+            <ShieldCheck className="w-5 h-5 text-[hsl(var(--primary))] shrink-0 mt-0.5" />
+            <div>
+              <div className="text-sm font-bold text-[hsl(var(--foreground))]">Practicing Engineers</div>
+              <div className="text-xs text-[hsl(var(--muted-foreground))]">Field-experienced biomedical staff based in Kisumu &amp; Nairobi.</div>
             </div>
           </div>
 
-          {/* Service 3: Installation & Calibration */}
-          <div id="installation" className="rounded-3xl bg-white p-8 sm:p-12 border border-border shadow-xs space-y-6 scroll-mt-28">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border pb-8">
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-light text-primary shrink-0">
-                  <Settings className="h-7 w-7 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-foreground">Installation, Commissioning &amp; Metrology Calibration</h2>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider mt-0.5">Certified Metrological Accuracy &amp; Electrical Safety</p>
-                </div>
-              </div>
-              <a
-                href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Inquiry%20regarding%20Installation%20and%20Calibration`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-5 py-3 text-sm font-semibold text-white transition-colors shadow-xs min-h-[44px] shrink-0"
-              >
-                <MessageSquare className="h-4 w-4 fill-white shrink-0" />
-                <span>Book Calibration</span>
-              </a>
-            </div>
-
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base font-normal">
-              Proper installation and baseline calibration prevent premature component wear and diagnostic errors. Our qualified biomedical engineers execute physical positioning, earth ground verification, and metrological adjustment using calibrated measurement tools.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
-              {[
-                'Power conditioning & AVR setup',
-                'Metrological simulator calibration',
-                'Quality Control (QC) run validation',
-                'Radiation shielding safety audits',
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 rounded-2xl bg-muted/50 p-4 border border-border text-xs sm:text-sm font-medium text-foreground">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>{item}</span>
-                </div>
-              ))}
+          <div className="flex items-start gap-3 p-2">
+            <Wrench className="w-5 h-5 text-[hsl(var(--primary))] shrink-0 mt-0.5" />
+            <div>
+              <div className="text-sm font-bold text-[hsl(var(--foreground))]">Full Lifecycle SLA Support</div>
+              <div className="text-xs text-[hsl(var(--muted-foreground))]">From pre-purchase workflow audits to preventive maintenance and calibration.</div>
             </div>
           </div>
-
-          {/* Service 4: Staff Training */}
-          <div id="training" className="rounded-3xl bg-white p-8 sm:p-12 border border-border shadow-xs space-y-6 scroll-mt-28">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border pb-8">
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-light text-primary shrink-0">
-                  <GraduationCap className="h-7 w-7 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-foreground">Clinical &amp; Laboratory Operator Training</h2>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider mt-0.5">Standard Operating Procedures &amp; Quality Control Workflows</p>
-                </div>
-              </div>
-              <a
-                href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Inquiry%20regarding%20Staff%20Training`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-5 py-3 text-sm font-semibold text-white transition-colors shadow-xs min-h-[44px] shrink-0"
-              >
-                <MessageSquare className="h-4 w-4 fill-white shrink-0" />
-                <span>Schedule Training</span>
-              </a>
-            </div>
-
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base font-normal">
-              Equipment is only as reliable as the personnel operating it. We deliver hands-on operational training for radiographers, laboratory technologists, and nursing teams covering daily startup protocols, calibration verification, reagent management, and frontline troubleshooting.
-            </p>
-          </div>
-
-          {/* Service 5: Maintenance & Service */}
-          <div id="maintenance" className="rounded-3xl bg-white p-8 sm:p-12 border border-border shadow-xs space-y-6 scroll-mt-28">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border pb-8">
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-light text-primary shrink-0">
-                  <Activity className="h-7 w-7 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-foreground">Preventative Maintenance &amp; Field Breakdown Service</h2>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider mt-0.5">Planned Servicing, Diagnostics &amp; Rapid Response</p>
-                </div>
-              </div>
-              <a
-                href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Inquiry%20regarding%20Equipment%20Maintenance%20and%20Breakdown%20Service`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-5 py-3 text-sm font-semibold text-white transition-colors shadow-xs min-h-[44px] shrink-0"
-              >
-                <MessageSquare className="h-4 w-4 fill-white shrink-0" />
-                <span>Request Service</span>
-              </a>
-            </div>
-
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base font-normal">
-              Our core engineering operations center on dependable technical support and scheduled servicing. We provide structured Service Level Agreements (SLAs), emergency breakdown dispatch, genuine spare parts replacement, and documented quality control verifications.
-            </p>
-          </div>
-
         </div>
-      </section>
 
-      <CtaBanner />
-    </>
+        {/* Services Hub Grid */}
+        <div className="space-y-6">
+          <div className="text-center sm:text-left">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[hsl(var(--foreground))]">
+              Our Core Technical Services
+            </h2>
+            <p className="text-sm sm:text-base text-[hsl(var(--muted-foreground))] mt-1">
+              Select a service below to explore detailed technical workflows and support offerings.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {servicesList.map((service) => (
+              <ServiceCard key={service.slug} service={service} />
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Consultation Banner */}
+        <div className="rounded-3xl bg-slate-900 text-white p-8 sm:p-10 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="space-y-3 text-center lg:text-left max-w-2xl">
+            <h3 className="text-2xl sm:text-3xl font-extrabold">
+              Need Engineering Support for Your Facility?
+            </h3>
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Our team operates from our Kisumu HQ and Nairobi regional hub, serving clinics, county hospitals, and private laboratories nationwide across Kenya.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
+            <a
+              href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent('Hello Medwise Biomedical Engineering Team')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm transition-colors inline-flex items-center gap-2 shadow-lg"
+            >
+              <MessageSquare className="h-4 w-4" />
+              <span>WhatsApp Engineer Direct</span>
+            </a>
+            
+            <a
+              href={`tel:${SITE_CONFIG.telephone}`}
+              className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-sm transition-colors inline-flex items-center gap-2 border border-white/20"
+            >
+              <Phone className="h-4 w-4" />
+              <span>Call {SITE_CONFIG.telephone}</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
   );
 }
