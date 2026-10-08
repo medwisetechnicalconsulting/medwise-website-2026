@@ -1,4 +1,4 @@
-export interface OtherProductDepartment {
+export interface OtherDepartmentProduct {
   id: string;
   name: string;
   department: string;
@@ -8,7 +8,7 @@ export interface OtherProductDepartment {
   constituents: string[];
 }
 
-export const OTHER_PRODUCTS_CATALOG: OtherProductDepartment[] = [
+export const OTHER_PRODUCTS_CATALOG: OtherDepartmentProduct[] = [
   {
     id: "triage",
     name: "Triage Area Suite",
