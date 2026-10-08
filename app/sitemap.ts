@@ -1,12 +1,11 @@
 import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.medwisetechnicalconsulting.co.ke';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // 1. Static Pages
+  // 1. Core Static Routes
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
@@ -64,28 +63,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // 2. Automatically generate sitemap entries for all MDX blog posts
-  const blogDirectory = path.join(process.cwd(), 'content', 'blog');
+  // 2. Read all MDX blog guides from content/blog/
   let blogPages: MetadataRoute.Sitemap = [];
 
-  if (fs.existsSync(blogDirectory)) {
-    const fileNames = fs.readdirSync(blogDirectory);
+  try {
+    const blogDirectory = path.join(process.cwd(), 'content', 'blog');
+    
+    if (fs.existsSync(blogDirectory)) {
+      const fileNames = fs.readdirSync(blogDirectory);
 
-    blogPages = fileNames
-      .filter((fileName) => fileName.endsWith('.mdx'))
-      .map((fileName) => {
-        const slug = fileName.replace(/\.mdx$/, '');
-        const fullPath = path.join(blogDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
-        const { data } = matter(fileContents);
+      blogPages = fileNames
+        .filter((fileName) => fileName.endsWith('.mdx'))
+        .map((fileName) => {
+          const slug = fileName.replace(/\.mdx$/, '');
+          const fullPath = path.join(blogDirectory, fileName);
+          const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-        return {
-          url: `${BASE_URL}/blog/${slug}`,
-          lastModified: data.date ? new Date(data.date) : new Date(),
-          changeFrequency: 'monthly' as const,
-          priority: 0.8,
-        };
-      });
+          // Extract date from frontmatter using regex (bypasses gray-matter dependency issues)
+          const dateMatch = fileContents.match(/date:\s*['"]?([^'"]+)\b/);
+          const postDate = dateMatch ? new Date(dateMatch[1]) : new Date();
+
+          return {
+            url: `${BASE_URL}/blog/${slug}`,
+            lastModified: isNaN(postDate.getTime()) ? new Date() : postDate,
+            changeFrequency: 'monthly' as const,
+            priority: 0.8,
+          };
+        });
+    }
+  } catch (error) {
+    console.error('Error generating blog sitemap:', error);
   }
 
   return [...staticPages, ...blogPages];
