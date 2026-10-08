@@ -1,0 +1,103 @@
+{
+  "departments": [
+    {
+      "id": "triage",
+      "name": "Triage",
+      "slug": "triage-equipment-list-requirements-kenya",
+      "metaTitle": "Triage Equipment List & Setup Requirements in Kenya | Price 2026 - Medwise",
+      "metaDescription": "Complete triage equipment list and setup requirements for hospitals in Kenya. Accurate 2026 prices, MOH compliance, and 48-hr delivery from Medwise Kisumu.",
+      "estimatedSetupCost": "KES 180,000 - 320,000",
+      "mohRequirements": "Level 3 and Level 4 healthcare facilities require a designated triage zone equipped for immediate vital signs monitoring, patient prioritization, and emergency stabilization."
+    },
+    {
+      "id": "emergency",
+      "name": "Emergency / Dressing Room",
+      "slug": "emergency-room-equipment-list-kenya",
+      "metaTitle": "Emergency Room Equipment List & Setup Requirements Kenya | 2026 Prices",
+      "metaDescription": "Essential emergency and dressing room equipment list for Kenyan clinics and hospitals. Transparent prices, MOH compliance, 48-hr delivery nationwide.",
+      "estimatedSetupCost": "KES 450,000 - 750,000",
+      "mohRequirements": "Emergency rooms must feature resuscitation capability, minor surgical dressing tools, suction apparatus, and immediate wound management equipment."
+    },
+    {
+      "id": "procedure",
+      "name": "Procedure Room",
+      "slug": "procedure-room-equipment-list-kenya",
+      "metaTitle": "Procedure Room Equipment List & Requirements Kenya | Medwise 2026",
+      "metaDescription": "MOH required procedure room equipment list for clinical facilities in Kenya. Get transparent pricing, full setup options, and fast delivery from Kisumu HQ.",
+      "estimatedSetupCost": "KES 350,000 - 600,000",
+      "mohRequirements": "Procedure rooms require sterile instrument trays, shadowing surgical lighting, patient positioning couches, and infectious waste segregation setup."
+    },
+    {
+      "id": "consultation",
+      "name": "Consultation Room",
+      "slug": "consultation-room-equipment-list-kenya",
+      "metaTitle": "Consultation Room Equipment List & Price in Kenya | Medwise Consulting",
+      "metaDescription": "Standard consultation room equipment list for doctors and clinical officers in Kenya. Compliant with MOH guidelines. Direct delivery from Kisumu.",
+      "estimatedSetupCost": "KES 120,000 - 220,000",
+      "mohRequirements": "Consultation rooms require basic diagnostic instruments, patient examination couch, privacy screening, and hand hygiene facilities."
+    },
+    {
+      "id": "maternity",
+      "name": "Maternity Ward",
+      "slug": "maternity-ward-equipment-list-kenya",
+      "metaTitle": "Maternity Ward Equipment List & Requirements Kenya | Price 2026",
+      "metaDescription": "Complete maternity ward equipment list for hospitals and birth centers in Kenya. Fetal monitors, delivery beds, and maternal monitoring tools.",
+      "estimatedSetupCost": "KES 650,000 - 1,100,000",
+      "mohRequirements": "Level 3 and 4 maternity wards must be equipped with fetal heart rate monitors, maternal monitoring systems, emergency resuscitation tools, and comfortable recovery beds."
+    },
+    {
+      "id": "nursery",
+      "name": "Nursery / Neonatal Ward",
+      "slug": "nursery-equipment-list-kenya",
+      "metaTitle": "Nursery & Neonatal Equipment List Kenya | Prices & MOH Setup Requirements",
+      "metaDescription": "Essential newborn nursery and neonatal unit equipment list in Kenya. Incubators, phototherapy units, and infant warmers with setup support from Medwise.",
+      "estimatedSetupCost": "KES 850,000 - 1,500,000",
+      "mohRequirements": "Neonatal units must provide regulated thermal control, jaundice phototherapy, neonatal resuscitation capabilities, and continuous infant monitoring."
+    },
+    {
+      "id": "delivery",
+      "name": "Delivery Room",
+      "slug": "delivery-room-equipment-list-kenya",
+      "metaTitle": "Delivery Room Equipment List & Requirements Kenya | Medwise Pricing",
+      "metaDescription": "Delivery room equipment and setup requirements for maternity facilities in Kenya. Hydraulic beds, resuscitation kits, and obstetric instruments.",
+      "estimatedSetupCost": "KES 550,000 - 950,000",
+      "mohRequirements": "Delivery rooms require specialized obstetric delivery couches, newborn resuscitation units, vacuum extraction kits, and shadowless surgical lamps."
+    },
+    {
+      "id": "medical-ward",
+      "name": "Medical Ward",
+      "slug": "medical-ward-equipment-list-kenya",
+      "metaTitle": "Medical Ward Equipment List & Prices Kenya | Inpatient Setup Medwise",
+      "metaDescription": "Inpatient medical ward equipment requirements in Kenya. Single and double crank beds, patient monitors, medication trolleys, and IV stands.",
+      "estimatedSetupCost": "KES 750,000 - 1,400,000",
+      "mohRequirements": "Inpatient wards require ergonomic hospital beds with side rails, patient monitoring apparatus, emergency oxygen supply hooks, and hygiene furniture."
+    },
+    {
+      "id": "theatre",
+      "name": "Operating Theatre",
+      "slug": "theatre-equipment-list-requirements-kenya",
+      "metaTitle": "Operating Theatre Equipment List & Requirements Kenya | Price 2026",
+      "metaDescription": "Full operating theatre equipment list and MOH requirements in Kenya. Electric OT tables, anesthesia machines, surgical lights, and diathermy units.",
+      "estimatedSetupCost": "KES 2,800,000 - 5,500,000",
+      "mohRequirements": "Level 4 and surgical centers require certified anesthesia delivery workstations, multi-dome surgical lights, electro-surgical diathermy units, and hydraulic/electric operating tables."
+    },
+    {
+      "id": "dental",
+      "name": "Dental Clinic / Unit",
+      "slug": "dental-equipment-list-kenya",
+      "metaTitle": "Dental Equipment List & Setup Cost in Kenya | Medwise Consulting 2026",
+      "metaDescription": "Complete dental clinic equipment list for dentists and facilities in Kenya. Hydraulic dental chairs, X-ray units, autoclaves, and scaler units.",
+      "estimatedSetupCost": "KES 1,200,000 - 2,200,000",
+      "mohRequirements": "Dental units require ergonomic patient delivery chairs, low-noise oil-free air compressors, oral suction systems, and dedicated autoclaves."
+    },
+    {
+      "id": "optical",
+      "name": "Optical / Ophthalmic Unit",
+      "slug": "optical-equipment-list-kenya",
+      "metaTitle": "Optical & Eye Clinic Equipment List Kenya | Prices & Setup Medwise",
+      "metaDescription": "Complete ophthalmic and optical equipment list for eye clinics in Kenya. Slit lamps, phoropters, auto refractometers, and trial lens sets.",
+      "estimatedSetupCost": "KES 1,100,000 - 2,100,000",
+      "mohRequirements": "Eye clinics require precision refraction instrumentation, anterior segment examination lights, corneal tonometers, and trial lens assemblies."
+    }
+  ]
+}
