@@ -12,8 +12,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white border-b border-[hsl(var(--border))] transition-all">
-
-      {/* 2. Main Centered Navbar */}
+      {/* Main Centered Navbar */}
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 md:px-[72px] py-4 md:py-5 flex justify-between items-center">
         {/* Left: Brand Logo & Title */}
         <Link href="/" className="flex items-center gap-3 group focus:outline-none">
@@ -22,16 +21,10 @@ export default function Navbar() {
 
         {/* Center: Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 lg:gap-10 font-normal text-sm text-[hsl(var(--muted-foreground))]">
-          <Link
-            href="/"
-            className="hover:text-[hsl(var(--foreground))] transition-colors font-medium py-1"
-          >
+          <Link href="/" className="hover:text-[hsl(var(--foreground))] transition-colors font-medium py-1">
             Home
           </Link>
-          <Link
-            href="/services"
-            className="hover:text-[hsl(var(--foreground))] transition-colors font-medium py-1"
-          >
+          <Link href="/services" className="hover:text-[hsl(var(--foreground))] transition-colors font-medium py-1">
             Services
           </Link>
 
@@ -41,10 +34,7 @@ export default function Navbar() {
             onMouseEnter={() => setProductsDropdown(true)}
             onMouseLeave={() => setProductsDropdown(false)}
           >
-            <Link
-              href="/products"
-              className="hover:text-[hsl(var(--foreground))] transition-colors font-medium inline-flex items-center gap-1.5"
-            >
+            <Link href="/products" className="hover:text-[hsl(var(--foreground))] transition-colors font-medium inline-flex items-center gap-1.5">
               <span>Products</span>
               <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${productsDropdown ? 'rotate-180' : ''}`} />
             </Link>
@@ -64,7 +54,9 @@ export default function Navbar() {
                       <span>1. Equipments</span>
                       <span className="rounded-full bg-blue-100 text-blue-900 px-2 py-0.5 text-[9px] font-bold">26 Models</span>
                     </div>
-                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">Diagnostic Machinery, Hematology &amp; Chemistry</div>
+                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">
+                      Diagnostic Machinery, Hematology & Chemistry
+                    </div>
                   </div>
                 </Link>
 
@@ -81,13 +73,15 @@ export default function Navbar() {
                       <span>2. Consumables and reagents</span>
                       <span className="rounded-full bg-amber-100 text-amber-900 px-2 py-0.5 text-[9px] font-bold">38+</span>
                     </div>
-                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">Vacutainers, Rapid Test Kits &amp; Stains</div>
+                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">
+                      Vacutainers, Rapid Test Kits & Stains
+                    </div>
                   </div>
                 </Link>
 
                 <div className="border-t border-[hsl(var(--border))] my-1.5 pt-1.5 space-y-1">
                   <Link
-                    href="/products/others"
+                    href="/blog/hospital-department-equipment-list-price-kenya-2026"
                     className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors"
                     onClick={() => setProductsDropdown(false)}
                   >
@@ -96,17 +90,17 @@ export default function Navbar() {
                     </div>
                     <div className="w-full">
                       <div className="text-xs font-bold text-[hsl(var(--foreground))] flex items-center justify-between">
-                        <span>3. Others</span>
-                        <span className="rounded-full bg-emerald-100 text-emerald-900 px-2 py-0.5 text-[9px] font-bold">4 Suites</span>
+                        <span>3. Others (Hospital Setup)</span>
+                        <span className="rounded-full bg-emerald-100 text-emerald-900 px-2 py-0.5 text-[9px] font-bold">11 Suites</span>
                       </div>
                       <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug mt-0.5">
-                        Dental, Theatre, Maternity (NBU) &amp; ICU
+                        Triage, Emergency, Theatre, Maternity, Dental, Optical & More
                       </div>
                       <div className="grid grid-cols-2 gap-1 mt-2 text-[10px] text-slate-700">
-                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Dental</span>
-                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Theatre</span>
-                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Maternity (NBU)</span>
-                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; ICU</span>
+                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Triage & Emergency</span>
+                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Theatre & ICU</span>
+                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Maternity & Nursery</span>
+                        <span className="bg-slate-100 px-2 py-0.5 rounded font-medium">&bull; Dental & Optical</span>
                       </div>
                     </div>
                   </Link>
@@ -121,11 +115,11 @@ export default function Navbar() {
                     </div>
                     <div className="w-full">
                       <div className="text-xs font-bold text-[hsl(var(--foreground))] flex items-center justify-between">
-                        <span>4. Spare Parts &amp; Accessories</span>
+                        <span>4. Spare Parts & Accessories</span>
                         <span className="rounded-full bg-indigo-100 text-indigo-900 px-2 py-0.5 text-[9px] font-bold">New</span>
                       </div>
                       <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug mt-0.5">
-                        Valves, Pumps, Probes, Gaskets &amp; Stands
+                        Valves, Pumps, Probes, Gaskets & Stands
                       </div>
                     </div>
                   </Link>
@@ -134,22 +128,13 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link
-            href="/about"
-            className="hover:text-[hsl(var(--foreground))] transition-colors font-medium py-1"
-          >
+          <Link href="/about" className="hover:text-[hsl(var(--foreground))] transition-colors font-medium py-1">
             About
           </Link>
-          <Link
-            href="/blog"
-            className="hover:text-[hsl(var(--foreground))] transition-colors font-medium py-1"
-          >
+          <Link href="/blog" className="hover:text-[hsl(var(--foreground))] transition-colors font-medium py-1">
             Blog
           </Link>
-          <Link
-            href="/contact"
-            className="hover:text-[hsl(var(--foreground))] transition-colors font-medium py-1"
-          >
+          <Link href="/contact" className="hover:text-[hsl(var(--foreground))] transition-colors font-medium py-1">
             Contact
           </Link>
         </nav>
@@ -163,13 +148,8 @@ export default function Navbar() {
             <Phone className="w-3.5 h-3.5 text-[hsl(var(--primary))]" />
             <span>{SITE_CONFIG.telephone}</span>
           </a>
-
           <div className="w-px h-5 bg-[hsl(var(--border))]" />
-
-          <Link
-            href="/contact"
-            className="btn-pill-primary h-10 px-6 text-sm font-semibold"
-          >
+          <Link href="/contact" className="btn-pill-primary h-10 px-6 text-sm font-semibold">
             <span>Free Quote &rarr;</span>
           </Link>
         </div>
@@ -188,20 +168,13 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-[hsl(var(--border))] bg-white px-6 py-6 shadow-xl animate-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-3 font-semibold text-base text-[hsl(var(--foreground))]">
-            <Link
-              href="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:text-[hsl(var(--primary))] transition-colors"
-            >
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-[hsl(var(--primary))] transition-colors">
               Home
             </Link>
-            <Link
-              href="/services"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:text-[hsl(var(--primary))] transition-colors"
-            >
+            <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-[hsl(var(--primary))] transition-colors">
               Services
             </Link>
+
             {/* Products Group */}
             <div className="py-1">
               <div className="text-xs font-bold uppercase tracking-wider text-[hsl(var(--muted-foreground))] py-1">
@@ -218,98 +191,11 @@ export default function Navbar() {
                     26 Models
                   </span>
                 </Link>
+
                 <Link
                   href="/products/consumables"
                   onClick={() => setMobileMenuOpen(false)}
                   className="py-1.5 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between text-sm"
                 >
                   <span className="font-semibold text-[hsl(var(--foreground))]">2. Consumables and reagents</span>
-                  <span className="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-bold">
-                    38+ Items
-                  </span>
-                </Link>
-                <Link
-                  href="/products/others"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="py-1.5 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between text-sm"
-                >
-                  <div>
-                    <span className="font-semibold text-[hsl(var(--foreground))] block">3. Others</span>
-                    <span className="text-[11px] text-[hsl(var(--muted-foreground))] font-normal">
-                      Dental &middot; Theatre &middot; Maternity (NBU) &middot; ICU
-                    </span>
-                  </div>
-                  <span className="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full font-bold shrink-0">
-                    4 Suites
-                  </span>
-                </Link>
-                <Link
-                  href="/products/spare-parts"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="py-1.5 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between text-sm"
-                >
-                  <div>
-                    <span className="font-semibold text-[hsl(var(--foreground))] block">4. Spare Parts &amp; Accessories</span>
-                    <span className="text-[11px] text-[hsl(var(--muted-foreground))] font-normal">
-                      Valves &middot; Pumps &middot; Probes &middot; Gaskets
-                    </span>
-                  </div>
-                  <span className="text-[10px] bg-indigo-100 text-indigo-900 px-2 py-0.5 rounded-full font-bold shrink-0">
-                    New
-                  </span>
-                </Link>
-              </div>
-            </div>
-            <Link
-              href="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:text-[hsl(var(--primary))] transition-colors"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/blog"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:text-[hsl(var(--primary))] transition-colors"
-            >
-              Engineering Blog
-            </Link>
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:text-[hsl(var(--primary))] transition-colors"
-            >
-              Contact
-            </Link>
-          </div>
-
-          <div className="mt-6 pt-6 border-t border-[hsl(var(--border))] flex flex-col gap-3">
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="btn-pill-primary w-full h-11 text-sm font-semibold justify-center"
-            >
-              <span>Request Free Consultation &rarr;</span>
-            </Link>
-            <a
-              href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=Hello%20Medwise%20Technical%20Consulting`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-pill-secondary w-full h-11 text-sm font-semibold justify-center gap-2"
-            >
-              <MessageSquare className="w-4 h-4 text-emerald-600" />
-              <span>WhatsApp Biomedical Engineer</span>
-            </a>
-            <a
-              href={`tel:${SITE_CONFIG.telephone}`}
-              className="btn-pill-secondary w-full h-11 text-sm font-semibold justify-center gap-2"
-            >
-              <Phone className="w-4 h-4 text-[hsl(var(--primary))]" />
-              <span>Call {SITE_CONFIG.telephone}</span>
-            </a>
-          </div>
-        </div>
-      )}
-    </header>
-  );
-}
+                  <span className="text-[10px] bg-amber
