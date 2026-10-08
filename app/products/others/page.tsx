@@ -16,103 +16,60 @@ interface DepartmentCard {
 
 const DEPARTMENTS: DepartmentCard[] = [
   {
-    id: "triage",
-    name: "Triage Area Suite",
-    department: "Triage",
-    description: "Complete vital signs monitoring and initial patient assessment setup for clinics and health centers.",
-    estimatedPrice: "KES 180,000 - 320,000",
-    slug: "/blog/triage-equipment-list-requirements-kenya",
-    constituents: ["Digital Patient Monitor", "Infrared & Digital Thermometers", "Weighing Scale with Stadiometer", "Pulse Oximeters & BP Sets"]
-  },
-  {
-    id: "emergency",
-    name: "Emergency & Dressing Room Suite",
-    department: "Emergency",
-    description: "Emergency resuscitation readiness and minor surgical dressing setup.",
-    estimatedPrice: "KES 450,000 - 750,000",
-    slug: "/blog/emergency-room-equipment-list-kenya",
-    constituents: ["Emergency Crash Cart", "Double Bottle Suction Machine", "AED Defibrillator Unit", "Minor Surgical Dressing Set"]
-  },
-  {
-    id: "procedure",
-    name: "Procedure Room Suite",
-    department: "Procedure Room",
-    description: "Sterile procedure setup with shadowless lighting and multi-position examination couches.",
-    estimatedPrice: "KES 350,000 - 600,000",
-    slug: "/blog/procedure-room-equipment-list-kenya",
-    constituents: ["LED Minor Procedure Light", "Hydraulic Procedure Couch", "24L Benchtop Autoclave", "Stainless Steel Mayo Trolley"]
-  },
-  {
-    id: "consultation",
-    name: "Consultation Room Suite",
-    department: "Consultation Room",
-    description: "Standard clinical officer and doctor consultation office diagnostic tools.",
-    estimatedPrice: "KES 120,000 - 220,000",
-    slug: "/blog/consultation-room-equipment-list-kenya",
-    constituents: ["Diagnostic Wall / Desk Set", "Padded Examination Couch", "Doctor Stethoscope & BP Monitor", "LED X-Ray Film Viewer"]
-  },
-  {
-    id: "maternity",
-    name: "Maternity Ward Suite",
-    department: "Maternity Ward",
-    description: "Maternal monitoring systems, CTG fetal monitors, and recovery beds.",
-    estimatedPrice: "KES 650,000 - 1,100,000",
-    slug: "/blog/maternity-ward-equipment-list-kenya",
-    constituents: ["CTG Fetal Monitor", "Portable Fetal Doppler", "Infant Radiant Warmer", "Maternity Recovery Bed"]
-  },
-  {
-    id: "nursery",
-    name: "Newborn Nursery (NBU) Suite",
-    department: "Nursery",
-    description: "Controlled thermal management, jaundice phototherapy, and neonatal resuscitation setup.",
-    estimatedPrice: "KES 850,000 - 1,500,000",
-    slug: "/blog/nursery-equipment-list-kenya",
-    constituents: ["Neonatal Incubator", "LED Phototherapy Unit", "Neonatal Resuscitation Table", "Infant Stainless Steel Bassinet"]
-  },
-  {
-    id: "delivery",
-    name: "Delivery Room Suite",
-    department: "Delivery Room",
-    description: "Obstetric delivery couches, shadowless lamps, and newborn resuscitation stations.",
-    estimatedPrice: "KES 550,000 - 950,000",
-    slug: "/blog/delivery-room-equipment-list-kenya",
-    constituents: ["Hydraulic Obstetric Delivery Table", "Shadowless Mobile LED Light", "Delivery Instrument Kit", "Obstetric Vacuum Extractor"]
-  },
-  {
-    id: "medical-ward",
-    name: "Inpatient Medical Ward Suite",
-    department: "Medical Ward",
-    description: "Inpatient ward furniture, bed monitoring, and nursing administration trolleys.",
-    estimatedPrice: "KES 750,000 - 1,400,000",
-    slug: "/blog/medical-ward-equipment-list-kenya",
-    constituents: ["Two-Crank Bed with Mattress", "ABS Bedside Lockers", "IV Drip Stands", "Nursing Medication Trolley"]
+    id: "dental",
+    name: "Dental Operatory Suite",
+    department: "Dental Unit",
+    description: "Complete dental surgery setup including electric dental chair, silent air compressor, intraoral X-ray, and scaling instrumentation.",
+    estimatedPrice: "KES 1,200,000 - 2,200,000",
+    slug: "/products/others#dental",
+    constituents: [
+      "Fully Electric Dental Chair Unit",
+      "Oil-Free Silent Air Compressor",
+      "Intraoral Dental X-Ray Unit",
+      "Ultrasonic Dental Scaler & Curing Light"
+    ]
   },
   {
     id: "theatre",
     name: "Operating Theatre (OT) Suite",
     department: "Operating Theatre",
-    description: "Surgical OT setup including anesthesia workstations, electro-hydraulic tables, and surgical LED lights.",
+    description: "Surgical OT installation comprising anesthesia workstation, electro-hydraulic operating table, shadowless LED lights, and diathermy.",
     estimatedPrice: "KES 2,800,000 - 5,500,000",
-    slug: "/blog/theatre-equipment-list-requirements-kenya",
-    constituents: ["Electro-Hydraulic Operating Table", "Anesthesia Workstation with Ventilator", "Double Dome LED Surgical Light", "Electrosurgical Diathermy Unit"]
+    slug: "/products/others#theatre",
+    constituents: [
+      "Electro-Hydraulic Operating Table",
+      "Anesthesia Workstation with Ventilator",
+      "Double-Dome LED Surgical Light",
+      "Electrosurgical Diathermy Unit"
+    ]
   },
   {
-    id: "dental",
-    name: "Dental Operatory Suite",
-    department: "Dental Unit",
-    description: "Electric dental chairs, silent medical air compressors, digital X-rays, and scalers.",
-    estimatedPrice: "KES 1,200,000 - 2,200,000",
-    slug: "/blog/dental-equipment-list-kenya",
-    constituents: ["Fully Electric Dental Chair Unit", "Oil-Free Silent Compressor", "Intraoral Dental X-Ray Unit", "Ultrasonic Dental Scaler"]
+    id: "maternity",
+    name: "Maternity & Delivery Suite",
+    department: "Maternity Ward",
+    description: "Complete labor, delivery, and recovery setup with obstetric delivery beds, CTG monitors, radiant warmers, and suction units.",
+    estimatedPrice: "KES 850,000 - 1,800,000",
+    slug: "/products/others#maternity",
+    constituents: [
+      "Hydraulic Obstetric Delivery Bed",
+      "Cardiotocography (CTG) Fetal Monitor",
+      "Infant Radiant Warmer",
+      "Mobile Shadowless Examination Light"
+    ]
   },
   {
-    id: "optical",
-    name: "Optical & Ophthalmic Suite",
-    department: "Optical Unit",
-    description: "Eye clinic refraction instrumentation, slit lamps, auto refractometers, and trial lens sets.",
-    estimatedPrice: "KES 1,100,000 - 2,100,000",
-    slug: "/blog/optical-equipment-list-kenya",
-    constituents: ["Digital Auto Refractometer", "Ophthalmic Slit Lamp Microscope", "Manual Phoropter Refractor", "Trial Lens Set with Frame"]
+    id: "icu",
+    name: "ICU & High Dependency Unit (HDU)",
+    department: "Critical Care",
+    description: "Critical care equipment bundle including multi-parameter patient monitors, ICU ventilators, syringe pumps, and crash carts.",
+    estimatedPrice: "KES 3,200,000 - 6,800,000",
+    slug: "/products/others#icu",
+    constituents: [
+      "Multi-Parameter ICU Patient Monitor",
+      "ICU Ventilator (Invasive/Non-Invasive)",
+      "Dual-Channel Syringe & Infusion Pumps",
+      "Emergency Crash Cart with AED"
+    ]
   }
 ];
 
@@ -133,15 +90,15 @@ export default function OthersProductsPage() {
         {/* Header Section */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">
-            <span>Hospital Department Setup Guides</span>
+            <span>Specialized Clinical Suites</span>
             <span>•</span>
-            <span>11 Clinical Departments</span>
+            <span>4 Key Departments</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Hospital & Clinic Department Equipment Packages
+            Specialized Department Setup Packages
           </h1>
           <p className="text-sm sm:text-base text-slate-600">
-            Standard medical equipment requirements, estimated budget ranges, and MOH compliance guides for opening or upgrading clinical departments in Kenya.
+            Complete equipment suites for specialized hospital departments in Kenya. Certified metrology calibration and full installation included.
           </p>
         </div>
 
@@ -150,7 +107,7 @@ export default function OthersProductsPage() {
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
             type="text"
-            placeholder="Search department or equipment name..."
+            placeholder="Search department or equipment..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-9 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 shadow-sm"
@@ -165,8 +122,8 @@ export default function OthersProductsPage() {
           )}
         </div>
 
-        {/* 11 Department Grid Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Department Grid Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filtered.map((dept) => (
             <div
               key={dept.id}
@@ -214,10 +171,10 @@ export default function OthersProductsPage() {
                 </div>
 
                 <Link
-                  href={dept.slug}
+                  href="/contact"
                   className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow-sm hover:shadow inline-flex items-center gap-1"
                 >
-                  <span>Learn More</span>
+                  <span>Request Quote</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
