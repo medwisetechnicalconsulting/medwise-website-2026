@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+import matter from 'gray-matter'; 
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.medwisetechnicalconsulting.co.ke';
 
