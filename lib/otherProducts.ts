@@ -7,17 +7,25 @@ export interface OtherDepartmentProduct {
   tagline?: string;
   warranty?: string;
   deliveryTime?: string;
-  keySpecs?: string[];
+  keySpecs?: Array<{ label: string; value: string } | string>;
+  constituents?: string[];
   description?: string;
 }
 
-// Helper function to generate WhatsApp inquiry link for a product
+export const OTHER_PRODUCTS_CATALOG: OtherDepartmentProduct[] = [
+  {
+    id: "sample-product-1",
+    name: "Sample Product",
+    category: "General",
+    tagline: "High quality medical supply",
+    keySpecs: [{ label: "Material", value: "Standard" }]
+  }
+];
+
 export function getOtherProductWhatsAppUrl(product: OtherDepartmentProduct): string {
-  const phone = "YOUR_PHONE_NUMBER_HERE"; // Replace with your WhatsApp business number
+  const phone = "YOUR_PHONE_NUMBER_HERE";
   const message = encodeURIComponent(
     `Hello, I am interested in inquiring about the product: ${product.name} (ID: ${product.id})`
   );
   return `https://wa.me/${phone}?text=${message}`;
 }
-
-// Add your product array / exports below as needed
