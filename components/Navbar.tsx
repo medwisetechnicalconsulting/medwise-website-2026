@@ -198,4 +198,12 @@ export default function Navbar() {
                   className="py-1.5 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between text-sm"
                 >
                   <span className="font-semibold text-[hsl(var(--foreground))]">2. Consumables and reagents</span>
-                  <span className="text-[10px] bg-amber
+                  <span className="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-bold">
+  38+
+</span>
+  </Link>
+</div>
+  </div>
+</div>
+)}
+</div>
