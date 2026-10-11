@@ -1,31 +1,28 @@
-export interface OtherDepartmentProduct {
+export interface OtherProduct {
   id: string;
   name: string;
-  category?: string;
-  image?: string;
-  badge?: string;
-  tagline?: string;
-  warranty?: string;
-  deliveryTime?: string;
-  keySpecs?: Array<{ label: string; value: string } | string>;
-  constituents?: string[];
-  description?: string;
+  category: string;
+  description: string;
+  features: string[];
 }
 
-export const OTHER_PRODUCTS_CATALOG: OtherDepartmentProduct[] = [
+export const otherProducts: OtherProduct[] = [
   {
-    id: "sample-product-1",
-    name: "Sample Product",
-    category: "General",
-    tagline: "High quality medical supply",
-    keySpecs: [{ label: "Material", value: "Standard" }]
+    id: "lab-centrifuge",
+    name: "Laboratory Centrifuge",
+    category: "Laboratory Equipment",
+    description: "High-speed benchtop centrifuge for clinical and research laboratories.",
+    features: ["Digital speed control", "Automatic imbalance detection", "Quiet operation"]
+  },
+  {
+    id: "patient-monitor",
+    name: "Multi-Parameter Patient Monitor",
+    category: "Ward Equipment",
+    description: "Real-time tracking of ECG, SpO2, NIBP, respiration, and temperature.",
+    features: ["12.1-inch TFT display", "Built-in rechargeable battery", "Visual and audible alarms"]
   }
 ];
 
-export function getOtherProductWhatsAppUrl(product: OtherDepartmentProduct): string {
-  const phone = "YOUR_PHONE_NUMBER_HERE";
-  const message = encodeURIComponent(
-    `Hello, I am interested in inquiring about the product: ${product.name} (ID: ${product.id})`
-  );
-  return `https://wa.me/${phone}?text=${message}`;
+export function getOtherProductById(id: string): OtherProduct | undefined {
+  return otherProducts.find((p) => p.id === id);
 }
