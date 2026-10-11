@@ -29,20 +29,23 @@ export default function Navbar() {
           </Link>
 
           {/* Products Dropdown */}
-          <div
+          <div 
             className="relative py-1"
             onMouseEnter={() => setProductsDropdown(true)}
             onMouseLeave={() => setProductsDropdown(false)}
           >
-            <Link href="/products" className="hover:text-[hsl(var(--foreground))] transition-colors font-medium inline-flex items-center gap-1.5">
+            <Link 
+              href="/products" 
+              className="hover:text-[hsl(var(--foreground))] transition-colors font-medium inline-flex items-center gap-1.5"
+            >
               <span>Products</span>
               <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${productsDropdown ? 'rotate-180' : ''}`} />
             </Link>
 
             {productsDropdown && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 rounded-2xl border border-[hsl(var(--border))] bg-white p-2.5 shadow-[0_16px_48px_rgba(0,0,0,0.08)] z-50">
-                <Link
-                  href="/products"
+                <Link 
+                  href="/products" 
                   className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors"
                   onClick={() => setProductsDropdown(false)}
                 >
@@ -60,8 +63,8 @@ export default function Navbar() {
                   </div>
                 </Link>
 
-                <Link
-                  href="/products/consumables"
+                <Link 
+                  href="/products/consumables" 
                   className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors mt-1"
                   onClick={() => setProductsDropdown(false)}
                 >
@@ -80,8 +83,8 @@ export default function Navbar() {
                 </Link>
 
                 <div className="border-t border-[hsl(var(--border))] my-1.5 pt-1.5 space-y-1">
-                  <Link
-                    href="/blog/hospital-department-equipment-list-price-kenya-2026"
+                  <Link 
+                    href="/blog/hospital-department-equipment-list-price-kenya-2026" 
                     className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors"
                     onClick={() => setProductsDropdown(false)}
                   >
@@ -105,8 +108,8 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-                  <Link
-                    href="/products/spare-parts"
+                  <Link 
+                    href="/products/spare-parts" 
                     className="flex items-start gap-3 rounded-xl p-3 hover:bg-[hsl(var(--muted))] transition-colors"
                     onClick={() => setProductsDropdown(false)}
                   >
@@ -141,8 +144,8 @@ export default function Navbar() {
 
         {/* Right: Phone link + Pill Button */}
         <div className="hidden lg:flex items-center gap-4">
-          <a
-            href={`tel:${SITE_CONFIG.telephone}`}
+          <a 
+            href={`tel:${SITE_CONFIG.telephone}`} 
             className="font-medium text-sm text-[hsl(var(--foreground))] inline-flex items-center gap-1.5 hover:text-[hsl(var(--primary))] transition-colors"
           >
             <Phone className="w-3.5 h-3.5 text-[hsl(var(--primary))]" />
@@ -155,8 +158,8 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Hamburger Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        <button 
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
           aria-label="Toggle Menu"
           className="md:hidden flex items-center justify-center rounded-full p-2.5 text-[hsl(var(--foreground))] hover:bg-[hsl(var(--muted))] transition-colors"
         >
@@ -168,10 +171,18 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-[hsl(var(--border))] bg-white px-6 py-6 shadow-xl animate-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-3 font-semibold text-base text-[hsl(var(--foreground))]">
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-[hsl(var(--primary))] transition-colors">
+            <Link 
+              href="/" 
+              onClick={() => setMobileMenuOpen(false)} 
+              className="py-2 hover:text-[hsl(var(--primary))] transition-colors"
+            >
               Home
             </Link>
-            <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-[hsl(var(--primary))] transition-colors">
+            <Link 
+              href="/services" 
+              onClick={() => setMobileMenuOpen(false)} 
+              className="py-2 hover:text-[hsl(var(--primary))] transition-colors"
+            >
               Services
             </Link>
 
@@ -181,9 +192,9 @@ export default function Navbar() {
                 Products
               </div>
               <div className="pl-3 border-l-2 border-[hsl(var(--border))] space-y-1 mt-1">
-                <Link
-                  href="/products"
-                  onClick={() => setMobileMenuOpen(false)}
+                <Link 
+                  href="/products" 
+                  onClick={() => setMobileMenuOpen(false)} 
                   className="py-1.5 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between text-sm"
                 >
                   <span className="font-semibold text-[hsl(var(--foreground))]">1. Equipments</span>
@@ -191,19 +202,43 @@ export default function Navbar() {
                     26 Models
                   </span>
                 </Link>
-
-                <Link
-                  href="/products/consumables"
-                  onClick={() => setMobileMenuOpen(false)}
+                <Link 
+                  href="/products/consumables" 
+                  onClick={() => setMobileMenuOpen(false)} 
                   className="py-1.5 hover:text-[hsl(var(--primary))] transition-colors flex items-center justify-between text-sm"
                 >
                   <span className="font-semibold text-[hsl(var(--foreground))]">2. Consumables and reagents</span>
                   <span className="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-bold">
-  38+
-</span>
-  </Link>
-</div>
-  </div>
-</div>
-)}
-</div>
+                    38+
+                  </span>
+                </Link>
+              </div>
+            </div>
+
+            <Link 
+              href="/about" 
+              onClick={() => setMobileMenuOpen(false)} 
+              className="py-2 hover:text-[hsl(var(--primary))] transition-colors"
+            >
+              About
+            </Link>
+            <Link 
+              href="/blog" 
+              onClick={() => setMobileMenuOpen(false)} 
+              className="py-2 hover:text-[hsl(var(--primary))] transition-colors"
+            >
+              Blog
+            </Link>
+            <Link 
+              href="/contact" 
+              onClick={() => setMobileMenuOpen(false)} 
+              className="py-2 hover:text-[hsl(var(--primary))] transition-colors"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
