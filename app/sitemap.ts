@@ -4,24 +4,24 @@ import path from 'path';
 import matter from 'gray-matter';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://medwisetech.co.ke';
+  const baseUrl = 'https://www.medwisetech.co.ke';
 
-  // 1. Static Core Routes
+  // 1. Core Static Pages
   const staticRoutes = [
-    '',
-    '/services',
-    '/products',
-    '/products/spare-parts',
-    '/about',
-    '/blog',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
+    { route: '', priority: 1.0, changeFrequency: 'weekly' as const },
+    { route: '/services', priority: 0.8, changeFrequency: 'weekly' as const },
+    { route: '/products', priority: 0.9, changeFrequency: 'weekly' as const },
+    { route: '/products/spare-parts', priority: 0.8, changeFrequency: 'weekly' as const },
+    { route: '/about', priority: 0.7, changeFrequency: 'monthly' as const },
+    { route: '/blog', priority: 0.8, changeFrequency: 'daily' as const },
+  ].map((item) => ({
+    url: `${baseUrl}${item.route}`,
     lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1.0 : 0.8,
+    changeFrequency: item.changeFrequency,
+    priority: item.priority,
   }));
 
-  // 2. Dynamic MDX Blog Routes
+  // 2. Dynamic Blog Routes from MDX content directory
   const blogDirectory = path.join(process.cwd(), 'content/blog');
   let blogRoutes: MetadataRoute.Sitemap = [];
 
@@ -45,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         });
     }
   } catch (error) {
-    console.error('Error generating dynamic sitemap entries:', error);
+    console.error('Failed to generate sitemap entries for blog directory:', error);
   }
 
   return [...staticRoutes, ...blogRoutes];
