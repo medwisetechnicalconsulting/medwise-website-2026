@@ -3,29 +3,29 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.medwisetech.co.ke';
 
   // 1. Core Static Pages
-  const staticRoutes = [
-    { route: '', priority: 1.0, changeFrequency: 'weekly' as const },
-    { route: '/services', priority: 0.8, changeFrequency: 'weekly' as const },
-    { route: '/products', priority: 0.9, changeFrequency: 'weekly' as const },
-    { route: '/products/spare-parts', priority: 0.8, changeFrequency: 'weekly' as const },
-    { route: '/about', priority: 0.7, changeFrequency: 'monthly' as const },
-    { route: '/blog', priority: 0.8, changeFrequency: 'daily' as const },
+  const staticRoutes: MetadataRoute.Sitemap = [
+    { route: '', priority: 1.0, changeFrequency: 'weekly' },
+    { route: '/services', priority: 0.8, changeFrequency: 'weekly' },
+    { route: '/products', priority: 0.9, changeFrequency: 'weekly' },
+    { route: '/products/spare-parts', priority: 0.8, changeFrequency: 'weekly' },
+    { route: '/about', priority: 0.7, changeFrequency: 'monthly' },
+    { route: '/blog', priority: 0.8, changeFrequency: 'daily' },
   ].map((item) => ({
     url: `${baseUrl}${item.route}`,
     lastModified: new Date(),
-    changeFrequency: item.changeFrequency,
+    changeFrequency: item.changeFrequency as 'weekly' | 'monthly' | 'daily',
     priority: item.priority,
   }));
 
   // 2. Dynamic Blog Routes from MDX content directory
-  const blogDirectory = path.join(process.cwd(), 'content/blog');
   let blogRoutes: MetadataRoute.Sitemap = [];
-
+  
   try {
+    const blogDirectory = path.join(process.cwd(), 'content/blog');
     if (fs.existsSync(blogDirectory)) {
       const filenames = fs.readdirSync(blogDirectory);
       blogRoutes = filenames
@@ -39,13 +39,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           return {
             url: `${baseUrl}/blog/${slug}`,
             lastModified: data.date ? new Date(data.date) : new Date(),
-            changeFrequency: 'monthly' as const,
+            changeFrequency: 'monthly',
             priority: 0.6,
           };
         });
     }
   } catch (error) {
-    console.error('Failed to generate sitemap entries for blog directory:', error);
+    console.error('Failed to parse blog directory for sitemap:', error);
   }
 
   return [...staticRoutes, ...blogRoutes];
